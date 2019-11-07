@@ -1,0 +1,167 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#1b1b19"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1F2633">
+        <TextView
+            android:id="@+id/fhf2"
+            android:layout_width="37dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="355dp"
+            android:layout_marginTop="50dp"
+            android:background="#222A38" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="415dp"
+            android:background="#222A38" />
+
+        <ImageView
+            android:id="@+id/fanhui2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/name"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/fanhui" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:text="@string/f3"
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/share"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/fenxiang" />
+
+        <ImageView
+            android:id="@+id/img_code"
+            android:layout_width="193dp"
+            android:layout_height="193dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="320dp"
+            android:text="@string/ff1"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/popadd"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="270dp"
+            android:layout_marginTop="320dp"
+            android:text=""
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/xiala2"
+            android:layout_width="20dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginTop="323dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/xiala" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="350dp"
+            android:background="#ff364359" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="357dp"
+            android:text="@string/ff2"
+            android:gravity="center_vertical|left"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/skje"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:layout_toRightOf="@id/address"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="357dp"
+            android:background="#222A38"
+            android:hint="@string/ff3"
+            android:gravity="center_vertical|right"
+            android:textColor="#66ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/popadd1"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="365dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text=""
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="425dp"
+            android:gravity="center"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/copy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="450dp"
+            android:text="@string/ff6"
+            android:textColor="#ff4182f2"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+</LinearLayout>

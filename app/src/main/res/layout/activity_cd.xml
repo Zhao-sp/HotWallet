@@ -1,0 +1,90 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#1F2633"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1F2633">
+
+        <TextView
+            android:id="@+id/fhgx"
+            android:layout_width="37dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="10dp"/>
+        <ImageView
+            android:id="@+id/fanhui5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/name"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/fanhui" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/cd1"
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tztype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/p1"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#273040">
+            <TextView
+                android:id="@+id/pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/card"
+                android:textColor="#ffffffff"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/ptamount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/pt"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text=""
+                android:textColor="#ffffffff"
+                android:textSize="14dp" />
+
+        </RelativeLayout>
+        <com.wallet.cold.utils.MyListView
+            android:id="@+id/list_zx"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:divider="#00000000"
+            android:scrollbars="none" />
+
+</LinearLayout>

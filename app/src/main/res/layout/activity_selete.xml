@@ -1,0 +1,155 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F2633">
+
+    <TextView
+        android:id="@+id/fhselete"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="10dp"/>
+
+    <ImageView
+        android:id="@+id/fanhuiadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/fanhui" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/selete1"
+        android:textColor="#fff"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/jxye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/fanhuiadd"
+        android:layout_marginTop="85dp"
+        android:text="@string/selete2"
+        android:textColor="#ffffffff"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/recover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/fanhuiadd"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="114dp"
+        android:background="@drawable/daoru" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="133dp"
+        android:background="@drawable/daoru1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="141dp"
+        android:text="导入钱包"
+        android:textColor="#ffffffff"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="170dp"
+        android:text="通过助记词、私钥等导入钱包"
+        android:textColor="#ffffffff"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="155dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:src="@drawable/jinru_zhong" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/fanhuiadd"
+        android:layout_marginTop="238dp"
+        android:text="@string/selete5"
+        android:textColor="#ffffffff"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/daoru" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageView3"
+        android:layout_marginTop="288dp"
+        android:src="@drawable/chuangjian" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView1"
+        android:layout_marginTop="297dp"
+        android:text="@string/selete5"
+        android:textColor="#ffffffff"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_alignBottom="@+id/imageView6"
+        android:layout_alignStart="@+id/textView1"
+        android:text="@string/selete6"
+        android:textColor="#ffffffff"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView20"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:src="@drawable/jinru_zhong" />
+    />
+
+</RelativeLayout>

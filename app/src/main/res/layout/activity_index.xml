@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#273040"
+    android:id="@+id/l1"
+    android:orientation="vertical" >
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0" />
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.0"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioGroup
+                    android:id="@+id/main_tab_group"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/guide_home"
+                        style="@style/main_rbt"
+                        android:checked="true"
+                        android:textColor="@drawable/color_radiobutton"
+                        android:drawableTop="@drawable/qianbao_xz"
+                        android:text="@string/index1" />
+
+                    <RadioButton
+                        android:id="@+id/guide_pawn"
+                        style="@style/main_rbt"
+                        android:textColor="@drawable/color_radiobutton"
+                        android:drawableTop="@drawable/pawn_xk"
+                        android:text="@string/index4" />
+
+                    <RadioButton
+                        android:id="@+id/guide_store"
+                        style="@style/main_rbt"
+                        android:drawableTop="@drawable/hangqing_xk"
+                        android:text="@string/index2"
+                        android:textColor="@drawable/color_radiobutton" />
+
+                    <RadioButton
+                        android:id="@+id/guide_cart"
+                        style="@style/main_rbt"
+                        android:textColor="@drawable/color_radiobutton"
+                        android:drawableTop="@drawable/faxian_xk"
+                        android:text="@string/index3" />
+
+                    <RadioButton
+                        android:id="@+id/guide_me"
+                        style="@style/main_rbt"
+                        android:textColor="@drawable/color_radiobutton"
+                        android:drawableTop="@drawable/my_xk"
+                        android:text="@string/m5" />
+
+                </RadioGroup>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</LinearLayout>

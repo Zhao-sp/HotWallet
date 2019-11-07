@@ -1,0 +1,81 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#2d2e30"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1F2633">
+        <!--<TextView-->
+            <!--android:id="@+id/fhnum"-->
+            <!--android:layout_width="37dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--android:layout_marginStart="10dp"/>-->
+        <!--<ImageView-->
+            <!--android:id="@+id/fanhuiadd"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_alignTop="@+id/name"-->
+            <!--android:layout_marginStart="20dp"-->
+            <!--android:src="@drawable/fanhui" />-->
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:text="@string/num1"
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="343dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="91dp"
+            android:text="@string/num2"
+            android:textColor="#66ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/jxye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="61dp"
+            android:text="@string/num3"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/jxye"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="145dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/zjcjs" />
+
+        <TextView
+            android:layout_width="343dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="320dp"
+            android:text="@string/num4"
+            android:textColor="#66ffffff"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+</LinearLayout>

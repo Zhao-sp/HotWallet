@@ -1,0 +1,170 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#1b1b19"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1F2633">
+        <TextView
+            android:id="@+id/fhf5"
+            android:layout_width="37dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="10dp"/>
+        <ImageView
+            android:id="@+id/fanhui5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/name"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/fanhui" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:text="@string/f51"
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/chongzhi"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="50dp"
+            android:background="#222A38" />
+
+        <TextView
+            android:id="@+id/resetpin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="65dp"
+            android:text="@string/f52"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/chushihua"
+            android:layout_width="8dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="300dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="68dp"
+            android:background="@drawable/jinru_zhong" />
+
+        <TextView
+            android:id="@+id/gengxin"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="110dp"
+            android:background="#222A38" />
+
+        <TextView
+            android:layout_width="208dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="125dp"
+            android:text="@string/f53"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/banben"
+            android:layout_width="8dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="128dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/jinru_zhong" />
+
+        <TextView
+            android:id="@+id/chushihuaka"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="170dp"
+            android:background="#222A38" />
+
+        <TextView
+            android:id="@+id/csh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="182dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/f54"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/chush"
+            android:layout_width="8dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="183dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/jinru_zhong" />
+
+        <TextView
+            android:id="@+id/languages"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="230dp"
+            android:background="#222A38" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="242dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/l1"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="244dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/jinru_zhong" />
+
+        <TextView
+            android:id="@+id/fingerprints"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="290dp"
+            android:background="#222A38" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="302dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/f520"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="304dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/jinru_zhong" />
+
+    </RelativeLayout>
+</LinearLayout>

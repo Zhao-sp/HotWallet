@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F2633">
+    <TextView
+        android:id="@+id/fhaddbi"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="10dp"/>
+    <ImageView
+        android:id="@+id/fanhuiadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/name"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/fanhui" />
+
+    <ImageView
+        android:id="@+id/ss"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/sousuo_da" />
+
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="365dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/cj" />
+
+    <ImageView
+        android:id="@+id/ssxiao"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/sousuo_xiao" />
+
+    <EditText
+        android:id="@+id/ssname"
+        android:layout_width="365dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="72dp"
+        android:textColor="#808080"
+        android:hint="@string/add1"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:background="#fff"/>
+
+    <TextView
+        android:id="@+id/quxiao"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:text="@string/f513"
+        android:textColor="#ff4182f2"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/add3"
+        android:textColor="#fff"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/noxx"
+        android:layout_width="112dp"
+        android:layout_height="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="@string/add4"
+        android:textColor="#66ffffff"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:dividerHeight="6dp"
+        android:divider="#1F2633"
+        android:scrollbars="none"></ListView>
+
+</RelativeLayout>

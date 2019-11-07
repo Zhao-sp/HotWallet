@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="90dp"
+    android:background="@drawable/shape">
+
+    <TextView
+        android:id="@+id/addbizhong"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        />
+    <TextView
+        android:id="@+id/jxye"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/jia"
+        />
+
+    <TextView
+        android:id="@+id/sao"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/pp1"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="5dp"
+        android:background="#ff364359"
+        android:layout_marginTop="45dp" />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/saoyisao_da"
+        />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/pp2"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+
+
+</RelativeLayout>

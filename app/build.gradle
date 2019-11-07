@@ -1,0 +1,80 @@
+//apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
+//apply plugin: 'cn.leo.plugin.magic'
+android {
+    signingConfigs {
+        config {
+            keyAlias 'hotwallet'
+            keyPassword 'hotwallet123456'
+            storeFile file('/hotwallet.jks')
+            storePassword 'hotwallet123456'
+        }
+    }
+    compileSdkVersion 28
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "com.hotwallet"
+        multiDexEnabled true
+        minSdkVersion 18
+        targetSdkVersion 28
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            aaptOptions.cruncherEnabled = false
+            aaptOptions.useNewCruncher = false
+            signingConfig signingConfigs.config
+            zipAlignEnabled true
+        }
+        debug {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            zipAlignEnabled true
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    productFlavors {
+    }
+    packagingOptions {
+        exclude 'lib/x86_64/darwin/libscrypt.dylib'
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.59'
+    implementation 'com.madgag.spongycastle:core:1.58.0.0'
+    api 'com.cedarsoftware:java-util:1.8.0'
+    implementation files('libs/zxing.jar')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation files('libs/jsonrpc4j-0.27.jar')
+    implementation files('libs/fastjson-1.2.28.jar')
+    implementation 'org.web3j:core:3.3.1-android'
+    implementation 'io.github.novacrypto:BIP39:0.1.9'//用于生成ETH助记词
+    implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
+    implementation 'com.github.jarryleo:MagicScreenAdapter:v1.3'
+    //屏幕适配
+    implementation 'no.nordicsemi.android:dfu:1.8.1'
+    implementation 'net.vidageek:mirror:1.6.1'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'org.slf4j:slf4j-nop:1.7.2'
+    implementation 'com.google.code.gson:gson:2.7'
+}

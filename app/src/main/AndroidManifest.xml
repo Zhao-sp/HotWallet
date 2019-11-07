@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wallet"
+    android:versionCode="43"
+    android:versionName="1" >
+
+    <!--允许应用程序改变网络状态-->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <!--允许应用程序改变WIFI连接状态-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!--允许应用程序访问有关的网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--允许应用程序访问WIFI网卡的网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!--读写外部存储-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--读写内部存储-->
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE"/>
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <application
+        android:name=".cold.app.util.MultiLanguagesApp"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar"
+        android:resizeableActivity="true"
+        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/ic_launcher"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".CreateOrImportActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:name=".cold.utils.UartService" />
+        <activity android:name=".cold.app.main.MainActivity" />
+        <activity android:name=".cold.app.main.BleActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.main.NumbersActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.main.CreateActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.main.RecoverActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.main.IndexActivity"/>
+        <activity android:name=".cold.app.index.Fragment1"  android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.Receivables"  android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.Transfer"  android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.login" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.util.Fragment5" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.HQActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.ZXNRActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.ZXActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.AddBiActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.util.GengxinActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.util.ResetActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.JYXXActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.util.LanguagesActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.MeActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.CardAmount"  android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.CzActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.TzActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.TztypeActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.TxActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.SpxqActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.ShopActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.ShoplistActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.CdActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.InvestActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.PawnActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.utils.CaptureActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".cold.dfu.dfu_service.NotificationActivity" />
+        <activity android:name=".cold.dfu.DfuUpdateActivity" android:theme="@style/Theme.AppCompat"/>
+        <service android:name=".cold.dfu.BluetoothService" />
+        <service android:name=".cold.dfu.dfu_service.DfuService" />
+        <activity android:name=".cold.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat"/>
+        <activity android:name=".cold.app.auth0.auth0register" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.auth0.auth0login" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.index.Linkman" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.util.Fingerprints" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.util.FingerprintsXQ" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
+        <activity
+            android:name=".LicenceSimpleActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".hot.app.ByteActivity" />
+        <activity android:name=".hot.app.CreateActivity" />
+        <activity android:name=".hot.app.HotIndexActivity" />
+        <activity android:name=".hot.app.HotTransfer" />
+        <activity android:name=".hot.app.Verification" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".hot.app.HotRecoverActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".hot.app.BackUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".hot.app.BackUpMnemonicActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+
+</manifest>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tz"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#273040">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/eth" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/image"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="ETH-Ethereum"
+        android:textColor="#ffffffff"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/fxtoken1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/image"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/name"
+        android:layout_marginTop="10dp"
+        android:text="@string/tz1"
+        android:textColor="#ffffffff"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/fxtoken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fxtoken1"
+        android:layout_marginLeft="2dp"
+        android:layout_below="@id/name"
+        android:layout_marginTop="10dp"
+        android:text="20000"
+        android:textColor="#ffffffff"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tztoken1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/image"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/fxtoken"
+        android:layout_marginTop="5dp"
+        android:text="@string/tz2"
+        android:textColor="#ffffffff"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tztoken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tztoken1"
+        android:layout_marginLeft="2dp"
+        android:layout_below="@id/fxtoken"
+        android:layout_marginTop="5dp"
+        android:text="19900"
+        android:textColor="#ffffffff"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/cdname1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/image"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/tztoken"
+        android:layout_marginTop="5dp"
+        android:text="@string/tz3"
+        android:textColor="#66ffffff"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/cdname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/cdname1"
+        android:layout_marginLeft="2dp"
+        android:layout_below="@id/tztoken"
+        android:layout_marginTop="5dp"
+        android:text="宝瑞通典当行"
+        android:textColor="#66ffffff"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/dividend"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@id/xx"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="@string/tz4"
+        android:textColor="#fff"
+        android:background="#000" />
+
+    <TextView
+        android:id="@+id/xx"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="98dp"
+        android:background="#364359" />
+
+</RelativeLayout>

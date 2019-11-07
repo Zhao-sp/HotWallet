@@ -1,0 +1,113 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:background="#1F2633"
+    android:id="@+id/l2"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="244dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/banner" />
+
+        <ImageView
+            android:id="@+id/sz"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/shezhi" />
+
+        <TextView
+            android:id="@+id/jxye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="85dp"
+            android:text="@string/f1"
+            android:textColor="#ffffffff"
+            android:textSize="14sp" />
+
+
+        <ImageView
+            android:id="@+id/kz"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/kuozhan" />
+
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:text="≈0.00000000"
+            android:textColor="#FFF"
+            android:textSize="28sp" />
+
+        <ImageView
+            android:id="@+id/zhuanzhang"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="165dp"
+            android:background="@drawable/zhuanzhang" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="200dp"
+            android:text="@string/f2"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/shoukuan"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="75dp"
+            android:layout_marginTop="165dp"
+            android:background="@drawable/shoukuan" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="200dp"
+            android:text="@string/f3"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="12sp" />
+
+        <com.wallet.cold.utils.MyListView
+            android:id="@+id/list_yue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:dividerHeight="6dp"
+            android:divider="#00000000"
+            android:scrollbars="none"/>
+
+    </RelativeLayout>
+</LinearLayout>

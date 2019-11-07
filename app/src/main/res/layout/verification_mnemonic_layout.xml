@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1F2633">
+
+    <RelativeLayout
+        android:id="@+id/wallet_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+
+        <TextView
+            android:id="@+id/common_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:text="请根据您记下的助记词顺序点击以下助记词进行验证"
+        android:textSize="16dp"
+        android:textColor="@color/dark_gray" />
+
+    <EditText
+        android:id="@+id/zhujici"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/dark_gray"
+        android:padding="10dp"
+        android:text=""
+        android:textSize="18dp" />
+
+    <RelativeLayout
+        android:id="@+id/wallet_zjc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/zjc1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc1"
+            android:layout_marginLeft="20dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc2"
+            android:layout_marginLeft="20dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc3"
+            android:layout_marginLeft="20dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zjc1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc5"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/zjc1"
+            android:layout_marginTop="10dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc6"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/zjc1"
+            android:layout_marginTop="10dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc7"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/zjc1"
+            android:layout_marginTop="10dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zjc5"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc9"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/zjc5"
+            android:layout_marginTop="10dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc10"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/zjc5"
+            android:layout_marginTop="10dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/zjc12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/zjc11"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/zjc5"
+            android:layout_marginTop="10dp"
+            android:text="验证助记词"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/xiayibu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/lanyabg"
+        android:text="@string/backup_mnemonic_next" />
+</LinearLayout>

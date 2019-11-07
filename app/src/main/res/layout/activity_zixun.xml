@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#273040"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1F2633">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="344dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <WebView
+            android:id="@+id/Toweb"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+    </RelativeLayout>
+
+</LinearLayout>

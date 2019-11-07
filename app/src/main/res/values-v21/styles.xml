@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="import_theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/light_blue</item>
+    </style>
+
+    <style name="welcome_theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:background">@drawable/welcome_bg</item>
+    </style>
+</resources>

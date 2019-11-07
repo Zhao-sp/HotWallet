@@ -1,0 +1,29 @@
+应用包名:com.hotwallet
+别名: androiddebugkey
+创建日期: 2019-1-29
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=shipu zhao, OU=haiboyun, O=jishubu, L=hengshui hebei, ST=hebeisheng, C=china
+发布者: CN=shipu zhao, OU=haiboyun, O=jishubu, L=hengshui hebei, ST=hebeisheng, C=china
+序列号: 70a8f991
+有效期开始日期: Tue Jan 29 09:10:08 CST 2019, 截止日期: Sat Jun 16 09:10:08 CST 2046
+证书指纹:
+         MD5: 4C:8F:71:F0:68:3F:9C:BE:8F:AC:5A:9C:EF:04:9D:C8
+         SHA1: 53:85:75:51:88:92:05:86:6E:1B:39:D5:36:75:58:7A:E3:88:3C:A6
+         SHA256: 68:80:E6:C3:8D:72:25:FC:CE:5E:ED:75:E7:8D:81:3F:00:2A:C9:77:3D:77:42:E3:93:28:F5:08:28:C0:82:2E
+         签名算法名称: SHA256withRSA
+         版本: 3
+您的名字与姓氏是什么?
+  [Unknown]:  shipu zhao
+您的组织单位名称是什么?
+  [Unknown]:  haiboyun
+您的组织名称是什么?
+  [Unknown]:  jishubu
+您所在的城市或区域名称是什么?
+  [Unknown]:  hengshui hebei
+您所在的省/市/自治区名称是什么?
+  [Unknown]:  hebeisheng
+该单位的双字母国家/地区代码是什么?
+  [Unknown]:  china
+  md5:70:03:7D:4B:82:58:35:40:26:B3:4E:64:D1:A7:1F:0A

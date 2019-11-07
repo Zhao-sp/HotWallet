@@ -1,0 +1,198 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#1b1b19"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1F2633">
+        <TextView
+            android:id="@+id/fhreset"
+            android:layout_width="37dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="10dp"/>
+        <ImageView
+            android:id="@+id/fanhui5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/name"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/fanhui" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:text="新建联系人"
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/save"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:text="保存"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="364dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginRight="20dp"
+            android:background="#1F2633"
+            android:hint="名称"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/username"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:background="#ff364359" />
+
+        <EditText
+            android:id="@+id/xinxi"
+            android:layout_width="364dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="20dp"
+            android:background="#1F2633"
+            android:hint="描述(选填)"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/t2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/xinxi"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:background="#ff364359" />
+
+        <TextView
+            android:id="@+id/addaddress"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/t2"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp" />
+
+        <ImageView
+            android:id="@+id/jia"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@id/addaddress"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/weixian"/>
+
+        <TextView
+            android:id="@+id/tianjia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/addaddress"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="8dp"
+            android:text="添加地址"
+            android:textColor="#ffffffff"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/t3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/addaddress"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:background="#ff364359" />
+
+        <TextView
+            android:id="@+id/addaddress1"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/t2"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp" />
+
+        <ImageView
+            android:id="@+id/jian"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@id/addaddress1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/jian"/>
+
+        <TextView
+            android:id="@+id/dzmc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/addaddress1"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:text="BTC:"
+            android:textColor="#ffffffff"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/t4"
+            android:layout_width="1dp"
+            android:layout_height="70dp"
+            android:layout_alignTop="@id/addaddress1"
+            android:layout_marginLeft="110dp"
+            android:background="#ff364359" />
+
+        <TextView
+            android:id="@+id/t5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/addaddress1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:background="#ff364359" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/addaddress1"
+            android:layout_toRightOf="@id/t4"
+            android:layout_toLeftOf="@id/saoyisao"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="请输入有效的地址"
+            android:textColor="#ffffffff"/>
+
+        <ImageView
+            android:id="@+id/saoyisao"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@id/addaddress1"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/saoyisao_da"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="565dp"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="415dp"
+        android:layout_gravity="center"
+        android:background="#00000000">
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="300dp"
+                android:layout_height="337dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/fenxiang1" />
+
+            <TextView
+                android:layout_width="157dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="288dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/ff10"
+                android:textColor="#ffffffff"
+                android:textSize="14sp"/>
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="197dp"
+                android:layout_height="237dp"
+                android:layout_marginTop="35dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorWhite" />
+
+            <ImageView
+                android:id="@+id/share_erweima"
+                android:layout_width="159dp"
+                android:layout_height="159dp"
+                android:layout_marginTop="55dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorWhite"
+                />
+
+            <TextView
+                android:id="@+id/shareaddress"
+                android:layout_width="147dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="224dp"
+                android:layout_centerHorizontal="true"
+                android:text="0x130921e4a22caaa8122edc229f68633e630823e7"
+                android:textColor="#ff333333"
+                android:textSize="12sp"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="101dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/view_share_weixin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/share_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/weixin" />
+
+            <TextView
+                android:id="@+id/share_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/share_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:textColor="#333333"
+                android:text="@string/ff11" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/view_share_pengyou"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/share_icon1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/pengyouquan" />
+
+            <TextView
+                android:id="@+id/share_name1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/share_icon1"
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="#333333"
+                android:text="@string/ff12" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/view_share_qq"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/share_iconqq"
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/qq" />
+
+            <TextView
+                android:id="@+id/share_nameqq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/share_iconqq"
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="#333333"
+                android:text="@string/ff13" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/share_cancel_btn"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="#E6E6E6"
+        android:textColor="#ff333333"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="@string/f513" />
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1F2633"
+    tools:context=".cold.dfu.DfuUpdateActivity">
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#1F2633">
+    <TextView
+        android:id="@+id/fhdfu"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="10dp"/>
+    <ImageView
+        android:id="@+id/fanhuidfu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/fanhui" />
+    </RelativeLayout>
+    <Button
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/startDfu"
+        android:text="@string/dfu"
+        />
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ProgressBarTest"
+        style="?android:attr/progressBarStyleHorizontal"
+        />
+    <TextView
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_result"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dfu_progress"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:visibility="gone"
+        />
+</LinearLayout>

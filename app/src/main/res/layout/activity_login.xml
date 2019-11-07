@@ -1,0 +1,36 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#1b1b19"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1F2633">
+
+        <com.wallet.cold.head.RoundImageView
+            android:id="@+id/img2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/verify"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/lanyabg"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="@string/m10"
+            android:textColor="#fff"
+            android:textAllCaps="false" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/addbtc"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:textColor="#ff333333"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="添加比特币地址" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E6E6E6" />
+
+        <TextView
+            android:id="@+id/addeth"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:textColor="#ff333333"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="添加以太坊地址" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E6E6E6" />
+
+        <TextView
+            android:id="@+id/addeos"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:textColor="#ff333333"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="添加EOS账户名" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="#00000000" />
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="#E6E6E6"
+        android:textColor="#ff333333"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="@string/f513" />
+
+</LinearLayout>

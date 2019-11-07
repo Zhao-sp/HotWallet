@@ -1,0 +1,90 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chongzhi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F2633"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#222A38">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/cz2"
+            android:textSize="16dp"
+            android:textColor="#66ffffff" />
+
+        <TextView
+            android:id="@+id/pt"
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:text=""
+            android:textColor="#66ffffff"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/textView1"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textView1"
+            android:text="@string/cz3"
+            android:textSize="16dp"
+            android:textColor="#66ffffff" />
+
+        <TextView
+            android:id="@+id/hier"
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/pt"
+            android:layout_toRightOf="@+id/textView2"
+            android:text=""
+            android:textColor="#66ffffff"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hier"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="￥"
+            android:textColor="#fff"
+            android:textSize="30dp" />
+
+        <EditText
+            android:id="@+id/money"
+            android:layout_width="297dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView9"
+            android:layout_toEndOf="@+id/textView9"
+            android:hint="@string/card3"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="301dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/money"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/lanyabg"
+            android:text="@string/cz4"
+            android:textColor="#fff"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+</LinearLayout>

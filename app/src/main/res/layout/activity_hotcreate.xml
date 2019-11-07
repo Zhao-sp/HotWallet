@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F2633">
+    <TextView
+        android:id="@+id/fhcreate"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="10dp"/>
+    <ImageView
+        android:id="@+id/fanhuiadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/name"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/fanhui" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/selete5"
+        android:textColor="#fff"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:background="#ff222a38" />
+
+    <TextView
+        android:id="@+id/shezhi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="20dp"
+        android:text="用户名:"
+        android:textColor="#ffffffff"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/uname"
+        android:layout_width="274dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="80dp"
+        android:background="#ff222a38"
+        android:hint="请输入用户名"
+        android:textColor="#fff"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/xian"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="114dp"
+        android:background="#364359" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="126dp"
+        android:text="密    码:"
+        android:textColor="#fff"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/pwd"
+        android:layout_width="275dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="125dp"
+        android:background="#ff222a38"
+        android:hint="请输入8位数以上密码"
+        android:inputType="numberPassword"
+        android:textColor="#fff"
+        android:textSize="14dp" />
+
+    <Button
+        android:id="@+id/generate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/lanyabg"
+        android:textColor="#fff"
+        android:text="@string/selete1"
+        android:textAllCaps="false" />
+
+
+</RelativeLayout>
