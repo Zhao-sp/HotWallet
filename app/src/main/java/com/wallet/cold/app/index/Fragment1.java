@@ -174,7 +174,7 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                     viewHolder.image.setImageResource(R.drawable.xrp);
                     if (!Data.getxrpamount().equals("")) {
                         viewHolder.hieryue.setText(Data.getxrpamount());
-                        viewHolder.hierxianjin.setText("￥"+Data.getxrpamount());
+                        viewHolder.hierxianjin.setText("￥"+Double.parseDouble(Data.getxrpamount())*1.9*7);
                     }
                 }
                 if (mList.get(i).equals("EOS")) {

@@ -566,6 +566,19 @@ public class Utils extends Activity {
     }
 
     /**
+     * byte数组转为字符串
+     */
+    public static String bytetostring(byte[] data){
+        final StringBuilder stringBuilder = new StringBuilder();
+        if (data != null && data.length > 0) {
+            for (byte byteChar : data)
+                stringBuilder.append(String.format("%02X", byteChar));
+            return stringBuilder.toString().toLowerCase();
+        }
+        return null;
+    }
+
+    /**
      * 公钥转为地址
      *
      * @return
@@ -648,7 +661,6 @@ public class Utils extends Activity {
 
     /**
      * 十进制转为16进制
-     *
      * @param s
      * @return
      */
@@ -1523,7 +1535,8 @@ public class Utils extends Activity {
                                                 e.printStackTrace();
                                             }
                                         }
-                                        auth0();
+                                        //auth0();
+                                        xrp();
                                     } else if(Data.getbizhong().equals("AUTH0")){
                                         try {
                                             Thread.sleep(2000);
@@ -1536,7 +1549,7 @@ public class Utils extends Activity {
                                         String auth0address = Data.getdata().substring(128, Data.getdata().length());
                                         LogCook.d("auth0地址", auth0address);
                                         Data.setauth0address(auth0address);
-                                        xrp();
+                                        //xrp();
                                     } else if(Data.getbizhong().equals("XRP")){
                                         String xrppubkey = Data.getdata();
                                         Data.setxrppub(xrppubkey);
@@ -1551,7 +1564,8 @@ public class Utils extends Activity {
                                             }
                                         }
                                         Data.setbletype("");
-                                        new Utilshttp().getauth0user();
+                                        //new Utilshttp().getauth0user();
+                                        balancebtc();
                                     }
                                 }else if (Data.getbletype().equals("type")) {
                                     if (data2.substring(2, 4).equals("01") && data2.substring(0, 2).equals("01")) {//存在助记词存在pin码
@@ -1604,7 +1618,7 @@ public class Utils extends Activity {
                                                         Data.setethtype("dealid");
                                                         new Transfer().eth();
                                                     } else if (Data.getbizhong().equals("XRP")) {
-                                                        new Transfer().sign("5354580012000022800000002400000001201B001C79076140000000000F424068400000000000000C7321023CE7820407C319D4B6D2912BBDA5B4D1F889F0675CE128A7D562BF6FCD75C36D8114DAC0052492C9E9610BD1E5F860D1E026EA47DA908314BCE2C71D73612D1F37B5A3E1947AB3227A76CD84");
+                                                        new Utilshttp().getxrpamount();
                                                     }
                                                     Looper.loop();
                                                 }
@@ -1669,6 +1683,7 @@ public class Utils extends Activity {
                                                 }
                                             }else if (Data.getbizhong().equals("XRP")&&!Data.getdata().equals("")) {
                                                 LogCook.d("xrpsign",data2.substring(2,data2.length()));
+                                                new Transfer().xrpsendtransaction(data2.substring(2,data2.length()));
                                                 Data.setdata("");
                                             }
                                             Data.setresultdata(Data.getdata2());
@@ -1899,7 +1914,8 @@ public class Utils extends Activity {
                     }
                 }
                 Data.setbizhong("BTC");
-                new Utilshttp().gethieramount();
+                //new Utilshttp().gethieramount();
+                new Utilshttp().getxrpamount();
             }
         }).start();
     }
@@ -1915,7 +1931,8 @@ public class Utils extends Activity {
                         LogCook.d("行情数据", result);
                         int count = getSubCount_2(result, "{");Data.getbledata().add("ETH");
                         Data.getbledata().add("BTC");
-                        Data.getbledata().add("Hier");Data.getbledata().add("XRP");
+                        //Data.getbledata().add("Hier");
+                        Data.getbledata().add("XRP");
                         if (count == 1) {
                             JSONObject jsonObject = new JSONObject(result);
                             current_price = jsonObject.getString("base");
@@ -1945,12 +1962,12 @@ public class Utils extends Activity {
                             Double d = b1.multiply(b2).doubleValue();
                             String d1 = df.format(d);
                             BigDecimal a1 = new BigDecimal(d1);
-                            BigDecimal hier = new BigDecimal(Data.gethieramount());
-                            BigDecimal xrp = new BigDecimal(Data.getxrpamount());
-                            BigDecimal amount1 = a1.add(hier);
-                            BigDecimal amount2 = amount1.add(xrp);
+                            //BigDecimal hier = new BigDecimal(Data.gethieramount());
+                            BigDecimal xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount())*1.9*7);
+                            BigDecimal amount1 = a1.add(xrp);
+                            //BigDecimal amount2 = amount1.add(xrp);
                             DecimalFormat df1 = new DecimalFormat("0.00");
-                            Data.setamountrmb(df1.format(amount2));
+                            Data.setamountrmb(df1.format(amount1));
                             if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
                             }
@@ -1978,13 +1995,13 @@ public class Utils extends Activity {
                             String d3 = df.format(d2);
                             BigDecimal btc = new BigDecimal(d1);
                             BigDecimal eth = new BigDecimal(d3);
-                            BigDecimal hier = new BigDecimal(Data.gethieramount());
-                            BigDecimal xrp = new BigDecimal(Data.getxrpamount());
+                            //BigDecimal hier = new BigDecimal(Data.gethieramount());
+                            BigDecimal xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount())*1.9*7);
                             BigDecimal amount1 = btc.add(eth);
-                            BigDecimal amount2 = amount1.add(hier);
-                            BigDecimal amount3 = amount2.add(xrp);
+                            BigDecimal amount2 = amount1.add(xrp);
+                            //BigDecimal amount3 = amount2.add(xrp);
                             DecimalFormat df1 = new DecimalFormat("0.00");
-                            Data.setamountrmb(df1.format(amount3));
+                            Data.setamountrmb(df1.format(amount2));
                             if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
                             }

@@ -53,16 +53,16 @@ public class IndexActivity extends TabActivity {
      */
     private void init() {
         guide_home = (RadioButton) findViewById(R.id.guide_home);
-        guide_pawn = (RadioButton) findViewById(R.id.guide_pawn);
+        //guide_pawn = (RadioButton) findViewById(R.id.guide_pawn);
         guide_cart = (RadioButton) findViewById(R.id.guide_cart);
         guide_store=(RadioButton) findViewById(R.id.guide_store);
-        guide_me=(RadioButton) findViewById(R.id.guide_me);
+        //guide_me=(RadioButton) findViewById(R.id.guide_me);
         //设置点击事件
         guide_home.setOnClickListener(new MyOnPageChangeListener());
-        guide_pawn.setOnClickListener(new MyOnPageChangeListener());
+        //guide_pawn.setOnClickListener(new MyOnPageChangeListener());
         guide_store.setOnClickListener(new MyOnPageChangeListener());
         guide_cart.setOnClickListener(new MyOnPageChangeListener());
-        guide_me.setOnClickListener(new MyOnPageChangeListener());
+        //guide_me.setOnClickListener(new MyOnPageChangeListener());
     }
 
     //填充TabHost
@@ -122,67 +122,67 @@ public class IndexActivity extends TabActivity {
                 currIndex = 0;
                 Drawable drawable = IndexActivity.this.getResources().getDrawable(R.drawable.qianbao_xz);
                 guide_home.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable, null, null);
-                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xk);
-                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
+//                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xk);
+//                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
                 Drawable drawable2 = IndexActivity.this.getResources().getDrawable(R.drawable.faxian_xk);
                 guide_cart.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable2, null, null);
                 Drawable drawable3 = IndexActivity.this.getResources().getDrawable(R.drawable.hangqing_xk);
                 guide_store.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable3, null, null);
-                Drawable drawable12 = IndexActivity.this.getResources().getDrawable(R.drawable.my_xk);
-                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable12, null, null);
+//                Drawable drawable12 = IndexActivity.this.getResources().getDrawable(R.drawable.my_xk);
+//                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable12, null, null);
                 tabHost.setCurrentTabByTag("tab0");
             } else if (i == R.id.guide_cart) {
                 currIndex = 3;
                 Drawable drawable4 = IndexActivity.this.getResources().getDrawable(R.drawable.qianbao_xk);
                 guide_home.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable4, null, null);
-                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xk);
-                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
+//                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xk);
+//                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
                 Drawable drawable5 = IndexActivity.this.getResources().getDrawable(R.drawable.faxian_xz);
                 guide_cart.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable5, null, null);
                 Drawable drawable6 = IndexActivity.this.getResources().getDrawable(R.drawable.hangqing_xk);
                 guide_store.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable6, null, null);
-                Drawable drawable13 = IndexActivity.this.getResources().getDrawable(R.drawable.my_xk);
-                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable13, null, null);
+//                Drawable drawable13 = IndexActivity.this.getResources().getDrawable(R.drawable.my_xk);
+//                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable13, null, null);
                 tabHost.setCurrentTabByTag("tab2");
             } else if (i == R.id.guide_store) {
                 currIndex = 4;
                 Drawable drawable1 = IndexActivity.this.getResources().getDrawable(R.drawable.hangqing_xz);
                 guide_store.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable1, null, null);
-                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xk);
-                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
+//                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xk);
+//                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
                 Drawable drawable7 = IndexActivity.this.getResources().getDrawable(R.drawable.faxian_xk);
                 guide_cart.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable7, null, null);
                 Drawable drawable8 = IndexActivity.this.getResources().getDrawable(R.drawable.qianbao_xk);
                 guide_home.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable8, null, null);
-                Drawable drawable14 = IndexActivity.this.getResources().getDrawable(R.drawable.my_xk);
-                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable14, null, null);
+//                Drawable drawable14 = IndexActivity.this.getResources().getDrawable(R.drawable.my_xk);
+//                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable14, null, null);
                 tabHost.setCurrentTabByTag("tab1");
-            } else if (i == R.id.guide_me) {
-                currIndex = 5;
-                Drawable drawable9 = IndexActivity.this.getResources().getDrawable(R.drawable.me_xz);
-                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable9, null, null);
-                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xk);
-                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
-                Drawable drawable10 = IndexActivity.this.getResources().getDrawable(R.drawable.faxian_xk);
-                guide_cart.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable10, null, null);
-                Drawable drawable11 = IndexActivity.this.getResources().getDrawable(R.drawable.qianbao_xk);
-                guide_home.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable11, null, null);
-                Drawable drawable15 = IndexActivity.this.getResources().getDrawable(R.drawable.hangqing_xk);
-                guide_store.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable15, null, null);
-                tabHost.setCurrentTabByTag("tab3");
-            } else if (i == R.id.guide_pawn) {
-                currIndex = 5;
-                Drawable drawable9 = IndexActivity.this.getResources().getDrawable(R.drawable.my_xk);
-                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable9, null, null);
-                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xz);
-                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
-                Drawable drawable10 = IndexActivity.this.getResources().getDrawable(R.drawable.faxian_xk);
-                guide_cart.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable10, null, null);
-                Drawable drawable11 = IndexActivity.this.getResources().getDrawable(R.drawable.qianbao_xk);
-                guide_home.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable11, null, null);
-                Drawable drawable15 = IndexActivity.this.getResources().getDrawable(R.drawable.hangqing_xk);
-                guide_store.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable15, null, null);
-                tabHost.setCurrentTabByTag("tabd");
+//            } else if (i == R.id.guide_me) {
+//                currIndex = 5;
+//                Drawable drawable9 = IndexActivity.this.getResources().getDrawable(R.drawable.me_xz);
+//                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable9, null, null);
+//                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xk);
+//                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
+//                Drawable drawable10 = IndexActivity.this.getResources().getDrawable(R.drawable.faxian_xk);
+//                guide_cart.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable10, null, null);
+//                Drawable drawable11 = IndexActivity.this.getResources().getDrawable(R.drawable.qianbao_xk);
+//                guide_home.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable11, null, null);
+//                Drawable drawable15 = IndexActivity.this.getResources().getDrawable(R.drawable.hangqing_xk);
+//                guide_store.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable15, null, null);
+//                tabHost.setCurrentTabByTag("tab3");
+//            } else if (i == R.id.guide_pawn) {
+//                currIndex = 5;
+//                Drawable drawable9 = IndexActivity.this.getResources().getDrawable(R.drawable.my_xk);
+//                guide_me.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable9, null, null);
+//                Drawable drawabled = IndexActivity.this.getResources().getDrawable(R.drawable.pawn_xz);
+//                guide_pawn.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawabled, null, null);
+//                Drawable drawable10 = IndexActivity.this.getResources().getDrawable(R.drawable.faxian_xk);
+//                guide_cart.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable10, null, null);
+//                Drawable drawable11 = IndexActivity.this.getResources().getDrawable(R.drawable.qianbao_xk);
+//                guide_home.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable11, null, null);
+//                Drawable drawable15 = IndexActivity.this.getResources().getDrawable(R.drawable.hangqing_xk);
+//                guide_store.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable15, null, null);
+//                tabHost.setCurrentTabByTag("tabd");
             }
         }
     }

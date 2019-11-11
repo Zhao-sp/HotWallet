@@ -34,7 +34,7 @@ public class Data extends Application {
             result,btcaddress,ethaddress,deviceaddress,devicename,path,blename, receivedata,btcsignerror,txamount,auth0pubkey,auth0address,auth0sign,auth0uuid,hotzjc,
             btcbalance,ethbalance,type,btctype,pubkey,sign,end,hash,bizhong,scan,rlpdata,bletype,scriptPubKey1,resultdata,strhex1,strhex2,iseth,data,data2,saoma,yue,fee,to,
             hotethaddress,hotbtcaddress,apptype,hotethprv,hotbtcprv,hotbtcpub,hotpassword,fingerprints,fingerprintsname,http1,hiersign,objectId,ptamount,isblecomment,paytype,xrppub,
-            xrpaddress,xrpamount;
+            xrpaddress,xrpamount,xrpserialnumber,xrprmbbalance;
     public static Button getstartBtn() {
         return startBtn;
     }
@@ -682,6 +682,18 @@ public class Data extends Application {
     }//xrp余额
     public static void setxrpamount(String xrpamount) {
         Data.xrpamount = xrpamount;
+    }
+    public static String getxrpserialnumber() {
+        return xrpserialnumber;
+    }//xrp交易序号
+    public static void setxrpserialnumber(String xrpserialnumber) {
+        Data.xrpserialnumber = xrpserialnumber;
+    }
+    public static String getxrprmbbalance() {
+        return xrprmbbalance;
+    }//xrp人民币
+    public static void setxrprmbbalance(String xrprmbbalance) {
+        Data.xrprmbbalance = xrprmbbalance;
     }
     @Override
     public void onCreate(){

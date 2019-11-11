@@ -87,7 +87,7 @@
         <activity android:name=".cold.app.pawn.CdActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.pawn.InvestActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.pawn.PawnActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".cold.utils.CaptureActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".cold.utils.CaptureActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.dfu.dfu_service.NotificationActivity" />
         <activity android:name=".cold.dfu.DfuUpdateActivity" android:theme="@style/Theme.AppCompat"/>
         <service android:name=".cold.dfu.BluetoothService" />
@@ -117,11 +117,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".hot.app.BackUpActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".hot.app.BackUpMnemonicActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 

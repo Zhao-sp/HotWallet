@@ -24,6 +24,7 @@ import com.wallet.R;
 import com.wallet.cold.app.auth0.auth0register;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.rlp.RLP;
+import com.wallet.cold.utils.Base58;
 import com.wallet.cold.utils.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
@@ -50,6 +51,7 @@ import static com.wallet.cold.utils.Utils.ETHAddressValidate;
 import static com.wallet.cold.utils.Utils.Encrypt;
 import static com.wallet.cold.utils.Utils.bitCoinAddressValidate;
 import static com.wallet.cold.utils.Utils.bytes2Hex;
+import static com.wallet.cold.utils.Utils.bytetostring;
 import static com.wallet.cold.utils.Utils.end;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
@@ -60,19 +62,12 @@ import static com.wallet.cold.utils.Utils.strlength;
 
 public class Transfer extends AppCompatActivity implements View.OnClickListener {
     private PopWinShare1 popWinShare;
-    private TextView popadd,popadd1,popadd2,popadd3;
-    private TextView balance;
-    private EditText to;
-    private EditText fee;
-    private EditText limit1;
-    private EditText amountyue;
+    private TextView popadd,popadd1,popadd2,popadd3,balance,fee1,xl,fhf3;
+    private EditText to,fee,limit1,amountyue;
     private ImageView saoma,fanhui;
-    private TextView xl,fhf3;
     private Dialog mWeiboDialog;
     private Button commit;
-    private String scriptPubKey;
-    private String strhex1;
-    private String strhex2;
+    private String scriptPubKey,strhex1,strhex2;
     private boolean uxto=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +104,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         to = (EditText) findViewById(R.id.to);
         limit1 = (EditText) findViewById(R.id.limit1);
         fee = (EditText) findViewById(R.id.fee);
+        fee1 = (TextView) findViewById(R.id.fee1);
         fee.setKeyListener(new NumberKeyListener() {
             @Override
             protected char[] getAcceptedChars() {
@@ -150,17 +146,32 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 to.setText(result);
             }
         }
-        if(to.getText().toString().length()==40) {
+        if(to.getText().toString().length()==34){
+            Data.setbizhong("XRP");
+            popadd.setText("XRP");
+            popadd1.setText("XRP");
+            popadd2.setText("drops");
+            popadd3.setVisibility(View.GONE);
+            fee.setVisibility(View.GONE);
+            fee1.setVisibility(View.GONE);
+            balance.setText(Data.getxrpamount());
+        }else if(to.getText().toString().length()==40) {
             popadd.setText("ETH");
             popadd1.setText("ETH");
             popadd2.setText("ETH");
             popadd3.setText("Wei");
+            popadd3.setVisibility(View.VISIBLE);
+            fee.setVisibility(View.VISIBLE);
+            fee1.setVisibility(View.VISIBLE);
             balance.setText(Data.getethbalance());
         }else{
             popadd.setText("BTC");
             popadd1.setText("BTC");
             popadd2.setText("BTC");
             popadd3.setText("BTC");
+            popadd3.setVisibility(View.VISIBLE);
+            fee.setVisibility(View.VISIBLE);
+            fee1.setVisibility(View.VISIBLE);
             balance.setText(Data.getbtcbalance());
         }
         Data.settype("fragment3");
@@ -236,58 +247,87 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 trade(popadd.getText().toString(),limit1.getText().toString(),to.getText().toString(),amountyue.getText().toString(),fee.getText().toString()
                         ,balance.getText().toString(), Data.getethaddress());
             }else if(popadd.getText().toString().equals("XRP")){
-                Data.setsign("end0");
-                Data.setbizhong("XRP");
-                Data.setsaoma("yes");
-                String a = "55aa260110000002000035aa55";//结束签名
-                sendble(a, Data.getmService());
+                if(Data.getxrpserialnumber().equals("")){
+                    Toast.makeText(getApplicationContext(), "请在主界面刷新余额后再试", Toast.LENGTH_SHORT).show();
+                }else {
+                    trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), ""
+                            , balance.getText().toString(), Data.getxrpaddress());
+                }
             }
         }
     }
 
-    public void trade(String type,String pin,String to,String amountyue,String fee,String balance,String address){
+    public void trade(String type,String pin,String to,String amountyue,String fee,String balance,String address) {
         if (pin.length() != 4) {
             Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff13), Toast.LENGTH_SHORT).show();
         } else {
-            if (type.equals("BTC")) {
-                if (to.equals("")) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff14), Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (amountyue.equals("")) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff15), Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (fee.compareTo("0.0001") < 0) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff16), Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (address.equals(to)) {
+            if (to.equals("")) {
+                Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff14), Toast.LENGTH_SHORT).show();
+                return;
+            } else if (amountyue.equals("")) {
+                Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff15), Toast.LENGTH_SHORT).show();
+                return;
+            }else if (address.equals(to)) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff17), Toast.LENGTH_SHORT).show();
                     return;
-                }
-                Double a2 = Double.valueOf(fee);
-                BigDecimal bd2 = new BigDecimal(a2).setScale(8, BigDecimal.ROUND_DOWN);
-                Double a1 = Double.valueOf(amountyue);
-                BigDecimal bd1 = new BigDecimal(a1).setScale(8, BigDecimal.ROUND_DOWN);
-                Double a3 = a1 + a2;
-                BigDecimal bd3 = new BigDecimal(a3).setScale(8, BigDecimal.ROUND_DOWN);
-                if (balance.substring(0, 10).compareTo(String.valueOf(bd3)) < 0) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
-                } else {
-                    boolean amount1 = false;
-                    int index = amountyue.indexOf(".");
-                    String subStr = amountyue.substring(index + 1, amountyue.length());
-                    for (int i = 0; i < subStr.length(); i++) {
-                        if (!subStr.substring(i, i + 1).equals("0")) {
-                            amount1 = true;
+            } else {
+                if (type.equals("BTC")) {
+                    if (fee.compareTo("0.0001") < 0) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff16), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    Double a2 = Double.valueOf(fee);
+                    Double a1 = Double.valueOf(amountyue);
+                    Double a3 = a1 + a2;
+                    BigDecimal bd3 = new BigDecimal(a3).setScale(8, BigDecimal.ROUND_DOWN);
+                    if (balance.substring(0, 10).compareTo(String.valueOf(bd3)) < 0) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
+                    } else {
+                        boolean amount1 = false;
+                        int index = amountyue.indexOf(".");
+                        String subStr = amountyue.substring(index + 1, amountyue.length());
+                        for (int i = 0; i < subStr.length(); i++) {
+                            if (!subStr.substring(i, i + 1).equals("0")) {
+                                amount1 = true;
+                            }
+                        }
+                        if (fee.contains(".") && fee.length() - 1 - fee.indexOf(".") > 8) {
+                            Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff19), Toast.LENGTH_SHORT).show();
+                        } else if (amountyue.contains(".") && amountyue.length() - 1 - amountyue.indexOf(".") > 8) {
+                            Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff20), Toast.LENGTH_SHORT).show();
+                        } else if (!amount1) {
+                            Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff21), Toast.LENGTH_SHORT).show();
+                        } else if (!bitCoinAddressValidate(to)) {
+                            Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff22), Toast.LENGTH_SHORT).show();
+                        } else {
+                            mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Transfer.this, this.getResources().getString(R.string.fff23));
+                            Data.setdialog(mWeiboDialog);
+                            Data.setfee(fee);
+                            Data.setyue(amountyue);
+                            Data.setto(to);
+                            Data.setlimit(pin);
+                            Data.setsign("end0");
+                            Data.setbizhong("BTC");
+                            Data.setsaoma("yes");
+                            String a = "55aa260110000002000035aa55";//结束签名
+                            sendble(a, Data.getmService());
                         }
                     }
-                    if (fee.contains(".") && fee.length() - 1 - fee.indexOf(".") > 8) {
-                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff19), Toast.LENGTH_SHORT).show();
-                    } else if (amountyue.contains(".") && amountyue.length() - 1 - amountyue.indexOf(".") > 8) {
-                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff20), Toast.LENGTH_SHORT).show();
-                    } else if (!amount1) {
-                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff21), Toast.LENGTH_SHORT).show();
-                    } else if (!bitCoinAddressValidate(to)) {
-                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff22), Toast.LENGTH_SHORT).show();
+                } else if (type.equals("ETH")) {
+                    Double a = Double.parseDouble(balance);
+                    Double b = Double.parseDouble(amountyue);
+                    if (to.contains("0x")) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff24), Toast.LENGTH_SHORT).show();
+                    } else if (!ETHAddressValidate(to)) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff25), Toast.LENGTH_SHORT).show();
+                    } else if (fee.equals("")) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff26), Toast.LENGTH_SHORT).show();
+                    } else if (limit1.getText().toString().equals("")) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff27), Toast.LENGTH_SHORT).show();
+                    } else if (fee.compareTo("9000") >= 0) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff28), Toast.LENGTH_SHORT).show();
+                    } else if (a.compareTo(b) < 0) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
                     } else {
                         mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Transfer.this, this.getResources().getString(R.string.fff23));
                         Data.setdialog(mWeiboDialog);
@@ -296,43 +336,28 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                         Data.setto(to);
                         Data.setlimit(pin);
                         Data.setsign("end0");
-                        Data.setbizhong("BTC");
+                        Data.setbizhong("ETH");
                         Data.setsaoma("yes");
-                        String a = "55aa260110000002000035aa55";//结束签名
-                        sendble(a, Data.getmService());
+                        String a1 = "55aa260110000002000035aa55";//结束签名
+                        sendble(a1, Data.getmService());
                     }
-                }
-            } else if (type.equals("ETH")) {
-                Double a=Double.parseDouble(balance);
-                Double b=Double.parseDouble(amountyue);
-                if (to.contains("0x")) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff24), Toast.LENGTH_SHORT).show();
-                } else if (!ETHAddressValidate(to)) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff25), Toast.LENGTH_SHORT).show();
-                } else if (amountyue.equals("")) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff15), Toast.LENGTH_SHORT).show();
-                } else if (fee.equals("")) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff26), Toast.LENGTH_SHORT).show();
-                } else if (limit1.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff27), Toast.LENGTH_SHORT).show();
-                } else if (address.equals(to)) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff17), Toast.LENGTH_SHORT).show();
-                } else if (fee.compareTo("9000") >= 0) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff28), Toast.LENGTH_SHORT).show();
-                } else if (a.compareTo(b) < 0) {
-                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
-                } else {
-                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Transfer.this, this.getResources().getString(R.string.fff23));
-                    Data.setdialog(mWeiboDialog);
-                    Data.setfee(fee);
-                    Data.setyue(amountyue);
-                    Data.setto(to);
-                    Data.setlimit(pin);
-                    Data.setsign("end0");
-                    Data.setbizhong("ETH");
-                    Data.setsaoma("yes");
-                    String a1 = "55aa260110000002000035aa55";//结束签名
-                    sendble(a1, Data.getmService());
+                } else if (type.equals("XRP")) {
+                    Double a = Double.parseDouble(balance)*1000000;
+                    Double b = Double.parseDouble(amountyue);
+                    if (a.compareTo(b) < 0) {
+                        Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
+                    } else {
+                        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Transfer.this, this.getResources().getString(R.string.fff23));
+                        Data.setdialog(mWeiboDialog);
+                        Data.setyue(amountyue);
+                        Data.setto(to);
+                        Data.setlimit(pin);
+                        Data.setsign("end0");
+                        Data.setbizhong("XRP");
+                        Data.setsaoma("yes");
+                        String a1 = "55aa260110000002000035aa55";//结束签名
+                        sendble(a1, Data.getmService());
+                    }
                 }
             }
         }
@@ -687,13 +712,8 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                             list.add(data);
                         }
                         byte[] data = RLP.encodeList(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7), list.get(8));
-                        final StringBuilder stringBuilder = new StringBuilder();
-                        if (data != null && data.length > 0) {
-                            for (byte byteChar : data)
-                                stringBuilder.append(String.format("%02X", byteChar));
-                            LogCook.d("发送交易rlp编码", stringBuilder.toString().toLowerCase());
-                        }
-                        String encodedata = stringBuilder.toString().toLowerCase();
+                        String encodedata = bytetostring(data);
+                        LogCook.d("发送交易rlp编码", encodedata);
                         if(Data.getbizhong().equals("ERC20")) {
                             if (Data.getauth0sign().equals("register")) {
                                 Looper.prepare();
@@ -863,15 +883,58 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
             list.add(data);
         }
         byte[] data = RLP.encodeList(list.get(0),list.get(1),list.get(2),list.get(3),list.get(4),list.get(5));
-        final StringBuilder stringBuilder = new StringBuilder();
-        if (data != null && data.length > 0) {
-            for (byte byteChar : data)
-                stringBuilder.append(String.format("%02X", byteChar));
-            LogCook.d("eth待签名rlp编码", stringBuilder.toString().toLowerCase());
-        }
-        result1=stringBuilder.toString().toLowerCase();//rlp编码数据
+        result1=bytetostring(data);
+        LogCook.d("eth待签名rlp编码", result1);
         Data.setresult(result1);
         sign(Data.getresult());//进行签名
+    }
+
+    /**
+     *xrp构造待签名数据
+     */
+    public void xrpcreatetransaction(){
+        String data1="53545800120000228000000024";
+        String data2=Integer.toHexString(Integer.parseInt(Data.getxrpserialnumber()));
+        for(int i=data2.length();i<8;i++){
+            data2="0"+data2;
+        }
+        String data3="6140000000";
+        String data4=Integer.toHexString(Integer.parseInt(Data.getyue()));
+        for(int i=data4.length();i<8;i++){
+            data4="0"+data4;
+        }
+        String data5="68400000000000000C7321";
+        String data6=Data.getxrppub();
+        String data7="8114";
+        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        String data9="8314";
+        String data10="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+        sign(data1+data2+data3+data4+data5+data6+data7+data8+data9+data10);//进行签名
+    }
+
+    /**
+     *xrp发送交易数据
+     */
+    public void xrpsendtransaction(String sign){
+        String data1="120000228000000024";
+        String data2=Integer.toHexString(Integer.parseInt(Data.getxrpserialnumber()));
+        for(int i=data2.length();i<8;i++){
+            data2="0"+data2;
+        }
+        String data3="6140000000";
+        String data4=Integer.toHexString(Integer.parseInt(Data.getyue()));
+        for(int i=data4.length();i<8;i++){
+            data4="0"+data4;
+        }
+        String data5="68400000000000000C7321";
+        String data6=Data.getxrppub();
+        String data7="74";
+        String data8=strlength(sign);
+        String data9="8114";
+        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        String data11="8314";
+        String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+        new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data6+data7+data8+sign+data9+data10+data11+data12);
     }
 
     /**
@@ -1108,6 +1171,9 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 popadd1.setText("BTC");
                 popadd2.setText("BTC");
                 popadd3.setText("BTC");
+                popadd3.setVisibility(View.VISIBLE);
+                fee.setVisibility(View.VISIBLE);
+                fee1.setVisibility(View.VISIBLE);
                 popWinShare.dismiss();
                 balance.setText(Data.getbtcbalance());
             } else if (i == R.id.layout_eth) {
@@ -1116,6 +1182,9 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 popadd1.setText("ETH");
                 popadd2.setText("ETH");
                 popadd3.setText("Wei");
+                popadd3.setVisibility(View.VISIBLE);
+                fee.setVisibility(View.VISIBLE);
+                fee1.setVisibility(View.VISIBLE);
                 popWinShare.dismiss();
                 if (Data.getethbalance() == null) {
                     balance.setText("0.00000000");
@@ -1126,8 +1195,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 Data.setbizhong("XRP");
                 popadd.setText("XRP");
                 popadd1.setText("XRP");
-                popadd2.setText("XRP");
-                popadd3.setText("XRP");
+                popadd2.setText("drops");
+                popadd3.setVisibility(View.GONE);
+                fee.setVisibility(View.GONE);
+                fee1.setVisibility(View.GONE);
                 popWinShare.dismiss();
                 balance.setText(Data.getxrpamount());
             }

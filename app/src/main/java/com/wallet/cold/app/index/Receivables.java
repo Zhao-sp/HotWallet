@@ -305,7 +305,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
             }
             if(v.getId() == R.id.layout_xrp) {
                 popadd.setText("XRP");
-                popadd1.setText("XRP");
+                popadd1.setText("drops");
                 Data.setbizhong("XRP");
                 popWinShare.dismiss();
                 key.setText(Data.getxrpaddress());

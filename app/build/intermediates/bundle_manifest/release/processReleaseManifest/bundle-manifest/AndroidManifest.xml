@@ -43,7 +43,6 @@
 
     <application
         android:name="com.wallet.cold.app.util.MultiLanguagesApp"
-        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:resizeableActivity="true"
@@ -154,7 +153,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name="com.wallet.cold.utils.CaptureActivity"
-            android:screenOrientation="portrait" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.wallet.cold.dfu.dfu_service.NotificationActivity" />
         <activity
             android:name="com.wallet.cold.dfu.DfuUpdateActivity"
@@ -200,11 +199,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="com.wallet.hot.app.BackUpActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="com.wallet.hot.app.BackUpMnemonicActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 

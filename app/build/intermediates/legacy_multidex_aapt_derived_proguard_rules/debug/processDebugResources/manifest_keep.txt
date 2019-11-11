@@ -1,4 +1,2 @@
 # Referenced at E:\work\work\Android HotWallet\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:44
--keep class android.support.v4.app.CoreComponentFactory { <init>(); }
-# Referenced at E:\work\work\Android HotWallet\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:44
 -keep class com.wallet.cold.app.util.MultiLanguagesApp { <init>(); }
