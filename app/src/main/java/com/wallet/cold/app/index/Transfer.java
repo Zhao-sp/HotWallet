@@ -597,7 +597,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                     if (!btcerror.equals("")) {
                         if (!btcerror.contains("success")) {
                             Looper.prepare();
-                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff31) + btcerror, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) + btcerror, Toast.LENGTH_SHORT).show();
                             WeiboDialogUtils.closeDialog(Data.getdialog());
                             Looper.loop();
                         } else {
@@ -634,7 +634,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                         (new Thread(runnable1)).start();
                     }else{
                         Looper.prepare();
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff31) + btcerror, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) + btcerror, Toast.LENGTH_SHORT).show();
                         WeiboDialogUtils.closeDialog(Data.getdialog());
                         Looper.loop();
                     }
@@ -775,7 +775,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                                     "('" + Data.getdevicename() + "','" + Data.getethaddress() + "','ETH'," + Data.getyue() + ",'" + str + "',1)");
                             if (etherror.contains("success")) {
                                 Data.getbalance().setText(Data.getethbalance());
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff35), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff32), Toast.LENGTH_SHORT).show();
                                 WeiboDialogUtils.closeDialog(Data.getdialog());
                             } else {
                                 Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff36) + etherror, Toast.LENGTH_SHORT).show();
@@ -792,7 +792,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                         }
                     } else {
                         if (Data.getbizhong().equals("ETH")){
-                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff37) + dealid, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) + dealid, Toast.LENGTH_SHORT).show();
                             LogCook.d("ETH交易失败", dealid);
                             WeiboDialogUtils.closeDialog(Data.getdialog());
                         }else if(Data.getbizhong().equals("ERC20")) {
@@ -905,6 +905,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         }
         String data5="68400000000000000C7321";
         String data6=Data.getxrppub();
+//        String data7="8114";
+//        String data8="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+//        String data9="8314";
+//        String data10="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
         String data7="8114";
         String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
         String data9="8314";
@@ -934,6 +938,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
         String data11="8314";
         String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+//        String data9="8114";
+//        String data10="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+//        String data11="8314";
+//        String data12="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data6+data7+data8+sign+data9+data10+data11+data12);
     }
 

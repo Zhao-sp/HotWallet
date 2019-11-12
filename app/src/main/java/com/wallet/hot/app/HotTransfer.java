@@ -643,7 +643,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     if (!btcerror.equals("")) {
                         if (!btcerror.contains("success")) {
                             Looper.prepare();
-                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff31) + btcerror, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) + btcerror, Toast.LENGTH_SHORT).show();
                             WeiboDialogUtils.closeDialog(Data.getdialog());
                             Looper.loop();
                         } else {
@@ -679,7 +679,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     if (!btcerror.equals("")) {
                         if (!btcerror.contains("success")) {
                             Looper.prepare();
-                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff31) + btcerror, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) + btcerror, Toast.LENGTH_SHORT).show();
                             WeiboDialogUtils.closeDialog(Data.getdialog());
                             Looper.loop();
                         } else {
@@ -764,7 +764,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                                 if (etherror.contains("success")) {
                                     Looper.prepare();
                                     Data.getbalance().setText(Data.getethbalance());
-                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff35), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff32), Toast.LENGTH_SHORT).show();
                                     WeiboDialogUtils.closeDialog(Data.getdialog());
                                     Looper.loop();
                                 } else {
@@ -791,7 +791,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                         } else {
                             if (Data.getbizhong().equals("ETH")){
                                 Looper.prepare();
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff37) + dealid, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) + dealid, Toast.LENGTH_SHORT).show();
                                 LogCook.d("ETH交易失败", dealid);
                                 WeiboDialogUtils.closeDialog(Data.getdialog());
                                 Looper.loop();

@@ -58,7 +58,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         startAnimation();
         SQLiteDatabase db = openOrCreateDatabase("HotWallet.db", MODE_PRIVATE, null);//创建数据库
         Data.setdb(db);Data.setresult("");Data.setisblecomment("0");
-        Data.sethttp1("http://111.225.200.132:8282");//8181开发环境 8282演示环境
+        Data.sethttp1("http://111.225.200.132:8181");//8181开发环境 8282演示环境
         //Data.getdb().execSQL("drop table HotAddressTb");
         //Data.getdb().execSQL("drop table Auth0AddressTb");
         if (Build.VERSION.SDK_INT >= 23) {

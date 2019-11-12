@@ -25,6 +25,7 @@ import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.MyListView;
 import com.wallet.cold.utils.PopWinShare;
 import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.WeiboDialogUtils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -81,6 +82,8 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
 
                     @Override
                     protected void onPostExecute(Void result) {
+                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.type5));
+                        Data.setdialog(mWeiboDialog);
                         adapter.notifyDataSetChanged();
                         lv1.onRefreshComplete();
                         new Utils().balancebtc();
@@ -122,13 +125,22 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                 if (mList.get(i).equals("ETH")) {
                     viewHolder.ethxianjin = (TextView) view.findViewById(R.id.xianjin);
                     viewHolder.ethyue = (TextView) view.findViewById(R.id.yue);
-                    viewHolder.ethyue.setTextColor(0xffffffff);
-                    viewHolder.ethxianjin.setTextColor(0x66ffffff);
+                    viewHolder.ethyue.setTextColor(0xffffffff);Data.setethtext(viewHolder.ethyue);
+                    viewHolder.ethxianjin.setTextColor(0x66ffffff);Data.setethrmbtext(viewHolder.ethxianjin);
                 } else if (mList.get(i).equals("BTC")) {
                     viewHolder.btcxianjin = (TextView) view.findViewById(R.id.xianjin);
                     viewHolder.btcyue = (TextView) view.findViewById(R.id.yue);
                     viewHolder.btcyue.setTextColor(0xffffffff);
+                    Data.setbtctext(viewHolder.btcyue);
                     viewHolder.btcxianjin.setTextColor(0x66ffffff);
+                    Data.setbtcrmbtext(viewHolder.btcxianjin);
+                }else if (mList.get(i).equals("XRP")) {
+                    viewHolder.xrpxianjin = (TextView) view.findViewById(R.id.xianjin);
+                    viewHolder.xrpyue = (TextView) view.findViewById(R.id.yue);
+                    viewHolder.xrpyue.setTextColor(0xffffffff);
+                    Data.setxrptext(viewHolder.xrpyue);
+                    viewHolder.xrpxianjin.setTextColor(0x66ffffff);
+                    Data.setxrprmbtext(viewHolder.xrpxianjin);
                 } else {
                     viewHolder.hierxianjin = (TextView) view.findViewById(R.id.xianjin);
                     viewHolder.hieryue = (TextView) view.findViewById(R.id.yue);
@@ -173,8 +185,9 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                 if (mList.get(i).equals("XRP")) {
                     viewHolder.image.setImageResource(R.drawable.xrp);
                     if (!Data.getxrpamount().equals("")) {
-                        viewHolder.hieryue.setText(Data.getxrpamount());
-                        viewHolder.hierxianjin.setText("￥"+Double.parseDouble(Data.getxrpamount())*1.9*7);
+                        viewHolder.xrpyue.setText(Data.getxrpamount());
+                        DecimalFormat df1 = new DecimalFormat("0.00");
+                        viewHolder.xrpxianjin.setText("￥"+df1.format(Double.parseDouble(Data.getxrpamount())*1.9*7));
                     }
                 }
                 if (mList.get(i).equals("EOS")) {
@@ -200,6 +213,9 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                         } else if (msg.equals("BTC")) {
                             msg1 = finalViewHolder.btcyue.getText().toString();
                             msg2 = finalViewHolder.btcxianjin.getText().toString();
+                        } else if (msg.equals("XRP")) {
+                            msg1 = finalViewHolder.xrpyue.getText().toString();
+                            msg2 = finalViewHolder.xrpxianjin.getText().toString();
                         } else {
                             msg1 = finalViewHolder.hieryue.getText().toString();
                             msg2 = finalViewHolder.hierxianjin.getText().toString();
@@ -215,13 +231,7 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
             return view;
         }
         class ViewHolder {
-            TextView mTextView;
-            TextView btcyue;
-            TextView ethyue;
-            TextView hieryue;
-            TextView btcxianjin;
-            TextView ethxianjin;
-            TextView hierxianjin;
+            TextView mTextView,btcyue,ethyue,hieryue,btcxianjin,ethxianjin,hierxianjin,xrpyue,xrpxianjin;
             ImageView image;
             RelativeLayout rrrr;
         }

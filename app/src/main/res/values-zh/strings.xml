@@ -7,6 +7,7 @@
     <string name="type2">正在配对：</string>
     <string name="type3">完成配对：</string>
     <string name="type4">加载中...</string>
+    <string name="type5">刷新中...</string>
 
     <string name="main1">蓝牙连接</string>
     <string name="main2">重新扫描</string>
@@ -99,13 +100,10 @@
     <string name="fff28">服务费不能超过9000位</string>
     <string name="fff29">构造BTC交易失败</string>
     <string name="fff30">交易失败</string>
-    <string name="fff31">BTC交易失败</string>
-    <string name="fff32">BTC交易成功</string>
+    <string name="fff32">交易成功</string>
     <string name="fff33">BTC交易成功，查询余额失败：</string>
     <string name="fff34">查询ETH交易数失败</string>
-    <string name="fff35">ETH交易成功</string>
     <string name="fff36">ETH交易成功，查询余额失败</string>
-    <string name="fff37">ETH交易失败</string>
     <string name="fff38">注册成功</string>
     <string name="fff39">注册失败</string>
     <string name="fff40">登录成功</string>
@@ -362,6 +360,7 @@
     <string name="backup_mnemonic_waring_btn">知道了</string>
     <string name="backup_mnemonic_next">下一步</string>
     <string name="msg_not_network">msg</string>
+    <string name="msg_not_network1">msg1</string>
 
     <string name="invest1">网络连接失败，请稍后重试</string>
 

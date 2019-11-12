@@ -38,6 +38,7 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.wallet.R;
+import com.wallet.cold.app.index.Fragment1;
 import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.app.auth0.auth0login;
@@ -1959,19 +1960,24 @@ public class Utils extends Activity {
                                 b1 = new BigDecimal(Double.parseDouble(current_price));
                                 b2 = new BigDecimal(Double.parseDouble(Data.getbtcbalance()));
                             }
+                            Looper.loop();
                             Double d = b1.multiply(b2).doubleValue();
-                            String d1 = df.format(d);
+                            d1 = df.format(d);
                             BigDecimal a1 = new BigDecimal(d1);
                             //BigDecimal hier = new BigDecimal(Data.gethieramount());
                             BigDecimal xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount())*1.9*7);
                             BigDecimal amount1 = a1.add(xrp);
-                            //BigDecimal amount2 = amount1.add(xrp);
-                            DecimalFormat df1 = new DecimalFormat("0.00");
+                            //BigDecimal amount2 = amount1.add(hier);
+                            df1 = new DecimalFormat("0.00");
                             Data.setamountrmb(df1.format(amount1));
-                            if(!Data.gettype().equals("fragment1")) {
+                            //if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
-                            }
-                            Looper.loop();
+//                            }else{
+//                                Looper.prepare();
+//                                Message msg = Handler.obtainMessage();
+//                                msg.arg1 = R.string.msg_not_network1;
+//                                Handler.sendMessage(msg);
+//                            }
                         } else {
                             int index = getIndex(result, 1, "[}]");
                             String btchq = result.substring(0, index + 1);
@@ -1988,31 +1994,69 @@ public class Utils extends Activity {
                             BigDecimal b1 = new BigDecimal(Double.parseDouble(current_price));
                             BigDecimal b2 = new BigDecimal(Double.parseDouble(Data.getethbalance()));
                             Double d = b1.multiply(b2).doubleValue();
-                            String d1 = df.format(d);
+                            d1 = df.format(d);//eth人民币价格
                             BigDecimal b3 = new BigDecimal(Double.parseDouble(current_price1));
                             BigDecimal b4 = new BigDecimal(Double.parseDouble(Data.getbtcbalance()));
                             Double d2 = b3.multiply(b4).doubleValue();
-                            String d3 = df.format(d2);
+                            d3 = df.format(d2);//btc人民币价格
                             BigDecimal btc = new BigDecimal(d1);
                             BigDecimal eth = new BigDecimal(d3);
                             //BigDecimal hier = new BigDecimal(Data.gethieramount());
-                            BigDecimal xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount())*1.9*7);
+                            xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount())*1.9*7);
                             BigDecimal amount1 = btc.add(eth);
                             BigDecimal amount2 = amount1.add(xrp);
-                            //BigDecimal amount3 = amount2.add(xrp);
-                            DecimalFormat df1 = new DecimalFormat("0.00");
+                            //BigDecimal amount3 = amount2.add(hier);
+                            df1 = new DecimalFormat("0.00");
                             Data.setamountrmb(df1.format(amount2));
-                            if(!Data.gettype().equals("fragment1")) {
+                            //if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
-                            }
+//                            }else{
+//                                Looper.prepare();
+//                                Message msg = Handler.obtainMessage();
+//                                msg.arg1 = R.string.msg_not_network1;
+//                                Handler.sendMessage(msg);
+//                            }
                         }
-                    } catch(JSONException e){
+                        WeiboDialogUtils.closeDialog(Data.getdialog());
+                    } catch(JSONException e) {
                         e.printStackTrace();
                     }
                 }
             }
         }).start();
     }
+    DecimalFormat df1;String d3;String d1;BigDecimal xrp;
+    private Handler Handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.arg1) {
+                case R.string.msg_not_network:
+                    Data.getbtctext().setText(Data.getbtcbalance());
+                    Data.getbtcrmbtext().setText("￥"+d3);
+                    Data.getethtext().setText(Data.getethbalance());
+                    Data.getethrmbtext().setText("￥"+d1);
+                    Data.getxrptext().setText(Data.getxrpamount());
+                    Data.getxrprmbtext().setText("￥"+df1.format(xrp));
+                    Data.getcountamount().setText(Data.getamountrmb());
+                    Looper.loop();
+                    break;
+                case R.string.msg_not_network1:
+                    if(current_price.equals("BTC")){
+                        Data.getbtctext().setText(Data.getbtcbalance());
+                        Data.getbtcrmbtext().setText("￥"+d1);
+                    }else if(current_price.equals("ETH")){
+                        Data.getethtext().setText(Data.getethbalance());
+                        Data.getethrmbtext().setText("￥"+d1);
+                    }
+                    Data.getxrptext().setText(Data.getxrpamount());
+                    Data.getxrprmbtext().setText("￥"+df1.format(xrp));
+                    Data.getcountamount().setText(Data.getamountrmb());
+                    Looper.loop();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     public void send(String urlStr) {
         HttpURLConnection conn = null;//声明连接对象

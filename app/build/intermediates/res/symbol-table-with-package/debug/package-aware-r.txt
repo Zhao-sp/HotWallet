@@ -1572,13 +1572,10 @@ string fff28
 string fff29
 string fff3
 string fff30
-string fff31
 string fff32
 string fff33
 string fff34
-string fff35
 string fff36
-string fff37
 string fff38
 string fff39
 string fff4
@@ -1642,6 +1639,7 @@ string main3
 string main4
 string main5
 string msg_not_network
+string msg_not_network1
 string num1
 string num2
 string num3
@@ -1697,6 +1695,7 @@ string type1
 string type2
 string type3
 string type4
+string type5
 string tz1
 string tz10
 string tz11

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Oct 29 20:07:21 CST 2019
+#Tue Nov 12 16:01:15 CST 2019
 2.base=E\:\\work\\work\\Android HotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
 0.path=classes.dex
 2.baseType=DIRECTORY

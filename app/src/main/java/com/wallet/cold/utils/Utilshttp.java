@@ -660,7 +660,9 @@ public class Utilshttp {
                         LogCook.d("瑞波币余额", balance);Data.setxrpamount(balance);
                         LogCook.d("瑞波币交易序号", sequence);Data.setxrpserialnumber(sequence);
                         if(Data.gettype().equals("fragment3")){
+                            Looper.prepare();
                             new Transfer().xrpcreatetransaction();
+                            Looper.loop();
                         }else {
                             Looper.prepare();
                             new Utils().send2();
@@ -670,16 +672,25 @@ public class Utilshttp {
                         Looper.prepare();
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24) +
                                 jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
-                        WeiboDialogUtils.closeDialog(Data.getdialog());
+                        if(Data.gettype().equals("fragment3")) {
+                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                        }else {
+                            new Utils().send2();
+                        }
                         Looper.loop();
                     }
                 } catch (Exception e) {
-                    Looper.prepare();
-                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
-                    Data.setxrpamount("0");Data.setxrpserialnumber("");
-                    new Utils().send2();
-                    Looper.loop();
-                    e.printStackTrace();
+                        Looper.prepare();
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
+                        if(Data.gettype().equals("fragment3")) {
+
+                        }else {
+                            Data.setxrpamount("0");
+                            Data.setxrpserialnumber("");
+                            new Utils().send2();
+                        }
+                        Looper.loop();
+                        e.printStackTrace();
                 }
             }
         }).start();
@@ -710,19 +721,19 @@ public class Utilshttp {
                     JSONObject jsonObject = new JSONObject(result);
                     if (jsonObject.getString("status_Result").equals("success")) {
                         Looper.prepare();
-                        Toast.makeText(Data.getcontext(), "xrp交易成功", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff32), Toast.LENGTH_SHORT).show();
                         WeiboDialogUtils.closeDialog(Data.getdialog());
                         Looper.loop();
                     } else if (jsonObject.getString("status_Result").equals("error")) {//返回错误信息
                         Looper.prepare();
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24) +
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) +
                                 jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
                         WeiboDialogUtils.closeDialog(Data.getdialog());
                         Looper.loop();
                     }
                 } catch (Exception e) {
                     Looper.prepare();
-                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30), Toast.LENGTH_SHORT).show();
                     Data.setxrpamount("0");Data.setxrpserialnumber("");
                     new Utils().send2();
                     Looper.loop();

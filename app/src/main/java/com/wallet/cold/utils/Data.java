@@ -27,7 +27,7 @@ public class Data extends Application {
     private static Button startBtn;
     private static int n,count,button,restart,signcount1,percent,page;
     private static boolean uxto,btcsign,isdfu,islanguages,dfuupdate,isshangla;
-    private static TextView balance,cardmoney,countamount,pttext,hiertext;
+    private static TextView balance,cardmoney,countamount,pttext,hiertext,btctext,btcrmbtext,ethtext,ethrmbtext,xrptext,xrprmbtext;
     private static SQLiteDatabase db;
     private static BluetoothAdapter BluetoothAdapter;
     private static String limit,isapp,ethtype,returnbledata,btcsigndata,username,password,plaint,auth0type,resulterror,btcrmbbalance,ethrmbbalance,hieramount,amountrmb,
@@ -58,6 +58,37 @@ public class Data extends Application {
     }//卡内余额
     public static void setcardmoney(TextView cardmoney) {
         Data.cardmoney = cardmoney;
+    }
+    public static TextView getbtctext() {
+        return btctext;
+    }
+    public static void setbtctext(TextView btctext) {
+        Data.btctext = btctext;
+    }public static TextView getbtcrmbtext() {
+        return btcrmbtext;
+    }
+    public static void setbtcrmbtext(TextView btcrmbtext) {
+        Data.btcrmbtext = btcrmbtext;
+    }public static TextView getethtext() {
+        return ethtext;
+    }
+    public static void setethtext(TextView ethtext) {
+        Data.ethtext = ethtext;
+    }public static TextView getethrmbtext() {
+        return ethrmbtext;
+    }
+    public static void setethrmbtext(TextView ethrmbtext) {
+        Data.ethrmbtext = ethrmbtext;
+    }public static TextView getxrptext() {
+        return xrptext;
+    }
+    public static void setxrptext(TextView xrptext) {
+        Data.xrptext = xrptext;
+    }public static TextView getxrprmbtext() {
+        return xrprmbtext;
+    }
+    public static void setxrprmbtext(TextView xrprmbtext) {
+        Data.xrprmbtext = xrprmbtext;
     }
     public static String gethttp1() {
         return http1;

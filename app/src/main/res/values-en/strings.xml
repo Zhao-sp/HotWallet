@@ -7,6 +7,7 @@
     <string name="type2">Pairing：</string>
     <string name="type3">Finish pairing：</string>
     <string name="type4">Loading...</string>
+    <string name="type5">Refresh...</string>
 
     <string name="main1">Bluetooth connectivity</string>
     <string name="main2">Re scan</string>
@@ -98,14 +99,11 @@
     <string name="fff27">Maximum service charge cannot be empty</string>
     <string name="fff28">Service fee should not exceed 9000 bits</string>
     <string name="fff29">Constructing BTC Trading Failure</string>
-    <string name="fff30">Transaction failure</string>
-    <string name="fff31">BTC Trading Failed</string>
-    <string name="fff32">BTC Trading Successful</string>
+    <string name="fff30">Transaction Failed</string>
+    <string name="fff32">Transaction Success</string>
     <string name="fff33">BTC Trading Successful, Query Balance Failed:</string>
     <string name="fff34">Query ETH Trading Number Failed</string>
-    <string name="fff35">ETH Trading Successful</string>
     <string name="fff36">ETH Trading Successful, Query Balance Failed:</string>
-    <string name="fff37">ETH Trading Failed</string>
     <string name="fff38">Registration Successful</string>
     <string name="fff39">Registration Failed</string>
     <string name="fff40">Login successfully</string>
@@ -362,6 +360,7 @@
     <string name="backup_mnemonic_waring_btn">Got it</string>
     <string name="backup_mnemonic_next">Next step</string>
     <string name="msg_not_network">msg</string>
+    <string name="msg_not_network1">msg1</string>
 
     <string name="invest1">Network connection failed, please try again later</string>
 </resources>
