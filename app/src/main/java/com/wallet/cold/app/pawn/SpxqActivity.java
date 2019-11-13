@@ -33,7 +33,6 @@ public class SpxqActivity extends AppCompatActivity implements PayPwdView.InputC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("spxqactivity");
         Data.setcontext(SpxqActivity.this);
         fhgx=(TextView) findViewById(R.id.fhgx);fhgx.setOnClickListener(this);

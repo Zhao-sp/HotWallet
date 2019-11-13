@@ -49,7 +49,6 @@ public class ZXActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragmentzx);
         lv1=(MyListView)findViewById(R.id.list_zx);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("zxactivity");Data.setisshangla(false);
         Data.setcontext(ZXActivity.this);
         mWeiboDialog = WeiboDialogUtils.createLoadingDialog(ZXActivity.this, this.getResources().getString(R.string.f4));

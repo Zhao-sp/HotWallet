@@ -30,7 +30,6 @@ public class Linkman extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_linkman);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("Linkman");
         Data.setcontext(Linkman.this);
         addaddress=(TextView)findViewById(R.id.addaddress);

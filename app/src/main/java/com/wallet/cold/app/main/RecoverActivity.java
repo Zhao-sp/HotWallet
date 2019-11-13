@@ -29,7 +29,6 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recover);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         findViewById(R.id.verify1).setOnClickListener(this);
         zhujici=(EditText)findViewById(R.id.zhujici1);
         pin=(EditText) findViewById(R.id.pin);

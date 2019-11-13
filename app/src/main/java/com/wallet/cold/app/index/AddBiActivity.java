@@ -36,7 +36,6 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addbi);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         addbi=(TextView) findViewById(R.id.fhaddbi);
         name=(TextView) findViewById(R.id.name);
         quxiao=(TextView) findViewById(R.id.quxiao);

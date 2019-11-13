@@ -27,7 +27,6 @@ public class ResetActivity extends AppCompatActivity implements OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         pin=(EditText) findViewById(R.id.pin);
         pin1=(EditText) findViewById(R.id.pin1);
         zjc=(EditText) findViewById(R.id.zjc);

@@ -73,7 +73,6 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if((getIntent().getFlags() &Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0){//防止部分手机点击home键后退出程序
             finish();
             return;

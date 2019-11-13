@@ -50,7 +50,6 @@ public class HotIndexActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotindex);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("hotindex");
         Data.setcontext(HotIndexActivity.this);
         Data.getdb().execSQL("create table if not exists HotJiaoyiTb (_id integer primary key,blename text not null,name text not null,bizhong text not null,jine integer not null,riqi text not null,type integer not null)");

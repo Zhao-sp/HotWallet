@@ -32,7 +32,6 @@ public class Fragment5 extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment5);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.setsaoma("no");
         resetpin=(TextView) findViewById(R.id.chongzhi);
         resetpin.setOnClickListener(this);

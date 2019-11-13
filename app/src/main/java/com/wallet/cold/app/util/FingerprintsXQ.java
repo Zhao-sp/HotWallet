@@ -24,7 +24,6 @@ public class FingerprintsXQ extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zwxq);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         name=(TextView) findViewById(R.id.name1);Data.setresulterror("no");
         name.setText(Data.getfingerprintsname());
         deletezw=(TextView) findViewById(R.id.deletezw);

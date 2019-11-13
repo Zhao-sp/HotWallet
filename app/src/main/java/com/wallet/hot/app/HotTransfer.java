@@ -80,7 +80,6 @@ public class HotTransfer extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.transfer);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.setn(0);
         Data.setcount(0);
         Data.setsaoma("yes");

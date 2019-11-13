@@ -49,7 +49,6 @@ public class auth0register extends AppCompatActivity implements OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth0register);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("auth0register");
         Data.setcontext(auth0register.this);
         et_user=(EditText) findViewById(R.id.username);

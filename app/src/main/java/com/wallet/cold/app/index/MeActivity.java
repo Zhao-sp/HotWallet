@@ -45,7 +45,6 @@ public class MeActivity extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("meactivity");
         Data.setcontext(MeActivity.this);
         photo2= (ImageView) findViewById(R.id.img2);

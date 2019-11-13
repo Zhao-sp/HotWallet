@@ -38,7 +38,6 @@ public class CreateActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotcreate);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         fanhui=(ImageView) findViewById(R.id.fanhuiadd);
         fanhui.setOnClickListener(this);
         fhcreate=(TextView) findViewById(R.id.fhcreate);

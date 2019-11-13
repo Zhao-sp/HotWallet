@@ -21,7 +21,6 @@ public class PawnActivity extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pawn);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("pawnactivity");
         Data.setcontext(PawnActivity.this);
         view_cd=findViewById(R.id.view_cd);view_cd.setOnClickListener(this);

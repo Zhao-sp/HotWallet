@@ -46,7 +46,6 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment1);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.setsaoma("no");
         Data.setiseth("yes");
         lv1=(MyListView)findViewById(R.id.list_yue);

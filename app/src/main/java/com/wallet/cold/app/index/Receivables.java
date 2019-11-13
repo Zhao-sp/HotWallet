@@ -49,7 +49,6 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment2);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.setsaoma("no");
         popadd = (TextView) findViewById(R.id.popadd);
         popadd.setOnClickListener(this);popadd1 = (TextView) findViewById(R.id.popadd1);

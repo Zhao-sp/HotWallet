@@ -21,7 +21,6 @@ public class NumbersActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //        fhnum=(TextView)findViewById(R.id.fhnum);
 //        fanhui=(ImageView) findViewById(R.id.fanhuiadd);
 //        fanhui.setOnClickListener(this);

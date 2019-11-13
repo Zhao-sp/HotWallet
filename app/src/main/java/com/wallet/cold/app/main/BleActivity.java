@@ -31,7 +31,6 @@ public class BleActivity extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selete);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         create=(TextView) findViewById(R.id.create);Data.setresulterror("no");
         recover=(TextView) findViewById(R.id.recover);
         fhselete=(TextView) findViewById(R.id.fhselete);

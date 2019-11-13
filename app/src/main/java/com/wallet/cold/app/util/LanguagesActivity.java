@@ -24,7 +24,6 @@ public class LanguagesActivity extends AppCompatActivity implements OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_languages);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         fhgx=(TextView) findViewById(R.id.fhla);
         app=(TextView) findViewById(R.id.china);
         boot=(TextView) findViewById(R.id.english);

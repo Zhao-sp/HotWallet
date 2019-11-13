@@ -75,7 +75,6 @@ public class CdActivity extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cd);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         lv1=(MyListView)findViewById(R.id.list_zx);
         pt=findViewById(R.id.pt);
         ptamount=findViewById(R.id.ptamount);

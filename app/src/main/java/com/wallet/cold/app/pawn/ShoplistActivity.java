@@ -59,7 +59,6 @@ public class ShoplistActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invest);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("shoplistactivity");
         Data.setcontext(ShoplistActivity.this);
         lv1=(MyListView)findViewById(R.id.list_zx);

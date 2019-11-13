@@ -44,7 +44,6 @@ public class auth0login extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth0login);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("auth0login");
         Data.setcontext(auth0login.this);
         photo= (ImageView) findViewById(R.id.img2);

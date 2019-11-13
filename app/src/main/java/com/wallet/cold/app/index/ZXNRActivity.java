@@ -35,7 +35,6 @@ public class ZXNRActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zixun);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         name=(TextView)findViewById(R.id.name);
         Intent intent=getIntent();
         String amsg=intent.getStringExtra("amsg");

@@ -66,7 +66,6 @@ public class InvestActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invest);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         lv1=(MyListView)findViewById(R.id.list_zx);
         tztype=(TextView)findViewById(R.id.tztype);tztype.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         fhgx=(TextView) findViewById(R.id.fhgx);fhgx.setOnClickListener(this);tztype.setOnClickListener(this);

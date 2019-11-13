@@ -36,7 +36,6 @@ public class TzActivity extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tz);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("tzactivity");
         Data.setcontext(TzActivity.this);
         fhgx=(TextView) findViewById(R.id.fhgx);fhgx.setOnClickListener(this);

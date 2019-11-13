@@ -38,7 +38,6 @@ public class GengxinActivity extends AppCompatActivity implements OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gengxin);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         fhgx=(TextView) findViewById(R.id.fhgx);
         app=(TextView) findViewById(R.id.app);
         boot=(TextView) findViewById(R.id.boot);

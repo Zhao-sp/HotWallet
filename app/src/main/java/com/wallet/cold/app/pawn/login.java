@@ -33,7 +33,6 @@ public class login extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("login");
         Data.setcontext(login.this);
         photo= (ImageView) findViewById(R.id.img2);

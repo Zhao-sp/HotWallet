@@ -58,7 +58,6 @@ public class HQActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragmenthq);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Data.settype("hqactivity");
         Data.setcontext(HQActivity.this);
         ss=(ImageView) findViewById(R.id.ss);

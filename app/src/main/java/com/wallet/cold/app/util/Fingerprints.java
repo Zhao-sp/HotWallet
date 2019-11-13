@@ -34,7 +34,6 @@ public class Fingerprints extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fingerprints);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         name1=(TextView) findViewById(R.id.name1);Data.setresulterror("no");
         name2=(TextView) findViewById(R.id.name2);
         name3=(TextView) findViewById(R.id.name3);
