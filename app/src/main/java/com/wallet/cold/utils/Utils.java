@@ -1523,7 +1523,6 @@ public class Utils extends Activity {
                                                 e.printStackTrace();
                                             }
                                         }
-                                        zhuce();
                                         eth();
                                     } else if (Data.getbizhong().equals("ETH")) {
                                         String address = Utils.address();
@@ -1566,7 +1565,7 @@ public class Utils extends Activity {
                                         }
                                         Data.setbletype("");
                                         //new Utilshttp().getauth0user();
-                                        balancebtc();
+                                        zhuce();
                                     }
                                 }else if (Data.getbletype().equals("type")) {
                                     if (data2.substring(2, 4).equals("01") && data2.substring(0, 2).equals("01")) {//存在助记词存在pin码
@@ -1970,14 +1969,12 @@ public class Utils extends Activity {
                             //BigDecimal amount2 = amount1.add(hier);
                             df1 = new DecimalFormat("0.00");
                             Data.setamountrmb(df1.format(amount1));
-                            //if(!Data.gettype().equals("fragment1")) {
+                            if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
-//                            }else{
-//                                Looper.prepare();
-//                                Message msg = Handler.obtainMessage();
-//                                msg.arg1 = R.string.msg_not_network1;
-//                                Handler.sendMessage(msg);
-//                            }
+                            }else{
+                                Looper.prepare();
+                                Data.gethandler().post(runnableUi1);
+                            }
                         } else {
                             int index = getIndex(result, 1, "[}]");
                             String btchq = result.substring(0, index + 1);
@@ -2008,14 +2005,12 @@ public class Utils extends Activity {
                             //BigDecimal amount3 = amount2.add(hier);
                             df1 = new DecimalFormat("0.00");
                             Data.setamountrmb(df1.format(amount2));
-                            //if(!Data.gettype().equals("fragment1")) {
+                            if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
-//                            }else{
-//                                Looper.prepare();
-//                                Message msg = Handler.obtainMessage();
-//                                msg.arg1 = R.string.msg_not_network1;
-//                                Handler.sendMessage(msg);
-//                            }
+                            }else{
+                                Looper.prepare();
+                                Data.gethandler().post(runnableUi);
+                            }
                         }
                         WeiboDialogUtils.closeDialog(Data.getdialog());
                     } catch(JSONException e) {
@@ -2026,35 +2021,33 @@ public class Utils extends Activity {
         }).start();
     }
     DecimalFormat df1;String d3;String d1;BigDecimal xrp;
-    private Handler Handler = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.arg1) {
-                case R.string.msg_not_network:
-                    Data.getbtctext().setText(Data.getbtcbalance());
-                    Data.getbtcrmbtext().setText("￥"+d3);
-                    Data.getethtext().setText(Data.getethbalance());
-                    Data.getethrmbtext().setText("￥"+d1);
-                    Data.getxrptext().setText(Data.getxrpamount());
-                    Data.getxrprmbtext().setText("￥"+df1.format(xrp));
-                    Data.getcountamount().setText(Data.getamountrmb());
-                    Looper.loop();
-                    break;
-                case R.string.msg_not_network1:
-                    if(current_price.equals("BTC")){
-                        Data.getbtctext().setText(Data.getbtcbalance());
-                        Data.getbtcrmbtext().setText("￥"+d1);
-                    }else if(current_price.equals("ETH")){
-                        Data.getethtext().setText(Data.getethbalance());
-                        Data.getethrmbtext().setText("￥"+d1);
-                    }
-                    Data.getxrptext().setText(Data.getxrpamount());
-                    Data.getxrprmbtext().setText("￥"+df1.format(xrp));
-                    Data.getcountamount().setText(Data.getamountrmb());
-                    Looper.loop();
-                    break;
-                default:
-                    break;
+    Runnable runnableUi=new Runnable(){
+        @Override
+        public void run() {
+            Data.getbtctext().setText(Data.getbtcbalance());
+            Data.getbtcrmbtext().setText("￥"+d3);
+            Data.getethtext().setText(Data.getethbalance());
+            Data.getethrmbtext().setText("￥"+d1);
+            Data.getxrptext().setText(Data.getxrpamount());
+            Data.getxrprmbtext().setText("￥"+df1.format(xrp));
+            Data.getcountamount().setText(Data.getamountrmb());
+            Looper.loop();
+        }
+    };
+    Runnable runnableUi1=new Runnable(){
+        @Override
+        public void run() {
+            if(current_price.equals("BTC")){
+                Data.getbtctext().setText(Data.getbtcbalance());
+                Data.getbtcrmbtext().setText("￥"+d1);
+            }else if(current_price.equals("ETH")){
+                Data.getethtext().setText(Data.getethbalance());
+                Data.getethrmbtext().setText("￥"+d1);
             }
+            Data.getxrptext().setText(Data.getxrpamount());
+            Data.getxrprmbtext().setText("￥"+df1.format(xrp));
+            Data.getcountamount().setText(Data.getamountrmb());
+            Looper.loop();
         }
     };
 
@@ -2156,8 +2149,10 @@ public class Utils extends Activity {
                         });
                     }
                 }
+                balancebtc();
             } catch (Exception e) {
                 e.printStackTrace();
+                balancebtc();
             } finally {
                 if (btcreader != null) {
                     try {

@@ -239,9 +239,14 @@ public class MainActivity extends Activity {
                 bletype.setText(R.string.main3);
             }
         }else{
-            mWeiboDialog = WeiboDialogUtils.createLoadingDialog(MainActivity.this, this.getResources().getString(R.string.type));
-            Data.setdialog(mWeiboDialog);
-            Utils.gainboot();
+            if(Utils.isNetworkConnected(Data.getcontext())) {
+                mWeiboDialog = WeiboDialogUtils.createLoadingDialog(MainActivity.this, this.getResources().getString(R.string.type));
+                Data.setdialog(mWeiboDialog);
+                Utils.gainboot();
+            }else{
+                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.cd2), Toast.LENGTH_SHORT).show();
+                WeiboDialogUtils.closeDialog(Data.getdialog());
+            }
         }
     }
 
@@ -310,17 +315,21 @@ public class MainActivity extends Activity {
             vg.rrrr.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), context.getResources().getString(R.string.type));
-                    Data.setdialog(mWeiboDialog);
-                    Data.setdevicename(vg.name.getText().toString());
-                    Data.setDeviceaddress(device.getAddress());
-                    if(device.getName().equals("DfuTarg")){
-                        Intent intent = new Intent(Data.getcontext(),DfuUpdateActivity.class);
-                        intent.putExtra(MAC_ADDRESS,device.getAddress());
-                        intent.putExtra(DEVICE_NAME,device.getName());
-                        Data.getcontext().startActivity(intent);
-                    }else {
-                        Data.getmService().connect(device.getAddress());
+                    if(Utils.isNetworkConnected(Data.getcontext())) {
+                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), context.getResources().getString(R.string.type));
+                        Data.setdialog(mWeiboDialog);
+                        Data.setdevicename(vg.name.getText().toString());
+                        Data.setDeviceaddress(device.getAddress());
+                        if(device.getName().equals("DfuTarg")){
+                            Intent intent = new Intent(Data.getcontext(),DfuUpdateActivity.class);
+                            intent.putExtra(MAC_ADDRESS,device.getAddress());
+                            intent.putExtra(DEVICE_NAME,device.getName());
+                            Data.getcontext().startActivity(intent);
+                        }else {
+                            Data.getmService().connect(device.getAddress());
+                        }
+                    }else{
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.cd2), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

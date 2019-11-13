@@ -24,7 +24,6 @@ import com.wallet.R;
 import com.wallet.cold.app.auth0.auth0register;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.rlp.RLP;
-import com.wallet.cold.utils.Base58;
 import com.wallet.cold.utils.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
@@ -239,20 +238,21 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
             startActivity(new Intent(Transfer.this, IndexActivity.class));
         }
         if(v.getId() == R.id.verify2) {
-            Data.settype("fragment3");
-            if(popadd.getText().toString().equals("BTC")){
-                trade(popadd.getText().toString(),limit1.getText().toString(),to.getText().toString(),amountyue.getText().toString(),fee.getText().toString()
-                        ,balance.getText().toString(), Data.getbtcaddress());
-            }else if(popadd.getText().toString().equals("ETH")){
-                trade(popadd.getText().toString(),limit1.getText().toString(),to.getText().toString(),amountyue.getText().toString(),fee.getText().toString()
-                        ,balance.getText().toString(), Data.getethaddress());
-            }else if(popadd.getText().toString().equals("XRP")){
-                if(Data.getxrpserialnumber().equals("")){
-                    Toast.makeText(getApplicationContext(), "请在主界面刷新余额后再试", Toast.LENGTH_SHORT).show();
-                }else {
+            if(Utils.isNetworkConnected(Data.getcontext())) {
+                Data.settype("fragment3");
+                if(popadd.getText().toString().equals("BTC")){
+                    trade(popadd.getText().toString(),limit1.getText().toString(),to.getText().toString(),amountyue.getText().toString(),fee.getText().toString()
+                            ,balance.getText().toString(), Data.getbtcaddress());
+                }else if(popadd.getText().toString().equals("ETH")){
+                    trade(popadd.getText().toString(),limit1.getText().toString(),to.getText().toString(),amountyue.getText().toString(),fee.getText().toString()
+                            ,balance.getText().toString(), Data.getethaddress());
+                }else if(popadd.getText().toString().equals("XRP")){
                     trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), ""
                             , balance.getText().toString(), Data.getxrpaddress());
                 }
+            }else{
+                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.cd2), Toast.LENGTH_SHORT).show();
+                WeiboDialogUtils.closeDialog(Data.getdialog());
             }
         }
     }

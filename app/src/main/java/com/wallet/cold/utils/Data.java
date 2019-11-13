@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class Data extends Application {
     private static Context context;
     private static Dialog dialog;
     private static Button startBtn;
+    private static Handler handler;
     private static int n,count,button,restart,signcount1,percent,page;
     private static boolean uxto,btcsign,isdfu,islanguages,dfuupdate,isshangla;
     private static TextView balance,cardmoney,countamount,pttext,hiertext,btctext,btcrmbtext,ethtext,ethrmbtext,xrptext,xrprmbtext;
@@ -35,6 +37,12 @@ public class Data extends Application {
             btcbalance,ethbalance,type,btctype,pubkey,sign,end,hash,bizhong,scan,rlpdata,bletype,scriptPubKey1,resultdata,strhex1,strhex2,iseth,data,data2,saoma,yue,fee,to,
             hotethaddress,hotbtcaddress,apptype,hotethprv,hotbtcprv,hotbtcpub,hotpassword,fingerprints,fingerprintsname,http1,hiersign,objectId,ptamount,isblecomment,paytype,xrppub,
             xrpaddress,xrpamount,xrpserialnumber,xrprmbbalance;
+    public static Handler gethandler() {
+        return handler;
+    }
+    public static void sethandler(Handler handler) {
+        Data.handler = handler;
+    }
     public static Button getstartBtn() {
         return startBtn;
     }

@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wallet.R;
 import com.wallet.cold.app.util.Fragment5;
@@ -82,11 +84,18 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
 
                     @Override
                     protected void onPostExecute(Void result) {
-                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.type5));
-                        Data.setdialog(mWeiboDialog);
-                        adapter.notifyDataSetChanged();
-                        lv1.onRefreshComplete();
-                        new Utils().balancebtc();
+                        if(Utils.isNetworkConnected(Data.getcontext())) {
+                            Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.type5));
+                            Data.setdialog(mWeiboDialog);
+                            adapter.notifyDataSetChanged();
+                            lv1.onRefreshComplete();
+                            Handler handler=new Handler();
+                            Data.sethandler(handler);
+                            new Utils().balancebtc();
+                        }else{
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.cd2), Toast.LENGTH_SHORT).show();
+                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                        }
                     }
                 }.execute();
             }

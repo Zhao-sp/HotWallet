@@ -633,11 +633,11 @@ public class Utilshttp {
     public void getxrpamount() {
         new Thread(new Runnable() {
             public void run() {
-                String result = "";
+                String result = "";Looper.prepare();
                 try {
                     String data = "{\"account\":\""+Data.getxrpaddress()+"\"}";
                     data = URLEncoder.encode(data, "UTF-8");
-                    String urlName = "http://61.50.127.46:9555/hsRPCNodeServer/xrp/getBalance?jsonParams="+data;
+                    String urlName = Data.gethttp1()+"/hsRPCNodeServer/xrp/getBalance?jsonParams="+data;
                     LogCook.d("发送参数", urlName);
                     URL U = new URL(urlName);
                     URLConnection connection = U.openConnection();
@@ -660,38 +660,31 @@ public class Utilshttp {
                         LogCook.d("瑞波币余额", balance);Data.setxrpamount(balance);
                         LogCook.d("瑞波币交易序号", sequence);Data.setxrpserialnumber(sequence);
                         if(Data.gettype().equals("fragment3")){
-                            Looper.prepare();
                             new Transfer().xrpcreatetransaction();
-                            Looper.loop();
                         }else {
-                            Looper.prepare();
                             new Utils().send2();
-                            Looper.loop();
                         }
                     } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
-                        Looper.prepare();
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24) +
                                 jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
                         if(Data.gettype().equals("fragment3")) {
                             WeiboDialogUtils.closeDialog(Data.getdialog());
                         }else {
+                            Data.setxrpamount("0");
                             new Utils().send2();
                         }
-                        Looper.loop();
                     }
                 } catch (Exception e) {
-                        Looper.prepare();
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
-                        if(Data.gettype().equals("fragment3")) {
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
+                    if(Data.gettype().equals("fragment3")) {
 
-                        }else {
-                            Data.setxrpamount("0");
-                            Data.setxrpserialnumber("");
-                            new Utils().send2();
-                        }
-                        Looper.loop();
-                        e.printStackTrace();
+                    }else {
+                        Data.setxrpamount("0");
+                        new Utils().send2();
+                    }
+                    e.printStackTrace();
                 }
+                Looper.loop();
             }
         }).start();
     }
@@ -706,7 +699,7 @@ public class Utilshttp {
                 try {
                     String data = "{\"tx_blob\":\""+signdata+"\"}";
                     data = URLEncoder.encode(data, "UTF-8");
-                    String urlName = "http://61.50.127.46:9555/hsRPCNodeServer/xrp/submit?jsonParams="+data;
+                    String urlName = Data.gethttp1()+"/hsRPCNodeServer/xrp/submit?jsonParams="+data;
                     LogCook.d("发送参数", urlName);
                     URL U = new URL(urlName);
                     URLConnection connection = U.openConnection();
@@ -734,8 +727,7 @@ public class Utilshttp {
                 } catch (Exception e) {
                     Looper.prepare();
                     Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30), Toast.LENGTH_SHORT).show();
-                    Data.setxrpamount("0");Data.setxrpserialnumber("");
-                    new Utils().send2();
+                    WeiboDialogUtils.closeDialog(Data.getdialog());
                     Looper.loop();
                     e.printStackTrace();
                 }
