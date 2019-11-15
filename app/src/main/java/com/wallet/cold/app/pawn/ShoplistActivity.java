@@ -114,6 +114,10 @@ public class ShoplistActivity extends Activity implements View.OnClickListener{
                         LogCook.d("获取商品详情返回数据",String.valueOf(result));
                         String result1 = jsonObject.getString("data");
                         List<Object> list1 = JSON.parseArray(result1);
+                        if(list1.size()==0){
+                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                            return;
+                        }
                         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
                         for (Object object : list1) {
                             Map<String, Object> ageMap = new HashMap<String, Object>();

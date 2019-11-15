@@ -311,6 +311,15 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
                 imgCode.setImageBitmap(Data.getxrpimgCode());
                 WeiboDialogUtils.closeDialog(mWeiboDialog);
             }
+            if(v.getId() == R.id.layout_aed) {
+                popadd.setText("AED");
+                popadd1.setText("drops");
+                Data.setbizhong("AED");
+                popWinShare.dismiss();
+                key.setText(Data.getxrpaddress());
+                imgCode.setImageBitmap(Data.getxrpimgCode());
+                WeiboDialogUtils.closeDialog(mWeiboDialog);
+            }
         }
     }
     @Override

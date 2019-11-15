@@ -301,6 +301,7 @@
     <string name="uhttp22">转出失败</string>
     <string name="uhttp23">扣款成功，购买失败</string>
     <string name="uhttp24">获取XRP余额/交易序号失败</string>
+    <string name="uhttp25">获取aed余额/发行地址失败</string>
 
     <string name="p1">出当</string>
     <string name="p2">投资</string>

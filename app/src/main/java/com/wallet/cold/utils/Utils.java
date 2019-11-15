@@ -1535,8 +1535,8 @@ public class Utils extends Activity {
                                                 e.printStackTrace();
                                             }
                                         }
-                                        //auth0();
-                                        xrp();
+                                        auth0();
+                                        //xrp();
                                     } else if(Data.getbizhong().equals("AUTH0")){
                                         try {
                                             Thread.sleep(2000);
@@ -1549,7 +1549,7 @@ public class Utils extends Activity {
                                         String auth0address = Data.getdata().substring(128, Data.getdata().length());
                                         LogCook.d("auth0地址", auth0address);
                                         Data.setauth0address(auth0address);
-                                        //xrp();
+                                        xrp();
                                     } else if(Data.getbizhong().equals("XRP")){
                                         String xrppubkey = Data.getdata();
                                         Data.setxrppub(xrppubkey);
@@ -1564,8 +1564,8 @@ public class Utils extends Activity {
                                             }
                                         }
                                         Data.setbletype("");
-                                        //new Utilshttp().getauth0user();
-                                        zhuce();
+                                        new Utilshttp().getauth0user();
+                                        //zhuce();
                                     }
                                 }else if (Data.getbletype().equals("type")) {
                                     if (data2.substring(2, 4).equals("01") && data2.substring(0, 2).equals("01")) {//存在助记词存在pin码
@@ -1617,10 +1617,8 @@ public class Utils extends Activity {
                                                             Data.getbizhong().equals("Pawn")) {
                                                         Data.setethtype("dealid");
                                                         new Transfer().eth();
-                                                    } else if (Data.getbizhong().equals("XRP")||Data.getbizhong().equals("AED")) {
+                                                    } else if (Data.getbizhong().equals("XRP")||Data.getbizhong().equals("AED")||Data.getbizhong().equals("trustset")) {
                                                         new Utilshttp().getxrpamount();
-                                                    }else if (Data.getbizhong().equals("trustset")) {
-                                                        new Transfer().trustsetcreatetransaction();
                                                     }
                                                     Looper.loop();
                                                 }
@@ -1924,8 +1922,8 @@ public class Utils extends Activity {
                     }
                 }
                 Data.setbizhong("BTC");
-                //new Utilshttp().gethieramount();
-                new Utilshttp().getxrpamount();
+                new Utilshttp().gethieramount();
+                //new Utilshttp().getxrpamount();
             }
         }).start();
     }
@@ -1941,7 +1939,7 @@ public class Utils extends Activity {
                         LogCook.d("行情数据", result);
                         int count = getSubCount_2(result, "{");Data.getbledata().add("ETH");
                         Data.getbledata().add("BTC");
-                        //Data.getbledata().add("Hier");
+                        Data.getbledata().add("Hier");
                         Data.getbledata().add("XRP");Data.getbledata().add("AED");
                         if (count == 1) {
                             JSONObject jsonObject = new JSONObject(result);
@@ -1973,12 +1971,12 @@ public class Utils extends Activity {
                             Double d = b1.multiply(b2).doubleValue();
                             d1 = df.format(d);
                             BigDecimal a1 = new BigDecimal(d1);
-                            //BigDecimal hier = new BigDecimal(Data.gethieramount());
+                            BigDecimal hier = new BigDecimal(Data.gethieramount());
                             BigDecimal xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount())*1.9*7);
                             BigDecimal amount1 = a1.add(xrp);
-                            //BigDecimal amount2 = amount1.add(hier);
+                            BigDecimal amount2 = amount1.add(hier);
                             df1 = new DecimalFormat("0.00");
-                            Data.setamountrmb(df1.format(amount1));
+                            Data.setamountrmb(df1.format(amount2));
                             if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
                             }else{
@@ -2008,13 +2006,13 @@ public class Utils extends Activity {
                             d3 = df.format(d2);//btc人民币价格
                             BigDecimal btc = new BigDecimal(d1);
                             BigDecimal eth = new BigDecimal(d3);
-                            //BigDecimal hier = new BigDecimal(Data.gethieramount());
+                            BigDecimal hier = new BigDecimal(Data.gethieramount());
                             xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount())*1.9*7);
                             BigDecimal amount1 = btc.add(eth);
                             BigDecimal amount2 = amount1.add(xrp);
-                            //BigDecimal amount3 = amount2.add(hier);
+                            BigDecimal amount3 = amount2.add(hier);
                             df1 = new DecimalFormat("0.00");
-                            Data.setamountrmb(df1.format(amount2));
+                            Data.setamountrmb(df1.format(amount3));
                             if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
                             }else{
@@ -2038,7 +2036,11 @@ public class Utils extends Activity {
             Data.getbtcrmbtext().setText("￥"+d3);
             Data.getethtext().setText(Data.getethbalance());
             Data.getethrmbtext().setText("￥"+d1);
+            Data.gethbbtext().setText(Data.gethieramount());
+            Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
             Data.getxrptext().setText(Data.getxrpamount());
+            Data.getaedtext().setText(Data.getaedamount());
+            Data.getaedaddresstext().setText(Data.getaedaddress());
             Data.getxrprmbtext().setText("￥"+df1.format(xrp));
             Data.getcountamount().setText(Data.getamountrmb());
             Looper.loop();

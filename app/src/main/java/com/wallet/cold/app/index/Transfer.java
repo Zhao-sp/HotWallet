@@ -909,13 +909,13 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data5="68400000000000000C7321";
         String data6=Data.getxrppub();
 //        String data7="8114";
-//        String data8="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+//        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
 //        String data9="8314";
-//        String data10="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
+//        String data10="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
         String data7="8114";
-        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        String data8="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
         String data9="8314";
-        String data10="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+        String data10="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
         sign(data1+data2+data3+data4+data5+data6+data7+data8+data9+data10);//进行签名
     }
 
@@ -937,14 +937,14 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data6=Data.getxrppub();
         String data7="74";
         String data8=strlength(sign);
-        String data9="8114";
-        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
-        String data11="8314";
-        String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
 //        String data9="8114";
-//        String data10="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+//        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
 //        String data11="8314";
-//        String data12="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
+//        String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+        String data9="8114";
+        String data10="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+        String data11="8314";
+        String data12="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data6+data7+data8+sign+data9+data10+data11+data12);
     }
 
@@ -963,10 +963,14 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
         String data52="68400000000000000C7321";
         String data6=Data.getxrppub();
+//        String data7="8114";
+//        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+//        String data9="8314";
+//        String data10="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
         String data7="8114";
-        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        String data8="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
         String data9="8314";
-        String data10="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+        String data10="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
         sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+data9+data10);//进行签名
     }
 
@@ -987,10 +991,14 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data6=Data.getxrppub();
         String data7="74";
         String data8=strlength(sign);
-        String data9="8114";
-        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+//        String data9="8114";
+//        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+//        String data11="8314";
+//        String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+                String data9="8114";
+        String data10="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
         String data11="8314";
-        String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+        String data12="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10+data11+data12);
     }
 
@@ -999,15 +1007,20 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
      */
     public void trustsetcreatetransaction(){
         String data1="53545800120014228000000024";
-        String data2="00000023201B001E9C7A";
+        String data2=Integer.toHexString(Integer.parseInt(Data.getxrpserialnumber()));
+        for(int i=data2.length();i<8;i++){
+            data2="0"+data2;
+        }
         String data3="63";
         String data4="D5038D7EA4C68000";
         String data5="0000000000000000000000004145440000000000";
         String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
         String data52="68400000000000000C7321";
         String data6=Data.getxrppub();
-        String data7="8114";
-        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+//        String data7="8114";
+//        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+                String data7="8114";
+        String data8="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
         sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8);//进行签名
     }
 
@@ -1016,7 +1029,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
      */
     public void trustsetsendtransaction(String sign){
         String data1="120014228000000024";
-        String data2="00000023201B001E9C7A";
+        String data2=Integer.toHexString(Integer.parseInt(Data.getxrpserialnumber()));
+        for(int i=data2.length();i<8;i++){
+            data2="0"+data2;
+        }
         String data3="63";
         String data4="D5038D7EA4C68000";
         String data5="0000000000000000000000004145440000000000";
@@ -1025,8 +1041,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data6=Data.getxrppub();
         String data7="74";
         String data8=strlength(sign);
+//        String data9="8114";
+//        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";//E16ECF295DAFAC14AF7ECFF799CE5D519CC8E2D6
         String data9="8114";
-        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        String data10="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10);
     }
 

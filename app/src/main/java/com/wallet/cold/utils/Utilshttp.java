@@ -63,7 +63,7 @@ public class Utilshttp {
                     if (jsonObject.getString("status_Sucess").equals("true")) {
                         String name= jsonObject.getString("status_Message");
                         if(name.equals("")) {
-                            new Utils().balancebtc();
+                            new Utils().zhuce();
                         }else{
                             Data.setauth0type(name);
                             Data.getcontext().startActivity(new Intent(Data.getcontext(), login.class));
@@ -120,14 +120,9 @@ public class Utilshttp {
                             Data.sethieramount(str);
                             if(Data.gettype().equals("txactivity")||Data.gettype().equals("czactivity")) {
                                 Data.gethiertext().setText(str);
+                                WeiboDialogUtils.closeDialog(Data.getdialog());
                             }
                         }
-                        if(Data.gettype().equals("login")||Data.gettype().equals("fragment1")||Data.gettype().equals("type")) {
-                            Looper.prepare();
-                            getxrpamount();
-                            Looper.loop();
-                        }
-                        WeiboDialogUtils.closeDialog(Data.getdialog());
                     } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
                         Looper.prepare();
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp4) +
@@ -141,6 +136,11 @@ public class Utilshttp {
                     WeiboDialogUtils.closeDialog(Data.getdialog());
                     Looper.loop();
                     e.printStackTrace();
+                }
+                if(Data.gettype().equals("login")||Data.gettype().equals("fragment1")||Data.gettype().equals("type")) {
+                    Looper.prepare();
+                    getxrpamount();
+                    Looper.loop();
                 }
             }
         }).start(); // 开启线程
@@ -659,14 +659,18 @@ public class Utilshttp {
                         String sequence = result.substring(index+1,result.length());
                         LogCook.d("瑞波币余额", balance);Data.setxrpamount(balance);
                         LogCook.d("瑞波币交易序号", sequence);Data.setxrpserialnumber(sequence);
-                        if(Data.gettype().equals("fragment3")){
-                            if (Data.getbizhong().equals("XRP")) {
-                                new Transfer().xrpcreatetransaction();
-                            }else if (Data.getbizhong().equals("AED")) {
-                                new Transfer().aedcreatetransaction();
-                            }
+                        if (Data.getbizhong().equals("trustset")) {
+                            new Transfer().trustsetcreatetransaction();
                         }else {
-                            new Utils().send2();
+                            if (Data.gettype().equals("fragment3")) {
+                                if (Data.getbizhong().equals("XRP")) {
+                                    new Transfer().xrpcreatetransaction();
+                                } else if (Data.getbizhong().equals("AED")) {
+                                    new Transfer().aedcreatetransaction();
+                                }
+                            } else {
+                                new Utilshttp().getaedamount();
+                            }
                         }
                     } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24) +
@@ -675,7 +679,7 @@ public class Utilshttp {
                             WeiboDialogUtils.closeDialog(Data.getdialog());
                         }else {
                             Data.setxrpamount("0");
-                            new Utils().send2();
+                            new Utilshttp().getaedamount();
                         }
                     }
                 } catch (Exception e) {
@@ -684,7 +688,7 @@ public class Utilshttp {
 
                     }else {
                         Data.setxrpamount("0");
-                        new Utils().send2();
+                        new Utilshttp().getaedamount();
                     }
                     e.printStackTrace();
                 }
@@ -747,6 +751,54 @@ public class Utilshttp {
                     Looper.loop();
                     e.printStackTrace();
                 }
+            }
+        }).start();
+    }
+
+    /**
+     * 获取aed余额
+     */
+    public void getaedamount() {
+        new Thread(new Runnable() {
+            public void run() {
+                String result = "";Looper.prepare();
+                try {
+                    String data = "{\"account\":\""+Data.getxrpaddress()+"\",\"currency\":\"AED\"}";
+                    data = URLEncoder.encode(data, "UTF-8");
+                    String urlName = Data.gethttp1()+"/hsRPCNodeServer/xrp/accountLines?jsonParams="+data;
+                    LogCook.d("发送参数", urlName);
+                    URL U = new URL(urlName);
+                    URLConnection connection = U.openConnection();
+                    connection.connect();
+                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        result += line;
+                    }
+                    LogCook.d("获取aed余额/账号返回数据", result);
+                    in.close();
+                    JSONObject jsonObject = new JSONObject(result);
+                    if (jsonObject.getString("status_Sucess").equals("true")) {
+                        result=jsonObject.getString("status_Result");
+                        int index = getIndex(result,1,"#");
+                        String sequence = result.substring(0,index);
+                        String balance = result.substring(index+1,result.length());
+                        LogCook.d("瑞波代币余额", balance);Data.setaedamount(balance);
+                        LogCook.d("瑞波代币发行地址", sequence);Data.setaedaddress(sequence);
+                        new Utils().send2();
+                    } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp25) +
+                                jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
+                            Data.setaedamount("0");Data.setaedaddress("");
+                            new Utils().send2();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp25), Toast.LENGTH_SHORT).show();
+                    Data.setaedamount("0");Data.setaedaddress("");
+                    new Utils().send2();
+                    e.printStackTrace();
+                }
+                Looper.loop();
             }
         }).start();
     }

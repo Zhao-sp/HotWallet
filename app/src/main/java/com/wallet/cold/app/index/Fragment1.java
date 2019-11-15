@@ -130,6 +130,8 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                 view = LayoutInflater.from(mContext).inflate(R.layout.item_amount, null);
                 viewHolder.mTextView = (TextView) view.findViewById(R.id.name);
                 viewHolder.image = (ImageView) view.findViewById(R.id.jimage);
+                viewHolder.fxad = (TextView) view.findViewById(R.id.fxad);
+                viewHolder.fxad.setVisibility(View.GONE);
                 if (mList.get(i).equals("ETH")) {
                     viewHolder.ethxianjin = (TextView) view.findViewById(R.id.xianjin);
                     viewHolder.ethyue = (TextView) view.findViewById(R.id.yue);
@@ -150,17 +152,18 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                     viewHolder.xrpxianjin.setTextColor(0x66ffffff);
                     Data.setxrprmbtext(viewHolder.xrpxianjin);
                 }else if (mList.get(i).equals("AED")) {
+                    viewHolder.fxad.setVisibility(View.VISIBLE);
                     viewHolder.aedxianjin = (TextView) view.findViewById(R.id.xianjin);
                     viewHolder.aedyue = (TextView) view.findViewById(R.id.yue);
                     viewHolder.aedyue.setTextColor(0xffffffff);
                     Data.setaedtext(viewHolder.aedyue);
-                    viewHolder.aedxianjin.setTextColor(0x66ffffff);
-                    Data.setaedrmbtext(viewHolder.aedxianjin);
+                    viewHolder.aedxianjin.setTextColor(0xffffffff);
+                    Data.setaedaddresstext(viewHolder.aedxianjin);
                 } else {
                     viewHolder.hierxianjin = (TextView) view.findViewById(R.id.xianjin);
                     viewHolder.hieryue = (TextView) view.findViewById(R.id.yue);
-                    viewHolder.hieryue.setTextColor(0xffffffff);
-                    viewHolder.hierxianjin.setTextColor(0x66ffffff);
+                    viewHolder.hieryue.setTextColor(0xffffffff);Data.sethbbtext(viewHolder.hieryue);
+                    viewHolder.hierxianjin.setTextColor(0x66ffffff);Data.sethbbrmbtext(viewHolder.hierxianjin);
                 }
                 viewHolder.rrrr = view.findViewById(R.id.rrrr);
                 view.setTag(viewHolder);
@@ -206,11 +209,10 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                     }
                 }
                 if (mList.get(i).equals("AED")) {
-                    viewHolder.image.setImageResource(R.drawable.xrp);
+                    viewHolder.image.setImageResource(R.drawable.aed);
                     if (!Data.getxrpamount().equals("")) {
-                        viewHolder.aedyue.setText(Data.getxrpamount());
-                        DecimalFormat df1 = new DecimalFormat("0.00");
-                        viewHolder.aedxianjin.setText("￥"+df1.format(Double.parseDouble(Data.getxrpamount())*1.9*7));
+                        viewHolder.aedyue.setText(Data.getaedamount());
+                        viewHolder.aedxianjin.setText(Data.getaedaddress());
                     }
                 }
                 Data.getcountamount().setText(Data.getamountrmb());
@@ -248,7 +250,7 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
             return view;
         }
         class ViewHolder {
-            TextView mTextView,btcyue,ethyue,hieryue,btcxianjin,ethxianjin,hierxianjin,xrpyue,xrpxianjin,aedyue,aedxianjin;
+            TextView mTextView,btcyue,ethyue,hieryue,btcxianjin,ethxianjin,hierxianjin,xrpyue,xrpxianjin,aedyue,aedxianjin,fxad;
             ImageView image;
             RelativeLayout rrrr;
         }

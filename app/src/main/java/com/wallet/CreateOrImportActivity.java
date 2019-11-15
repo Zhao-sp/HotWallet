@@ -26,6 +26,7 @@ import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
+import com.wallet.cold.utils.Utilshttp;
 
 import java.io.File;
 

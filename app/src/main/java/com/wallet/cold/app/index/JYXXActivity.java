@@ -75,10 +75,15 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
         String amsg2=intent.getStringExtra("amsg2");
         if(amsg.equals("AED")){
             trustset.setVisibility(View.VISIBLE);
+            balance.setVisibility(View.INVISIBLE);
         }
         name.setText(amsg);
         jxye.setText(amsg1+" "+amsg);
-        balance.setText("≈"+amsg2);
+        if(amsg2.equals("")){
+            balance.setText("≈0");
+        }else {
+            balance.setText("≈" + amsg2);
+        }
         int typeheight= Utils.getstatus(JYXXActivity.this);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) sz.getLayoutParams();
         lp.topMargin = typeheight+10;

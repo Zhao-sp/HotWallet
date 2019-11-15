@@ -29,14 +29,14 @@ public class Data extends Application {
     private static Handler handler;
     private static int n,count,button,restart,signcount1,percent,page;
     private static boolean uxto,btcsign,isdfu,islanguages,dfuupdate,isshangla;
-    private static TextView balance,cardmoney,countamount,pttext,hiertext,btctext,btcrmbtext,ethtext,ethrmbtext,xrptext,xrprmbtext,aedtext,aedrmbtext;
+    private static TextView balance,cardmoney,countamount,pttext,hiertext,btctext,btcrmbtext,ethtext,ethrmbtext,xrptext,xrprmbtext,aedtext,aedaddresstext,hbbtext,hbbrmbtext;
     private static SQLiteDatabase db;
     private static BluetoothAdapter BluetoothAdapter;
     private static String limit,isapp,ethtype,returnbledata,btcsigndata,username,password,plaint,auth0type,resulterror,btcrmbbalance,ethrmbbalance,hieramount,amountrmb,
             result,btcaddress,ethaddress,deviceaddress,devicename,path,blename, receivedata,btcsignerror,txamount,auth0pubkey,auth0address,auth0sign,auth0uuid,hotzjc,
             btcbalance,ethbalance,type,btctype,pubkey,sign,end,hash,bizhong,scan,rlpdata,bletype,scriptPubKey1,resultdata,strhex1,strhex2,iseth,data,data2,saoma,yue,fee,to,
             hotethaddress,hotbtcaddress,apptype,hotethprv,hotbtcprv,hotbtcpub,hotpassword,fingerprints,fingerprintsname,http1,hiersign,objectId,ptamount,isblecomment,paytype,xrppub,
-            xrpaddress,xrpamount,xrpserialnumber,xrprmbbalance;
+            xrpaddress,xrpamount,xrpserialnumber,xrprmbbalance,aedamount,aedaddress;
     public static Handler gethandler() {
         return handler;
     }
@@ -728,23 +728,41 @@ public class Data extends Application {
     public static void setxrpserialnumber(String xrpserialnumber) {
         Data.xrpserialnumber = xrpserialnumber;
     }
-    public static String getxrprmbbalance() {
-        return xrprmbbalance;
-    }//xrp人民币
-    public static void setxrprmbbalance(String xrprmbbalance) {
-        Data.xrprmbbalance = xrprmbbalance;
-    }
     public static TextView getaedtext() {
         return aedtext;
     }
     public static void setaedtext(TextView aedtext) {
         Data.aedtext = aedtext;
     }
-    public static TextView getaedrmbtext() {
-        return aedrmbtext;
+    public static TextView getaedaddresstext() {
+        return aedaddresstext;
     }
-    public static void setaedrmbtext(TextView aedrmbtext) {
-        Data.aedrmbtext = aedrmbtext;
+    public static void setaedaddresstext(TextView aedaddresstext) {
+        Data.aedaddresstext = aedaddresstext;
+    }
+    public static TextView gethbbtext() {
+        return hbbtext;
+    }
+    public static void sethbbtext(TextView hbbtext) {
+        Data.hbbtext = hbbtext;
+    }
+    public static TextView gethbbrmbtext() {
+        return hbbrmbtext;
+    }
+    public static void sethbbrmbtext(TextView hbbrmbtext) {
+        Data.hbbrmbtext = hbbrmbtext;
+    }
+    public static String getaedamount() {
+        return aedamount;
+    }//瑞波代币余额
+    public static void setaedamount(String aedamount) {
+        Data.aedamount = aedamount;
+    }
+    public static String getaedaddress() {
+        return aedaddress;
+    }//瑞波代币发行地址
+    public static void setaedaddress(String aedaddress) {
+        Data.aedaddress = aedaddress;
     }
     @Override
     public void onCreate(){

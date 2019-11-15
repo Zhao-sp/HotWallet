@@ -301,6 +301,7 @@
     <string name="uhttp22">Failure to turn out</string>
     <string name="uhttp23">Deduction success, purchase failure</string>
     <string name="uhttp24">Failed to get XRP balance / sequence</string>
+    <string name="uhttp25">Failed to get AED balance / issue address</string>
 
     <string name="p1">Out when</string>
     <string name="p2">Investment</string>
