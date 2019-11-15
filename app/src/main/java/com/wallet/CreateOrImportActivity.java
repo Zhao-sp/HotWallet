@@ -16,6 +16,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -23,12 +24,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.cold.app.main.MainActivity;
+import com.wallet.cold.utils.Base58;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.Utilshttp;
+import com.wallet.cold.utils.Utils;
+
+import org.bouncycastle.crypto.digests.RIPEMD160Digest;
 
 import java.io.File;
+import java.math.BigInteger;
 
 public class CreateOrImportActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
@@ -60,11 +65,11 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         if (Build.VERSION.SDK_INT >= 23) {
             if (ContextCompat.checkSelfPermission(CreateOrImportActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(CreateOrImportActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-            }else{
+            } else {
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                    File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/com.hotwallet");
+                    File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet");
                     LogCook.getInstance()
-                            .setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath()+"/com.hotwallet")
+                            .setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet")
                             .setLogName("log.txt")
                             .isOpen(true)
                             .isSave(true)
@@ -76,6 +81,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
             }
         }
     }
+
 
     /**
      * 权限回调处理
