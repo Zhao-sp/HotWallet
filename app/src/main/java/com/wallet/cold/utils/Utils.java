@@ -1617,8 +1617,10 @@ public class Utils extends Activity {
                                                             Data.getbizhong().equals("Pawn")) {
                                                         Data.setethtype("dealid");
                                                         new Transfer().eth();
-                                                    } else if (Data.getbizhong().equals("XRP")) {
+                                                    } else if (Data.getbizhong().equals("XRP")||Data.getbizhong().equals("AED")) {
                                                         new Utilshttp().getxrpamount();
+                                                    }else if (Data.getbizhong().equals("trustset")) {
+                                                        new Transfer().trustsetcreatetransaction();
                                                     }
                                                     Looper.loop();
                                                 }
@@ -1684,6 +1686,14 @@ public class Utils extends Activity {
                                             }else if (Data.getbizhong().equals("XRP")&&!Data.getdata().equals("")) {
                                                 LogCook.d("xrpsign",data2.substring(2,data2.length()));
                                                 new Transfer().xrpsendtransaction(data2.substring(2,data2.length()));
+                                                Data.setdata("");
+                                            }else if (Data.getbizhong().equals("AED")&&!Data.getdata().equals("")) {
+                                                LogCook.d("aedsign",data2.substring(2,data2.length()));
+                                                new Transfer().aedsendtransaction(data2.substring(2,data2.length()));
+                                                Data.setdata("");
+                                            }else if (Data.getbizhong().equals("trustset")&&!Data.getdata().equals("")) {
+                                                LogCook.d("trustsetsign",data2.substring(2,data2.length()));
+                                                new Transfer().trustsetsendtransaction(data2.substring(2,data2.length()));
                                                 Data.setdata("");
                                             }
                                             Data.setresultdata(Data.getdata2());
@@ -1932,7 +1942,7 @@ public class Utils extends Activity {
                         int count = getSubCount_2(result, "{");Data.getbledata().add("ETH");
                         Data.getbledata().add("BTC");
                         //Data.getbledata().add("Hier");
-                        Data.getbledata().add("XRP");
+                        Data.getbledata().add("XRP");Data.getbledata().add("AED");
                         if (count == 1) {
                             JSONObject jsonObject = new JSONObject(result);
                             current_price = jsonObject.getString("base");

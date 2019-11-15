@@ -108,6 +108,8 @@
     <string name="fff39">注册失败</string>
     <string name="fff40">登录成功</string>
     <string name="fff41">登录失败</string>
+    <string name="fff42">trustset成功</string>
+    <string name="fff43">trustset失败</string>
 
     <string name="add1">请输入Token或合约地址</string>
     <string name="add3">添加币种</string>

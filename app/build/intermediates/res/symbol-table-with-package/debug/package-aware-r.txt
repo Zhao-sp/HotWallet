@@ -1034,6 +1034,7 @@ id l2
 id l3
 id l4
 id languages
+id layout_aed
 id layout_btc
 id layout_eth
 id layout_hide
@@ -1212,6 +1213,7 @@ id title_template
 id to
 id top
 id topPanel
+id trustset
 id tv_content
 id tv_footer
 id tv_name
@@ -1581,6 +1583,8 @@ string fff39
 string fff4
 string fff40
 string fff41
+string fff42
+string fff43
 string fff5
 string fff6
 string fff7

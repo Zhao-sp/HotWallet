@@ -16,7 +16,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -24,16 +23,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.cold.app.main.MainActivity;
-import com.wallet.cold.utils.Base58;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.Utils;
-
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
 
 import java.io.File;
-import java.math.BigInteger;
 
 public class CreateOrImportActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;

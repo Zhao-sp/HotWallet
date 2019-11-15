@@ -41,4 +41,18 @@
         android:textSize="20dp"
         android:gravity="center"
         android:text="XRP" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="1dp"
+        android:background="#ff364359" />
+
+    <TextView
+        android:id="@+id/layout_aed"
+        android:textColor="@color/white"
+        android:layout_height="30dp"
+        android:layout_width="80dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="AED" />
 </LinearLayout>

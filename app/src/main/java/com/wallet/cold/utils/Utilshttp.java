@@ -660,7 +660,11 @@ public class Utilshttp {
                         LogCook.d("瑞波币余额", balance);Data.setxrpamount(balance);
                         LogCook.d("瑞波币交易序号", sequence);Data.setxrpserialnumber(sequence);
                         if(Data.gettype().equals("fragment3")){
-                            new Transfer().xrpcreatetransaction();
+                            if (Data.getbizhong().equals("XRP")) {
+                                new Transfer().xrpcreatetransaction();
+                            }else if (Data.getbizhong().equals("AED")) {
+                                new Transfer().aedcreatetransaction();
+                            }
                         }else {
                             new Utils().send2();
                         }
@@ -714,19 +718,31 @@ public class Utilshttp {
                     JSONObject jsonObject = new JSONObject(result);
                     if (jsonObject.getString("status_Result").equals("success")) {
                         Looper.prepare();
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff32), Toast.LENGTH_SHORT).show();
+                        if(Data.getbizhong().equals("trustset")){
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff42), Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff32), Toast.LENGTH_SHORT).show();
+                        }
                         WeiboDialogUtils.closeDialog(Data.getdialog());
                         Looper.loop();
                     } else if (jsonObject.getString("status_Result").equals("error")) {//返回错误信息
                         Looper.prepare();
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) +
-                                jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
+                        if(Data.getbizhong().equals("trustset")){
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff43), Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30) +
+                                    jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
+                        }
                         WeiboDialogUtils.closeDialog(Data.getdialog());
                         Looper.loop();
                     }
                 } catch (Exception e) {
                     Looper.prepare();
-                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30), Toast.LENGTH_SHORT).show();
+                    if(Data.getbizhong().equals("trustset")){
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff43), Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff30), Toast.LENGTH_SHORT).show();
+                    }
                     WeiboDialogUtils.closeDialog(Data.getdialog());
                     Looper.loop();
                     e.printStackTrace();

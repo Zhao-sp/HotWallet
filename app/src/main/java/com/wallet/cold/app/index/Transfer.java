@@ -245,7 +245,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 }else if(popadd.getText().toString().equals("ETH")){
                     trade(popadd.getText().toString(),limit1.getText().toString(),to.getText().toString(),amountyue.getText().toString(),fee.getText().toString()
                             ,balance.getText().toString(), Data.getethaddress());
-                }else if(popadd.getText().toString().equals("XRP")){
+                }else if(popadd.getText().toString().equals("XRP")||popadd.getText().toString().equals("AED")){
                     trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), ""
                             , balance.getText().toString(), Data.getxrpaddress());
                 }
@@ -340,7 +340,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                         String a1 = "55aa260110000002000035aa55";//结束签名
                         sendble(a1, Data.getmService());
                     }
-                } else if (type.equals("XRP")) {
+                } else if (type.equals("XRP")||type.equals("AED")) {
                     Double a = Double.parseDouble(balance)*1000000;
                     Double b = Double.parseDouble(amountyue);
                     if (a.compareTo(b) < 0) {
@@ -352,7 +352,11 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                         Data.setto(to);
                         Data.setlimit(pin);
                         Data.setsign("end0");
-                        Data.setbizhong("XRP");
+                        if(type.equals("XRP")) {
+                            Data.setbizhong("XRP");
+                        }else if(type.equals("AED")) {
+                            Data.setbizhong("AED");
+                        }
                         Data.setsaoma("yes");
                         String a1 = "55aa260110000002000035aa55";//结束签名
                         sendble(a1, Data.getmService());
@@ -945,6 +949,88 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
     }
 
     /**
+     *瑞波币代币构造待签名数据
+     */
+    public void aedcreatetransaction(){
+        String data1="53545800120000228000000024";
+        String data2=Integer.toHexString(Integer.parseInt(Data.getxrpserialnumber()));
+        for(int i=data2.length();i<8;i++){
+            data2="0"+data2;
+        }
+        String data3="61";
+        String data4="D4838D7EA4C68000";
+        String data5="0000000000000000000000004145440000000000";
+        String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
+        String data52="68400000000000000C7321";
+        String data6=Data.getxrppub();
+        String data7="8114";
+        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        String data9="8314";
+        String data10="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+        sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+data9+data10);//进行签名
+    }
+
+    /**
+     *aed发送交易数据
+     */
+    public void aedsendtransaction(String sign){
+        String data1="120000228000000024";
+        String data2=Integer.toHexString(Integer.parseInt(Data.getxrpserialnumber()));
+        for(int i=data2.length();i<8;i++){
+            data2="0"+data2;
+        }
+        String data3="61";
+        String data4="D4838D7EA4C68000";
+        String data5="0000000000000000000000004145440000000000";
+        String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
+        String data52="68400000000000000C7321";
+        String data6=Data.getxrppub();
+        String data7="74";
+        String data8=strlength(sign);
+        String data9="8114";
+        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        String data11="8314";
+        String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
+        new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10+data11+data12);
+    }
+
+    /**
+     *trustset构造待签名数据
+     */
+    public void trustsetcreatetransaction(){
+        String data1="53545800120014228000000024";
+        String data2="00000023201B001E9C7A";
+        String data3="63";
+        String data4="D5038D7EA4C68000";
+        String data5="0000000000000000000000004145440000000000";
+        String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
+        String data52="68400000000000000C7321";
+        String data6=Data.getxrppub();
+        String data7="8114";
+        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8);//进行签名
+    }
+
+    /**
+     *trustset发送交易数据
+     */
+    public void trustsetsendtransaction(String sign){
+        String data1="120014228000000024";
+        String data2="00000023201B001E9C7A";
+        String data3="63";
+        String data4="D5038D7EA4C68000";
+        String data5="0000000000000000000000004145440000000000";
+        String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
+        String data52="68400000000000000C7321";
+        String data6=Data.getxrppub();
+        String data7="74";
+        String data8=strlength(sign);
+        String data9="8114";
+        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
+        new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10);
+    }
+
+    /**
      * 数据签名
      * @param s
      */
@@ -1151,7 +1237,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 String a = "55aa05010103000000" + strlength + s + ret + "aa55";
                 sendble(a, Data.getmService());
             }
-        }else if(Data.getbizhong().equals("XRP")){
+        }else if(Data.getbizhong().equals("XRP")||Data.getbizhong().equals("AED")||Data.getbizhong().equals("trustset")){
             String strlength = strlength(s);
             String data1 = "0501" + "0300000000" + strlength + s;
             String ret = strhex(data1);
@@ -1203,6 +1289,16 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 popadd.setText("XRP");
                 popadd1.setText("XRP");
                 popadd2.setText("drops");
+                popadd3.setVisibility(View.GONE);
+                fee.setVisibility(View.GONE);
+                fee1.setVisibility(View.GONE);
+                popWinShare.dismiss();
+                balance.setText(Data.getxrpamount());
+            } else if (i == R.id.layout_aed) {
+                Data.setbizhong("AED");
+                popadd.setText("AED");
+                popadd1.setText("AED");
+                popadd2.setText("AED");
                 popadd3.setVisibility(View.GONE);
                 fee.setVisibility(View.GONE);
                 fee1.setVisibility(View.GONE);

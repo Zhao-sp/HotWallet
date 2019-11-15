@@ -108,6 +108,8 @@
     <string name="fff39">Registration Failed</string>
     <string name="fff40">Login successfully</string>
     <string name="fff41">Login failed</string>
+    <string name="fff42">Trustset Successful</string>
+    <string name="fff43">Trustset Failed</string>
 
     <string name="add1">Please enter Token or contract address</string>
     <string name="add3">Add currencies</string>

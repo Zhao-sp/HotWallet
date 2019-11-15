@@ -46,7 +46,7 @@ public class login extends AppCompatActivity implements OnClickListener {
         if(v.getId() == R.id.verify) {
                 final EditText inputServer = new EditText(this);
                 inputServer.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            inputServer.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                inputServer.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.recover5).setView(inputServer).setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

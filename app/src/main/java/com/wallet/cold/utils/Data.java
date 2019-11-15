@@ -29,7 +29,7 @@ public class Data extends Application {
     private static Handler handler;
     private static int n,count,button,restart,signcount1,percent,page;
     private static boolean uxto,btcsign,isdfu,islanguages,dfuupdate,isshangla;
-    private static TextView balance,cardmoney,countamount,pttext,hiertext,btctext,btcrmbtext,ethtext,ethrmbtext,xrptext,xrprmbtext;
+    private static TextView balance,cardmoney,countamount,pttext,hiertext,btctext,btcrmbtext,ethtext,ethrmbtext,xrptext,xrprmbtext,aedtext,aedrmbtext;
     private static SQLiteDatabase db;
     private static BluetoothAdapter BluetoothAdapter;
     private static String limit,isapp,ethtype,returnbledata,btcsigndata,username,password,plaint,auth0type,resulterror,btcrmbbalance,ethrmbbalance,hieramount,amountrmb,
@@ -733,6 +733,18 @@ public class Data extends Application {
     }//xrp人民币
     public static void setxrprmbbalance(String xrprmbbalance) {
         Data.xrprmbbalance = xrprmbbalance;
+    }
+    public static TextView getaedtext() {
+        return aedtext;
+    }
+    public static void setaedtext(TextView aedtext) {
+        Data.aedtext = aedtext;
+    }
+    public static TextView getaedrmbtext() {
+        return aedrmbtext;
+    }
+    public static void setaedrmbtext(TextView aedrmbtext) {
+        Data.aedrmbtext = aedrmbtext;
     }
     @Override
     public void onCreate(){

@@ -149,6 +149,13 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                     Data.setxrptext(viewHolder.xrpyue);
                     viewHolder.xrpxianjin.setTextColor(0x66ffffff);
                     Data.setxrprmbtext(viewHolder.xrpxianjin);
+                }else if (mList.get(i).equals("AED")) {
+                    viewHolder.aedxianjin = (TextView) view.findViewById(R.id.xianjin);
+                    viewHolder.aedyue = (TextView) view.findViewById(R.id.yue);
+                    viewHolder.aedyue.setTextColor(0xffffffff);
+                    Data.setaedtext(viewHolder.aedyue);
+                    viewHolder.aedxianjin.setTextColor(0x66ffffff);
+                    Data.setaedrmbtext(viewHolder.aedxianjin);
                 } else {
                     viewHolder.hierxianjin = (TextView) view.findViewById(R.id.xianjin);
                     viewHolder.hieryue = (TextView) view.findViewById(R.id.yue);
@@ -198,14 +205,13 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                         viewHolder.xrpxianjin.setText("￥"+df1.format(Double.parseDouble(Data.getxrpamount())*1.9*7));
                     }
                 }
-                if (mList.get(i).equals("EOS")) {
-                    viewHolder.image.setImageResource(R.drawable.eos);
-                }
-                if (mList.get(i).equals("DASH")) {
-                    viewHolder.image.setImageResource(R.drawable.dash);
-                }
-                if (mList.get(i).equals("LBTC")) {
-                    viewHolder.image.setImageResource(R.drawable.lbtc);
+                if (mList.get(i).equals("AED")) {
+                    viewHolder.image.setImageResource(R.drawable.xrp);
+                    if (!Data.getxrpamount().equals("")) {
+                        viewHolder.aedyue.setText(Data.getxrpamount());
+                        DecimalFormat df1 = new DecimalFormat("0.00");
+                        viewHolder.aedxianjin.setText("￥"+df1.format(Double.parseDouble(Data.getxrpamount())*1.9*7));
+                    }
                 }
                 Data.getcountamount().setText(Data.getamountrmb());
                 ViewHolder finalViewHolder = viewHolder;
@@ -224,6 +230,9 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                         } else if (msg.equals("XRP")) {
                             msg1 = finalViewHolder.xrpyue.getText().toString();
                             msg2 = finalViewHolder.xrpxianjin.getText().toString();
+                        } else if (msg.equals("AED")) {
+                            msg1 = finalViewHolder.aedyue.getText().toString();
+                            msg2 = finalViewHolder.aedxianjin.getText().toString();
                         } else {
                             msg1 = finalViewHolder.hieryue.getText().toString();
                             msg2 = finalViewHolder.hierxianjin.getText().toString();
@@ -239,7 +248,7 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
             return view;
         }
         class ViewHolder {
-            TextView mTextView,btcyue,ethyue,hieryue,btcxianjin,ethxianjin,hierxianjin,xrpyue,xrpxianjin;
+            TextView mTextView,btcyue,ethyue,hieryue,btcxianjin,ethxianjin,hierxianjin,xrpyue,xrpxianjin,aedyue,aedxianjin;
             ImageView image;
             RelativeLayout rrrr;
         }
