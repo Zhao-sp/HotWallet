@@ -10,7 +10,7 @@ android {
             storePassword 'hotwallet123456'
         }
     }
-    compileSdkVersion 28
+    compileSdkVersion 29
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
@@ -20,7 +20,7 @@ android {
         applicationId "com.hotwallet"
         multiDexEnabled true
         minSdkVersion 18
-        targetSdkVersion 28
+        targetSdkVersion 29
     }
     sourceSets {
         main {
