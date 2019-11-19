@@ -4,11 +4,11 @@ buildscript {
         var = '\\hotwallet.jks'
     }
     repositories {
-        jcenter()
+        jcenter(){url'https://maven.aliyun.com/repository/jcenter'}
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.5.2'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         //classpath 'cn.leo.plugin:magic-plugin:1.0.0'
     }
@@ -16,7 +16,7 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        jcenter(){url'https://maven.aliyun.com/repository/jcenter'}
         google()
         maven { url 'https://jitpack.io' }
     }
