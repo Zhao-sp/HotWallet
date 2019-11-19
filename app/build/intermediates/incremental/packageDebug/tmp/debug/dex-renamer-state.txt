@@ -1,4 +1,4 @@
-#Fri Nov 15 20:23:23 CST 2019
+#Tue Nov 19 11:13:12 CST 2019
 path.3=classes3.dex
 path.2=classes2.dex
 path.1=classes.dex
@@ -7,7 +7,7 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=E\:\\work\\work\\Android HotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
-base.2=E\:\\work\\work\\Android HotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
-base.1=E\:\\work\\work\\Android HotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
-base.0=E\:\\work\\work\\Android HotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+base.3=E\:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+base.2=E\:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+base.1=E\:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+base.0=E\:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0

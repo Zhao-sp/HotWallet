@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'hotwallet'
             keyPassword 'hotwallet123456'
-            storeFile file('E:\\work\\work\\Android HotWallet\\app\\hotwallet.jks')
+            storeFile file('E:\\work\\work\\AndroidHotWallet\\app\\hotwallet.jks')
             storePassword 'hotwallet123456'
         }
     }
@@ -22,11 +22,17 @@ android {
         minSdkVersion 18
         targetSdkVersion 28
     }
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['src/main/libs']
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled true //启用Proguard
-            shrinkResources true //是否清理无用资源,依赖于minifyEnabled
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            minifyEnabled false //启用Proguard代码混肴
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             aaptOptions.cruncherEnabled = false
             aaptOptions.useNewCruncher = false
             signingConfig signingConfigs.config
@@ -34,9 +40,8 @@ android {
         }
         debug {
             signingConfig signingConfigs.config
-            minifyEnabled false  //不启用Proguard
-            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
-            zipAlignEnabled false //是否启用zipAlign压缩
+            minifyEnabled false
+            zipAlignEnabled true
         }
     }
     compileOptions {

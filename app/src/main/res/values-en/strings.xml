@@ -24,6 +24,7 @@
     <string name="selete7">Pin code input length error</string>
     <string name="selete8">The PIN codes of the two inputs are inconsistent</string>
     <string name="selete9">Auxiliary Word Generation...</string>
+    <string name="selete10">Initialize Dictionary</string>
 
     <string name="recover1">Import mnemonics</string>
     <string name="recover2">Mnemonic word</string>
@@ -198,6 +199,10 @@
     <string name="u32">Query BTC Balance Network Request Failed</string>
     <string name="u33">Query ETH Balance Network Request Failed</string>
     <string name="u34">Failed to register BTC address network request</string>
+    <string name="u36">Fingerprint entered successfully</string>
+    <string name="u37">Fingerprint deleted successfully</string>
+    <string name="u38">Fingerprint entry failed, please re-enter</string>
+
 
     <string name="c1">The results are as follows:</string>
     <string name="c2">Failed to parse the picture</string>

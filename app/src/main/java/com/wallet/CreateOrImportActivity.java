@@ -6,7 +6,9 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,7 +18,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -24,16 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.cold.app.main.MainActivity;
-import com.wallet.cold.utils.Base58;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.Utils;
-
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
 
 import java.io.File;
-import java.math.BigInteger;
 
 public class CreateOrImportActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
@@ -57,6 +53,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         mScreenHeight = dm.heightPixels;
         initAnimation();
         startAnimation();
+        new JniUtils().getbbCourseKeyFromC(this);
         SQLiteDatabase db = openOrCreateDatabase("HotWallet.db", MODE_PRIVATE, null);//创建数据库
         Data.setdb(db);Data.setresult("");Data.setisblecomment("0");
         Data.sethttp1("http://111.225.200.132:8181");//8181开发环境 8282演示环境
@@ -81,7 +78,6 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
             }
         }
     }
-
 
     /**
      * 权限回调处理

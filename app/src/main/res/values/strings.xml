@@ -198,6 +198,9 @@
     <string name="u32">查询BTC余额网络请求失败</string>
     <string name="u33">查询ETH余额网络请求失败</string>
     <string name="u34">注册BTC地址网络请求失败</string>
+    <string name="u36">录入指纹成功</string>
+    <string name="u37">删除指纹成功</string>
+    <string name="u38">录入指纹失败，请重新录入</string>
 
     <string name="c1">解析成功，结果为：</string>
     <string name="c2">解析图片失败</string>

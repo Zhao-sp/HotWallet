@@ -27,7 +27,7 @@ public class Data extends Application {
     private static Dialog dialog;
     private static Button startBtn;
     private static Handler handler;
-    private static int n,count,button,restart,signcount1,percent,page;
+    private static int n,count,button,restart,signcount1,percent,page,zdcount;
     private static boolean uxto,btcsign,isdfu,islanguages,dfuupdate,isshangla;
     private static TextView balance,cardmoney,countamount,pttext,hiertext,btctext,btcrmbtext,ethtext,ethrmbtext,xrptext,xrprmbtext,aedtext,aedaddresstext,hbbtext,hbbrmbtext;
     private static SQLiteDatabase db;
@@ -241,6 +241,12 @@ public class Data extends Application {
     }
     public static void setpage(int page) {
         Data.page = page;
+    }
+    public static int getzdcount() {
+        return zdcount;
+    }//初始化字典指令条数
+    public static void setzdcount(int zdcount) {
+        Data.zdcount = zdcount;
     }
     public static String getisapp() {
         return isapp;

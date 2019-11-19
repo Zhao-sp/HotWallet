@@ -1443,340 +1443,340 @@ public class Utils extends Activity {
                 runOnUiThread(new Runnable() {
                     public void run() {
                         if (!data.contains("bleerror")&& data !=null) {
-                                if(Data.getbletype().contains("Recording fingerprints")&& Data.getresulterror().equals("no")) {
-                                    Data.setresulterror("yes");
-                                    Toast.makeText(Data.getcontext(), "录入指纹成功", Toast.LENGTH_SHORT).show();
-                                    if (Data.gettype().equals("main+c")) {
+                            if(Data.getbletype().contains("Recording fingerprints")&& Data.getresulterror().equals("no")) {
+                                Data.setresulterror("yes");
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u36), Toast.LENGTH_SHORT).show();
+                                if (Data.gettype().equals("main+c")) {
+                                    Intent intent = new Intent(Data.getcontext(), CreateActivity.class);
+                                    Data.getcontext().startActivity(intent);
+                                } else if (Data.gettype().equals("main+r")) {
+                                    Intent intent = new Intent(Data.getcontext(), RecoverActivity.class);
+                                    Data.getcontext().startActivity(intent);
+                                }
+                            }else if(Data.getbletype().contains("Recording")&& Data.getresulterror().equals("no")) {//添加指纹
+                                Data.setresulterror("yes");
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u36), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Data.getcontext(), FingerprintsXQ.class);
+                                Data.getcontext().startActivity(intent);
+                            }else if(Data.getbletype().contains("Delete")&& Data.getresulterror().equals("no")) {//删除指纹
+                                Data.setresulterror("yes");
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u37), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Data.getcontext(), Fingerprints.class);
+                                Data.getcontext().startActivity(intent);
+                            }else if(Data.getbletype().equals("select fingerprints")) {//获取指纹信息
+                                new Fingerprints().bleresult(data2);
+                            }else if(Data.getbletype().equals("reset select")) {//获取指纹信息
+                                String data=data2.substring(6,data2.length());
+                                String a=hexString2binaryString(data);
+                                if(a.substring(0,3).equals("000")){
+                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u38), Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Intent intent = new Intent(Data.getcontext(), CreateActivity.class);
+                                    Data.getcontext().startActivity(intent);
+                                }
+                            }else if(Data.getbletype().equals("resetselect")) {//获取指纹信息
+                                String data=data2.substring(6,data2.length());
+                                String a=hexString2binaryString(data);
+                                if(a.substring(0,3).equals("000")){
+                                    new BleActivity().fingerprint();
+                                }else{
+                                    if(Data.gettype().equals("main+c")) {
                                         Intent intent = new Intent(Data.getcontext(), CreateActivity.class);
                                         Data.getcontext().startActivity(intent);
-                                    } else if (Data.gettype().equals("main+r")) {
+                                    }else if(Data.gettype().equals("main+r")){
                                         Intent intent = new Intent(Data.getcontext(), RecoverActivity.class);
                                         Data.getcontext().startActivity(intent);
                                     }
-                                }else if(Data.getbletype().contains("Recording")&& Data.getresulterror().equals("no")) {//添加指纹
-                                    Data.setresulterror("yes");
-                                    Toast.makeText(Data.getcontext(), "录入指纹成功", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Data.getcontext(), FingerprintsXQ.class);
-                                    Data.getcontext().startActivity(intent);
-                                }else if(Data.getbletype().contains("Delete")&& Data.getresulterror().equals("no")) {//删除指纹
-                                    Data.setresulterror("yes");
-                                    Toast.makeText(Data.getcontext(), "删除指纹成功", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Data.getcontext(), Fingerprints.class);
-                                    Data.getcontext().startActivity(intent);
-                                }else if(Data.getbletype().equals("select fingerprints")) {//获取指纹信息
-                                    new Fingerprints().bleresult(data2);
-                                }else if(Data.getbletype().equals("reset select")) {//获取指纹信息
-                                    String data=data2.substring(6,data2.length());
-                                    String a=hexString2binaryString(data);
-                                    if(a.substring(0,3).equals("000")){
-                                        Toast.makeText(Data.getcontext(), "录入指纹失败，请重新录入", Toast.LENGTH_SHORT).show();
-                                    }else{
-                                        Intent intent = new Intent(Data.getcontext(), CreateActivity.class);
+                                }
+                            }else if(Data.getbletype().equals("gainboot")) {//获取卡片模式
+                                if(Data.getisapp().equals("no")) {
+                                    readboot();
+                                }else {
+                                    if (data2.equals("00")) {//app
+                                        gaintype();
+                                    } else if (data2.equals("01")) {//BootLoader
+                                        Intent intent = new Intent(Data.getcontext(), GengxinActivity.class);
                                         Data.getcontext().startActivity(intent);
                                     }
-                                }else if(Data.getbletype().equals("resetselect")) {//获取指纹信息
-                                    String data=data2.substring(6,data2.length());
-                                    String a=hexString2binaryString(data);
-                                    if(a.substring(0,3).equals("000")){
-                                        new BleActivity().fingerprint();
-                                    }else{
-                                        if(Data.gettype().equals("main+c")) {
-                                            Intent intent = new Intent(Data.getcontext(), CreateActivity.class);
-                                            Data.getcontext().startActivity(intent);
-                                        }else if(Data.gettype().equals("main+r")){
-                                            Intent intent = new Intent(Data.getcontext(), RecoverActivity.class);
-                                            Data.getcontext().startActivity(intent);
-                                        }
-                                    }
-                                }else if(Data.getbletype().equals("gainboot")) {//获取卡片模式
-                                    if(Data.getisapp().equals("no")) {
-                                        readboot();
-                                    }else {
-                                        if (data2.equals("00")) {//app
-                                            gaintype();
-                                        } else if (data2.equals("01")) {//BootLoader
-                                            Intent intent = new Intent(Data.getcontext(), GengxinActivity.class);
-                                            Data.getcontext().startActivity(intent);
-                                        }
-                                    }
-                                }else if (Data.getbletype().equals("resetpin")) {//重置pin码
-                                    Data.setbletype("");
-                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u29), Toast.LENGTH_SHORT).show();
-                                    WeiboDialogUtils.closeDialog(Data.getdialog());
-                                }else if (Data.getbletype().equals("recover")) {//导入助记词
-                                    if (Data.getbizhong().equals("1")) {
-                                        Intent intent = new Intent(Data.getcontext(), IndexActivity.class);
-                                        Data.getcontext().startActivity(intent);
-                                    }
-                                }else if (Data.getbletype().equals("Initialize")) {//生成助记词
+                                }
+                            }else if (Data.getbletype().equals("resetpin")) {//重置pin码
+                                Data.setbletype("");
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u29), Toast.LENGTH_SHORT).show();
+                                WeiboDialogUtils.closeDialog(Data.getdialog());
+                            }else if (Data.getbletype().equals("recover")) {//导入助记词
+                                if (Data.getbizhong().equals("1")) {
                                     Intent intent = new Intent(Data.getcontext(), IndexActivity.class);
                                     Data.getcontext().startActivity(intent);
-                                }else if (Data.getbletype().equals("address")) {//生成公钥 地址
-                                    if (Data.getbizhong().equals("BTC")) {
-                                        String address = Utils.address();
-                                        if (!TextUtils.isEmpty(address)) {
-                                            Bitmap codeBitmap = null;
-                                            try {
-                                                codeBitmap = Utils.createCode(address);
-                                                Data.setimgCode(codeBitmap);
-                                            } catch (WriterException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                        eth();
-                                    } else if (Data.getbizhong().equals("ETH")) {
-                                        String address = Utils.address();
-                                        if (!TextUtils.isEmpty(address)) {
-                                            Bitmap codeBitmap = null;
-                                            try {
-                                                codeBitmap = Utils.createCode(address);
-                                                Data.setethimgCode(codeBitmap);
-                                            } catch (WriterException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                        auth0();
-                                        //xrp();
-                                    } else if(Data.getbizhong().equals("AUTH0")){
+                                }
+                            }else if (Data.getbletype().equals("Initialize")) {//生成助记词
+                                Intent intent = new Intent(Data.getcontext(), IndexActivity.class);
+                                Data.getcontext().startActivity(intent);
+                            }else if (Data.getbletype().equals("address")) {//生成公钥 地址
+                                if (Data.getbizhong().equals("BTC")) {
+                                    String address = Utils.address();
+                                    if (!TextUtils.isEmpty(address)) {
+                                        Bitmap codeBitmap = null;
                                         try {
-                                            Thread.sleep(2000);
-                                        } catch (InterruptedException e) {
+                                            codeBitmap = Utils.createCode(address);
+                                            Data.setimgCode(codeBitmap);
+                                        } catch (WriterException e) {
                                             e.printStackTrace();
                                         }
-                                        String auth0pubkey = Data.getdata().substring(0,128);
-                                        LogCook.d("auth0公钥", auth0pubkey);
-                                        Data.setauth0pubkey(auth0pubkey);
-                                        String auth0address = Data.getdata().substring(128, Data.getdata().length());
-                                        LogCook.d("auth0地址", auth0address);
-                                        Data.setauth0address(auth0address);
-                                        xrp();
-                                    } else if(Data.getbizhong().equals("XRP")){
-                                        String xrppubkey = Data.getdata();
-                                        Data.setxrppub(xrppubkey);
-                                        String address = Utils.address();
-                                        if (!TextUtils.isEmpty(address)) {
-                                            Bitmap codeBitmap = null;
-                                            try {
-                                                codeBitmap = Utils.createCode(address);
-                                                Data.setxrpimgCode(codeBitmap);
-                                            } catch (WriterException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                        Data.setbletype("");
-                                        new Utilshttp().getauth0user();
-                                        //zhuce();
                                     }
-                                }else if (Data.getbletype().equals("type")) {
-                                    if (data2.substring(2, 4).equals("01") && data2.substring(0, 2).equals("01")) {//存在助记词存在pin码
-                                        Data.setbizhong("BTC");
-                                        Data.setbletype("address");
-                                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
+                                    eth();
+                                } else if (Data.getbizhong().equals("ETH")) {
+                                    String address = Utils.address();
+                                    if (!TextUtils.isEmpty(address)) {
+                                        Bitmap codeBitmap = null;
+                                        try {
+                                            codeBitmap = Utils.createCode(address);
+                                            Data.setethimgCode(codeBitmap);
+                                        } catch (WriterException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    auth0();
+                                    //xrp();
+                                } else if(Data.getbizhong().equals("AUTH0")){
+                                    try {
+                                        Thread.sleep(2000);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    String auth0pubkey = Data.getdata().substring(0,128);
+                                    LogCook.d("auth0公钥", auth0pubkey);
+                                    Data.setauth0pubkey(auth0pubkey);
+                                    String auth0address = Data.getdata().substring(128, Data.getdata().length());
+                                    LogCook.d("auth0地址", auth0address);
+                                    Data.setauth0address(auth0address);
+                                    xrp();
+                                } else if(Data.getbizhong().equals("XRP")){
+                                    String xrppubkey = Data.getdata();
+                                    Data.setxrppub(xrppubkey);
+                                    String address = Utils.address();
+                                    if (!TextUtils.isEmpty(address)) {
+                                        Bitmap codeBitmap = null;
+                                        try {
+                                            codeBitmap = Utils.createCode(address);
+                                            Data.setxrpimgCode(codeBitmap);
+                                        } catch (WriterException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    Data.setbletype("");
+                                    new Utilshttp().getauth0user();
+                                    //zhuce();
+                                }
+                            }else if (Data.getbletype().equals("type")) {
+                                if (data2.substring(2, 4).equals("01") && data2.substring(0, 2).equals("01")) {//存在助记词存在pin码
+                                    Data.setbizhong("BTC");
+                                    Data.setbletype("address");
+                                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
+                                    Data.setdialog(mWeiboDialog);
+                                    Utils.btc();
+                                } else {
+                                    Intent intent1 = new Intent(Data.getcontext(), BleActivity.class);
+                                    Data.getcontext().startActivity(intent1);
+                                }
+                            }else if(Data.getsaoma().equals("yes")) {//签名交易
+                                if(Data.getsign().equals("end0")){
+                                    if(Data.gettype().equals("czactivity")){
+                                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils2));
                                         Data.setdialog(mWeiboDialog);
-                                        Utils.btc();
-                                    } else {
-                                        Intent intent1 = new Intent(Data.getcontext(), BleActivity.class);
-                                        Data.getcontext().startActivity(intent1);
+                                    }else if(Data.gettype().equals("txactivity")){
+                                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils3));
+                                        Data.setdialog(mWeiboDialog);
+                                    }else if(Data.gettype().equals("spxqactivity")){
+                                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils4));
+                                        Data.setdialog(mWeiboDialog);
+                                    }else if(Data.gettype().equals("cdactivity")||Data.gettype().equals("tzactivity")||Data.gettype().equals("tztypeactivity")){
+                                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils5));
+                                        Data.setdialog(mWeiboDialog);
                                     }
-                                }else if(Data.getsaoma().equals("yes")) {//签名交易
-                                    if(Data.getsign().equals("end0")){
-                                        if(Data.gettype().equals("czactivity")){
-                                            Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils2));
-                                            Data.setdialog(mWeiboDialog);
-                                        }else if(Data.gettype().equals("txactivity")){
-                                            Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils3));
-                                            Data.setdialog(mWeiboDialog);
-                                        }else if(Data.gettype().equals("spxqactivity")){
-                                            Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils4));
-                                            Data.setdialog(mWeiboDialog);
-                                        }else if(Data.gettype().equals("cdactivity")||Data.gettype().equals("tzactivity")||Data.gettype().equals("tztypeactivity")){
-                                            Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils5));
-                                            Data.setdialog(mWeiboDialog);
-                                        }
-                                        new Transfer().chushihua();
-                                    }else if (Data.getsign().equals("number")) {
-                                        if(!data2.equals("")) {
-                                            LogCook.d("随机数", data2);
-                                            Data.setsaoma("no");
-                                            new Transfer().initialize(data2);
-                                        }
-                                    } else if (Data.getsign().equals("chushihua")) {
-                                        if(Data.getresulterror().equals("csh")) {
-                                            Data.setresulterror("");
-                                            Data.setend("2");
-                                            Data.setsaoma("no");
-                                            LogCook.d("BLE状态", "初始化成功");
-                                            Timer timer = new Timer();
-                                            TimerTask tast = new TimerTask() {
-                                                @Override
-                                                public void run() {
-                                                    Looper.prepare();
-                                                    if (Data.getbizhong().equals("BTC")) {
-                                                        new Transfer().btcchushihua();
-                                                    } else if (Data.getbizhong().equals("ETH") || Data.getbizhong().equals("ERC20")||Data.getbizhong().equals("Hier")||
-                                                            Data.getbizhong().equals("Pawn")) {
-                                                        Data.setethtype("dealid");
-                                                        new Transfer().eth();
-                                                    } else if (Data.getbizhong().equals("XRP")||Data.getbizhong().equals("AED")||Data.getbizhong().equals("trustset")) {
-                                                        new Utilshttp().getxrpamount();
-                                                    }
-                                                    Looper.loop();
+                                    new Transfer().chushihua();
+                                }else if (Data.getsign().equals("number")) {
+                                    if(!data2.equals("")) {
+                                        LogCook.d("随机数", data2);
+                                        Data.setsaoma("no");
+                                        new Transfer().initialize(data2);
+                                    }
+                                } else if (Data.getsign().equals("chushihua")) {
+                                    if(Data.getresulterror().equals("csh")) {
+                                        Data.setresulterror("");
+                                        Data.setend("2");
+                                        Data.setsaoma("no");
+                                        LogCook.d("BLE状态", "初始化成功");
+                                        Timer timer = new Timer();
+                                        TimerTask tast = new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                Looper.prepare();
+                                                if (Data.getbizhong().equals("BTC")) {
+                                                    new Transfer().btcchushihua();
+                                                } else if (Data.getbizhong().equals("ETH") || Data.getbizhong().equals("ERC20")||Data.getbizhong().equals("Hier")||
+                                                        Data.getbizhong().equals("Pawn")) {
+                                                    Data.setethtype("dealid");
+                                                    new Transfer().eth();
+                                                } else if (Data.getbizhong().equals("XRP")||Data.getbizhong().equals("AED")||Data.getbizhong().equals("trustset")) {
+                                                    new Utilshttp().getxrpamount();
                                                 }
-                                            };
-                                            timer.schedule(tast, 1000);
-                                        }
-                                    } else if (Data.getsign().equals("signing")) {
-                                        if(data2.equals("取消按键")) {
+                                                Looper.loop();
+                                            }
+                                        };
+                                        timer.schedule(tast, 1000);
+                                    }
+                                } else if (Data.getsign().equals("signing")) {
+                                    if(data2.equals("取消按键")) {
 
-                                        }else {
-                                            if (Data.getbizhong().equals("BTC")&& Data.getbtcsigndata().equals("yes")) {
-                                                if(!Data.getbtcsign()){
-                                                    Data.setbtcsign(true);
-                                                }else {
-                                                    if (Data.getuxto()) {
-                                                        if (!data2.equals("")) {
-                                                            signcount++;
-                                                            Data.setn(Data.getn() + 1);
-                                                            try {
-                                                                Thread.sleep(200);
-                                                            } catch (InterruptedException e) {
-                                                                e.printStackTrace();
-                                                            }
-                                                            if (Data.getn() == Data.getcount()) {
-                                                                Data.setn(0);
-                                                                signcount = 0;
-                                                                Utils.end();
-                                                            } else {
-                                                                new Transfer().sign(Data.getresult());
-                                                            }
+                                    }else {
+                                        if (Data.getbizhong().equals("BTC")&& Data.getbtcsigndata().equals("yes")) {
+                                            if(!Data.getbtcsign()){
+                                                Data.setbtcsign(true);
+                                            }else {
+                                                if (Data.getuxto()) {
+                                                    if (!data2.equals("")) {
+                                                        signcount++;
+                                                        Data.setn(Data.getn() + 1);
+                                                        try {
+                                                            Thread.sleep(200);
+                                                        } catch (InterruptedException e) {
+                                                            e.printStackTrace();
                                                         }
-                                                    } else {
-                                                        if (!Data.getdata().equals("")) {
-                                                            Data.setdata2(Data.getdata().substring(2, Data.getdata().length()));
-                                                            Data.setsaoma("no");
+                                                        if (Data.getn() == Data.getcount()) {
+                                                            Data.setn(0);
+                                                            signcount = 0;
                                                             Utils.end();
+                                                        } else {
+                                                            new Transfer().sign(Data.getresult());
                                                         }
                                                     }
-                                                }
-                                            } else if (Data.getbizhong().equals("ETH")|| Data.getbizhong().equals("ERC20")||Data.getbizhong().equals("Hier")
-                                                    ||Data.getbizhong().equals("Pawn")) {
-                                                if(Data.getauth0sign().equals("login_register")&&Data.gettype().equals("login")) {
-                                                    balancebtc();
-                                                }else {
+                                                } else {
                                                     if (!Data.getdata().equals("")) {
                                                         Data.setdata2(Data.getdata().substring(2, Data.getdata().length()));
-                                                        Data.setrlpdata(Data.getdata2());
-                                                        Data.setethtype("sendtransaction");
                                                         Data.setsaoma("no");
-                                                        if (Data.getbizhong().equals("ETH")) {
-                                                            end();
-                                                        }else if(Data.getbizhong().equals("Hier")||Data.getbizhong().equals("Pawn")){
-                                                            new Transfer().eth();
+                                                        Utils.end();
+                                                    }
+                                                }
+                                            }
+                                        } else if (Data.getbizhong().equals("ETH")|| Data.getbizhong().equals("ERC20")||Data.getbizhong().equals("Hier")
+                                                ||Data.getbizhong().equals("Pawn")) {
+                                            if(Data.getauth0sign().equals("login_register")&&Data.gettype().equals("login")) {
+                                                balancebtc();
+                                            }else {
+                                                if (!Data.getdata().equals("")) {
+                                                    Data.setdata2(Data.getdata().substring(2, Data.getdata().length()));
+                                                    Data.setrlpdata(Data.getdata2());
+                                                    Data.setethtype("sendtransaction");
+                                                    Data.setsaoma("no");
+                                                    if (Data.getbizhong().equals("ETH")) {
+                                                        end();
+                                                    }else if(Data.getbizhong().equals("Hier")||Data.getbizhong().equals("Pawn")){
+                                                        new Transfer().eth();
+                                                    } else {
+                                                        if (Data.getauth0sign().equals("login")) {
+                                                            new auth0login().auth0login(Data.getdata());
                                                         } else {
-                                                            if (Data.getauth0sign().equals("login")) {
-                                                                new auth0login().auth0login(Data.getdata());
-                                                            } else {
-                                                                new Transfer().eth();
-                                                            }
+                                                            new Transfer().eth();
                                                         }
                                                     }
                                                 }
-                                            }else if (Data.getbizhong().equals("XRP")&&!Data.getdata().equals("")) {
-                                                LogCook.d("xrpsign",data2.substring(2,data2.length()));
-                                                new Transfer().xrpsendtransaction(data2.substring(2,data2.length()));
-                                                Data.setdata("");
-                                            }else if (Data.getbizhong().equals("AED")&&!Data.getdata().equals("")) {
-                                                LogCook.d("aedsign",data2.substring(2,data2.length()));
-                                                new Transfer().aedsendtransaction(data2.substring(2,data2.length()));
-                                                Data.setdata("");
-                                            }else if (Data.getbizhong().equals("trustset")&&!Data.getdata().equals("")) {
-                                                LogCook.d("trustsetsign",data2.substring(2,data2.length()));
-                                                new Transfer().trustsetsendtransaction(data2.substring(2,data2.length()));
-                                                Data.setdata("");
                                             }
-                                            Data.setresultdata(Data.getdata2());
+                                        }else if (Data.getbizhong().equals("XRP")&&!Data.getdata().equals("")) {
+                                            LogCook.d("xrpsign",data2.substring(2,data2.length()));
+                                            new Transfer().xrpsendtransaction(data2.substring(2,data2.length()));
+                                            Data.setdata("");
+                                        }else if (Data.getbizhong().equals("AED")&&!Data.getdata().equals("")) {
+                                            LogCook.d("aedsign",data2.substring(2,data2.length()));
+                                            new Transfer().aedsendtransaction(data2.substring(2,data2.length()));
+                                            Data.setdata("");
+                                        }else if (Data.getbizhong().equals("trustset")&&!Data.getdata().equals("")) {
+                                            LogCook.d("trustsetsign",data2.substring(2,data2.length()));
+                                            new Transfer().trustsetsendtransaction(data2.substring(2,data2.length()));
+                                            Data.setdata("");
                                         }
-                                    }else if (Data.getsign().equals("end") && Data.getend().equals("2") && !Data.getbletype().equals("1")) {
-                                        Data.setend("1");
-                                        Data.setsaoma("no");
-                                        if (Data.getbizhong().equals("BTC")) {
-                                            new Transfer().btc();
-                                        } else if (Data.getbizhong().equals("ETH")|| Data.getbizhong().equals("ERC20")) {
-                                            new Transfer().eth();//发送eth交易请求
-                                        }
-                                    } else if (Data.getsign().equals("end") && Data.getend().equals("1") && !Data.getbletype().equals("1")) {
-                                        Data.setsign("");
-                                        WeiboDialogUtils.closeDialog(Data.getdialog());
-                                    }else if (Data.getsign().equals("end") && Data.getend().equals("3") && !Data.getbletype().equals("1") &&Data.getresulterror().equals("no")) {
-                                        Data.setresulterror("yes");
-                                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u30), Toast.LENGTH_SHORT).show();
-                                        WeiboDialogUtils.closeDialog(Data.getdialog());
+                                        Data.setresultdata(Data.getdata2());
                                     }
-                                }else if(Data.getbletype().equals("readboot")){//读取boot成功
-                                    LogCook.d("boot状态","读取boot成功");
-                                    Data.setisapp("yes");
+                                }else if (Data.getsign().equals("end") && Data.getend().equals("2") && !Data.getbletype().equals("1")) {
+                                    Data.setend("1");
+                                    Data.setsaoma("no");
+                                    if (Data.getbizhong().equals("BTC")) {
+                                        new Transfer().btc();
+                                    } else if (Data.getbizhong().equals("ETH")|| Data.getbizhong().equals("ERC20")) {
+                                        new Transfer().eth();//发送eth交易请求
+                                    }
+                                } else if (Data.getsign().equals("end") && Data.getend().equals("1") && !Data.getbletype().equals("1")) {
+                                    Data.setsign("");
+                                    WeiboDialogUtils.closeDialog(Data.getdialog());
+                                }else if (Data.getsign().equals("end") && Data.getend().equals("3") && !Data.getbletype().equals("1") &&Data.getresulterror().equals("no")) {
+                                    Data.setresulterror("yes");
+                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u30), Toast.LENGTH_SHORT).show();
+                                    WeiboDialogUtils.closeDialog(Data.getdialog());
+                                }
+                            }else if(Data.getbletype().equals("readboot")){//读取boot成功
+                                LogCook.d("boot状态","读取boot成功");
+                                Data.setisapp("yes");
 //                                    if(data2.substring(8,48).equals(data2.substring(48,data2.length()))){
 //                                        Toast.makeText(Data.getcontext(), "当前是最新固件，无需下载", Toast.LENGTH_SHORT).show();
 //                                        WeiboDialogUtils.closeDialog(Data.getdialog());
 //                                    }else {
-                                        woshou();
-                                    //}
-                                }else if(Data.getbletype().equals("woshou")){//握手成功
-                                    LogCook.d("boot状态","握手成功");
-                                    send();
-                                }else if(Data.getbletype().equals("sendend")) {
-                                    LogCook.d("boot状态", "发送数据成功");
-                                    updateend();
-                                }else if(Data.getbletype().equals("updateend")) {//结束成功
-                                    try {
-                                        LogCook.d("boot状态","结束成功");
-                                        Thread.sleep(5000);
-                                        resetboot();
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                }else if(Data.getbletype().equals("resetboot")) {//复位成功
-                                    LogCook.d("boot状态","复位成功");
-                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u31), Toast.LENGTH_SHORT).show();
-                                    WeiboDialogUtils.closeDialog(Data.getdialog());
-                                    Data.setbletype("");
-                                    Data.setrestart(1);
-                                }else if(Data.getbletype().equals("dfureadapp")){
-                                    dfuupdate();
-                                }else if(Data.getbletype().equals("walletamount")&& Data.getresulterror().equals("no")){
-                                    Data.setresulterror("yes");
-                                    BigInteger bigint=new BigInteger(data2, 16);
-                                    int numb=bigint.intValue();
-                                    String amount="";
-                                    if(numb==0){
-                                        amount="0";
-                                    }else {
-                                        amount = String.valueOf(numb).substring(0, String.valueOf(numb).length() - 2);
-                                    }
-                                    LogCook.d("卡内余额",amount);
-                                    Data.getcardmoney().setText(amount);
-                                    if(Data.gettype().equals("cardamount")||Data.gettype().equals("spxqactivity")) {
-                                        new Utilshttp().getptamount();
-                                    }else{
-                                        WeiboDialogUtils.closeDialog(Data.getdialog());
-                                    }
-                                }else if(Data.getbletype().equals("walletcsh")&& Data.getresulterror().equals("no")){
-                                    Data.setresulterror("yes");
-                                    LogCook.d("典当电子钱包","钱包初始化成功");
-                                }else if(Data.getbletype().equals("walletcz")&& Data.getresulterror().equals("no")){
-                                    Data.setresulterror("yes");
-                                    new Utilshttp().transference();
-                                }else if(Data.getbletype().equals("wallettx")&& Data.getresulterror().equals("no")){
-                                    Data.setresulterror("yes");
-                                    if(Data.gettype().equals("spxqactivity")){
-                                        new Utilshttp().shopping();
-                                    }else {
-                                        new Utilshttp().rollout();
-                                    }
-                                }else if(Data.getbletype().equals("chushihuazhiwen")){
-                                    Data.setbletype("chushihua");
-                                    Utils.csh();
+                                woshou();
+                                //}
+                            }else if(Data.getbletype().equals("woshou")){//握手成功
+                                LogCook.d("boot状态","握手成功");
+                                send();
+                            }else if(Data.getbletype().equals("sendend")) {
+                                LogCook.d("boot状态", "发送数据成功");
+                                updateend();
+                            }else if(Data.getbletype().equals("updateend")) {//结束成功
+                                try {
+                                    LogCook.d("boot状态","结束成功");
+                                    Thread.sleep(5000);
+                                    resetboot();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
                                 }
+                            }else if(Data.getbletype().equals("resetboot")) {//复位成功
+                                LogCook.d("boot状态","复位成功");
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u31), Toast.LENGTH_SHORT).show();
+                                WeiboDialogUtils.closeDialog(Data.getdialog());
+                                Data.setbletype("");
+                                Data.setrestart(1);
+                            }else if(Data.getbletype().equals("dfureadapp")){
+                                dfuupdate();
+                            }else if(Data.getbletype().equals("walletamount")&& Data.getresulterror().equals("no")){
+                                Data.setresulterror("yes");
+                                BigInteger bigint=new BigInteger(data2, 16);
+                                int numb=bigint.intValue();
+                                String amount="";
+                                if(numb==0){
+                                    amount="0";
+                                }else {
+                                    amount = String.valueOf(numb).substring(0, String.valueOf(numb).length() - 2);
+                                }
+                                LogCook.d("卡内余额",amount);
+                                Data.getcardmoney().setText(amount);
+                                if(Data.gettype().equals("cardamount")||Data.gettype().equals("spxqactivity")) {
+                                    new Utilshttp().getptamount();
+                                }else{
+                                    WeiboDialogUtils.closeDialog(Data.getdialog());
+                                }
+                            }else if(Data.getbletype().equals("walletcsh")&& Data.getresulterror().equals("no")){
+                                Data.setresulterror("yes");
+                                LogCook.d("典当电子钱包","钱包初始化成功");
+                            }else if(Data.getbletype().equals("walletcz")&& Data.getresulterror().equals("no")){
+                                Data.setresulterror("yes");
+                                new Utilshttp().transference();
+                            }else if(Data.getbletype().equals("wallettx")&& Data.getresulterror().equals("no")){
+                                Data.setresulterror("yes");
+                                if(Data.gettype().equals("spxqactivity")){
+                                    new Utilshttp().shopping();
+                                }else {
+                                    new Utilshttp().rollout();
+                                }
+                            }else if(Data.getbletype().equals("chushihuazhiwen")){
+                                Data.setbletype("chushihua");
+                                Utils.csh();
+                            }
                         } else if(data !=null){//蓝牙返回错误信息处理
                             if(Data.gettype().equals("fragment3")&&!Data.gettype().equals("")) {
                                 if (Data.getsaoma().equals("yes")) {

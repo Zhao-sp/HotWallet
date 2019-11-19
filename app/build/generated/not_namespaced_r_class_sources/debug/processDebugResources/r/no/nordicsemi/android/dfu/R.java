@@ -148,7 +148,7 @@ public final class R {
         public static final int dfu_status_validating = 0x7f0c0067;
         public static final int dfu_status_validating_msg = 0x7f0c0068;
         public static final int dfu_unknown_name = 0x7f0c0069;
-        public static final int status_bar_notification_info_overflow = 0x7f0c0125;
+        public static final int status_bar_notification_info_overflow = 0x7f0c0126;
     }
     public static final class style {
         private style() {}

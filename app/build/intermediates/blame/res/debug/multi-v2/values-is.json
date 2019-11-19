@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\work\\work\\Android HotWallet\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
+            "outputFile": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\d8ebbf03dbeb37a7136cd59e02a404e5\\res\\values-is\\values-is.xml",
