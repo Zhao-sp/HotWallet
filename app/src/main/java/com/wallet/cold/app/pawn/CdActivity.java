@@ -1,12 +1,10 @@
 package com.wallet.cold.app.pawn;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +32,6 @@ import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
 import com.wallet.cold.utils.MyListView;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
 
 import org.json.JSONException;

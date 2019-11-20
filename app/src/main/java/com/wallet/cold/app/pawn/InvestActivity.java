@@ -1,10 +1,8 @@
 package com.wallet.cold.app.pawn;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;

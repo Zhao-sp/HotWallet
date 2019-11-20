@@ -4,7 +4,7 @@
             "outputFile": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\1821363ccb7e6314bb96419cec542644\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\f9ad8b2a59c2262fad2e9982061b65fd\\appcompat-v7-27.1.1\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",

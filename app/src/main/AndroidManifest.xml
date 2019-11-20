@@ -86,6 +86,8 @@
         <activity android:name=".cold.app.pawn.CdActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.pawn.InvestActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.pawn.PawnActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.RoundIndicatorView" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".cold.app.pawn.RiskActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.utils.CaptureActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.dfu.dfu_service.NotificationActivity" />
         <activity android:name=".cold.dfu.DfuUpdateActivity" android:theme="@style/Theme.AppCompat"/>

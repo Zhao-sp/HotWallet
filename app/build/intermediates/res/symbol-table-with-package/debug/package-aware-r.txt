@@ -240,6 +240,7 @@ attr listPreferredItemPaddingRight
 attr logo
 attr logoDescription
 attr maxButtonHeight
+attr maxNum
 attr measureWithLargestChild
 attr multiChoiceItemLayout
 attr navigationContentDescription
@@ -282,6 +283,7 @@ attr spinnerDropDownItemStyle
 attr spinnerStyle
 attr splitTrack
 attr srcCompat
+attr startAngle
 attr state_above_anchor
 attr statusBarBackground
 attr subMenuArrow
@@ -291,6 +293,7 @@ attr subtitleTextAppearance
 attr subtitleTextColor
 attr subtitleTextStyle
 attr suggestionRowLayout
+attr sweepAngle
 attr switchMinWidth
 attr switchPadding
 attr switchStyle
@@ -865,6 +868,7 @@ id blocking
 id boot
 id bottom
 id btcyue
+id btn
 id btn_0
 id btn_1
 id btn_2
@@ -941,6 +945,7 @@ id direct
 id disableHome
 id dividend
 id dzmc
+id edit
 id edit_query
 id end
 id english
@@ -1063,6 +1068,7 @@ id message
 id middle
 id money
 id multiply
+id my_view
 id name
 id name1
 id name2
@@ -1339,6 +1345,7 @@ layout activity_numbers
 layout activity_pawn
 layout activity_recover
 layout activity_reset
+layout activity_risk
 layout activity_selete
 layout activity_shop
 layout activity_tz
@@ -2184,6 +2191,7 @@ styleable PayPwdView border_color count dot_color
 styleable PopupWindow android_popupBackground android_popupAnimationStyle overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
 styleable RecycleListView paddingBottomNoButtons paddingTopNoTitle
+styleable RoundIndicatorView maxNum startAngle sweepAngle
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode

@@ -41,7 +41,8 @@ public class PawnActivity extends AppCompatActivity implements OnClickListener {
             startActivity(intent);
         }
         if(v.getId() == R.id.view_fx) {
-
+            Intent intent = new Intent(this, RiskActivity.class);
+            startActivity(intent);
         }
         if(v.getId() == R.id.view_tz) {
             Intent intent = new Intent(this, InvestActivity.class);

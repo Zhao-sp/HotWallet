@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="18"
-        android:targetSdkVersion="28" />
+        android:targetSdkVersion="29" />
     <!-- 允许应用程序改变网络状态 -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <!-- 允许应用程序改变WIFI连接状态 -->
@@ -151,6 +151,12 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name="com.wallet.cold.app.pawn.PawnActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="com.wallet.cold.app.pawn.RoundIndicatorView"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="com.wallet.cold.app.pawn.RiskActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name="com.wallet.cold.utils.CaptureActivity"
