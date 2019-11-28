@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.wallet.R;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.WeiboDialogUtils;
 
 import java.io.BufferedReader;

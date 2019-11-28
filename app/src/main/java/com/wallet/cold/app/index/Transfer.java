@@ -24,6 +24,7 @@ import com.wallet.R;
 import com.wallet.cold.app.auth0.auth0register;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.rlp.RLP;
+import com.wallet.cold.utils.Base58;
 import com.wallet.cold.utils.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
@@ -32,6 +33,8 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
+
+import org.bouncycastle.crypto.digests.RIPEMD160Digest;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -908,14 +911,12 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         }
         String data5="68400000000000000C7321";
         String data6=Data.getxrppub();
-//        String data7="8114";
-//        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
-//        String data9="8314";
-//        String data10="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
         String data7="8114";
-        String data8="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+        String data8= Base58.xrpdecode(Data.getxrpaddress());
+        data8=data8.substring(0,data8.length()-8);
         String data9="8314";
-        String data10="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
+        String data10=Base58.xrpdecode(Data.getto());
+        data10=data10.substring(0,data10.length()-8);
         sign(data1+data2+data3+data4+data5+data6+data7+data8+data9+data10);//进行签名
     }
 
@@ -937,14 +938,12 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data6=Data.getxrppub();
         String data7="74";
         String data8=strlength(sign);
-//        String data9="8114";
-//        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
-//        String data11="8314";
-//        String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
         String data9="8114";
-        String data10="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+        String data10=Base58.xrpdecode(Data.getxrpaddress());
+        data10=data10.substring(0,data10.length()-8);
         String data11="8314";
-        String data12="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
+        String data12=Base58.xrpdecode(Data.getto());
+        data12=data12.substring(0,data12.length()-8);
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data6+data7+data8+sign+data9+data10+data11+data12);
     }
 
@@ -963,14 +962,12 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
         String data52="68400000000000000C7321";
         String data6=Data.getxrppub();
-//        String data7="8114";
-//        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
-//        String data9="8314";
-//        String data10="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
         String data7="8114";
-        String data8="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+        String data8=Base58.xrpdecode(Data.getxrpaddress());
+        data8=data8.substring(0,data8.length()-8);
         String data9="8314";
-        String data10="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
+        String data10=Base58.xrpdecode(Data.getto());
+        data10=data10.substring(0,data10.length()-8);
         sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+data9+data10);//进行签名
     }
 
@@ -991,14 +988,12 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data6=Data.getxrppub();
         String data7="74";
         String data8=strlength(sign);
-//        String data9="8114";
-//        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
-//        String data11="8314";
-//        String data12="BCE2C71D73612D1F37B5A3E1947AB3227A76CD84";
-                String data9="8114";
-        String data10="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+        String data9="8114";
+        String data10=Base58.xrpdecode(Data.getxrpaddress());
+        data10=data10.substring(0,data10.length()-8);
         String data11="8314";
-        String data12="E0249ACE24AFCC2339F55FF9C4119CAAFC9825CB";
+        String data12=Base58.xrpdecode(Data.getto());
+        data12=data12.substring(0,data12.length()-8);
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10+data11+data12);
     }
 
@@ -1017,10 +1012,9 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
         String data52="68400000000000000C7321";
         String data6=Data.getxrppub();
-//        String data7="8114";
-//        String data8="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";
-                String data7="8114";
-        String data8="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+        String data7="8114";
+        String data8=Base58.xrpdecode(Data.getxrpaddress());
+        data8=data8.substring(0,data8.length()-8);
         sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8);//进行签名
     }
 
@@ -1041,10 +1035,9 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data6=Data.getxrppub();
         String data7="74";
         String data8=strlength(sign);
-//        String data9="8114";
-//        String data10="DAC0052492C9E9610BD1E5F860D1E026EA47DA90";//E16ECF295DAFAC14AF7ECFF799CE5D519CC8E2D6
         String data9="8114";
-        String data10="A36974B21AFB3F3BB46E8B26382C015528E60B9F";
+        String data10=Base58.xrpdecode(Data.getxrpaddress());
+        data8=data8.substring(0,data8.length()-8);
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10);
     }
 
@@ -1321,7 +1314,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 fee.setVisibility(View.GONE);
                 fee1.setVisibility(View.GONE);
                 popWinShare.dismiss();
-                balance.setText(Data.getxrpamount());
+                balance.setText(Data.getaedamount());
             }
         }
     }

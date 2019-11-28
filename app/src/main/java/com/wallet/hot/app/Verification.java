@@ -1,5 +1,6 @@
 package com.wallet.hot.app;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.WeiboDialogUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,7 +28,7 @@ public class Verification extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.verification_mnemonic_layout);
+        setContentView(R.layout.verification_mnemonic_layout);Data.settype("verification");
         zhujici = findViewById(R.id.zhujici);
         zhujici.setFocusable(false);
         zhujici.setFocusableInTouchMode(false);
@@ -192,9 +194,9 @@ public class Verification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(zhujici.getText().toString().equals(Data.gethotzjc())) {
-                    new Utils().balancebtc();
-                    Intent intent = new Intent(Verification.this, IndexActivity.class);
-                    startActivity(intent);
+                    new Utils().zhuce();
+                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Verification.this, Verification.this.getResources().getString(R.string.type4));
+                    Data.setdialog(mWeiboDialog);
                 }else{
                     Toast.makeText(Data.getcontext(), "验证失败", Toast.LENGTH_SHORT).show();
                 }

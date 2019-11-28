@@ -70,7 +70,7 @@ public class CreateActivity extends Activity implements View.OnClickListener {
             }
 //            WalletManager.getInstance().addWallet(mWallet);
 //            String address = mWallet.getWalletFile().getAddress();
-//            Data.sethotethaddress(address);
+//            Data.setethaddress(address);
 //            log("TAG", "onClickCreateWallet: 钱包地址 = " + address);
             Intent intent = new Intent(CreateActivity.this, BackUpActivity.class);
             startActivity(intent);

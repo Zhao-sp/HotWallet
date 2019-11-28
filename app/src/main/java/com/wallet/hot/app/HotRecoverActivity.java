@@ -1,5 +1,6 @@
 package com.wallet.hot.app;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.WeiboDialogUtils;
 import com.wallet.hot.utils.BaiBeiWalletUtils;
 import com.wallet.hot.utils.BaibeiWallet;
 import com.wallet.hot.utils.WalletManager;
@@ -33,6 +35,8 @@ public class HotRecoverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inprot_wallet);
         ButterKnife.bind(this);
+        Data.settype("hotrecover");
+        Data.setcontext(HotRecoverActivity.this);
     }
 
     @OnClick(R.id.btn_inprot_mnemonic)
@@ -47,13 +51,13 @@ public class HotRecoverActivity extends AppCompatActivity {
             return;
         }
         try {
+            Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(HotRecoverActivity.this, HotRecoverActivity.this.getResources().getString(R.string.type4));
+            Data.setdialog(mWeiboDialog);
             Data.sethotpassword(mEtPwd.getText().toString());
             BaibeiWallet baibeiWallet = BaiBeiWalletUtils.generateBip44Wallet(mnemonic,pwd);
             WalletManager.getInstance().addWallet(baibeiWallet);
             Toast.makeText(this, "导入成功", Toast.LENGTH_SHORT).show();
-            new Utils().balancebtc();
-            Intent i = new Intent(HotRecoverActivity.this, IndexActivity.class);
-            startActivity(i);
+            new Utils().zhuce();
         } catch (CipherException e) {
             e.printStackTrace();
         } catch (IOException e) {

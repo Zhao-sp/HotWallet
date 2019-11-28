@@ -6,9 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,18 +26,24 @@ import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
+import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.hot.app.ByteActivity;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class CreateOrImportActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
     private Button mCreateBtn;
-    private Button mImportBtn;
+    //private Button mImportBtn;
     private ObjectAnimator mTitleViewAnimator;
     private ObjectAnimator mCreateBtnAnimator;
-    private ObjectAnimator mImportBtnAnimator;
+    //private ObjectAnimator mImportBtnAnimator;
     private int mScreenHeight = 0;
+    private java.util.List<String> List = new ArrayList<>();
 
+//    @SuppressLint("JavascriptInterface")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,15 +51,15 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         mTitleView = findViewById(R.id.create_import_title);
         mCreateBtn = findViewById(R.id.create_wallet);
         mCreateBtn.setOnClickListener(this);
-//        mImportBtn = findViewById(R.id.import_wallet);
-//        mImportBtn.setOnClickListener(this);
+        //mImportBtn = findViewById(R.id.import_wallet);
+        //mImportBtn.setOnClickListener(this);
         DisplayMetrics dm = getResources().getDisplayMetrics();
         mScreenHeight = dm.heightPixels;
         initAnimation();
         startAnimation();
         new JniUtils().getbbCourseKeyFromC(this);
         SQLiteDatabase db = openOrCreateDatabase("HotWallet.db", MODE_PRIVATE, null);//创建数据库
-        Data.setdb(db);Data.setresult("");Data.setisblecomment("0");
+        Data.setdb(db);Data.setresult("");Data.setisblecomment("0");Data.setbledata(List);Data.setcontext(CreateOrImportActivity.this);Data.settype("createOrimport");
         Data.sethttp1("http://111.225.200.132:8181");//8181开发环境 8282演示环境
         //Data.getdb().execSQL("drop table HotAddressTb");
         //Data.getdb().execSQL("drop table Auth0AddressTb");
@@ -77,6 +81,24 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                 }
             }
         }
+//        webView = (WebView) findViewById(R.id.webview);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.setWebViewClient(new WebViewClient());
+//        webView.setWebChromeClient(new WebChromeClient());
+//        webView.loadUrl("file:///android_asset/");
+//        findViewById(R.id.import_wallet).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                    webView.evaluateJavascript("javascript:decodeUnsafe('rMYy8KCRyVruChJmKy3jgW26BRi936Vvwv')", new ValueCallback<String>() {
+//                        @Override
+//                        public void onReceiveValue(String value) {
+//                            LogCook.d("return",value);
+//                        }
+//                    });
+//                }
+//            }
+//        });
     }
 
     /**
@@ -172,18 +194,19 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
 //                        String btcprv = cursor.getString(cursor.getColumnIndex("btcprv"));
 //                        String btcpub = cursor.getString(cursor.getColumnIndex("btcpub"));
 //                        Data.sethotpassword(password);
-//                        Data.sethotbtcaddress(btcaddress);
-//                        Data.sethotethaddress(ethaddress);
+//                        Data.setbtcaddress(btcaddress);
+//                        Data.setethaddress(ethaddress);
 //                        Data.sethotethprv(ethprv);
 //                        Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);
 //                    }
 //                    cursor.close();
-//                    new Utils().balancebtc();
-//                    Intent1.setClass(this, IndexActivity.class);
+//                    new Utils().zhuce();
+//                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
+//                    Data.setdialog(mWeiboDialog);
 //                }else {
 //                    Intent1.setClass(this, ByteActivity.class);
+//                    startActivity(Intent1);
 //                }
-//                startActivity(Intent1);
 //                break;
             case R.id.create_wallet:
                 Data.setapptype("cold");
@@ -198,7 +221,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
     private void initAnimation() {
         titleAnimation();
         createAnimation();
-        //importAnimation();
+//        importAnimation();
     }
 
     private void startAnimation() {

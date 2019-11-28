@@ -79,7 +79,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
         if(Data.getapptype().equals("cold")){
             key.setText(Data.getbtcaddress());
         }else{
-            key.setText(Data.gethotbtcaddress());
+            key.setText(Data.getbtcaddress());
         }
         imgCode = (ImageView) findViewById(R.id.img_code);
         if(Data.getbizhong().equals("BTC")) {
@@ -88,7 +88,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
             if(Data.getapptype().equals("cold")){
                 key.setText(Data.getbtcaddress());
             }else{
-                key.setText(Data.gethotbtcaddress());
+                key.setText(Data.getbtcaddress());
             }
             imgCode.setImageBitmap(Data.getimgCode());
         }else if(Data.getbizhong().equals("ETH")) {
@@ -97,7 +97,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
             if(Data.getapptype().equals("cold")){
                 key.setText("0x"+Data.getethaddress());
             }else{
-                key.setText("0x"+Data.gethotethaddress());
+                key.setText("0x"+Data.getethaddress());
             }
             imgCode.setImageBitmap(Data.getethimgCode());
         }else if(Data.getbizhong().equals("XRP")) {
@@ -178,13 +178,13 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
                     if(Data.getapptype().equals("cold")){
                         address = Data.getethaddress();
                     }else{
-                        address = Data.gethotethaddress();
+                        address = Data.getethaddress();
                     }
                 } else if (popadd.getText().toString().equals("BTC")) {
                     if(Data.getapptype().equals("cold")){
                         address = Data.getbtcaddress();
                     }else{
-                        address = Data.gethotbtcaddress();
+                        address = Data.getbtcaddress();
                     }
                 } else if (popadd.getText().toString().equals("XRP")) {
                     address = Data.getxrpaddress();
@@ -195,14 +195,14 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
                     if(Data.getapptype().equals("cold")){
                         map.put("address", Data.getethaddress());
                     }else{
-                        map.put("address", Data.gethotethaddress());
+                        map.put("address", Data.getethaddress());
                     }
 
                 } else if (popadd.getText().toString().equals("BTC")) {
                     if(Data.getapptype().equals("cold")){
                         map.put("address", Data.getbtcaddress());
                     }else{
-                        map.put("address", Data.gethotbtcaddress());
+                        map.put("address", Data.getbtcaddress());
                     }
                 } else if (popadd.getText().toString().equals("XRP")) {
                     map.put("address", Data.getxrpaddress());
@@ -284,7 +284,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
                 if(Data.getapptype().equals("cold")){
                     key.setText(Data.getbtcaddress());
                 }else{
-                    key.setText(Data.gethotbtcaddress());
+                    key.setText(Data.getbtcaddress());
                 }
                 imgCode.setImageBitmap(Data.getimgCode());
                 WeiboDialogUtils.closeDialog(mWeiboDialog);
@@ -297,7 +297,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
                 if(Data.getapptype().equals("cold")){
                     key.setText("0x"+Data.getethaddress());
                 }else{
-                    key.setText("0x"+Data.gethotethaddress());
+                    key.setText("0x"+Data.getethaddress());
                 }
                 imgCode.setImageBitmap(Data.getethimgCode());
                 WeiboDialogUtils.closeDialog(mWeiboDialog);

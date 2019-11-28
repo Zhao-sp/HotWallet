@@ -1,6 +1,7 @@
 package com.wallet.cold.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class Base58 {
@@ -98,7 +99,36 @@ public class Base58 {
             throw new RuntimeException(e);  // Cannot happen.
         }
     }
+    private static final BigInteger FIFTY_EIGHT = new BigInteger("58");
+    private static final String BASE_58_CHARS = "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz";
+    public static String xrpdecode(String base58Value) {
+        String originalBase58 = base58Value;
 
+        // Ignore bogus base58 strings
+        if (base58Value.matches("[^1-9A-HJ-NP-Za-km-z]")) {
+            return null;
+        }
+
+        BigInteger output = new BigInteger("0");
+
+        for (int i = 0; i < base58Value.length(); i++) {
+            int current = BASE_58_CHARS.indexOf(base58Value.charAt(i));
+            output = output.multiply(FIFTY_EIGHT).add(new BigInteger(current + ""));
+        }
+
+        String hex = output.toString(16);
+
+        // Leading zeros
+        for (int ii = 0; ii < originalBase58.length() && originalBase58.charAt(ii) == '1'; ii++) {
+            hex = "00" + hex;
+        }
+
+        if (hex.length() % 2 != 0) {
+            hex = "0" + hex;
+        }
+
+        return hex.toLowerCase();
+    }
     public static byte[] decode(String input) {
         if (input.length() == 0) {
             return new byte[0];

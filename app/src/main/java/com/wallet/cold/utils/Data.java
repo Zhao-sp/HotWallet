@@ -35,7 +35,7 @@ public class Data extends Application {
     private static String limit,isapp,ethtype,returnbledata,btcsigndata,username,password,plaint,auth0type,resulterror,btcrmbbalance,ethrmbbalance,hieramount,amountrmb,
             result,btcaddress,ethaddress,deviceaddress,devicename,path,blename, receivedata,btcsignerror,txamount,auth0pubkey,auth0address,auth0sign,auth0uuid,hotzjc,
             btcbalance,ethbalance,type,btctype,pubkey,sign,end,hash,bizhong,scan,rlpdata,bletype,scriptPubKey1,resultdata,strhex1,strhex2,iseth,data,data2,saoma,yue,fee,to,
-            hotethaddress,hotbtcaddress,apptype,hotethprv,hotbtcprv,hotbtcpub,hotpassword,fingerprints,fingerprintsname,http1,hiersign,objectId,ptamount,isblecomment,paytype,xrppub,
+            apptype,hotethprv,hotbtcprv,hotbtcpub,hotpassword,fingerprints,fingerprintsname,http1,hiersign,objectId,ptamount,isblecomment,paytype,xrppub,
             xrpaddress,xrpamount,xrpserialnumber,xrprmbbalance,aedamount,aedaddress;
     public static Handler gethandler() {
         return handler;
@@ -169,18 +169,6 @@ public class Data extends Application {
     }
     public static void setauth0uuid(String auth0uuid) {
         Data.auth0uuid = auth0uuid;
-    }
-    public static String gethotethaddress() {
-        return hotethaddress;
-    }
-    public static void sethotethaddress(String hotethaddress) {
-        Data.hotethaddress = hotethaddress;
-    }
-    public static String gethotbtcaddress() {
-        return hotbtcaddress;
-    }
-    public static void sethotbtcaddress(String hotbtcaddress) {
-        Data.hotbtcaddress = hotbtcaddress;
     }
     public static String gethotethprv() {
         return hotethprv;

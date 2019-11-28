@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-127:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-127:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-127:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-127:12
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-126:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-126:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-126:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-126:12
 MERGED from [com.android.support:multidex:1.0.2] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\ad006bdd019af3dc3cdfaa7928ba3e25\multidex-1.0.2\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\f9ad8b2a59c2262fad2e9982061b65fd\appcompat-v7-27.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\ab9a0a96285f1a8a3ac527c7073ee14f\constraint-layout-1.1.0\AndroidManifest.xml:2:1-11:12
@@ -20,9 +20,9 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Lenovo\.gradle
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\e14782c218b34f04e4675392ed5b587f\viewmodel-1.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\9115d632101566ca0a85e214778b8e8f\runtime-1.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\f8474f11d705081cc7655630fd1d4460\runtime-1.1.0\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-127:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-127:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-127:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-126:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-126:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-126:12
 	package
 		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:5:5-25
 		INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml
@@ -142,7 +142,7 @@ ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:40:5-7
 	android:name
 		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:40:22-72
 application
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:41:5-125:19
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:41:5-124:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\ab9a0a96285f1a8a3ac527c7073ee14f\constraint-layout-1.1.0\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\ab9a0a96285f1a8a3ac527c7073ee14f\constraint-layout-1.1.0\AndroidManifest.xml:9:5-20
 	android:label
@@ -457,38 +457,34 @@ activity#com.wallet.hot.app.CreateActivity
 ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:113:9-60
 	android:name
 		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:113:19-57
-activity#com.wallet.hot.app.HotIndexActivity
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:114:9-62
-	android:name
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:114:19-59
 activity#com.wallet.hot.app.HotTransfer
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:115:9-57
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:114:9-57
 	android:name
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:115:19-54
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:114:19-54
 activity#com.wallet.hot.app.Verification
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:116:9-114
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:115:9-114
 	android:theme
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:116:56-112
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:115:56-112
 	android:name
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:116:19-55
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:115:19-55
 activity#com.wallet.hot.app.HotRecoverActivity
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:117:9-118:71
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:116:9-117:71
 	android:theme
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:118:13-69
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:117:13-69
 	android:name
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:117:19-61
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:116:19-61
 activity#com.wallet.hot.app.BackUpActivity
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:119:9-121:72
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:118:9-120:72
 	android:theme
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:121:13-69
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:120:13-69
 	android:name
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:120:13-51
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:119:13-51
 activity#com.wallet.hot.app.BackUpMnemonicActivity
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:122:9-124:72
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:121:9-123:72
 	android:theme
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:124:13-69
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:123:13-69
 	android:name
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:123:13-59
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:122:13-59
 uses-sdk
 INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml

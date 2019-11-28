@@ -880,8 +880,6 @@ id btn_7
 id btn_8
 id btn_9
 id btn_del
-id btn_inprot_key
-id btn_inprot_keystore
 id btn_inprot_mnemonic
 id button
 id button15
@@ -990,8 +988,6 @@ id gengxin
 id gone
 id guide_cart
 id guide_home
-id guide_me
-id guide_pawn
 id guide_store
 id gywm
 id head_arrowImageView
@@ -1331,7 +1327,6 @@ layout activity_dfu_update
 layout activity_fingerprints
 layout activity_gengxin
 layout activity_hotcreate
-layout activity_hotindex
 layout activity_index
 layout activity_inprot_wallet
 layout activity_invest

@@ -111,7 +111,6 @@
 
         <activity android:name=".hot.app.ByteActivity" />
         <activity android:name=".hot.app.CreateActivity" />
-        <activity android:name=".hot.app.HotIndexActivity" />
         <activity android:name=".hot.app.HotTransfer" />
         <activity android:name=".hot.app.Verification" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".hot.app.HotRecoverActivity"

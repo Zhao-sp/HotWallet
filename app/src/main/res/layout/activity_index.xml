@@ -49,12 +49,12 @@
                         android:drawableTop="@drawable/qianbao_xz"
                         android:text="@string/index1" />
 
-                    <RadioButton
-                        android:id="@+id/guide_pawn"
-                        style="@style/main_rbt"
-                        android:textColor="@drawable/color_radiobutton"
-                        android:drawableTop="@drawable/pawn_xk"
-                        android:text="@string/index4" />
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/guide_pawn"-->
+<!--                        style="@style/main_rbt"-->
+<!--                        android:textColor="@drawable/color_radiobutton"-->
+<!--                        android:drawableTop="@drawable/pawn_xk"-->
+<!--                        android:text="@string/index4" />-->
 
                     <RadioButton
                         android:id="@+id/guide_store"
@@ -70,12 +70,12 @@
                         android:drawableTop="@drawable/faxian_xk"
                         android:text="@string/index3" />
 
-                    <RadioButton
-                        android:id="@+id/guide_me"
-                        style="@style/main_rbt"
-                        android:textColor="@drawable/color_radiobutton"
-                        android:drawableTop="@drawable/my_xk"
-                        android:text="@string/m5" />
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/guide_me"-->
+<!--                        style="@style/main_rbt"-->
+<!--                        android:textColor="@drawable/color_radiobutton"-->
+<!--                        android:drawableTop="@drawable/my_xk"-->
+<!--                        android:text="@string/m5" />-->
 
                 </RadioGroup>
             </FrameLayout>

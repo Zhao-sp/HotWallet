@@ -1,11 +1,13 @@
 package com.wallet.hot.utils;
 
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.zxing.WriterException;
 import com.wallet.cold.utils.Base58;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.Utils;
@@ -277,9 +279,13 @@ public class BaiBeiWalletUtils {
         WalletFile walletFile = Wallet.createLight(password, keyPair);
         Log.i("TAG", "generateBip44Wallet: ETH地址 = " + Keys.toChecksumAddress(walletFile.getAddress()));
         String b = Keys.toChecksumAddress(walletFile.getAddress()).substring(2,Keys.toChecksumAddress(walletFile.getAddress()).length());
-        Data.sethotethaddress(b);Data.sethotethprv(Numeric.toHexStringNoPrefix(keyPair.getPrivateKey()));
-
-
+        Data.setethaddress(b);Data.sethotethprv(Numeric.toHexStringNoPrefix(keyPair.getPrivateKey()));
+        try {
+            Bitmap codeBitmap = Utils.createCode(b);
+            Data.setethimgCode(codeBitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
 
         DeterministicSeed deterministicSeed = null;
         try {
@@ -295,8 +301,13 @@ public class BaiBeiWalletUtils {
         String publicKey = ecKey.getPublicKeyAsHex();
         String privateKey = ecKey.getPrivateKeyEncoded(networkParameters).toString();
         String address = ecKey.toAddress(networkParameters).toString();
-        Data.sethotbtcaddress(address);Data.sethotbtcprv(privateKey);Data.sethotbtcpub(publicKey);
-        new Utils().zhuce();
+        Data.setbtcaddress(address);Data.sethotbtcprv(privateKey);Data.sethotbtcpub(publicKey);
+        try {
+            Bitmap codeBitmap = Utils.createCode(address);
+            Data.setimgCode(codeBitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
         return new BaibeiWallet(walletFile, mnemonic,keyPair);
     }
 
@@ -328,8 +339,13 @@ public class BaiBeiWalletUtils {
         WalletFile walletFile = Wallet.createLight(password, keyPair);
         Log.i("TAG", "generateBip44Wallet: ETH地址 = " + Keys.toChecksumAddress(walletFile.getAddress()));
         String b = Keys.toChecksumAddress(walletFile.getAddress()).substring(2,Keys.toChecksumAddress(walletFile.getAddress()).length());
-        Data.sethotethaddress(b);Data.sethotethprv(Numeric.toHexStringNoPrefix(keyPair.getPrivateKey()));
-
+        Data.setethaddress(b);Data.sethotethprv(Numeric.toHexStringNoPrefix(keyPair.getPrivateKey()));
+        try {
+            Bitmap codeBitmap = Utils.createCode(b);
+            Data.setethimgCode(codeBitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
         DeterministicSeed deterministicSeed = null;
         try {
             deterministicSeed = new DeterministicSeed(mnemonic, null, "", 0);
@@ -344,8 +360,13 @@ public class BaiBeiWalletUtils {
         String publicKey = ecKey.getPublicKeyAsHex();
         String privateKey = ecKey.getPrivateKeyEncoded(networkParameters).toString();
         String address = ecKey.toAddress(networkParameters).toString();
-        Data.sethotbtcaddress(address);Data.sethotbtcprv(privateKey);Data.sethotbtcpub(publicKey);
-        new Utils().zhuce();
+        Data.setbtcaddress(address);Data.sethotbtcprv(privateKey);Data.sethotbtcpub(publicKey);
+        try {
+            Bitmap codeBitmap = Utils.createCode(address);
+            Data.setimgCode(codeBitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
         return new BaibeiWallet(walletFile, mnemonic,keyPair);
     }
     public static BaibeiWallet generateBip44WalletByPrivateKey(String privateKey, String password)

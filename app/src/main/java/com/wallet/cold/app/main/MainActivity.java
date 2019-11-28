@@ -65,7 +65,6 @@ public class MainActivity extends Activity {
     private BluetoothDevice device;
     private ListView newDevicesListView;
     private TextView bletype;
-    private List<String> List = new ArrayList<>();
     private Map<String,Object> map = new HashMap<>();
     public static final String MAC_ADDRESS = "mac address";
     public static final String DEVICE_NAME = "device name";
@@ -83,8 +82,7 @@ public class MainActivity extends Activity {
         Data.settype("type");Data.setrestart(0);Data.setscan("1");Data.setisapp("yes");Data.setauth0type("未登录");
         Data.setbtcbalance("");Data.setethbalance("");Data.setblename("");Data.setsign("0");Data.setusername("");Data.setauth0sign("");
         Data.setsaoma("no");Data.setbletype("");Data.setisdfu(false);Data.setsigncount1(1);Data.setresult("");Data.setresulterror("");
-        Data.setreturnbledata("yes");Data.setdfuupdate(false);
-        Data.setbledata(List);Data.setpage(1);
+        Data.setreturnbledata("yes");Data.setdfuupdate(false);Data.setpage(1);
         Data.setcontext(MainActivity.this);
         new Utils().service_init(getApplicationContext());
         mBtAdapter = BluetoothAdapter.getDefaultAdapter();

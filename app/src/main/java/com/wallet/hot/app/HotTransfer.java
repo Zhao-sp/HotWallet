@@ -232,10 +232,10 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         if (v.getId() == R.id.verify2) {
             if (popadd.getText().toString().equals("BTC")) {
                 trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), fee.getText().toString()
-                        , balance.getText().toString(), Data.gethotbtcaddress());
+                        , balance.getText().toString(), Data.getbtcaddress());
             } else if (popadd.getText().toString().equals("ETH")) {
                 trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), fee.getText().toString()
-                        , balance.getText().toString(), Data.gethotethaddress());
+                        , balance.getText().toString(), Data.getethaddress());
             }
         }
     }
@@ -348,7 +348,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                                 map.put("\"vout\"", Data.getvout().get(i));
                                 scriptPubKey = Data.getscriptPubKey().get(i);
                                 Data.setscriptPubKey1(scriptPubKey);
-                                map2 = "{\"address\":\"" + Data.gethotbtcaddress() + "\",\"v\":0},{\"address\":\"" + Data.getto() + "\",\"v\":" + Data.getyue() + "}";
+                                map2 = "{\"address\":\"" + Data.getbtcaddress() + "\",\"v\":0},{\"address\":\"" + Data.getto() + "\",\"v\":" + Data.getyue() + "}";
                                 break;
                             }
                         }
@@ -366,7 +366,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                                     map.put("\"vout\"", Data.getvout().get(i));
                                     scriptPubKey = Data.getscriptPubKey().get(i);
                                     Data.setscriptPubKey1(scriptPubKey);
-                                    map2 = "{\"address\":\"" + Data.gethotbtcaddress() + "\",\"v\":" + String.valueOf(bd4) + "},{\"address\":\"" + Data.getto() + "\",\"v\":" + Data.getyue() + "}";
+                                    map2 = "{\"address\":\"" + Data.getbtcaddress() + "\",\"v\":" + String.valueOf(bd4) + "},{\"address\":\"" + Data.getto() + "\",\"v\":" + Data.getyue() + "}";
                                     break;
                                 }
                             }
@@ -397,7 +397,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                                                 map1.add(map);
                                             }
                                         }
-                                        map2 = "{\"address\":\"" + Data.gethotbtcaddress() + "\",\"v\":" + String.valueOf(bd4) + "},{\"address\":\"" + Data.getto() + "\",\"v\":" + Data.getyue() + "}";
+                                        map2 = "{\"address\":\"" + Data.getbtcaddress() + "\",\"v\":" + String.valueOf(bd4) + "},{\"address\":\"" + Data.getto() + "\",\"v\":" + Data.getyue() + "}";
                                         break;
                                     }
                                 }
@@ -562,24 +562,14 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             String len = Integer.toHexString(Integer.parseInt(String.valueOf(bytes3.length)));
             String data=Data.getstrhex1() + len + scriptPubKey + "f" + Data.getstrhex2()+"01000000";
             LogCook.d("待签名信息",data);
-            String sign = signMsg(data, Data.gethotbtcprv());
-            String signdata=strTo16(sign);
-            LogCook.d("签名结果",signdata);
-            Data.setresultdata(signdata);
+//            String hash = bitcoin.crypto.sha256(data),
+//            keyPair = bitcoin.ECPair.fromWIF(Data.gethotbtcprv());
+//
+//            String signature = keyPair.sign(hash).toDER();
+//            LogCook.d("签名结果",signdata);
+//            Data.setresultdata(signdata);
             btc();
         }
-    }
-
-    /**
-     * @param msg 要签名的信息
-     * @param privateKey 私钥
-     * @return
-     */
-    public static String signMsg(@NonNull String msg, @NonNull String privateKey) {
-        NetworkParameters networkParameters = TestNet3Params.get();
-        DumpedPrivateKey priKey = DumpedPrivateKey.fromBase58(networkParameters, privateKey);
-        ECKey ecKey = priKey.getKey();
-        return ecKey.signMessage(msg);
     }
 
     private List<String> sign = new ArrayList<>();
@@ -695,10 +685,10 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date curDate = new Date(System.currentTimeMillis());
             String str = formatter.format(curDate);
-            Data.getdb().execSQL("insert into HotJiaoyiTb (blename,name,bizhong,jine,riqi,type) values " +
-                    "('" + Data.getdevicename() + "','" + Data.gethotbtcaddress() + "','BTC'," + Data.getyue() + ",'" + str + "',1)");
+            Data.getdb().execSQL("insert into JiaoyiTb (blename,name,bizhong,jine,riqi,type) values " +
+                    "('" + Data.getdevicename() + "','" + Data.getbtcaddress() + "','BTC'," + Data.getyue() + ",'" + str + "',1)");
             Data.setbtctype("balance");
-            String btcJson = "{\"min\":0,\"max\":9999999,\"address\":\""+Data.gethotbtcaddress()+"\"}";
+            String btcJson = "{\"min\":0,\"max\":9999999,\"address\":\""+Data.getbtcaddress()+"\"}";
             String btcerror = Utils.getbtchttp(btcJson);
             if (btcerror.contains("success")) {
                 runOnUiThread(new Runnable() {
@@ -726,7 +716,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         new Thread(new Runnable() {
             public void run() {
                 if (Data.getethtype().equals("dealid")) {//获取交易序号
-                    String address = "{\"address\":\"0x" + Data.gethotethaddress() + "\"}";
+                    String address = "{\"address\":\"0x" + Data.getethaddress() + "\"}";
                     String dealid = Utils.getethhttp(address);
                     if (dealid.contains("success")) {
                         dealid = dealid.substring(0, dealid.length() - 7);
@@ -755,7 +745,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                         if (dealid == "") {
                             if(Data.getbizhong().equals("ETH")) {
                                 Data.setethtype("balance");
-                                String address1 = "{\"address\":\"0x" + Data.gethotethaddress() + "\"}";
+                                String address1 = "{\"address\":\"0x" + Data.getethaddress() + "\"}";
                                 String etherror = Utils.getethhttp(address1);
                                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                                 Date curDate = new Date(System.currentTimeMillis());
@@ -772,8 +762,8 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                                     WeiboDialogUtils.closeDialog(Data.getdialog());
                                     Looper.loop();
                                 }
-                                Data.getdb().execSQL("insert into HotJiaoyiTb (blename,name,bizhong,jine,riqi,type) values " +
-                                        "('" + Data.getdevicename() + "','" + Data.gethotethaddress() + "','ETH'," + Data.getyue() + ",'" + str + "',1)");
+                                Data.getdb().execSQL("insert into JiaoyiTb (blename,name,bizhong,jine,riqi,type) values " +
+                                        "('" + Data.getdevicename() + "','" + Data.getethaddress() + "','ETH'," + Data.getyue() + ",'" + str + "',1)");
                             }else if(Data.getbizhong().equals("ERC20")){
                                 if(Data.getauth0sign().equals("register")) {
                                     Looper.prepare();

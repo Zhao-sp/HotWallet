@@ -27,7 +27,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +63,7 @@ public class Utilshttp {
                     in.close();
                     JSONObject jsonObject = new JSONObject(result);
                     if (jsonObject.getString("status_Sucess").equals("true")) {
+                        Looper.prepare();
                         String name= jsonObject.getString("status_Message");
                         if(name.equals("")) {
                             new Utils().zhuce();
@@ -68,6 +71,7 @@ public class Utilshttp {
                             Data.setauth0type(name);
                             Data.getcontext().startActivity(new Intent(Data.getcontext(), login.class));
                         }
+                        Looper.loop();
                     } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
                         Looper.prepare();
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp3) +
@@ -137,10 +141,16 @@ public class Utilshttp {
                     Looper.loop();
                     e.printStackTrace();
                 }
-                if(Data.gettype().equals("login")||Data.gettype().equals("fragment1")||Data.gettype().equals("type")) {
+                if(Data.gettype().equals("hotrecover")||Data.gettype().equals("verification")||Data.getapptype().equals("hot")){
                     Looper.prepare();
-                    getxrpamount();
+                    new Utils().send2();
                     Looper.loop();
+                }else {
+                    if (Data.gettype().equals("login") || Data.gettype().equals("fragment1") || Data.gettype().equals("type")) {
+                        Looper.prepare();
+                        getxrpamount();
+                        Looper.loop();
+                    }
                 }
             }
         }).start(); // 开启线程
@@ -708,6 +718,7 @@ public class Utilshttp {
                     String data = "{\"tx_blob\":\""+signdata+"\"}";
                     data = URLEncoder.encode(data, "UTF-8");
                     String urlName = Data.gethttp1()+"/hsRPCNodeServer/xrp/submit?jsonParams="+data;
+                    //String urlName = "http://192.171.1.78:8080/hsRPCNodeServer/xrp/submit?jsonParams="+data;
                     LogCook.d("发送参数", urlName);
                     URL U = new URL(urlName);
                     URLConnection connection = U.openConnection();
@@ -726,6 +737,16 @@ public class Utilshttp {
                             Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff42), Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff32), Toast.LENGTH_SHORT).show();
+                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            Date curDate = new Date(System.currentTimeMillis());
+                            String str = formatter.format(curDate);
+                            if(Data.getbizhong().equals("XRP")) {
+                                Data.getdb().execSQL("insert into JiaoyiTb (blename,name,bizhong,jine,riqi,type) values " +
+                                        "('" + Data.getdevicename() + "','" + Data.getxrpaddress() + "','XRP'," + Data.getyue() + ",'" + str + "',1)");
+                            }else if(Data.getbizhong().equals("AED")) {
+                                Data.getdb().execSQL("insert into JiaoyiTb (blename,name,bizhong,jine,riqi,type) values " +
+                                        "('" + Data.getdevicename() + "','" + Data.getaedaddress() + "','AED'," + Data.getyue() + ",'" + str + "',1)");
+                            }
                         }
                         WeiboDialogUtils.closeDialog(Data.getdialog());
                         Looper.loop();

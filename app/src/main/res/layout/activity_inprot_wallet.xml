@@ -15,30 +15,7 @@
         android:textColor="#fff"
         android:textSize="18dp"
         android:gravity="center_horizontal" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btn_inprot_mnemonic"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="助记词导入"/>
-        <Button
-            android:id="@+id/btn_inprot_keystore"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="keystore导入"/>
-        <Button
-            android:id="@+id/btn_inprot_key"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="私钥导入"/>
-    </LinearLayout>
+
 
         <EditText
             android:id="@+id/et_data_inprot"
@@ -46,7 +23,8 @@
             android:layout_height="200dp"
             android:textColorHint="#fff"
             android:textColor="#fff"
-            android:hint="请输入助记词或者keystore或者私钥，如果导入keystore则需要输入原始密码"/>
+            android:hint="请输入助记词"/>
+<!--        android:hint="请输入助记词或者keystore或者私钥，如果导入keystore则需要输入原始密码-->
 
 
         <EditText
@@ -57,6 +35,31 @@
             android:textColor="#fff"
             android:inputType="numberPassword"
             android:hint="请输入8位数以上密码"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_inprot_mnemonic"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="助记词导入"/>
+            <!--        <Button-->
+            <!--            android:id="@+id/btn_inprot_keystore"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_weight="1"-->
+            <!--            android:layout_height="match_parent"-->
+            <!--            android:text="keystore导入"/>-->
+            <!--        <Button-->
+            <!--            android:id="@+id/btn_inprot_key"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_weight="1"-->
+            <!--            android:layout_height="match_parent"-->
+            <!--            android:text="私钥导入"/>-->
+        </LinearLayout>
+
 
     </LinearLayout>
 

@@ -99,12 +99,7 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
         fhjy.setLayoutParams(lp3);
         Data.settype("jyxxactivity");
         Data.setcontext(JYXXActivity.this);
-        Cursor cursor=null;
-        if(Data.getapptype().equals("cold")){
-            cursor = Data.getdb().rawQuery("select * from JiaoyiTb where blename='"+ Data.getdevicename()+"'and bizhong ='"+name.getText().toString()+"'", null);
-        }else if(Data.getapptype().equals("hot")){
-            cursor = Data.getdb().rawQuery("select * from HotJiaoyiTb where blename='"+ Data.getdevicename()+"'and bizhong ='"+name.getText().toString()+"'", null);
-        }
+        Cursor cursor = Data.getdb().rawQuery("select * from JiaoyiTb where blename='"+ Data.getdevicename()+"'and bizhong ='"+name.getText().toString()+"'", null);
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {//游标是否继续向下移动
                 String name = cursor.getString(cursor.getColumnIndex("name"));
