@@ -1,1 +1,1 @@
-include ':app', ':token-core'
+include ':app'
