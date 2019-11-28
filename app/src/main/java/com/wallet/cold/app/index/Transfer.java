@@ -1037,7 +1037,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data8=strlength(sign);
         String data9="8114";
         String data10=Base58.xrpdecode(Data.getxrpaddress());
-        data8=data8.substring(0,data8.length()-8);
+        data10=data10.substring(0,data10.length()-8);
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10);
     }
 
