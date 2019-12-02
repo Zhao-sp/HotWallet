@@ -1001,6 +1001,7 @@ id head_xiangji
 id hier
 id home
 id homeAsUp
+id hot_wallet
 id hq
 id i1
 id icon

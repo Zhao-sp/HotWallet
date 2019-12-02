@@ -4,9 +4,11 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +28,9 @@ import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
+import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.hot.app.ByteActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,8 +53,8 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         mTitleView = findViewById(R.id.create_import_title);
         mCreateBtn = findViewById(R.id.create_wallet);
         mCreateBtn.setOnClickListener(this);
-        //mImportBtn = findViewById(R.id.import_wallet);
-        //mImportBtn.setOnClickListener(this);
+        mImportBtn = findViewById(R.id.hot_wallet);
+        mImportBtn.setOnClickListener(this);
         DisplayMetrics dm = getResources().getDisplayMetrics();
         mScreenHeight = dm.heightPixels;
         initAnimation();
@@ -179,34 +184,34 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.import_wallet:
-//                Data.setapptype("hot");
-//                Intent Intent1 = new Intent();
-//                Data.getdb().execSQL("create table if not exists HotAddressTb (_id integer primary key,password text not null,btcaddress text not null,ethaddress text not null,ethprv text not null,btcprv text not null,btcpub text not null)");
-//                Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
-//                if (cursor != null && cursor.getCount() > 0) {
-//                    while (cursor.moveToNext()) {
-//                        String password = cursor.getString(cursor.getColumnIndex("password"));
-//                        String btcaddress = cursor.getString(cursor.getColumnIndex("btcaddress"));
-//                        String ethaddress = cursor.getString(cursor.getColumnIndex("ethaddress"));
-//                        String ethprv = cursor.getString(cursor.getColumnIndex("ethprv"));
-//                        String btcprv = cursor.getString(cursor.getColumnIndex("btcprv"));
-//                        String btcpub = cursor.getString(cursor.getColumnIndex("btcpub"));
-//                        Data.sethotpassword(password);
-//                        Data.setbtcaddress(btcaddress);
-//                        Data.setethaddress(ethaddress);
-//                        Data.sethotethprv(ethprv);
-//                        Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);
-//                    }
-//                    cursor.close();
-//                    new Utils().zhuce();
-//                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
-//                    Data.setdialog(mWeiboDialog);
-//                }else {
-//                    Intent1.setClass(this, ByteActivity.class);
-//                    startActivity(Intent1);
-//                }
-//                break;
+            case R.id.hot_wallet:
+                Data.setapptype("hot");
+                Intent Intent1 = new Intent();
+                Data.getdb().execSQL("create table if not exists HotAddressTb (_id integer primary key,password text not null,btcaddress text not null,ethaddress text not null,ethprv text not null,btcprv text not null,btcpub text not null)");
+                Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    while (cursor.moveToNext()) {
+                        String password = cursor.getString(cursor.getColumnIndex("password"));
+                        String btcaddress = cursor.getString(cursor.getColumnIndex("btcaddress"));
+                        String ethaddress = cursor.getString(cursor.getColumnIndex("ethaddress"));
+                        String ethprv = cursor.getString(cursor.getColumnIndex("ethprv"));
+                        String btcprv = cursor.getString(cursor.getColumnIndex("btcprv"));
+                        String btcpub = cursor.getString(cursor.getColumnIndex("btcpub"));
+                        Data.sethotpassword(password);
+                        Data.setbtcaddress(btcaddress);
+                        Data.setethaddress(ethaddress);
+                        Data.sethotethprv(ethprv);
+                        Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);
+                    }
+                    cursor.close();
+                    new Utils().zhuce();
+                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
+                    Data.setdialog(mWeiboDialog);
+                }else {
+                    Intent1.setClass(this, ByteActivity.class);
+                    startActivity(Intent1);
+                }
+                break;
             case R.id.create_wallet:
                 Data.setapptype("cold");
                 Intent Intent = new Intent();
@@ -220,14 +225,14 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
     private void initAnimation() {
         titleAnimation();
         createAnimation();
-        //importAnimation();
+        importAnimation();
     }
 
     private void startAnimation() {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(1000);
-        animatorSet.play(mCreateBtnAnimator).after(mTitleViewAnimator);
-        //animatorSet.play(mCreateBtnAnimator).with(mImportBtnAnimator).after(mTitleViewAnimator);
+        //animatorSet.play(mCreateBtnAnimator).after(mTitleViewAnimator);
+        animatorSet.play(mCreateBtnAnimator).with(mImportBtnAnimator).after(mTitleViewAnimator);
         animatorSet.start();
     }
 

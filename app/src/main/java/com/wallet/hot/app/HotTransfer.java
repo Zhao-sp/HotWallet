@@ -27,6 +27,7 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.WeiboDialogUtils;
 
+import org.bitcoinj.core.Base58;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.RawTransaction;
 import org.web3j.crypto.TransactionEncoder;
@@ -50,6 +51,7 @@ import java.util.List;
 import java.util.Map;
 import static com.wallet.cold.utils.Utils.ETHAddressValidate;
 import static com.wallet.cold.utils.Utils.bitCoinAddressValidate;
+import static com.wallet.cold.utils.Utils.bytesToHexString;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
 import static com.wallet.cold.utils.Utils.sendble;
@@ -597,7 +599,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
     }
     @SuppressLint("NewApi")
     public static String toBase64(byte[] before){
-        return Utils.bytesToHexString(Base64.getEncoder().encode(before));
+        return bytesToHexString(Base64.getEncoder().encode(before));
     }
     @SuppressLint("NewApi")
     public static byte[] fromBase64(String base64) {
