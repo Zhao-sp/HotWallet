@@ -157,6 +157,99 @@ public class Utils extends Activity {
         }
     }
 
+    public static String tozhishu(){
+        String str="";
+        if(Data.getyue().contains(".")){
+            str = Data.getyue().replaceAll("[.]", "");
+        }else{
+            str = Data.getyue();
+        }
+        for(int i=str.length();i<16;i++){
+            str=str+"0";
+        }
+        String str2=Utils.toBinary1(Long.parseLong(str));
+        str2=str2.substring(10,str2.length());
+        for(int i=str2.length();i<54;i++){
+            str2="0"+str2;
+        }
+        int length=97-str.length()+Data.getyue().length();
+        String strlength=Utils.toBinary(length);
+        for(int i=strlength.length();i<8;i++){
+            strlength="0"+strlength;
+        }
+        String data="11"+strlength+str2;String data1="";
+        for(int i=0;i<data.length()/4;i++){
+            if(data1.equals("")){
+                data1 = data1 + data.substring(0, 4);
+            }else {
+                data1 = data1 +","+ data.substring(i*4, i*4+4);
+            }
+        }
+        return BinaryToHexString(binStrToByteArr(data1));
+    }
+
+    /**
+     * int 10进制转2进制
+     * @param num
+     * @return
+     */
+    public static String toBinary(int num) {
+        String str = "";
+        while (num != 0) {
+            str = num % 2 + str;
+            num = num / 2;
+        }
+        return str;
+    }
+
+    /**
+     * Long 10进制转2进制
+     * @param num
+     * @return
+     */
+    public static String toBinary1(Long num) {
+        final int size = 64;
+        char[] chs = new char[size];
+        for (int i = 0; i < size; i++) {
+            chs[size - 1 - i] = (char) (((num >> i) & 1) + '0');
+        }
+        return new String(chs);
+    }
+
+    /**
+     * 二进制转byte[]数组
+     * @param binStr
+     * @return
+     */
+    public static byte[] binStrToByteArr(String binStr) {
+        String[] temp = binStr.split(",");
+        byte[] b = new byte[temp.length];
+        for (int i = 0; i < b.length; i++) {
+            b[i] = Long.valueOf(temp[i], 2).byteValue();
+        }
+        return b;
+    }
+    /**
+     *
+     * @param bytes
+     * @return 将二进制byte[]数组转换为十六进制字符输出
+     */
+    public static String BinaryToHexString(byte[] bytes){
+        String result = "";
+        String hex = "";
+        for(int i=0;i<bytes.length;i++){
+            //字节高4位
+            hex = String.valueOf("0123456789ABCDEF".charAt((bytes[i]&0xF0)>>4));
+            //字节低4位
+            hex += String.valueOf("0123456789ABCDEF".charAt(bytes[i]&0x0F));
+            if(hex.substring(0,1).equals("0")){
+                hex=hex.substring(1,hex.length());
+            }
+            result +=hex;
+        }
+        return result;
+    }
+
     /**
      * 数组转换成十六进制字符串
      * @param bArray

@@ -145,23 +145,27 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
             noxx.setVisibility(View.VISIBLE);
             lv1.setVisibility(View.INVISIBLE);
         } else if (i == R.id.trustset) {
-            final EditText inputServer = new EditText(this);
-            inputServer.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            inputServer.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+            LayoutInflater inflater = LayoutInflater.from(this);
+            final View textEntryView = inflater.inflate(R.layout.trustset, null);
+            final TextView yue=(TextView)textEntryView.findViewById(R.id.yue);
+            final TextView pin=(TextView)textEntryView.findViewById(R.id.pin);
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(R.string.recover5).setView(inputServer).setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
+            builder.setView(textEntryView).setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
 
                 }
             });
             builder.setPositiveButton(R.string.f514, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    if(inputServer.getText().toString().equals("")){
+                    if(pin.getText().toString().equals("")){
                         Toast.makeText(Data.getcontext(),Data.getcontext().getResources().getString(R.string.m2), Toast.LENGTH_SHORT).show();
+                    }else if(yue.getText().toString().equals("")){
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff21), Toast.LENGTH_SHORT).show();
                     }else {
                         mWeiboDialog = WeiboDialogUtils.createLoadingDialog(JYXXActivity.this, Data.getcontext().getResources().getString(R.string.fff23));
                         Data.setdialog(mWeiboDialog);
-                        Data.setlimit(inputServer.getText().toString());
+                        Data.setlimit(pin.getText().toString());
+                        Data.setyue(yue.getText().toString());
                         Data.setbizhong("trustset");//币种分类
                         Data.setsign("end0");//结束指令
                         Data.setsaoma("yes");//是否进行签名

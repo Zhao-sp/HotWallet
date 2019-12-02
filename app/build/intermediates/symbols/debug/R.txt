@@ -1392,8 +1392,9 @@ int layout select_dialog_multichoice_material 0x7f090066
 int layout select_dialog_singlechoice_material 0x7f090067
 int layout support_simple_spinner_dropdown_item 0x7f090068
 int layout transfer 0x7f090069
-int layout verification_mnemonic_layout 0x7f09006a
-int layout view_password_input 0x7f09006b
+int layout trustset 0x7f09006a
+int layout verification_mnemonic_layout 0x7f09006b
+int layout view_password_input 0x7f09006c
 int mipmap ic_arrow_down 0x7f0a0000
 int mipmap ic_input_del 0x7f0a0001
 int mipmap ic_launcher 0x7f0a0002

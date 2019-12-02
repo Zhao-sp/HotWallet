@@ -957,7 +957,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
             data2="0"+data2;
         }
         String data3="61";
-        String data4="D4838D7EA4C68000";
+        String data4=Utils.tozhishu();
         String data5="0000000000000000000000004145440000000000";
         String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
         String data52="68400000000000000C7321";
@@ -981,7 +981,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
             data2="0"+data2;
         }
         String data3="61";
-        String data4="D4838D7EA4C68000";
+        String data4=Utils.tozhishu();
         String data5="0000000000000000000000004145440000000000";
         String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
         String data52="68400000000000000C7321";
@@ -1007,7 +1007,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
             data2="0"+data2;
         }
         String data3="63";
-        String data4="D5038D7EA4C68000";
+        String data4=Utils.tozhishu();
         String data5="0000000000000000000000004145440000000000";
         String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
         String data52="68400000000000000C7321";
@@ -1028,7 +1028,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
             data2="0"+data2;
         }
         String data3="63";
-        String data4="D5038D7EA4C68000";
+        String data4=Utils.tozhishu();
         String data5="0000000000000000000000004145440000000000";
         String data51="C8865AF270B553E2B2DB2371B703EC4D253D9F42";
         String data52="68400000000000000C7321";

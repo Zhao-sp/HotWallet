@@ -1393,6 +1393,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout transfer
+layout trustset
 layout verification_mnemonic_layout
 layout view_password_input
 mipmap ic_arrow_down

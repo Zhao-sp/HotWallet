@@ -26,9 +26,6 @@ import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
-import com.wallet.hot.app.ByteActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -36,10 +33,10 @@ import java.util.ArrayList;
 public class CreateOrImportActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
     private Button mCreateBtn;
-    //private Button mImportBtn;
+    private Button mImportBtn;
     private ObjectAnimator mTitleViewAnimator;
     private ObjectAnimator mCreateBtnAnimator;
-    //private ObjectAnimator mImportBtnAnimator;
+    private ObjectAnimator mImportBtnAnimator;
     private int mScreenHeight = 0;
     private java.util.List<String> List = new ArrayList<>();
 
@@ -85,7 +82,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
 //        webView.getSettings().setJavaScriptEnabled(true);
 //        webView.setWebViewClient(new WebViewClient());
 //        webView.setWebChromeClient(new WebChromeClient());
-//        webView.loadUrl("file:///android_asset/");
+//        webView.loadUrl("file:///android_asset/index.html");
 //        findViewById(R.id.import_wallet).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -100,6 +97,8 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
 //            }
 //        });
     }
+
+
 
     /**
      * 权限回调处理
@@ -221,7 +220,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
     private void initAnimation() {
         titleAnimation();
         createAnimation();
-//        importAnimation();
+        //importAnimation();
     }
 
     private void startAnimation() {
@@ -300,39 +299,39 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         });
     }
 
-//    private void importAnimation() {
-//        mImportBtnAnimator = ObjectAnimator.ofFloat(mImportBtn, "translationY",
-//                mScreenHeight, 0);
-//        mImportBtnAnimator.setDuration(800);
-//        mImportBtnAnimator.setInterpolator(new DecelerateInterpolator());
-//        mImportBtnAnimator.addListener(new Animator.AnimatorListener() {
-//
-//            @Override
-//            public void onAnimationStart(Animator animation) {
-//                // TODO Auto-generated method stub
-//                mImportBtn.setTranslationY(mScreenHeight);
-//                mImportBtn.setVisibility(View.VISIBLE);
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animator animation) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animator animation) {
-//                // TODO Auto-generated method stub
-//                mImportBtn.setTranslationY(0);
-//            }
-//
-//            @Override
-//            public void onAnimationCancel(Animator animation) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//        });
-//    }
+    private void importAnimation() {
+        mImportBtnAnimator = ObjectAnimator.ofFloat(mImportBtn, "translationY",
+                mScreenHeight, 0);
+        mImportBtnAnimator.setDuration(800);
+        mImportBtnAnimator.setInterpolator(new DecelerateInterpolator());
+        mImportBtnAnimator.addListener(new Animator.AnimatorListener() {
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                // TODO Auto-generated method stub
+                mImportBtn.setTranslationY(mScreenHeight);
+                mImportBtn.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                // TODO Auto-generated method stub
+                mImportBtn.setTranslationY(0);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+    }
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocalManageUtil.setLocal(newBase));

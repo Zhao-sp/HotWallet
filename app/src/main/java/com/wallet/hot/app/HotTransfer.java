@@ -5,10 +5,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.annotation.NonNull;
 import android.text.method.NumberKeyListener;
 import android.view.KeyEvent;
 import android.view.View;
@@ -29,10 +27,6 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.WeiboDialogUtils;
 
-import org.bitcoinj.core.DumpedPrivateKey;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.NetworkParameters;
-import org.bitcoinj.params.TestNet3Params;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.RawTransaction;
 import org.web3j.crypto.TransactionEncoder;
@@ -41,9 +35,14 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.Signature;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -54,7 +53,6 @@ import static com.wallet.cold.utils.Utils.bitCoinAddressValidate;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
 import static com.wallet.cold.utils.Utils.sendble;
-import static com.wallet.cold.utils.Utils.strTo16;
 import static com.wallet.cold.utils.Utils.strhex;
 import static com.wallet.cold.utils.Utils.strlength;
 
@@ -562,14 +560,48 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             String len = Integer.toHexString(Integer.parseInt(String.valueOf(bytes3.length)));
             String data=Data.getstrhex1() + len + scriptPubKey + "f" + Data.getstrhex2()+"01000000";
             LogCook.d("待签名信息",data);
-//            String hash = bitcoin.crypto.sha256(data),
-//            keyPair = bitcoin.ECPair.fromWIF(Data.gethotbtcprv());
-//
-//            String signature = keyPair.sign(hash).toDER();
-//            LogCook.d("签名结果",signdata);
-//            Data.setresultdata(signdata);
+            byte[] bytes = new byte[data.length() / 2];
+            for (int i = 0; i < data.length() / 2; i++) {//16进制字符串转byte[]
+                String subStr = data.substring(i * 2, i * 2 + 2);
+                bytes[i] = (byte) Integer.parseInt(subStr, 16);
+            }
+            try {
+                String a=sign(bytes,Data.gethotbtcprv());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Data.setresultdata("");
             btc();
         }
+    }
+    public static final String ALGORITHM = "EC";
+    public static String sign(byte[] data, String privateKey) throws Exception {
+        // 解密由base64编码的私钥
+        byte[] keyBytes = fromBase64(privateKey);
+
+        // 构造PKCS8EncodedKeySpec对象
+        PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(keyBytes);
+
+        // KEY_ALGORITHM 指定的加密算法
+        KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM,"BC");
+
+        // 取私钥匙对象
+        PrivateKey priKey = keyFactory.generatePrivate(pkcs8KeySpec);
+
+        // 用私钥对信息生成数字签名
+        Signature signature = Signature.getInstance("SHA256withECDSA");
+        signature.initSign(priKey);
+        signature.update(data);
+
+        return toBase64(signature.sign());
+    }
+    @SuppressLint("NewApi")
+    public static String toBase64(byte[] before){
+        return Utils.bytesToHexString(Base64.getEncoder().encode(before));
+    }
+    @SuppressLint("NewApi")
+    public static byte[] fromBase64(String base64) {
+        return Base64.getDecoder().decode(base64);
     }
 
     private List<String> sign = new ArrayList<>();
