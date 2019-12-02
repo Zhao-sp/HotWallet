@@ -685,7 +685,7 @@ public class Utilshttp {
                     } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24) +
                                 jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
-                        if(Data.gettype().equals("fragment3")) {
+                        if(Data.gettype().equals("fragment3")||Data.gettype().equals("jyxxactivity")) {
                             WeiboDialogUtils.closeDialog(Data.getdialog());
                         }else {
                             Data.setxrpamount("0");
@@ -694,7 +694,7 @@ public class Utilshttp {
                     }
                 } catch (Exception e) {
                     Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
-                    if(Data.gettype().equals("fragment3")) {
+                    if(Data.gettype().equals("fragment3")||Data.gettype().equals("jyxxactivity")) {
 
                     }else {
                         Data.setxrpamount("0");
@@ -745,7 +745,7 @@ public class Utilshttp {
                                         "('" + Data.getdevicename() + "','" + Data.getxrpaddress() + "','XRP'," + Data.getyue() + ",'" + str + "',1)");
                             }else if(Data.getbizhong().equals("AED")) {
                                 Data.getdb().execSQL("insert into JiaoyiTb (blename,name,bizhong,jine,riqi,type) values " +
-                                        "('" + Data.getdevicename() + "','" + Data.getaedaddress() + "','AED'," + Data.getyue() + ",'" + str + "',1)");
+                                        "('" + Data.getdevicename() + "','" + Data.getxrpaddress() + "','AED'," + Data.getyue() + ",'" + str + "',1)");
                             }
                         }
                         WeiboDialogUtils.closeDialog(Data.getdialog());

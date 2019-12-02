@@ -171,8 +171,13 @@ public class Utils extends Activity {
         str2=str2.substring(10,str2.length());
         for(int i=str2.length();i<54;i++){
             str2="0"+str2;
+        }int length=0;
+        if(Data.getyue().contains(".")){
+            int a = Data.getyue().lastIndexOf(".");
+            length=97-str.length()+a;
+        }else{
+            length=97-str.length()+Data.getyue().length();
         }
-        int length=97-str.length()+Data.getyue().length();
         String strlength=Utils.toBinary(length);
         for(int i=strlength.length();i<8;i++){
             strlength="0"+strlength;
