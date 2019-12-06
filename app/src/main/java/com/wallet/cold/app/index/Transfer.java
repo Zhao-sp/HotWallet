@@ -51,7 +51,6 @@ import java.util.Map;
 
 import static com.wallet.cold.utils.Utils.ETHAddressValidate;
 import static com.wallet.cold.utils.Utils.Encrypt;
-import static com.wallet.cold.utils.Utils.bitCoinAddressValidate;
 import static com.wallet.cold.utils.Utils.bytes2Hex;
 import static com.wallet.cold.utils.Utils.bytetostring;
 import static com.wallet.cold.utils.Utils.end;

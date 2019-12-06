@@ -50,10 +50,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import static com.wallet.cold.utils.Utils.ETHAddressValidate;
-import static com.wallet.cold.utils.Utils.bitCoinAddressValidate;
 import static com.wallet.cold.utils.Utils.bytesToHexString;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
+import static com.wallet.cold.utils.Utils.isBTCValidAddress;
 import static com.wallet.cold.utils.Utils.sendble;
 import static com.wallet.cold.utils.Utils.strhex;
 import static com.wallet.cold.utils.Utils.strlength;
@@ -281,7 +281,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                         Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff20), Toast.LENGTH_SHORT).show();
                     } else if (!amount1) {
                         Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff21), Toast.LENGTH_SHORT).show();
-                    } else if (!bitCoinAddressValidate(to)) {
+                    } else if (!isBTCValidAddress(to)) {
                         Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff22), Toast.LENGTH_SHORT).show();
                     } else {
                         mWeiboDialog = WeiboDialogUtils.createLoadingDialog(HotTransfer.this, "转账中...");
