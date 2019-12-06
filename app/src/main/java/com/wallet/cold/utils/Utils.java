@@ -38,7 +38,6 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.wallet.R;
-import com.wallet.cold.app.index.Fragment1;
 import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.app.auth0.auth0login;
@@ -52,6 +51,10 @@ import com.wallet.cold.app.util.GengxinActivity;
 import com.wallet.cold.app.util.LanguagesActivity;
 import com.wallet.cold.dfu.DfuUpdateActivity;
 
+import org.bitcoinj.core.Address;
+import org.bitcoinj.core.NetworkParameters;
+import org.bitcoinj.params.MainNetParams;
+import org.bitcoinj.params.TestNet3Params;
 import org.bouncycastle.crypto.digests.RIPEMD160Digest;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -101,34 +104,28 @@ import static java.lang.String.valueOf;
 public class Utils extends Activity {
     private final static String ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 
-
     /**
-     * btc(bch,usdt)地址是否有效
-     * return: true有效,false无效
+     * 验证btc地址有效性
+  * @param input
+     * @return
      */
-    public static boolean bitCoinAddressValidate(String addr) {
-        if (addr.length() < 26 || addr.length() > 35)
+    public static boolean isBTCValidAddress(String input) {
+        try {
+            NetworkParameters networkParameters = null;
+//            if (!BTC_TEST_NET)
+//                networkParameters = MainNetParams.get();
+//            else
+                networkParameters = TestNet3Params.get();
+            Address address = Address.fromBase58(networkParameters, input);
+            if (address != null)
+                return true;
+            else
+                return false;
+        } catch (Exception e) {
             return false;
-        byte[] decoded = decodeBase58To25Bytes(addr);
-        if (decoded == null)
-            return false;
-        byte[] hash1 = sha256(Arrays.copyOfRange(decoded, 0, 21));
-        byte[] hash2 = sha256(hash1);
-        return Arrays.equals(Arrays.copyOfRange(hash2, 0, 4), Arrays.copyOfRange(decoded, 21, 25));
-    }
-    public static byte[] decodeBase58To25Bytes(String input) {
-        BigInteger num = BigInteger.ZERO;
-        for (char t : input.toCharArray()) {
-            int p = ALPHABET.indexOf(t);
-            if (p == -1)
-                return null;
-            num = num.multiply(BigInteger.valueOf(58)).add(BigInteger.valueOf(p));
         }
-        byte[] result = new byte[25];
-        byte[] numBytes = num.toByteArray();
-        System.arraycopy(numBytes, 0, result, result.length - numBytes.length, numBytes.length);
-        return result;
     }
+
     public static boolean ETHAddressValidate(String addr) {
         if (addr.length() != 40)
             return false;

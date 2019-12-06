@@ -354,7 +354,7 @@ public class BaiBeiWalletUtils {
         }
         DeterministicKeyChain deterministicKeyChain = DeterministicKeyChain.builder().seed(deterministicSeed).build();
         NetworkParameters networkParameters  = TestNet3Params.get();
-        String path = "m/44'/1'/0'/0";
+        String path = "m/44'/1'/0'/0/0";
         BigInteger privkeybtc = deterministicKeyChain.getKeyByPath(btcparsePath(path), true).getPrivKey();
         ECKey ecKey = ECKey.fromPrivate(privkeybtc);
         String publicKey = ecKey.getPublicKeyAsHex();
