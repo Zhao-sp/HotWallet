@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.method.NumberKeyListener;
+import android.util.Base64;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +29,10 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.WeiboDialogUtils;
 
-import org.bitcoinj.core.Base58;
+import org.bitcoinj.core.DumpedPrivateKey;
+import org.bitcoinj.core.ECKey;
+import org.bitcoinj.core.Sha256Hash;
+import org.bitcoinj.params.TestNet3Params;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.RawTransaction;
 import org.web3j.crypto.TransactionEncoder;
@@ -36,21 +41,17 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.Signature;
-import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.SignatureException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import static com.wallet.cold.utils.Utils.ETHAddressValidate;
-import static com.wallet.cold.utils.Utils.bytesToHexString;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
 import static com.wallet.cold.utils.Utils.isBTCValidAddress;
@@ -259,9 +260,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     return;
                 }
                 Double a2 = Double.valueOf(fee);
-                BigDecimal bd2 = new BigDecimal(a2).setScale(8, BigDecimal.ROUND_DOWN);
-                Double a1 = Double.valueOf(amountyue);
-                BigDecimal bd1 = new BigDecimal(a1).setScale(8, BigDecimal.ROUND_DOWN);
+                Double a1 = Double.valueOf(amountyue);;
                 Double a3 = a1 + a2;
                 BigDecimal bd3 = new BigDecimal(a3).setScale(8, BigDecimal.ROUND_DOWN);
                 if (balance.substring(0, 10).compareTo(String.valueOf(bd3)) < 0) {
@@ -553,7 +552,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             Data.setstrhex1(strhex3);
             strhex2 = s.substring(s.indexOf("ffffffff") + 1);
             Data.setstrhex2(strhex2);
-            scriptPubKey=Data.gethotbtcpub();
+            scriptPubKey=Data.getscriptPubKey1();
             byte[] bytes3 = new byte[scriptPubKey.length() / 2];
             for (int i = 0; i < scriptPubKey.length() / 2; i++) {//16进制字符串转byte[]
                 String subStr = scriptPubKey.substring(i * 2, i * 2 + 2);
@@ -567,43 +566,67 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                 String subStr = data.substring(i * 2, i * 2 + 2);
                 bytes[i] = (byte) Integer.parseInt(subStr, 16);
             }
-            try {
-                String a=sign(bytes,Data.gethotbtcprv());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            Data.setresultdata("");
+            String aaa=Signingtrasaction(Data.gethotbtcprv(),bytes);
+            Data.setresultdata(aaa);
             btc();
         }
     }
-    public static final String ALGORITHM = "EC";
-    public static String sign(byte[] data, String privateKey) throws Exception {
-        // 解密由base64编码的私钥
-        byte[] keyBytes = fromBase64(privateKey);
 
-        // 构造PKCS8EncodedKeySpec对象
-        PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(keyBytes);
+    /**
+     * btc公钥验签
+     * @param msg
+     * @param signatureMsg
+     * @param pubkey
+     * @return
+     */
+    public static boolean verifyMessage(String msg, String signatureMsg, String pubkey) {
+        boolean result = false;
+        ECKey ecKey = ECKey.fromPublicOnly(org.bitcoinj.core.Utils.HEX.decode(pubkey));
+        try {
+            ecKey.verifyMessage(msg, signatureMsg);
+            result = true;
+        } catch (SignatureException e) {
+            result = false;
+            e.printStackTrace();
+        } finally {
+            return result;
+        }
 
-        // KEY_ALGORITHM 指定的加密算法
-        KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM,"BC");
-
-        // 取私钥匙对象
-        PrivateKey priKey = keyFactory.generatePrivate(pkcs8KeySpec);
-
-        // 用私钥对信息生成数字签名
-        Signature signature = Signature.getInstance("SHA256withECDSA");
-        signature.initSign(priKey);
-        signature.update(data);
-
-        return toBase64(signature.sign());
     }
-    @SuppressLint("NewApi")
-    public static String toBase64(byte[] before){
-        return bytesToHexString(Base64.getEncoder().encode(before));
-    }
-    @SuppressLint("NewApi")
-    public static byte[] fromBase64(String base64) {
-        return Base64.getDecoder().decode(base64);
+
+    /**
+     * btc私钥签名
+     * @param wif
+     * @param msg
+     * @return
+     */
+    public String Signingtrasaction(String wif, byte[] msg) {
+        String hex="";
+        try {
+            // creating a key object from WiF
+            DumpedPrivateKey dpk = DumpedPrivateKey.fromBase58(TestNet3Params.get(), wif);
+            ECKey key = dpk.getKey();
+            // checking our key object
+            // NetworkParameters main = MainNetParams.get();
+//            String check = key.getPrivateKeyAsWiF(TestNet3Params.get());
+//            System.out.println(wif.equals(check));  // true
+//            Log.e("wif check", String.valueOf(wif.equals(check)));
+            // creating Sha object from string
+            Sha256Hash hash = Sha256Hash.twiceOf(msg);
+            // creating signature
+            ECKey.ECDSASignature sig = key.sign(hash);
+            // encoding
+            byte[] res = sig.encodeToDER();
+            // converting to hex
+            hex = Base64.encodeToString(res, 16);
+            Log.e("sigendTransiction", hex);
+            System.out.println("签名:"+Utils.bytesToHexString(res));
+            return Utils.bytesToHexString(res);
+            //Log.e("decrypttx",""+ Hex.decode(sig.encodeToDER()));
+        } catch (Exception e) {
+            Log.e("signing exception", e.getMessage().toString());
+        }
+        return hex;
     }
 
     private List<String> sign = new ArrayList<>();
@@ -616,7 +639,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             public void run() {
                 if (Data.getuxto()) {
                     String data = "";
-                    result1 = Data.getresult();
+                    result1 = Data.getresultdata();
                     int count = getSubCount_2(result1, "ffffffff");
                     for (int q = 0; q < count; q++) {
                         int index = getIndex(result1, q + 1, "ffffffff");

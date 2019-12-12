@@ -60,8 +60,6 @@ public class HotRecoverActivity extends AppCompatActivity {
             new Utils().zhuce();
         } catch (CipherException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
     }

@@ -3,7 +3,6 @@ package com.wallet.cold.app.index;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -24,7 +23,7 @@ import com.wallet.R;
 import com.wallet.cold.app.auth0.auth0register;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.rlp.RLP;
-import com.wallet.cold.utils.Base58;
+import com.wallet.cold.utils.UtilsBase58;
 import com.wallet.cold.utils.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
@@ -33,8 +32,6 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
-
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -912,10 +909,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data5="68400000000000000C7321";
         String data6=Data.getxrppub();
         String data7="8114";
-        String data8= Base58.xrpdecode(Data.getxrpaddress());
+        String data8= UtilsBase58.xrpdecode(Data.getxrpaddress());
         data8=data8.substring(0,data8.length()-8);
         String data9="8314";
-        String data10=Base58.xrpdecode(Data.getto());
+        String data10= UtilsBase58.xrpdecode(Data.getto());
         data10=data10.substring(0,data10.length()-8);
         sign(data1+data2+data3+data4+data5+data6+data7+data8+data9+data10);//进行签名
     }
@@ -939,10 +936,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data7="74";
         String data8=strlength(sign);
         String data9="8114";
-        String data10=Base58.xrpdecode(Data.getxrpaddress());
+        String data10= UtilsBase58.xrpdecode(Data.getxrpaddress());
         data10=data10.substring(0,data10.length()-8);
         String data11="8314";
-        String data12=Base58.xrpdecode(Data.getto());
+        String data12= UtilsBase58.xrpdecode(Data.getto());
         data12=data12.substring(0,data12.length()-8);
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data6+data7+data8+sign+data9+data10+data11+data12);
     }
@@ -963,10 +960,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data52="68400000000000000C7321";
         String data6=Data.getxrppub();
         String data7="8114";
-        String data8=Base58.xrpdecode(Data.getxrpaddress());
+        String data8= UtilsBase58.xrpdecode(Data.getxrpaddress());
         data8=data8.substring(0,data8.length()-8);
         String data9="8314";
-        String data10=Base58.xrpdecode(Data.getto());
+        String data10= UtilsBase58.xrpdecode(Data.getto());
         data10=data10.substring(0,data10.length()-8);
         sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+data9+data10);//进行签名
     }
@@ -989,10 +986,10 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data7="74";
         String data8=strlength(sign);
         String data9="8114";
-        String data10=Base58.xrpdecode(Data.getxrpaddress());
+        String data10= UtilsBase58.xrpdecode(Data.getxrpaddress());
         data10=data10.substring(0,data10.length()-8);
         String data11="8314";
-        String data12=Base58.xrpdecode(Data.getto());
+        String data12= UtilsBase58.xrpdecode(Data.getto());
         data12=data12.substring(0,data12.length()-8);
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10+data11+data12);
     }
@@ -1013,7 +1010,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data52="68400000000000000C7321";
         String data6=Data.getxrppub();
         String data7="8114";
-        String data8=Base58.xrpdecode(Data.getxrpaddress());
+        String data8= UtilsBase58.xrpdecode(Data.getxrpaddress());
         data8=data8.substring(0,data8.length()-8);
         sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8);//进行签名
     }
@@ -1036,7 +1033,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data7="74";
         String data8=strlength(sign);
         String data9="8114";
-        String data10=Base58.xrpdecode(Data.getxrpaddress());
+        String data10= UtilsBase58.xrpdecode(Data.getxrpaddress());
         data10=data10.substring(0,data10.length()-8);
         new Utilshttp().getxrpsendtransaction(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+sign+data9+data10);
     }

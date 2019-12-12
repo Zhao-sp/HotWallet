@@ -10,8 +10,11 @@ import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.common.collect.Lists;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
+import org.bitcoinj.core.UTXO;
 
 import java.util.List;
 
@@ -23,6 +26,7 @@ public class Data extends Application {
     private static Bitmap imgCode,ethimgCode,shareimgCode,xrpimgCode;
     private static List<String> txid,rlplist,scriptPubKey,amount,signdata,bledata,zxname,zxtime,zxneirong;
     private static List<Object> vout;
+    private static List<UTXO> utxos= Lists.newArrayList();
     private static Context context;
     private static Dialog dialog;
     private static Button startBtn;
@@ -37,6 +41,12 @@ public class Data extends Application {
             btcbalance,ethbalance,type,btctype,pubkey,sign,end,hash,bizhong,scan,rlpdata,bletype,scriptPubKey1,resultdata,strhex1,strhex2,iseth,data,data2,saoma,yue,fee,to,
             apptype,hotethprv,hotbtcprv,hotbtcpub,hotpassword,fingerprints,fingerprintsname,http1,hiersign,objectId,ptamount,isblecomment,paytype,xrppub,
             xrpaddress,xrpamount,xrpserialnumber,xrprmbbalance,aedamount,aedaddress;
+    public static List<UTXO> getutxos() {
+        return utxos;
+    }
+    public static void setutxos(List<UTXO> utxos) {
+        Data.utxos = utxos;
+    }
     public static Handler gethandler() {
         return handler;
     }

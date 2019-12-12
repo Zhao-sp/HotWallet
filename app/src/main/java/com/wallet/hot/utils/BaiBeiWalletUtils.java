@@ -1,5 +1,6 @@
 package com.wallet.hot.utils;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.Log;
@@ -8,22 +9,33 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.zxing.WriterException;
-import com.wallet.cold.utils.Base58;
 import com.wallet.cold.utils.Data;
+import com.wallet.cold.utils.LogCook;
 import com.wallet.cold.utils.Utils;
+import com.wallet.hot.app.HotTransfer;
 
+import org.bitcoinj.core.Address;
+import org.bitcoinj.core.DumpedPrivateKey;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.NetworkParameters;
+import org.bitcoinj.core.Sha256Hash;
+import org.bitcoinj.core.Transaction;
+import org.bitcoinj.core.TransactionInput;
 import org.bitcoinj.crypto.ChildNumber;
 import org.bitcoinj.crypto.DeterministicHierarchy;
 import org.bitcoinj.crypto.DeterministicKey;
 import org.bitcoinj.crypto.HDKeyDerivation;
+import org.bitcoinj.crypto.HDUtils;
+import org.bitcoinj.crypto.TransactionSignature;
 import org.bitcoinj.params.MainNetParams;
 import org.bitcoinj.params.TestNet3Params;
+import org.bitcoinj.script.Script;
+import org.bitcoinj.script.ScriptBuilder;
 import org.bitcoinj.wallet.DeterministicKeyChain;
 import org.bitcoinj.wallet.DeterministicSeed;
 import org.bitcoinj.wallet.UnreadableWalletException;
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
+import org.bouncycastle.crypto.params.KeyParameter;
+import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.Bip39Wallet;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
@@ -36,17 +48,30 @@ import org.web3j.utils.Numeric;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.ByteBuffer;
 import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.SecureRandom;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import static com.wallet.cold.utils.Utils.bytesToHexString;
+import static com.wallet.cold.utils.Utils.strTo16;
 import static org.bitcoinj.crypto.HDUtils.parsePath;
 import static org.web3j.crypto.Hash.sha256;
 import static org.web3j.crypto.Keys.ADDRESS_LENGTH_IN_HEX;
@@ -240,10 +265,7 @@ public class BaiBeiWalletUtils {
         return child;
     }
 
-    private static final MainNetParams mainnetParams = new MainNetParams();
-
-    public static BaibeiWallet generateBip44Wallet(String password)
-            throws CipherException, IOException {
+    public static BaibeiWallet generateBip44Wallet(String password) throws CipherException {
         //1.通过bip39生成助记词
         byte[] initialEntropy = new byte[16];
         secureRandom.nextBytes(initialEntropy);
@@ -286,31 +308,13 @@ public class BaiBeiWalletUtils {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-
-        DeterministicSeed deterministicSeed = null;
         try {
-            deterministicSeed = new DeterministicSeed(mnemonic, null, "", 0);
-        } catch (UnreadableWalletException e) {
-            e.printStackTrace();
-        }
-        DeterministicKeyChain deterministicKeyChain = DeterministicKeyChain.builder().seed(deterministicSeed).build();
-        NetworkParameters networkParameters  = TestNet3Params.get();
-        String path = "m/44'/1'/0'/0";
-        BigInteger privkeybtc = deterministicKeyChain.getKeyByPath(btcparsePath(path), true).getPrivKey();
-        ECKey ecKey = ECKey.fromPrivate(privkeybtc);
-        String publicKey = ecKey.getPublicKeyAsHex();
-        String privateKey = ecKey.getPrivateKeyEncoded(networkParameters).toString();
-        String address = ecKey.toAddress(networkParameters).toString();
-        Data.setbtcaddress(address);Data.sethotbtcprv(privateKey);Data.sethotbtcpub(publicKey);
-        try {
-            Bitmap codeBitmap = Utils.createCode(address);
-            Data.setimgCode(codeBitmap);
-        } catch (WriterException e) {
+            TestBip44BTC();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new BaibeiWallet(walletFile, mnemonic,keyPair);
     }
-
     public static List<ChildNumber> btcparsePath(@Nonnull String path) {
         String[] parsedNodes = path.replace("m", "").split("/");
         List<ChildNumber> nodes = new ArrayList<>();
@@ -324,9 +328,73 @@ public class BaiBeiWalletUtils {
         }
         return nodes;
     }
+    @SuppressLint("LongLogTag")
+    public static void TestBip44BTC() throws Exception {
+//        DeterministicSeed deterministicSeed = null;
+//        try {
+//            deterministicSeed = new DeterministicSeed(Data.gethotzjc(), null, "", 0);
+//        } catch (UnreadableWalletException e) {
+//            e.printStackTrace();
+//        }
+//        DeterministicKeyChain deterministicKeyChain = DeterministicKeyChain.builder().seed(deterministicSeed).build();
+//        //这里运用了BIP44里面提到的算法, 44'是固定的, 后面的一个0'代表的是币种BTC
+//        NetworkParameters networkParameters  = TestNet3Params.get();
+//        String path = "m/44'/1'/0'/0";
+//        BigInteger privkeybtc = deterministicKeyChain.getKeyByPath(btcparsePath(path), true).getPrivKey();
+//        ECKey ecKey = ECKey.fromPrivate(privkeybtc);
+//        String publicKey = ecKey.getPublicKeyAsHex();
+//        String privateKey = ecKey.getPrivateKeyEncoded(networkParameters).toString();
+//        String address = ecKey.toAddress(networkParameters).toString();
+//        LogCook.d("btc私钥：",privateKey);
+//        LogCook.d("btc公钥：",publicKey);
+//        LogCook.d("btc地址：",address);
+//        Data.setbtcaddress(address);Data.sethotbtcprv(privkeybtc.toString());Data.sethotbtcpub(publicKey);
+
+        DeterministicSeed deterministicSeed = new DeterministicSeed(Data.gethotzjc(), null, "", 0);
+        Log.i("BIP39 seed:{}", deterministicSeed.toHexString());
+
+        /**生成根私钥 root private key*/
+        DeterministicKey rootPrivateKey = HDKeyDerivation.createMasterPrivateKey(deterministicSeed.getSeedBytes());
+        /**根私钥进行 priB58编码*/
+        NetworkParameters params = TestNet3Params.get();
+        String priv = rootPrivateKey.serializePrivB58(params);
+        Log.i("BIP32 extended private key:{}", priv);
+        /**由根私钥生成HD钱包*/
+        DeterministicHierarchy deterministicHierarchy = new DeterministicHierarchy(rootPrivateKey);
+        /**定义父路径*/
+        List<ChildNumber> parsePath = HDUtils.parsePath("44H/1H/0H/0");
+
+        DeterministicKey accountKey0 = deterministicHierarchy.get(parsePath, true, true);
+        Log.i("Account extended private key:{}", accountKey0.serializePrivB58(params));
+        Log.i("Account extended public key:{}", accountKey0.serializePubB58(params));
+
+        /**由父路径,派生出第一个子私钥*/
+        DeterministicKey childKey0 = HDKeyDerivation.deriveChildKey(accountKey0, 0);
+//        DeterministicKey childKey0 = deterministicHierarchy.deriveChild(parsePath, true, true, new ChildNumber(0));
+        Log.i("BIP32 extended 0 private key:{}", childKey0.serializePrivB58(params));
+        Log.i("BIP32 extended 0 public key:{}", childKey0.serializePubB58(params));
+        Log.i("0 private key:{}", childKey0.getPrivateKeyAsHex());
+        Log.i("0 private key:{}", childKey0.getPrivateKeyAsWiF(params));
+        Log.i("0 public key:{}", childKey0.getPublicKeyAsHex());
+        Log.i("0 address:{}", String.valueOf(childKey0.toAddress(params)));
+        Data.setbtcaddress(String.valueOf(childKey0.toAddress(params)));Data.sethotbtcprv(childKey0.getPrivateKeyAsWiF(params));Data.sethotbtcpub(childKey0.getPublicKeyAsHex());
+        try {
+            Bitmap codeBitmap = Utils.createCode(String.valueOf(childKey0.toAddress(params)));
+            Data.setimgCode(codeBitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+//        /**由父路径,派生出第二个子私钥*/
+//        DeterministicKey childKey1 = HDKeyDerivation.deriveChildKey(accountKey0, 1);
+//        Log.i("BIP32 extended 1 private key:{}", childKey1.serializePrivB58(params));
+//        Log.i("BIP32 extended 1 public key:{}", childKey1.serializePubB58(params));
+//        Log.i("1 private key:{}", childKey1.getPrivateKeyAsHex());
+//        Log.i("1 public key:{}", childKey1.getPublicKeyAsHex());
+//        Log.i("1 address:{}", String.valueOf(childKey1.toAddress(params)));
+    }
 
     public static BaibeiWallet generateBip44Wallet(String mnemonic, String password)
-            throws CipherException, IOException {
+            throws CipherException {
         //2.生成种子
         byte[] seed = MnemonicUtils.generateSeed(mnemonic, null);
         // 3. 生成根私钥 root private key 树顶点的master key
@@ -346,25 +414,9 @@ public class BaiBeiWalletUtils {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-        DeterministicSeed deterministicSeed = null;
         try {
-            deterministicSeed = new DeterministicSeed(mnemonic, null, "", 0);
-        } catch (UnreadableWalletException e) {
-            e.printStackTrace();
-        }
-        DeterministicKeyChain deterministicKeyChain = DeterministicKeyChain.builder().seed(deterministicSeed).build();
-        NetworkParameters networkParameters  = TestNet3Params.get();
-        String path = "m/44'/1'/0'/0/0";
-        BigInteger privkeybtc = deterministicKeyChain.getKeyByPath(btcparsePath(path), true).getPrivKey();
-        ECKey ecKey = ECKey.fromPrivate(privkeybtc);
-        String publicKey = ecKey.getPublicKeyAsHex();
-        String privateKey = ecKey.getPrivateKeyEncoded(networkParameters).toString();
-        String address = ecKey.toAddress(networkParameters).toString();
-        Data.setbtcaddress(address);Data.sethotbtcprv(privateKey);Data.sethotbtcpub(publicKey);
-        try {
-            Bitmap codeBitmap = Utils.createCode(address);
-            Data.setimgCode(codeBitmap);
-        } catch (WriterException e) {
+            TestBip44BTC();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new BaibeiWallet(walletFile, mnemonic,keyPair);

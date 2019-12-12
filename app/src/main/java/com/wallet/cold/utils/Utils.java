@@ -53,7 +53,6 @@ import com.wallet.cold.dfu.DfuUpdateActivity;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.NetworkParameters;
-import org.bitcoinj.params.MainNetParams;
 import org.bitcoinj.params.TestNet3Params;
 import org.bouncycastle.crypto.digests.RIPEMD160Digest;
 import org.json.JSONException;
@@ -80,7 +79,6 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -434,6 +432,14 @@ public class Utils extends Activity {
                                 BigDecimal bd = new BigDecimal(valueOf(v));
                                 amount.add(bd.toString());
                             }
+//                            if(Data.getapptype().equals("hot")) {
+//                                BigDecimal bigDecimal = new BigDecimal(amount.get(q));
+//                                bigDecimal = bigDecimal.multiply(new BigDecimal(100000000));
+//                                System.out.print(bigDecimal);
+//                                UTXO utxo = new UTXO(Sha256Hash.wrap(txid.get(q)), Long.valueOf(vout.get(q).toString()), Coin.valueOf(bigDecimal.longValue()),
+//                                        0, false, new Script(Hex.decode(scriptPubKey.get(q))), address.get(q));
+//                                Data.getutxos().add(utxo);
+//                            }
                         }
                     }
                     Data.settxid(txid);
@@ -456,8 +462,6 @@ public class Utils extends Activity {
                         Data.setbtcbalance(String.format("%.8f", sum));
                     }
                     return String.format("%.8f", sum) + "success";
-                } else if (Data.getbtctype().equals("zhuce")) {
-                    LogCook.d("注册BTC地址", "注册BTC地址成功");
                 } else if (Data.getbtctype().equals("gouzaojiaoyi")) {
                     String result1 = jsonObject.getString("status_Message");
                     return result1 + "success";
@@ -702,7 +706,7 @@ public class Utils extends Activity {
             System.out.println("checksum=" + Utils.bytesToHexString(checksum));
             byte[] binaryBitcoinAddressBytes = Utils.add(extendedRipemd160Bytes, checksum);
             System.out.println("添加checksum之后=" + Utils.bytesToHexString(binaryBitcoinAddressBytes));
-            address = Base58.encode(binaryBitcoinAddressBytes);
+            address = UtilsBase58.encode(binaryBitcoinAddressBytes);
             System.out.println("bitcoinAddress=" + address);
             Data.setbtcaddress(address);
         } else if (Data.getbizhong().equals("ETH")) {
@@ -747,7 +751,7 @@ public class Utils extends Activity {
             System.out.println("checksum=" + Utils.bytesToHexString(checksum));
             byte[] binaryXRPAddressBytes = Utils.add(extendedRipemd160Bytes,checksum);
             System.out.println("添加checksum之后=" + Utils.bytesToHexString(binaryXRPAddressBytes));
-            address = Base58.xrpencode(binaryXRPAddressBytes);
+            address = UtilsBase58.xrpencode(binaryXRPAddressBytes);
             System.out.println("XRPAddress=" + address);
             Data.setxrpaddress(address);
         }

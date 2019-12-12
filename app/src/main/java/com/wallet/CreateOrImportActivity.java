@@ -83,24 +83,6 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                 }
             }
         }
-//        webView = (WebView) findViewById(R.id.webview);
-//        webView.getSettings().setJavaScriptEnabled(true);
-//        webView.setWebViewClient(new WebViewClient());
-//        webView.setWebChromeClient(new WebChromeClient());
-//        webView.loadUrl("file:///android_asset/index.html");
-//        findViewById(R.id.import_wallet).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//                    webView.evaluateJavascript("javascript:decodeUnsafe('rMYy8KCRyVruChJmKy3jgW26BRi936Vvwv')", new ValueCallback<String>() {
-//                        @Override
-//                        public void onReceiveValue(String value) {
-//                            LogCook.d("return",value);
-//                        }
-//                    });
-//                }
-//            }
-//        });
     }
 
 

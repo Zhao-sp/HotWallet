@@ -65,8 +65,6 @@ public class CreateActivity extends Activity implements View.OnClickListener {
                 mWallet = BaiBeiWalletUtils.generateBip44Wallet(pwd.getText().toString());
             } catch (CipherException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
 //            WalletManager.getInstance().addWallet(mWallet);
 //            String address = mWallet.getWalletFile().getAddress();

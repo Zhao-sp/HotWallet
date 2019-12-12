@@ -93,7 +93,7 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
                     @Override
                     protected void onPostExecute(Void result) {
                         if(Utils.isNetworkConnected(Data.getcontext())) {
-                            Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.type5));
+                            Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Fragment1.this, Fragment1.this.getResources().getString(R.string.type5));
                             Data.setdialog(mWeiboDialog);
                             adapter.notifyDataSetChanged();
                             lv1.onRefreshComplete();

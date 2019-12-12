@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-public class Base58 {
+public class UtilsBase58 {
 
     public static final char[] ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz".toCharArray();
     public static final char[] XRPALPHABET = "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz".toCharArray();
@@ -149,7 +149,7 @@ public class Base58 {
         while (zeros < input58.length && input58[zeros] == 0) {
             ++zeros;
         }
-        // Base58 编码转 字节序（256进制）编码
+        // UtilsBase58 编码转 字节序（256进制）编码
         byte[] decoded = new byte[input.length()];
         int outputStart = decoded.length;
         for (int inputStart = zeros; inputStart < input58.length;) {
