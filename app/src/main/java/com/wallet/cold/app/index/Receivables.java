@@ -85,20 +85,12 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
         if(Data.getbizhong().equals("BTC")) {
             popadd.setText("BTC");
             popadd1.setText("BTC");
-            if(Data.getapptype().equals("cold")){
-                key.setText(Data.getbtcaddress());
-            }else{
-                key.setText(Data.getbtcaddress());
-            }
+            key.setText(Data.getbtcaddress());
             imgCode.setImageBitmap(Data.getimgCode());
         }else if(Data.getbizhong().equals("ETH")) {
             popadd.setText("ETH");
             popadd1.setText("ETH");
-            if(Data.getapptype().equals("cold")){
-                key.setText("0x"+Data.getethaddress());
-            }else{
-                key.setText("0x"+Data.getethaddress());
-            }
+            key.setText("0x"+Data.getethaddress());
             imgCode.setImageBitmap(Data.getethimgCode());
         }else if(Data.getbizhong().equals("XRP")) {
             popadd.setText("XRP");
@@ -175,35 +167,18 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
             String address="";
             if(skje.getText().toString().equals("")){
                 if (popadd.getText().toString().equals("ETH")) {
-                    if(Data.getapptype().equals("cold")){
-                        address = Data.getethaddress();
-                    }else{
-                        address = Data.getethaddress();
-                    }
+                    address = Data.getethaddress();
                 } else if (popadd.getText().toString().equals("BTC")) {
-                    if(Data.getapptype().equals("cold")){
-                        address = Data.getbtcaddress();
-                    }else{
-                        address = Data.getbtcaddress();
-                    }
+                    address = Data.getbtcaddress();
                 } else if (popadd.getText().toString().equals("XRP")) {
                     address = Data.getxrpaddress();
                 }
                 map.put("address",address);
             }else {
                 if (popadd.getText().toString().equals("ETH")) {
-                    if(Data.getapptype().equals("cold")){
-                        map.put("address", Data.getethaddress());
-                    }else{
-                        map.put("address", Data.getethaddress());
-                    }
-
+                    map.put("address", Data.getethaddress());
                 } else if (popadd.getText().toString().equals("BTC")) {
-                    if(Data.getapptype().equals("cold")){
-                        map.put("address", Data.getbtcaddress());
-                    }else{
-                        map.put("address", Data.getbtcaddress());
-                    }
+                    map.put("address", Data.getbtcaddress());
                 } else if (popadd.getText().toString().equals("XRP")) {
                     map.put("address", Data.getxrpaddress());
                 }

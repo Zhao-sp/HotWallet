@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -24,6 +25,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.WriterException;
 import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
@@ -186,6 +188,14 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                         Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);
                     }
                     cursor.close();
+                    try {
+                        Bitmap codeBitmap = Utils.createCode(Data.getethaddress());
+                        Data.setethimgCode(codeBitmap);
+                        Bitmap codeBitmap1 = Utils.createCode(Data.getbtcaddress());
+                        Data.setimgCode(codeBitmap1);
+                    } catch (WriterException e) {
+                        e.printStackTrace();
+                    }
                     new Utils().zhuce();
                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
                     Data.setdialog(mWeiboDialog);
