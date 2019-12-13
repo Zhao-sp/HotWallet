@@ -119,7 +119,12 @@ public class Utilshttp {
                         String message= jsonObject.getString("status_Message");
                         if(message!="") {
                             message = message.substring(2, message.length());
-                            String str = new BigInteger(message, 16).toString(10);
+                            String str="0";
+                            if (message.equals("")) {
+
+                            }else{
+                                str = new BigInteger(message, 16).toString(10);
+                            }
                             LogCook.d("海博币余额", str);
                             Data.sethieramount(str);
                             if(Data.gettype().equals("txactivity")||Data.gettype().equals("czactivity")) {

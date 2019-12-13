@@ -467,6 +467,7 @@ public class Utils extends Activity {
                     return result1 + "success";
                 } else if (Data.getbtctype().equals("sendrawtransaction")) {
                     LogCook.d("BTC发送交易", "BTC交易成功");
+                    return "success";
                 }
             } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
                 if (Data.getbtctype().equals("balance")) {
@@ -2032,8 +2033,8 @@ public class Utils extends Activity {
                         LogCook.d("行情数据", result);
                         int count = getSubCount_2(result, "{");Data.getbledata().add("ETH");
                         Data.getbledata().add("BTC");
-                        //Data.getbledata().add("Hier");
                         if(Data.getapptype().equals("cold")) {
+                            //Data.getbledata().add("Hier");
                             Data.getbledata().add("XRP");
                             Data.getbledata().add("AED");
                         }
@@ -2053,8 +2054,6 @@ public class Utils extends Activity {
                                 b1 = new BigDecimal(Double.parseDouble(current_price));
                                 b2 = new BigDecimal(Double.parseDouble(Data.getethbalance()));
                             }else if(current_price.equals("BTC")){
-                                Data.getbledata().add("BTC");
-                                Data.getbledata().add("Hier");Data.getbledata().add("XRP");
                                 LogCook.d("BTC行情数据", result);
                                 Toast.makeText(Data.getcontext(), "ETH行情获取失败，请刷新重试", Toast.LENGTH_SHORT).show();
                                 current_price = jsonObject.getString("high");
@@ -2067,15 +2066,15 @@ public class Utils extends Activity {
                             Double d = b1.multiply(b2).doubleValue();
                             d1 = df.format(d);
                             BigDecimal a1 = new BigDecimal(d1);
-                            //BigDecimal hier = new BigDecimal(Data.gethieramount());
                             if(Data.getapptype().equals("cold")) {
                                 BigDecimal xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount()) * 1.9 * 7);
                                 BigDecimal amount1 = a1.add(xrp);
-                                //BigDecimal amount2 = amount1.add(hier);
+                                //BigDecimal hier = new BigDecimal(Data.gethieramount());
+                                //BigDecimal amount2 = amount1.add(amount1);
                                 df1 = new DecimalFormat("0.00");
                                 Data.setamountrmb(df1.format(amount1));
                             }else{
-                                //BigDecimal amount1 = a1.add(hier);
+                                //BigDecimal amount1 = a1.add(a1);
                                 df1 = new DecimalFormat("0.00");
                                 Data.setamountrmb(df1.format(a1));
                             }
@@ -2108,17 +2107,16 @@ public class Utils extends Activity {
                             d3 = df.format(d2);//btc人民币价格
                             BigDecimal btc = new BigDecimal(d1);
                             BigDecimal eth = new BigDecimal(d3);
-                            //BigDecimal hier = new BigDecimal(Data.gethieramount());
                             if(Data.getapptype().equals("cold")) {
                                 xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount()) * 1.9 * 7);
                                 BigDecimal amount1 = btc.add(eth);
                                 BigDecimal amount2 = amount1.add(xrp);
-                                //BigDecimal amount3 = amount2.add(hier);
+                                //BigDecimal hier = new BigDecimal(Data.gethieramount());
+                                //BigDecimal amount3 = amount2.add(amount2);
                                 df1 = new DecimalFormat("0.00");
                                 Data.setamountrmb(df1.format(amount2));
                             }else{
                                 BigDecimal amount1 = btc.add(eth);
-                                //BigDecimal amount2 = amount1.add(hier);
                                 df1 = new DecimalFormat("0.00");
                                 Data.setamountrmb(df1.format(amount1));
                             }
@@ -2145,9 +2143,9 @@ public class Utils extends Activity {
             Data.getbtcrmbtext().setText("￥"+d3);
             Data.getethtext().setText(Data.getethbalance());
             Data.getethrmbtext().setText("￥"+d1);
-            //Data.gethbbtext().setText(Data.gethieramount());
-            //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
             if(Data.getapptype().equals("cold")) {
+                //Data.gethbbtext().setText(Data.gethieramount());
+                //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
                 Data.getxrptext().setText(Data.getxrpamount());
                 Data.getaedtext().setText(Data.getaedamount());
                 Data.getaedaddresstext().setText(Data.getaedaddress());
@@ -2168,6 +2166,8 @@ public class Utils extends Activity {
                 Data.getethrmbtext().setText("￥"+d1);
             }
             if(Data.getapptype().equals("cold")) {
+                //Data.gethbbtext().setText(Data.gethieramount());
+                //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
                 Data.getxrptext().setText(Data.getxrpamount());
                 Data.getxrprmbtext().setText("￥" + df1.format(xrp));
                 Data.getaedtext().setText(Data.getaedamount());
