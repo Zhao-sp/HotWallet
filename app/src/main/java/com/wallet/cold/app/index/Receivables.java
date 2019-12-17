@@ -256,11 +256,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
                 popadd1.setText("BTC");
                 Data.setbizhong("BTC");
                 popWinShare.dismiss();
-                if(Data.getapptype().equals("cold")){
-                    key.setText(Data.getbtcaddress());
-                }else{
-                    key.setText(Data.getbtcaddress());
-                }
+                key.setText(Data.getbtcaddress());
                 imgCode.setImageBitmap(Data.getimgCode());
                 WeiboDialogUtils.closeDialog(mWeiboDialog);
             }
@@ -269,11 +265,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
                 popadd1.setText("ETH");
                 Data.setbizhong("ETH");
                 popWinShare.dismiss();
-                if(Data.getapptype().equals("cold")){
-                    key.setText("0x"+Data.getethaddress());
-                }else{
-                    key.setText("0x"+Data.getethaddress());
-                }
+                key.setText("0x"+Data.getethaddress());
                 imgCode.setImageBitmap(Data.getethimgCode());
                 WeiboDialogUtils.closeDialog(mWeiboDialog);
             }

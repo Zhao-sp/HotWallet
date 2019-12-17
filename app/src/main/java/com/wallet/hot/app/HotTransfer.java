@@ -27,6 +27,7 @@ import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
 import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
 
 import org.bitcoinj.core.DumpedPrivateKey;
@@ -55,25 +56,16 @@ import static com.wallet.cold.utils.Utils.ETHAddressValidate;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
 import static com.wallet.cold.utils.Utils.isBTCValidAddress;
-import static com.wallet.cold.utils.Utils.sendble;
-import static com.wallet.cold.utils.Utils.strhex;
-import static com.wallet.cold.utils.Utils.strlength;
 
 public class HotTransfer extends Activity implements View.OnClickListener {
     private PopWinShare1 popWinShare;
-    private TextView popadd, popadd1, popadd2, popadd3;
-    private TextView balance;
-    private EditText to;
-    private EditText fee;
-    private EditText limit1;
-    private EditText amountyue;
+    private TextView popadd, popadd1, popadd2, popadd3,fee1,balance;
+    private EditText to,fee,limit1,amountyue;
     private ImageView saoma, fanhui;
     private TextView xl, fhf3;
     private Dialog mWeiboDialog;
     private Button commit;
-    private String scriptPubKey;
-    private String strhex1;
-    private String strhex2;
+    private String scriptPubKey,strhex1,strhex2;
     private boolean uxto = false;
     private String result1;
 
@@ -100,6 +92,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         xl.setOnClickListener(this);
         balance = (TextView) findViewById(R.id.USD);
         fhf3 = (TextView) findViewById(R.id.fhf3);
+        fee1 = (TextView) findViewById(R.id.fee1);
         fhf3.setOnClickListener(this);
         Data.setbalance(balance);
         commit = (Button) findViewById(R.id.verify2);
@@ -150,7 +143,16 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                 to.setText(result);
             }
         }
-        if (to.getText().toString().length() == 40) {
+        if(to.getText().toString().length()==34) {
+            Data.setbizhong("XRP");
+            popadd.setText("XRP");
+            popadd1.setText("XRP");
+            popadd2.setText("drops");
+            popadd3.setVisibility(View.GONE);
+            fee.setVisibility(View.GONE);
+            fee1.setVisibility(View.GONE);
+            balance.setText(Data.getxrpamount());
+        }else if (to.getText().toString().length() == 40) {
             popadd.setText("ETH");
             popadd1.setText("ETH");
             popadd2.setText("ETH");
@@ -166,7 +168,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         Data.settype("hottransfer");
         Data.setcontext(HotTransfer.this);
         to.setText("moD2ybquk6bH4a9Keu5KEdmFy5XEV3NDLF");
-        amountyue.setText("0.000001");
+        amountyue.setText("0.00006");
         fee.setText("0.0001");
         limit1.setText("12345678");
     }
@@ -237,6 +239,9 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             } else if (popadd.getText().toString().equals("ETH")) {
                 trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), fee.getText().toString()
                         , balance.getText().toString(), Data.getethaddress());
+            } else if (popadd.getText().toString().equals("XRP")) {
+                trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), ""
+                        , balance.getText().toString(), Data.getxrpaddress());
             }
         }
     }
@@ -317,6 +322,24 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     Data.setbizhong("ETH");
                     Data.setethtype("dealid");
                     eth();
+                }
+            } else if (type.equals("XRP")) {
+                if (!to.substring(0,1).equals("r")) {
+                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff25), Toast.LENGTH_SHORT).show();
+                } else if (amountyue.equals("")) {
+                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff15), Toast.LENGTH_SHORT).show();
+                } else if (address.equals(to)) {
+                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff17), Toast.LENGTH_SHORT).show();
+                } else if (balance.compareTo(amountyue) < 0) {
+                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
+                } else {
+                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.fff23));
+                    Data.setdialog(mWeiboDialog);
+                    Data.setyue(amountyue);
+                    Data.setto(to);
+                    Data.setlimit(pin);
+                    Data.setbizhong("XRP");
+                    new Utilshttp().getxrpamount();
                 }
             }
         }
@@ -418,6 +441,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                             btcerror = btcerror.substring(0, btcerror.length() - 7);
                             LogCook.d("返回构造原始交易数据", btcerror);
                             result1 = btcerror;
+                            Data.setresult(result1);
                             sign(result1);
                         } else {
                             String error = btcerror;
@@ -448,104 +472,31 @@ public class HotTransfer extends Activity implements View.OnClickListener {
     public void sign(String s){
         Data.setsign("signing");
         if (Data.getuxto()) {
-            int ffcount=getSubCount_2(s, "ffffffff");
-            Data.setcount(getSubCount_2(s, "ffffffff"));
-            int q=Data.getn();
-            int w=q+1;
-            LogCook.d("第"+ w +"个txid","共"+String.valueOf(ffcount)+"个txid");
-            int index1 = getIndex(s,ffcount,"ffffffff");
-            strhex1 = s.substring(0, index1+8);
-            strhex2 = s.substring(index1+8, s.length());
-            scriptPubKey = Data.getscriptPubKey().get(q);
-            byte[] bytes3 = new byte[scriptPubKey.length() / 2];
-            for (int i = 0; i < scriptPubKey.length() / 2; i++) {//16进制字符串转byte[]
-                String subStr = scriptPubKey.substring(i * 2, i * 2 + 2);
-                bytes3[i] = (byte) Integer.parseInt(subStr, 16);
-            }
-            String len = Integer.toHexString(Integer.parseInt(String.valueOf(bytes3.length)));
-            List<String> list = new ArrayList<>();
-            int c=0;
-            if(w==1) {
-                if (strhex1.length() % 1024 != 0) {
-                    c = strhex1.length() / 1024 + 1;
-                } else {
-                    c = strhex1.length() / 1024;
+            int count = getSubCount_2(s, "ffffffff");
+            for (int q = 0; q < count; q++) {
+                int j=q+1;
+                LogCook.d("第"+ j +"个txid","共"+count+"个txid");
+                int index = getIndex(s, q + 1, "ffffffff");
+                strhex1 = s.substring(0, index - 2);
+                strhex2 = s.substring(index, s.length());
+                scriptPubKey = Data.getscriptPubKey().get(q);
+                byte[] bytes3 = new byte[scriptPubKey.length() / 2];
+                for (int i = 0; i < scriptPubKey.length() / 2; i++) {//16进制字符串转byte[]
+                    String subStr = scriptPubKey.substring(i * 2, i * 2 + 2);
+                    bytes3[i] = (byte) Integer.parseInt(subStr, 16);
                 }
-                for (int i = 0; i < c; i++) {
-                    if (i == c - 1) {
-                        String strlength = strlength(strhex1.substring(i * 1024, strhex1.length()));
-                        if (strlength.length() == 1) {
-                            String data = "0501" + "00000080000" + strlength + strhex1.substring(i * 1024, strhex1.length());
-                            String ret = strhex(data);
-                            String a = "55aa050100000080000" + strlength + strhex1.substring(i * 1024, strhex1.length()) + ret + "aa55";
-                            list.add(a);
-                        } else if (strlength.length() == 2) {
-                            String data = "0501" + "0000008000" + strlength + strhex1.substring(i * 1024, strhex1.length());
-                            String ret = strhex(data);
-                            String a = "55aa05010000008000" + strlength + strhex1.substring(i * 1024, strhex1.length()) + ret + "aa55";
-                            list.add(a);
-                        } else if (strlength.length() == 3) {
-                            String data = "0501" + "000000800" + strlength + strhex1.substring(i * 1024, strhex1.length());
-                            String ret = strhex(data);
-                            String a = "55aa0501000000800" + strlength + strhex1.substring(i * 1024, strhex1.length()) + ret + "aa55";
-                            list.add(a);
-                        }
-                    } else {
-                        String strlength = strlength(strhex1.substring(i * 1024, 1024 * (i + 1)));
-                        if (strlength.length() == 2) {
-                            String data = "0501" + "0000008000" + strlength + strhex1.substring(i * 1024, 1024 * (i + 1));
-                            String ret = strhex(data);
-                            String a = "55aa05010000008000" + strlength + strhex1.substring(i * 1024, 1024 * (i + 1)) + ret + "aa55";
-                            list.add(a);
-                        } else if (strlength.length() == 3) {
-                            String data = "0501" + "000000800" + strlength + strhex1.substring(i * 1024, 1024 * (i + 1));
-                            String ret = strhex(data);
-                            String a = "55aa0501000000800" + strlength + strhex1.substring(i * 1024, 1024 * (i + 1)) + ret + "aa55";
-                            list.add(a);
-                        }
-                    }
+                String len = Integer.toHexString(Integer.parseInt(String.valueOf(bytes3.length)));
+                String data=strhex1+len+scriptPubKey+strhex2+"01000000";
+                LogCook.d("待签名信息",data);
+                byte[] bytes = new byte[data.length() / 2];
+                for (int i = 0; i < data.length() / 2; i++) {//16进制字符串转byte[]
+                    String subStr = data.substring(i * 2, i * 2 + 2);
+                    bytes[i] = (byte) Integer.parseInt(subStr, 16);
                 }
-                String strlength4 = strlength(strhex2);
-                String data4 = "0501" + "0000000100" + strlength4 + strhex2;
-                String ret4 = strhex(data4);
-                String a4 = "55aa05010000000100" + strlength4 + strhex2 + ret4 + "aa55";
-                list.add(a4);
+                String aaa=Signingtrasaction(Data.gethotbtcprv(),bytes);
+                sign.add(aaa);
             }
-            String strlength3 = Utils.strlength(len +scriptPubKey);
-            if(String.valueOf(ffcount).equals(String.valueOf(w))) {
-                String data3 = "0501" + "0000008200" + strlength3 + len + scriptPubKey;
-                String ret3 = strhex(data3);
-                String scriptPubKey1 = "55aa05010000008200" + strlength3 + len + scriptPubKey + ret3 + "aa55";
-                list.add(scriptPubKey1);
-            }else{
-                String data3 = "0501" + "0000000200" + strlength3 + len + scriptPubKey;
-                String ret3 = strhex(data3);
-                String scriptPubKey1 = "55aa05010000000200" + strlength3 + len + scriptPubKey + ret3 + "aa55";
-                list.add(scriptPubKey1);
-            }
-            Data.setbtcsignerror("no");
-            int i = 0;
-            for (int j=0;j<j+1;j++){
-                if(Data.getbtcsign()||i==0||Data.getreturnbledata().equals("yes")) {
-                    if(list.size()!=0) {
-                        for (; i < list.size(); ) {
-                            Data.setbtcsign(false);
-                            i++;
-                            if (i == list.size()) {
-                                Data.setreturnbledata("yes");
-                            } else {
-                                Data.setreturnbledata("no");
-                            }
-                            sendble(list.get(i-1), Data.getmService());
-                            break;
-                        }
-                    }
-                }
-                if(i==list.size()){
-                    Data.setbtcsign(true);
-                    break;
-                }
-            }
+            btc();
         } else {
             strhex1 = s.substring(0, s.indexOf("ffffffff"));
             String strhex3 = strhex1.substring(0, strhex1.length() - 2);
@@ -619,8 +570,8 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             byte[] res = sig.encodeToDER();
             // converting to hex
             hex = Base64.encodeToString(res, 16);
-            Log.e("sigendTransiction", hex);
-            System.out.println("签名:"+Utils.bytesToHexString(res));
+//            Log.e("sigendTransiction", hex);
+            LogCook.d("签名结果:",Utils.bytesToHexString(res));
             return Utils.bytesToHexString(res);
             //Log.e("decrypttx",""+ Hex.decode(sig.encodeToDER()));
         } catch (Exception e) {
@@ -638,8 +589,9 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             @Override
             public void run() {
                 if (Data.getuxto()) {
+                    LogCook.d("ble返回btc多个txid签名结果", sign.toString());
                     String data = "";
-                    result1 = Data.getresultdata();
+                    result1 = Data.getresult();
                     int count = getSubCount_2(result1, "ffffffff");
                     for (int q = 0; q < count; q++) {
                         int index = getIndex(result1, q + 1, "ffffffff");
@@ -651,8 +603,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                             strhex1 = result1.substring(index1, index - 2);
                             strhex2 = result1.substring(index, result1.length());
                         }
-                        sign = Data.getsigndata();
-                        String a = sign.get(q) + Data.getpubkey();
+                        String a = sign.get(q) + Data.gethotbtcpub();
                         byte[] result = new byte[a.length() / 2];
                         char[] achar = a.toCharArray();
                         for (int i = 0; i < a.length() / 2; i++) {
@@ -666,24 +617,22 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                             bytes1[i] = (byte) Integer.parseInt(subStr, 16);
                         }
                         String len1 = Integer.toHexString(Integer.parseInt(String.valueOf(bytes1.length + 1)));//签名数据长度+1
-                        byte[] bytes2 = new byte[Data.getpubkey().length() / 2];
-                        for (int i = 0; i < Data.getpubkey().length() / 2; i++) {//16进制字符串转byte[]
-                            String subStr = Data.getpubkey().substring(i * 2, i * 2 + 2);
+                        byte[] bytes2 = new byte[Data.gethotbtcpub().length() / 2];
+                        for (int i = 0; i < Data.gethotbtcpub().length() / 2; i++) {//16进制字符串转byte[]
+                            String subStr = Data.gethotbtcpub().substring(i * 2, i * 2 + 2);
                             bytes2[i] = (byte) Integer.parseInt(subStr, 16);
                         }
                         String len2 = Integer.toHexString(Integer.parseInt(String.valueOf(bytes2.length)));//公钥长度
                         if (q == 0) {
-                            data = strhex1 + len + len1 + sign.get(q) + "01" + len2 + Data.getpubkey();
+                            data = strhex1 + len + len1 + sign.get(q) + "01" + len2 + Data.gethotbtcpub();
                         } else if (q == count - 1) {
-                            data = data + strhex1 + len + len1 + sign.get(q) + "01" + len2 + Data.getpubkey() + strhex2;
-
+                            data = data + strhex1 + len + len1 + sign.get(q) + "01" + len2 + Data.gethotbtcpub() + strhex2;
                         } else {
-                            data = data + strhex1 + len + len1 + sign.get(q) + "01" + len2 + Data.getpubkey();
+                            data = data + strhex1 + len + len1 + sign.get(q) + "01" + len2 + Data.gethotbtcpub();
                         }
                     }
-                    LogCook.d("ble返回btc多个txid签名结果", sign.toString());
                     LogCook.d("发送交易数据", data);
-                    Data.setbtctype("sendrawtransaction");
+                    Data.setbtctype("sendrawtransaction");sign.clear();
                     String address = "{\"address\":\"" + data + "\"}";
                     String btcerror = Utils.getbtchttp(address);
                     if (!btcerror.equals("")) {
@@ -944,7 +893,29 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                 } else {
                     balance.setText(Data.getethbalance());
                 }
-            } else {
+            } else if (i == R.id.layout_xrp) {
+                Data.setbizhong("XRP");
+                popadd.setText("XRP");
+                popadd1.setText("XRP");
+                popadd2.setText("drops");
+                popadd3.setVisibility(View.GONE);
+                fee.setVisibility(View.GONE);
+                fee1.setVisibility(View.GONE);
+                popWinShare.dismiss();
+                balance.setText(Data.getxrpamount());
+                to.setText("rMYy8KCRyVruChJmKy3jgW26BRi936Vvwv");
+                amountyue.setText("10");
+                limit1.setText("12345678");
+            } else if (i == R.id.layout_aed) {
+                Data.setbizhong("AED");
+                popadd.setText("AED");
+                popadd1.setText("AED");
+                popadd2.setText("AED");
+                popadd3.setVisibility(View.GONE);
+                fee.setVisibility(View.GONE);
+                fee1.setVisibility(View.GONE);
+                popWinShare.dismiss();
+                balance.setText(Data.getaedamount());
             }
         }
     }

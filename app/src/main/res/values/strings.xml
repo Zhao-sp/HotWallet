@@ -94,7 +94,7 @@
     <string name="fff22">请输入正确的BTC转账地址</string>
     <string name="fff23">请在载体上确认信息</string>
     <string name="fff24">转账地址格式不带有0x</string>
-    <string name="fff25">请输入正确的ETH转账地址</string>
+    <string name="fff25">请输入正确的转账地址</string>
     <string name="fff26">服务费不能为空</string>
     <string name="fff27">最大服务费不能为空</string>
     <string name="fff28">服务费不能超过9000位</string>
@@ -110,6 +110,8 @@
     <string name="fff41">登录失败</string>
     <string name="fff42">trustset成功</string>
     <string name="fff43">trustset失败</string>
+    <string name="fff44">钱包密码</string>
+    <string name="fff45">请输入8位数以上的钱包密码</string>
 
     <string name="add1">请输入Token或合约地址</string>
     <string name="add3">添加币种</string>
@@ -141,6 +143,7 @@
     <string name="f518">重置中...</string>
     <string name="f519">两次输入的pin码不一致</string>
     <string name="f520">指纹管理</string>
+    <string name="f521">退出</string>
 
     <string name="gx1">当前为最新版本，无需更新</string>
     <string name="gx2">暂不支持此功能</string>

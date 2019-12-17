@@ -95,7 +95,7 @@
     <string name="fff22">Please enter the correct BTC transfer address.</string>
     <string name="fff23">Please confirm the information on the carrier</string>
     <string name="fff24">Transfer address format without 0x</string>
-    <string name="fff25">Please enter the correct ETH transfer address</string>
+    <string name="fff25">Please enter the correct transfer address</string>
     <string name="fff26">Service charges cannot be empty</string>
     <string name="fff27">Maximum service charge cannot be empty</string>
     <string name="fff28">Service fee should not exceed 9000 bits</string>
@@ -111,6 +111,8 @@
     <string name="fff41">Login failed</string>
     <string name="fff42">Trustset Successful</string>
     <string name="fff43">Trustset Failed</string>
+    <string name="fff44">Wallet password</string>
+    <string name="fff45">Please input the wallet password with more than 8 digits</string>
 
     <string name="add1">Please enter Token or contract address</string>
     <string name="add3">Add currencies</string>
@@ -142,6 +144,7 @@
     <string name="f518">Reset...</string>
     <string name="f519">The PIN codes of the two inputs are inconsistent</string>
     <string name="f520">Fingerprint management</string>
+    <string name="f521">Sign out</string>
 
     <string name="gx1">Currently the latest version, no need to update</string>
     <string name="gx2">This feature is not supported for the time being.</string>

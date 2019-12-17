@@ -53,8 +53,9 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
         delete =(TextView)findViewById(R.id.delete);delete.setOnClickListener(this);delete.setVisibility(View.GONE);
         Data.getdb().execSQL("create table if not exists JiaoyiTb (_id integer primary key,blename text not null,name text not null,bizhong text not null,jine integer not null,riqi text not null,type integer not null)");
         if(Data.getapptype().equals("hot")) {
-            Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,btcprv,btcpub) values " +
-                    "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "')");
+            Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,btcprv,btcpub,xrpaddress) values " +
+                    "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "'," +
+                    "'" + Data.getxrpaddress() + "')");
             delete.setVisibility(View.VISIBLE);
         }
         lv1=(MyListView)findViewById(R.id.list_yue);

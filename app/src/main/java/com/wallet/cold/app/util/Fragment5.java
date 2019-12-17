@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.wallet.CreateOrImportActivity;
 import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
@@ -24,7 +25,7 @@ import static com.wallet.cold.utils.Utils.sendble;
 
 public class Fragment5 extends Activity implements View.OnClickListener {
     private TextView resetpin;
-    private TextView chushihua;
+    private TextView chushihua,exit;
     private TextView chushihuaka,fhf5,languages,fingerprints;
     private ImageView fanhui;
     private Dialog mWeiboDialog;
@@ -41,6 +42,8 @@ public class Fragment5 extends Activity implements View.OnClickListener {
         fingerprints.setOnClickListener(this);
         fhf5=(TextView) findViewById(R.id.fhf5);
         fhf5.setOnClickListener(this);
+        exit=(TextView) findViewById(R.id.exit);
+        exit.setOnClickListener(this);
         chushihua=(TextView) findViewById(R.id.gengxin);
         chushihua.setOnClickListener(this);chushihuaka=(TextView) findViewById(R.id.chushihuaka);
         chushihuaka.setOnClickListener(this);
@@ -96,6 +99,12 @@ public class Fragment5 extends Activity implements View.OnClickListener {
         }
         if(v.getId() == R.id.fingerprints) {
             Intent intent = new Intent(Data.getcontext(), Fingerprints.class);
+            Data.getcontext().startActivity(intent);
+        }
+        if(v.getId() == R.id.exit) {
+            Data.getmService().disconnect();
+            Data.getmService().close();
+            Intent intent = new Intent(Data.getcontext(), CreateOrImportActivity.class);
             Data.getcontext().startActivity(intent);
         }
     }

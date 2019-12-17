@@ -733,6 +733,11 @@ public class Utils extends Activity {
             address = stringBuilder.toString().substring(24, stringBuilder.length()).toLowerCase();
             Data.setethaddress(address);
         } else if (Data.getbizhong().equals("XRP")) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             LogCook.d("xrp公钥", Data.getdata());
             byte[] publicKey = new BigInteger(Data.getdata(), 16).toByteArray();
             byte[] sha256Bytes = Utils.sha256(publicKey);
@@ -2014,10 +2019,8 @@ public class Utils extends Activity {
                 Data.setbizhong("BTC");
                 if(Data.getapptype().equals("cold")) {
                     //new Utilshttp().gethieramount();
-                    new Utilshttp().getxrpamount();
-                }else{
-                    send2();
                 }
+                new Utilshttp().getxrpamount();
             }
         }).start();
     }
@@ -2035,9 +2038,9 @@ public class Utils extends Activity {
                         Data.getbledata().add("BTC");
                         if(Data.getapptype().equals("cold")) {
                             //Data.getbledata().add("Hier");
-                            Data.getbledata().add("XRP");
-                            Data.getbledata().add("AED");
                         }
+                        Data.getbledata().add("XRP");
+                        Data.getbledata().add("AED");
                         if (count == 1) {
                             JSONObject jsonObject = new JSONObject(result);
                             current_price = jsonObject.getString("base");
@@ -2066,17 +2069,15 @@ public class Utils extends Activity {
                             Double d = b1.multiply(b2).doubleValue();
                             d1 = df.format(d);
                             BigDecimal a1 = new BigDecimal(d1);
+                            BigDecimal xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount()) * 1.9 * 7);
+                            BigDecimal amount1 = a1.add(xrp);
+                            df1 = new DecimalFormat("0.00");
+                            Data.setamountrmb(df1.format(amount1));
                             if(Data.getapptype().equals("cold")) {
-                                BigDecimal xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount()) * 1.9 * 7);
-                                BigDecimal amount1 = a1.add(xrp);
                                 //BigDecimal hier = new BigDecimal(Data.gethieramount());
                                 //BigDecimal amount2 = amount1.add(amount1);
-                                df1 = new DecimalFormat("0.00");
-                                Data.setamountrmb(df1.format(amount1));
-                            }else{
-                                //BigDecimal amount1 = a1.add(a1);
-                                df1 = new DecimalFormat("0.00");
-                                Data.setamountrmb(df1.format(a1));
+//                                df1 = new DecimalFormat("0.00");
+//                                Data.setamountrmb(df1.format(amount1));
                             }
                             if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
@@ -2107,18 +2108,14 @@ public class Utils extends Activity {
                             d3 = df.format(d2);//btc人民币价格
                             BigDecimal btc = new BigDecimal(d1);
                             BigDecimal eth = new BigDecimal(d3);
+                            xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount()) * 1.9 * 7);
+                            BigDecimal amount1 = btc.add(eth);
+                            BigDecimal amount2 = amount1.add(xrp);
+                            df1 = new DecimalFormat("0.00");
+                            Data.setamountrmb(df1.format(amount2));
                             if(Data.getapptype().equals("cold")) {
-                                xrp = new BigDecimal(Double.parseDouble(Data.getxrpamount()) * 1.9 * 7);
-                                BigDecimal amount1 = btc.add(eth);
-                                BigDecimal amount2 = amount1.add(xrp);
                                 //BigDecimal hier = new BigDecimal(Data.gethieramount());
                                 //BigDecimal amount3 = amount2.add(amount2);
-                                df1 = new DecimalFormat("0.00");
-                                Data.setamountrmb(df1.format(amount2));
-                            }else{
-                                BigDecimal amount1 = btc.add(eth);
-                                df1 = new DecimalFormat("0.00");
-                                Data.setamountrmb(df1.format(amount1));
                             }
                             if(!Data.gettype().equals("fragment1")) {
                                 Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
@@ -2146,11 +2143,11 @@ public class Utils extends Activity {
             if(Data.getapptype().equals("cold")) {
                 //Data.gethbbtext().setText(Data.gethieramount());
                 //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
-                Data.getxrptext().setText(Data.getxrpamount());
-                Data.getaedtext().setText(Data.getaedamount());
-                Data.getaedaddresstext().setText(Data.getaedaddress());
-                Data.getxrprmbtext().setText("￥" + df1.format(xrp));
             }
+            Data.getxrptext().setText(Data.getxrpamount());
+            Data.getaedtext().setText(Data.getaedamount());
+            Data.getaedaddresstext().setText(Data.getaedaddress());
+            Data.getxrprmbtext().setText("￥" + df1.format(xrp));
             Data.getcountamount().setText(Data.getamountrmb());
             Looper.loop();
         }
@@ -2168,11 +2165,11 @@ public class Utils extends Activity {
             if(Data.getapptype().equals("cold")) {
                 //Data.gethbbtext().setText(Data.gethieramount());
                 //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
-                Data.getxrptext().setText(Data.getxrpamount());
-                Data.getxrprmbtext().setText("￥" + df1.format(xrp));
-                Data.getaedtext().setText(Data.getaedamount());
-                Data.getaedaddresstext().setText(Data.getaedaddress());
             }
+            Data.getxrptext().setText(Data.getxrpamount());
+            Data.getxrprmbtext().setText("￥" + df1.format(xrp));
+            Data.getaedtext().setText(Data.getaedamount());
+            Data.getaedaddresstext().setText(Data.getaedaddress());
             Data.getcountamount().setText(Data.getamountrmb());
             Looper.loop();
         }

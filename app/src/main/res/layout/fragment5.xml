@@ -166,5 +166,30 @@
             android:layout_marginRight="24dp"
             android:background="@drawable/jinru_zhong" />
 
+        <TextView
+            android:id="@+id/exit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="350dp"
+            android:background="#222A38" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="362dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/f521"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="364dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/jinru_zhong" />
+
     </RelativeLayout>
 </LinearLayout>

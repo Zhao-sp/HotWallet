@@ -952,6 +952,7 @@ id et_path
 id et_pin
 id et_pwd
 id et_user
+id exit
 id expand_activities_button
 id expanded_menu
 id fanhui2
@@ -1531,6 +1532,7 @@ string f518
 string f519
 string f52
 string f520
+string f521
 string f53
 string f54
 string f55
@@ -1593,6 +1595,8 @@ string fff40
 string fff41
 string fff42
 string fff43
+string fff44
+string fff45
 string fff5
 string fff6
 string fff7

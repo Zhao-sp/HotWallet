@@ -247,9 +247,9 @@ public class BaiBeiWalletUtils {
         return cleanInput.length() == ADDRESS_LENGTH_IN_HEX;
     }
 
-    private static DeterministicKey getDeterministicKeyBip44BySeed(byte[] seed) {
+    private static DeterministicKey getDeterministicKeyBip44BySeed(DeterministicKey rootPrivateKey) {
         // 3. 生成根私钥 root private key 树顶点的master key
-        DeterministicKey rootPrivateKey = HDKeyDerivation.createMasterPrivateKey(seed);
+        //DeterministicKey rootPrivateKey = HDKeyDerivation.createMasterPrivateKey(seed);
         if (Boolean.parseBoolean("true")) {
             // 根私钥进行 priB58编码,得到测试网站上显示的数据
             NetworkParameters params = MainNetParams.get();
@@ -278,22 +278,8 @@ public class BaiBeiWalletUtils {
         byte[] seed = MnemonicUtils.generateSeed(mnemonic, null);
         // 3. 生成根私钥 root private key 树顶点的master key
         DeterministicKey rootPrivateKey = HDKeyDerivation.createMasterPrivateKey(seed);
-        if (Boolean.parseBoolean("true")) {
-            // 根私钥进行 priB58编码,得到测试网站上显示的数据
-            NetworkParameters params = MainNetParams.get();
-            String priv = rootPrivateKey.serializePrivB58(params);
-            Log.i("TAG", "BIP32 Extended Private Key:" + priv);
-        }
-        // 4. 由根私钥生成 第一个HD 钱包
-        DeterministicHierarchy dh = new DeterministicHierarchy(rootPrivateKey);
-        // 5. 定义父路径 H则是加强 imtoken中的eth钱包进过测试发现使用的是此方式生成
-        List<ChildNumber> parentPatheth = parsePath("M/44H/60H/0H/0");
-        // 6. 由父路径,派生出第一个子私钥 "new ChildNumber(0)" 表示第一个 （m/44'/60'/0'/0/0）
-        DeterministicKey childeth = dh.deriveChild(parentPatheth, true, true, new ChildNumber(0));
-        Log.i("TAG", "generateBip44Wallet: 44钥匙对  ETH私钥 = " + childeth.getPrivateKeyAsHex());
-        Log.i("TAG", "generateBip44Wallet: 44钥匙对  ETH公钥 = " + childeth.getPublicKeyAsHex());
-        byte[] privateKeyByte = childeth.getPrivKeyBytes();
-//        ECKeyPair privateKey = ECKeyPair.create(sha256(seed));
+        DeterministicKey child = getDeterministicKeyBip44BySeed(rootPrivateKey);
+        byte[] privateKeyByte = child.getPrivKeyBytes();
         //通过私钥生成公私钥对
         ECKeyPair keyPair = ECKeyPair.create(privateKeyByte);
         Log.i("TAG", "generateBip44Wallet: 钥匙对  ETH私钥 = " + Numeric.toHexStringNoPrefix(keyPair.getPrivateKey()));
@@ -309,52 +295,20 @@ public class BaiBeiWalletUtils {
             e.printStackTrace();
         }
         try {
-            TestBip44BTC();
+            TestBip44BTC(rootPrivateKey);
+            TestBip44XRP(rootPrivateKey);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return new BaibeiWallet(walletFile, mnemonic,keyPair);
     }
-    public static List<ChildNumber> btcparsePath(@Nonnull String path) {
-        String[] parsedNodes = path.replace("m", "").split("/");
-        List<ChildNumber> nodes = new ArrayList<>();
-        for (String n : parsedNodes) {
-            n = n.replaceAll(" ", "");
-            if (n.length() == 0) continue;
-            boolean isHard = n.endsWith("'");
-            if (isHard) n = n.substring(0, n.length() - 1);
-            int nodeNumber = Integer.parseInt(n);
-            nodes.add(new ChildNumber(nodeNumber, isHard));
-        }
-        return nodes;
-    }
+
     @SuppressLint("LongLogTag")
-    public static void TestBip44BTC() throws Exception {
-//        DeterministicSeed deterministicSeed = null;
-//        try {
-//            deterministicSeed = new DeterministicSeed(Data.gethotzjc(), null, "", 0);
-//        } catch (UnreadableWalletException e) {
-//            e.printStackTrace();
-//        }
-//        DeterministicKeyChain deterministicKeyChain = DeterministicKeyChain.builder().seed(deterministicSeed).build();
-//        //这里运用了BIP44里面提到的算法, 44'是固定的, 后面的一个0'代表的是币种BTC
-//        NetworkParameters networkParameters  = TestNet3Params.get();
-//        String path = "m/44'/1'/0'/0";
-//        BigInteger privkeybtc = deterministicKeyChain.getKeyByPath(btcparsePath(path), true).getPrivKey();
-//        ECKey ecKey = ECKey.fromPrivate(privkeybtc);
-//        String publicKey = ecKey.getPublicKeyAsHex();
-//        String privateKey = ecKey.getPrivateKeyEncoded(networkParameters).toString();
-//        String address = ecKey.toAddress(networkParameters).toString();
-//        LogCook.d("btc私钥：",privateKey);
-//        LogCook.d("btc公钥：",publicKey);
-//        LogCook.d("btc地址：",address);
-//        Data.setbtcaddress(address);Data.sethotbtcprv(privkeybtc.toString());Data.sethotbtcpub(publicKey);
-
-        DeterministicSeed deterministicSeed = new DeterministicSeed(Data.gethotzjc(), null, "", 0);
-        Log.i("BIP39 seed:{}", deterministicSeed.toHexString());
-
-        /**生成根私钥 root private key*/
-        DeterministicKey rootPrivateKey = HDKeyDerivation.createMasterPrivateKey(deterministicSeed.getSeedBytes());
+    public static void TestBip44BTC(DeterministicKey rootPrivateKey){
+//        DeterministicSeed deterministicSeed = new DeterministicSeed(Data.gethotzjc(), null, "", 0);
+//        Log.i("BIP39 seed:{}", deterministicSeed.toHexString());
+//        /**生成根私钥 root private key*/
+//        DeterministicKey rootPrivateKey = HDKeyDerivation.createMasterPrivateKey(seed);
         /**根私钥进行 priB58编码*/
         NetworkParameters params = TestNet3Params.get();
         String priv = rootPrivateKey.serializePrivB58(params);
@@ -363,17 +317,15 @@ public class BaiBeiWalletUtils {
         DeterministicHierarchy deterministicHierarchy = new DeterministicHierarchy(rootPrivateKey);
         /**定义父路径*/
         List<ChildNumber> parsePath = HDUtils.parsePath("44H/1H/0H/0");
-
         DeterministicKey accountKey0 = deterministicHierarchy.get(parsePath, true, true);
-        Log.i("Account extended private key:{}", accountKey0.serializePrivB58(params));
-        Log.i("Account extended public key:{}", accountKey0.serializePubB58(params));
-
+//        Log.i("Account extended private key:{}", accountKey0.serializePrivB58(params));
+//        Log.i("Account extended public key:{}", accountKey0.serializePubB58(params));
         /**由父路径,派生出第一个子私钥*/
         DeterministicKey childKey0 = HDKeyDerivation.deriveChildKey(accountKey0, 0);
 //        DeterministicKey childKey0 = deterministicHierarchy.deriveChild(parsePath, true, true, new ChildNumber(0));
-        Log.i("BIP32 extended 0 private key:{}", childKey0.serializePrivB58(params));
-        Log.i("BIP32 extended 0 public key:{}", childKey0.serializePubB58(params));
-        Log.i("0 private key:{}", childKey0.getPrivateKeyAsHex());
+//        Log.i("BIP32 extended 0 private key:{}", childKey0.serializePrivB58(params));
+//        Log.i("BIP32 extended 0 public key:{}", childKey0.serializePubB58(params));
+//        Log.i("0 private key:{}", childKey0.getPrivateKeyAsHex());
         Log.i("0 private key:{}", childKey0.getPrivateKeyAsWiF(params));
         Log.i("0 public key:{}", childKey0.getPublicKeyAsHex());
         Log.i("0 address:{}", String.valueOf(childKey0.toAddress(params)));
@@ -393,12 +345,44 @@ public class BaiBeiWalletUtils {
 //        Log.i("1 address:{}", String.valueOf(childKey1.toAddress(params)));
     }
 
+    public static void TestBip44XRP(DeterministicKey rootPrivateKey){
+        /**根私钥进行 priB58编码*/
+        NetworkParameters params = MainNetParams.get();
+        String priv = rootPrivateKey.serializePrivB58(params);
+        Log.i("BIP32 private key:{}", priv);
+        /**由根私钥生成HD钱包*/
+        DeterministicHierarchy deterministicHierarchy = new DeterministicHierarchy(rootPrivateKey);
+        /**定义父路径*/
+        List<ChildNumber> parsePath = HDUtils.parsePath("44H/144H/0H/0");
+        DeterministicKey accountKey0 = deterministicHierarchy.get(parsePath, true, true);
+        /**由父路径,派生出第一个子私钥*/
+        DeterministicKey childKey0 = HDKeyDerivation.deriveChildKey(accountKey0, 0);
+        Log.i("public key:{}", childKey0.getPublicKeyAsHex());
+        Data.setbizhong("XRP");Data.setdata(childKey0.getPublicKeyAsHex());
+        String address=Utils.address();
+        Data.setxrpaddress(address);
+        try {
+            Bitmap codeBitmap = Utils.createCode(address);
+            Data.setxrpimgCode(codeBitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+//        /**由父路径,派生出第二个子私钥*/
+//        DeterministicKey childKey1 = HDKeyDerivation.deriveChildKey(accountKey0, 1);
+//        Log.i("BIP32 extended 1 private key:{}", childKey1.serializePrivB58(params));
+//        Log.i("BIP32 extended 1 public key:{}", childKey1.serializePubB58(params));
+//        Log.i("1 private key:{}", childKey1.getPrivateKeyAsHex());
+//        Log.i("1 public key:{}", childKey1.getPublicKeyAsHex());
+//        Log.i("1 address:{}", String.valueOf(childKey1.toAddress(params)));
+    }
+
     public static BaibeiWallet generateBip44Wallet(String mnemonic, String password)
             throws CipherException {
         //2.生成种子
-        byte[] seed = MnemonicUtils.generateSeed(mnemonic, null);
+        byte[] seed = MnemonicUtils.generateSeed(mnemonic, null);Data.sethotzjc(mnemonic);
         // 3. 生成根私钥 root private key 树顶点的master key
-        DeterministicKey child = getDeterministicKeyBip44BySeed(seed);
+        DeterministicKey rootPrivateKey = HDKeyDerivation.createMasterPrivateKey(seed);
+        DeterministicKey child = getDeterministicKeyBip44BySeed(rootPrivateKey);
         byte[] privateKeyByte = child.getPrivKeyBytes();
         //        ECKeyPair privateKey = ECKeyPair.create(sha256(seed));
         //通过私钥生成公私钥对
@@ -415,7 +399,7 @@ public class BaiBeiWalletUtils {
             e.printStackTrace();
         }
         try {
-            TestBip44BTC();
+            TestBip44BTC(rootPrivateKey);
         } catch (Exception e) {
             e.printStackTrace();
         }

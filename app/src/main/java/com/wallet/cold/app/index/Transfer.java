@@ -32,6 +32,7 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.hot.app.HotTransfer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -594,7 +595,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                     }
                     LogCook.d("ble返回btc多个txid签名结果", sign.toString());
                     LogCook.d("发送交易数据", data);
-                    Data.setbtctype("sendrawtransaction");
+                    Data.setbtctype("sendrawtransaction");Data.getsigndata().clear();
                     String address = "{\"address\":\"" + data + "\"}";
                     String btcerror = Utils.getbtchttp(address);
                     if (!btcerror.equals("")) {
@@ -633,7 +634,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                     Data.setbtctype("sendrawtransaction");
                     String address = "{\"address\":\"" + data + "\"}";
                     String btcerror = Utils.getbtchttp(address);
-                    if (btcerror.equals("")) {
+                    if (!btcerror.equals("")) {
                         (new Thread(runnable1)).start();
                     }else{
                         Looper.prepare();
@@ -914,7 +915,19 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data9="8314";
         String data10= UtilsBase58.xrpdecode(Data.getto());
         data10=data10.substring(0,data10.length()-8);
-        sign(data1+data2+data3+data4+data5+data6+data7+data8+data9+data10);//进行签名
+        if(Data.gettype().equals("cold")) {
+            sign(data1 + data2 + data3 + data4 + data5 + data6 + data7 + data8 + data9 + data10);//进行签名
+        }else{
+            String data= String.format("%s%s%s%s%s%s%s%s%s%s", data1, data2, data3, data4, data5, data6, data7, data8, data9, data10);
+            LogCook.d("待签名信息",data);
+            byte[] bytes = new byte[data.length() / 2];
+            for (int i = 0; i < data.length() / 2; i++) {//16进制字符串转byte[]
+                String subStr = data.substring(i * 2, i * 2 + 2);
+                bytes[i] = (byte) Integer.parseInt(subStr, 16);
+            }
+            String resultsign= new HotTransfer().Signingtrasaction(Data.gethotbtcprv(),bytes);
+            xrpsendtransaction(resultsign);
+        }
     }
 
     /**

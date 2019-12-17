@@ -13,6 +13,7 @@ import com.wallet.R;
 import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.app.pawn.CdActivity;
 import com.wallet.cold.app.pawn.login;
+import com.wallet.hot.app.HotTransfer;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -677,7 +678,7 @@ public class Utilshttp {
                         if (Data.getbizhong().equals("trustset")) {
                             new Transfer().trustsetcreatetransaction();
                         }else {
-                            if (Data.gettype().equals("fragment3")) {
+                            if (Data.gettype().equals("fragment3")||Data.gettype().equals("hottransfer")) {
                                 if (Data.getbizhong().equals("XRP")) {
                                     new Transfer().xrpcreatetransaction();
                                 } else if (Data.getbizhong().equals("AED")) {
@@ -698,10 +699,10 @@ public class Utilshttp {
                         }
                     }
                 } catch (Exception e) {
-                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
-                    if(Data.gettype().equals("fragment3")||Data.gettype().equals("jyxxactivity")) {
+                    if(Data.gettype().equals("fragment3")||Data.gettype().equals("jyxxactivity")||Data.gettype().equals("hottransfer")) {
 
                     }else {
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
                         Data.setxrpamount("0");
                         new Utilshttp().getaedamount();
                     }

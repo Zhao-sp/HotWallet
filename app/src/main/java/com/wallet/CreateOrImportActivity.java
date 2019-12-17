@@ -171,7 +171,8 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
             case R.id.hot_wallet:
                 Data.setapptype("hot");
                 Intent Intent1 = new Intent();
-                Data.getdb().execSQL("create table if not exists HotAddressTb (_id integer primary key,password text not null,btcaddress text not null,ethaddress text not null,ethprv text not null,btcprv text not null,btcpub text not null)");
+                Data.getdb().execSQL("create table if not exists HotAddressTb (_id integer primary key,password text not null,btcaddress text not null,ethaddress text not null,ethprv text not null,btcprv text not null," +
+                        "btcpub text not null,xrpaddress text not null)");
                 Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
                 if (cursor != null && cursor.getCount() > 0) {
                     while (cursor.moveToNext()) {
@@ -181,11 +182,10 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                         String ethprv = cursor.getString(cursor.getColumnIndex("ethprv"));
                         String btcprv = cursor.getString(cursor.getColumnIndex("btcprv"));
                         String btcpub = cursor.getString(cursor.getColumnIndex("btcpub"));
-                        Data.sethotpassword(password);
-                        Data.setbtcaddress(btcaddress);
-                        Data.setethaddress(ethaddress);
-                        Data.sethotethprv(ethprv);
-                        Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);
+                        String xrpaddress = cursor.getString(cursor.getColumnIndex("xrpaddress"));
+                        Data.sethotpassword(password);Data.setbtcaddress(btcaddress);
+                        Data.setethaddress(ethaddress);Data.sethotethprv(ethprv);
+                        Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);Data.setxrpaddress(xrpaddress);
                     }
                     cursor.close();
                     try {
@@ -193,6 +193,8 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                         Data.setethimgCode(codeBitmap);
                         Bitmap codeBitmap1 = Utils.createCode(Data.getbtcaddress());
                         Data.setimgCode(codeBitmap1);
+                        Bitmap codeBitmap2 = Utils.createCode(Data.getxrpaddress());
+                        Data.setxrpimgCode(codeBitmap2);
                     } catch (WriterException e) {
                         e.printStackTrace();
                     }
@@ -223,7 +225,6 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
     private void startAnimation() {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(1000);
-        //animatorSet.play(mCreateBtnAnimator).after(mTitleViewAnimator);
         animatorSet.play(mCreateBtnAnimator).with(mImportBtnAnimator).after(mTitleViewAnimator);
         animatorSet.start();
     }
