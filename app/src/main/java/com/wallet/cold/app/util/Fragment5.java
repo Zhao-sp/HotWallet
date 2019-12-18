@@ -81,9 +81,11 @@ public class Fragment5 extends Activity implements View.OnClickListener {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Fragment5.this, Data.getcontext().getResources().getString(R.string.f515));
                             Data.setdialog(mWeiboDialog);
-                            Data.setbletype("chushihuazhiwen");
-                            String a = "55aaf4000000f4aa55";
-                            sendble(a,Data.getmService());
+//                            Data.setbletype("chushihuazhiwen");
+//                            String a = "55aaf4000000f4aa55";
+//                            sendble(a,Data.getmService());
+                            Data.setbletype("chushihua");
+                            Utils.csh();
                         }
                     })
                     .show();
