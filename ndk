@@ -1,0 +1,5 @@
+ndk生成so命令 jni目录下
+ndk-build NDK_PROJECT_PATH=. NDK_APPLICATION_MK=Application.mk APP_BUILD_SCRIPT=Android.mk
+
+生成头文件 .h
+javah -jni -d /自己想放入的目录(但是要方便自己寻找) -classpath . jni.JniPlug(切记JniPlug这个class文件在命令中是不要加.class后缀否则出错 )
