@@ -1610,67 +1610,75 @@ public class Utils extends Activity {
                                 WeiboDialogUtils.closeDialog(Data.getdialog());
                             }else if (Data.getbletype().equals("recover")) {//导入助记词
                                 if (Data.getbizhong().equals("1")) {
-                                    Intent intent = new Intent(Data.getcontext(), IndexActivity.class);
-                                    Data.getcontext().startActivity(intent);
+                                    Data.setbizhong("BTC");
+                                    Data.setbletype("address");
+                                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
+                                    Data.setdialog(mWeiboDialog);
+                                    btc();
                                 }
                             }else if (Data.getbletype().equals("Initialize")) {//生成助记词
-                                Intent intent = new Intent(Data.getcontext(), IndexActivity.class);
-                                Data.getcontext().startActivity(intent);
+                                Data.setbizhong("BTC");
+                                Data.setbletype("address");
+                                Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
+                                Data.setdialog(mWeiboDialog);
+                                btc();
                             }else if (Data.getbletype().equals("address")) {//生成公钥 地址
-                                if (Data.getbizhong().equals("BTC")) {
-                                    String address = Utils.address();
-                                    if (!TextUtils.isEmpty(address)) {
-                                        Bitmap codeBitmap = null;
+                                if(!data2.equals("")) {
+                                    if (Data.getbizhong().equals("BTC")) {
+                                        String address = Utils.address();
+                                        if (!TextUtils.isEmpty(address)) {
+                                            Bitmap codeBitmap = null;
+                                            try {
+                                                codeBitmap = Utils.createCode(address);
+                                                Data.setimgCode(codeBitmap);
+                                            } catch (WriterException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        eth();
+                                    } else if (Data.getbizhong().equals("ETH")) {
+                                        String address = Utils.address();
+                                        if (!TextUtils.isEmpty(address)) {
+                                            Bitmap codeBitmap = null;
+                                            try {
+                                                codeBitmap = Utils.createCode(address);
+                                                Data.setethimgCode(codeBitmap);
+                                            } catch (WriterException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        //auth0();
+                                        xrp();
+                                    } else if (Data.getbizhong().equals("AUTH0")) {
                                         try {
-                                            codeBitmap = Utils.createCode(address);
-                                            Data.setimgCode(codeBitmap);
-                                        } catch (WriterException e) {
+                                            Thread.sleep(2000);
+                                        } catch (InterruptedException e) {
                                             e.printStackTrace();
                                         }
-                                    }
-                                    eth();
-                                } else if (Data.getbizhong().equals("ETH")) {
-                                    String address = Utils.address();
-                                    if (!TextUtils.isEmpty(address)) {
-                                        Bitmap codeBitmap = null;
-                                        try {
-                                            codeBitmap = Utils.createCode(address);
-                                            Data.setethimgCode(codeBitmap);
-                                        } catch (WriterException e) {
-                                            e.printStackTrace();
+                                        String auth0pubkey = Data.getdata().substring(0, 128);
+                                        LogCook.d("auth0公钥", auth0pubkey);
+                                        Data.setauth0pubkey(auth0pubkey);
+                                        String auth0address = Data.getdata().substring(128, Data.getdata().length());
+                                        LogCook.d("auth0地址", auth0address);
+                                        Data.setauth0address(auth0address);
+                                        xrp();
+                                    } else if (Data.getbizhong().equals("XRP")) {
+                                        String xrppubkey = Data.getdata();
+                                        Data.setxrppub(xrppubkey);
+                                        String address = Utils.address();
+                                        if (!TextUtils.isEmpty(address)) {
+                                            Bitmap codeBitmap = null;
+                                            try {
+                                                codeBitmap = Utils.createCode(address);
+                                                Data.setxrpimgCode(codeBitmap);
+                                            } catch (WriterException e) {
+                                                e.printStackTrace();
+                                            }
                                         }
+                                        Data.setbletype("");
+                                        //new Utilshttp().getauth0user();
+                                        zhuce();
                                     }
-                                    //auth0();
-                                    xrp();
-                                } else if(Data.getbizhong().equals("AUTH0")){
-                                    try {
-                                        Thread.sleep(2000);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                    String auth0pubkey = Data.getdata().substring(0,128);
-                                    LogCook.d("auth0公钥", auth0pubkey);
-                                    Data.setauth0pubkey(auth0pubkey);
-                                    String auth0address = Data.getdata().substring(128, Data.getdata().length());
-                                    LogCook.d("auth0地址", auth0address);
-                                    Data.setauth0address(auth0address);
-                                    xrp();
-                                } else if(Data.getbizhong().equals("XRP")){
-                                    String xrppubkey = Data.getdata();
-                                    Data.setxrppub(xrppubkey);
-                                    String address = Utils.address();
-                                    if (!TextUtils.isEmpty(address)) {
-                                        Bitmap codeBitmap = null;
-                                        try {
-                                            codeBitmap = Utils.createCode(address);
-                                            Data.setxrpimgCode(codeBitmap);
-                                        } catch (WriterException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                    Data.setbletype("");
-                                    //new Utilshttp().getauth0user();
-                                    zhuce();
                                 }
                             }else if (Data.getbletype().equals("type")) {
                                 if (data2.substring(2, 4).equals("01") && data2.substring(0, 2).equals("01")) {//存在助记词存在pin码

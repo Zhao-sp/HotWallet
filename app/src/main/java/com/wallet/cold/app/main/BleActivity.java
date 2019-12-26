@@ -54,18 +54,20 @@ public class BleActivity extends AppCompatActivity implements OnClickListener {
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.create) {
-            Data.settype("main+c");
-            Data.setbletype("resetselect");
-            String data = "55aaf1000000f1aa55";
-            sendble(data, Data.getmService());
-//            Intent intent2 = new Intent(this, CreateActivity.class);
-//            startActivity(intent2);
+//            Data.settype("main+c");
+//            Data.setbletype("resetselect");
+//            String data = "55aaf1000000f1aa55";
+//            sendble(data, Data.getmService());
+            Intent intent2 = new Intent(this, CreateActivity.class);
+            startActivity(intent2);
         }
         if(v.getId() == R.id.recover) {
-            Data.settype("main+r");
-            Data.setbletype("resetselect");
-            String data = "55aaf1000000f1aa55";
-            sendble(data, Data.getmService());
+//            Data.settype("main+r");
+//            Data.setbletype("resetselect");
+//            String data = "55aaf1000000f1aa55";
+//            sendble(data, Data.getmService());
+            Intent intent2 = new Intent(this, RecoverActivity.class);
+            startActivity(intent2);
         }
         if(v.getId() == R.id.fanhuiadd) {
             Intent intent2 = new Intent(this, MainActivity.class);

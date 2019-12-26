@@ -3,13 +3,11 @@ package com.wallet.cold.app.main;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +16,8 @@ import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.hot.app.ByteActivity;
+import com.wallet.hot.utils.HotWalletUtils;
 
 public class CreateActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,16 +29,15 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
     private Dialog mWeiboDialog;
     private EditText pin;
     private EditText pin1;
-    private ImageView fanhui;
-    private TextView fhcreate;
+    private TextView fhcreate,shezhi,queren;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
         WeiboDialogUtils.closeDialog(mWeiboDialog);
         Data.settype("create");
-        fanhui=(ImageView) findViewById(R.id.fanhuiadd);
-        fanhui.setOnClickListener(this);
+        shezhi=(TextView) findViewById(R.id.shezhi);
+        queren=(TextView) findViewById(R.id.queren);
         fhcreate=(TextView) findViewById(R.id.fhcreate);
         fhcreate.setOnClickListener(this);
         generate=(Button)findViewById(R.id.generate);
@@ -57,6 +56,12 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         pin1=(EditText) findViewById(R.id.pin1);
         button15.setEnabled(false);
         Data.setbutton(15);
+        if(Data.getapptype().equals("hot")){
+            shezhi.setText("设置密码:");
+            queren.setText("确认密码:");
+            pin.setHint("请输入8位以上密码");
+            pin1.setHint("请再次输入8位以上密码");
+        }
         Data.setcontext(CreateActivity.this);
         new Utils().service_init(getApplicationContext());
     }
@@ -64,16 +69,28 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.generate){//生成助记词逻辑代码
-            if (pin.getText().toString().length() != 4) {
-                Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.selete7), Toast.LENGTH_SHORT).show();
-            } else if (!pin.getText().toString().equals(pin1.getText().toString())) {
-                Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.selete8), Toast.LENGTH_SHORT).show();
-            } else {
-                Data.setbletype("Initialize");Data.setresulterror("no");
-                mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CreateActivity.this, this.getResources().getString(R.string.selete9));
-                Utils.generate(pin.getText().toString(),Data.getbutton());
-                Intent intent = new Intent(Data.getcontext(), NumbersActivity.class);
-                Data.getcontext().startActivity(intent);
+            if(Data.getapptype().equals("cold")) {
+                if (pin.getText().toString().length() != 4) {
+                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.selete7), Toast.LENGTH_SHORT).show();
+                } else if (!pin.getText().toString().equals(pin1.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.selete8), Toast.LENGTH_SHORT).show();
+                } else {
+                    Data.setbletype("Initialize");
+                    Data.setresulterror("no");
+                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CreateActivity.this, this.getResources().getString(R.string.selete9));
+                    Utils.generate(pin.getText().toString(), Data.getbutton());
+                    Intent intent = new Intent(Data.getcontext(), NumbersActivity.class);
+                    Data.getcontext().startActivity(intent);
+                }
+            }else{
+                if (pin.getText().toString().length() < 8) {
+                    Toast.makeText(getApplicationContext(), "请输入8位以上密码", Toast.LENGTH_SHORT).show();
+                } else if (!pin.getText().toString().equals(pin1.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "两次输入的密码不一致", Toast.LENGTH_SHORT).show();
+                }else {
+                    Data.sethotpassword(pin.getText().toString());
+                    HotWalletUtils.generateBip44Wallet();
+                }
             }
 //        }else if(v.getId() == R.id.button12){
 //            button24.setEnabled(true);button21.setEnabled(true);button15.setEnabled(true);
@@ -90,12 +107,14 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         }else if(v.getId() == R.id.button24){
             button21.setEnabled(true);button15.setEnabled(true);
             button18.setEnabled(true);button24.setEnabled(false);Data.setbutton(24);
-        }else if(v.getId() == R.id.fanhuiadd){
-            Intent intent = new Intent(CreateActivity.this, BleActivity.class);
-            startActivity(intent);
         }else if(v.getId() == R.id.fhcreate){
-            Intent intent = new Intent(CreateActivity.this,BleActivity.class);
-            startActivity(intent);
+            if(Data.getapptype().equals("cold")) {
+                Intent intent = new Intent(CreateActivity.this, BleActivity.class);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(CreateActivity.this, ByteActivity.class);
+                startActivity(intent);
+            }
         }
     }
     @Override

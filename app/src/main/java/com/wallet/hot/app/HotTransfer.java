@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.text.method.NumberKeyListener;
 import android.util.Base64;
 import android.util.Log;
@@ -29,7 +30,6 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
-
 import org.bitcoinj.core.DumpedPrivateKey;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
@@ -42,6 +42,7 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.security.SignatureException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -288,7 +289,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     } else if (!isBTCValidAddress(to)) {
                         Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff22), Toast.LENGTH_SHORT).show();
                     } else {
-                        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(HotTransfer.this, "转账中...");
+                        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(HotTransfer.this, this.getResources().getString(R.string.fff231));
                         Data.setdialog(mWeiboDialog);
                         Data.setfee(fee);
                         Data.setyue(amountyue);
@@ -313,7 +314,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                 } else if (balance.compareTo(amountyue) < 0) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
                 } else {
-                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.fff23));
+                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.fff231));
                     Data.setdialog(mWeiboDialog);
                     Data.setfee(fee);
                     Data.setyue(amountyue);
@@ -333,7 +334,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                 } else if (balance.compareTo(amountyue) < 0) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
                 } else {
-                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.fff23));
+                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.fff231));
                     Data.setdialog(mWeiboDialog);
                     Data.setyue(amountyue);
                     Data.setto(to);
@@ -574,6 +575,29 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             LogCook.d("签名结果:",Utils.bytesToHexString(res));
             return Utils.bytesToHexString(res);
             //Log.e("decrypttx",""+ Hex.decode(sig.encodeToDER()));
+        } catch (Exception e) {
+            Log.e("signing exception", e.getMessage().toString());
+        }
+        return hex;
+    }
+
+    public String XRPSigningtrasaction(String wif, byte[] msg,String data) {
+        String hex="";
+        try {
+            DumpedPrivateKey dpk = DumpedPrivateKey.fromBase58(TestNet3Params.get(), wif);
+            ECKey key = dpk.getKey();
+            MessageDigest instance = MessageDigest.getInstance("SHA-512");
+            instance.update(msg);
+            String check=Utils.bytesToHexString(instance.digest());
+            String sig = key.signMessage(check.substring(0,64));
+            MessageDigest digest = MessageDigest.getInstance("SHA-512");
+            byte[] hash = digest.digest(data.getBytes("UTF-8"));
+            System.out.println(Utils.bytesToHexString(hash));
+            String sig1 = key.signMessage(Utils.bytesToHexString(hash).substring(0,64));
+            //byte[] res = sig.encodeToDER();
+            //hex = Base64.encodeToString(res, 16);
+            LogCook.d("签名结果:",sig);
+            //return Utils.bytesToHexString(res);
         } catch (Exception e) {
             Log.e("signing exception", e.getMessage().toString());
         }

@@ -94,6 +94,7 @@
     <string name="fff21">Transfer amount cannot be zero</string>
     <string name="fff22">Please enter the correct BTC transfer address.</string>
     <string name="fff23">Please confirm the information on the carrier</string>
+    <string name="fff231">In transfer...</string>
     <string name="fff24">Transfer address format without 0x</string>
     <string name="fff25">Please enter the correct transfer address</string>
     <string name="fff26">Service charges cannot be empty</string>
@@ -309,7 +310,7 @@
     <string name="uhttp22">Failure to turn out</string>
     <string name="uhttp23">Deduction success, purchase failure</string>
     <string name="uhttp24">Failed to get XRP balance / sequence</string>
-    <string name="uhttp25">Failed to get AED balance / issue address</string>
+    <string name="uhttp25">Failed to get AED balance</string>
 
     <string name="p1">Out when</string>
     <string name="p2">Investment</string>

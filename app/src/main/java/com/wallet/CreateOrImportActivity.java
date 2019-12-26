@@ -4,7 +4,6 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -31,7 +30,6 @@ import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
 import com.wallet.hot.app.ByteActivity;
 
 import java.io.File;
@@ -171,8 +169,8 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
             case R.id.hot_wallet:
                 Data.setapptype("hot");
                 Intent Intent1 = new Intent();
-                Data.getdb().execSQL("create table if not exists HotAddressTb (_id integer primary key,password text not null,btcaddress text not null,ethaddress text not null,ethprv text not null,btcprv text not null," +
-                        "btcpub text not null,xrpaddress text not null)");
+                Data.getdb().execSQL("create table if not exists HotAddressTb (_id integer primary key,password text not null,btcaddress text not null,ethaddress text not null,ethprv text not null,ethpub text not null," +
+                        "btcprv text not null,btcpub text not null,xrpaddress text not null,xrppub text not null,xrpprv text not null)");
                 Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
                 if (cursor != null && cursor.getCount() > 0) {
                     while (cursor.moveToNext()) {
@@ -180,12 +178,16 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                         String btcaddress = cursor.getString(cursor.getColumnIndex("btcaddress"));
                         String ethaddress = cursor.getString(cursor.getColumnIndex("ethaddress"));
                         String ethprv = cursor.getString(cursor.getColumnIndex("ethprv"));
+                        String ethpub = cursor.getString(cursor.getColumnIndex("ethpub"));
                         String btcprv = cursor.getString(cursor.getColumnIndex("btcprv"));
                         String btcpub = cursor.getString(cursor.getColumnIndex("btcpub"));
                         String xrpaddress = cursor.getString(cursor.getColumnIndex("xrpaddress"));
-                        Data.sethotpassword(password);Data.setbtcaddress(btcaddress);
-                        Data.setethaddress(ethaddress);Data.sethotethprv(ethprv);
-                        Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);Data.setxrpaddress(xrpaddress);
+                        String xrppub = cursor.getString(cursor.getColumnIndex("xrppub"));
+                        String xrpprv = cursor.getString(cursor.getColumnIndex("xrpprv"));
+                        Data.sethotpassword(password);Data.setbtcaddress(btcaddress);Data.setethaddress(ethaddress);
+                        Data.sethotethprv(ethprv);Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);Data.sethotethpub(ethpub);
+                        Data.setxrpaddress(xrpaddress);Data.setxrppub(xrppub);Data.setxrpprv(xrpprv);
+                        break;
                     }
                     cursor.close();
                     try {
@@ -198,9 +200,11 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                     } catch (WriterException e) {
                         e.printStackTrace();
                     }
-                    new Utils().zhuce();
-                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
-                    Data.setdialog(mWeiboDialog);
+//                    new Utils().zhuce();
+//                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
+//                    Data.setdialog(mWeiboDialog);
+                    Intent1.setClass(this, ByteActivity.class);
+                    startActivity(Intent1);
                 }else {
                     Intent1.setClass(this, ByteActivity.class);
                     startActivity(Intent1);

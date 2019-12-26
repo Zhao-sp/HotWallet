@@ -915,7 +915,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data9="8314";
         String data10= UtilsBase58.xrpdecode(Data.getto());
         data10=data10.substring(0,data10.length()-8);
-        if(Data.gettype().equals("cold")) {
+        if(Data.getapptype().equals("cold")) {
             sign(data1 + data2 + data3 + data4 + data5 + data6 + data7 + data8 + data9 + data10);//进行签名
         }else{
             String data= String.format("%s%s%s%s%s%s%s%s%s%s", data1, data2, data3, data4, data5, data6, data7, data8, data9, data10);
@@ -925,7 +925,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 String subStr = data.substring(i * 2, i * 2 + 2);
                 bytes[i] = (byte) Integer.parseInt(subStr, 16);
             }
-            String resultsign= new HotTransfer().Signingtrasaction(Data.gethotbtcprv(),bytes);
+            String resultsign= new HotTransfer().XRPSigningtrasaction(Data.getxrpprv(),bytes,data);
             xrpsendtransaction(resultsign);
         }
     }

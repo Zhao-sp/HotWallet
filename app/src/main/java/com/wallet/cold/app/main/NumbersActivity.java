@@ -33,13 +33,7 @@ public class NumbersActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-//        if(v.getId()==R.id.fanhuiadd){
-//            Intent intent = new Intent(NumbersActivity.this,CreateActivity.class);
-//            startActivity(intent);
-//        }else if(v.getId()==R.id.fhnum){
-//            Intent intent = new Intent(NumbersActivity.this,CreateActivity.class);
-//            startActivity(intent);
-//        }
+
     }
     @Override
     protected void attachBaseContext(Context newBase) {

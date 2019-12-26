@@ -3,7 +3,6 @@ package com.wallet.hot.app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,7 +12,9 @@ import android.widget.TextView;
 
 import com.wallet.CreateOrImportActivity;
 import com.wallet.R;
+import com.wallet.cold.app.main.CreateActivity;
 import com.wallet.cold.app.main.MainActivity;
+import com.wallet.cold.app.main.RecoverActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 
@@ -52,7 +53,7 @@ public class ByteActivity extends Activity implements OnClickListener {
             startActivity(intent);
         }
         if(v.getId() == R.id.recover) {
-            Intent intent1 = new Intent(this, HotRecoverActivity.class);
+            Intent intent1 = new Intent(this, RecoverActivity.class);
             startActivity(intent1);
         }
         if(v.getId() == R.id.fanhuiadd) {

@@ -453,10 +453,10 @@ activity#com.wallet.hot.app.ByteActivity
 ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:112:9-58
 	android:name
 		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:112:19-55
-activity#com.wallet.hot.app.CreateActivity
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:113:9-60
+activity#com.wallet.hot.app.HotCreateActivity
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:113:9-63
 	android:name
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:113:19-57
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:113:19-60
 activity#com.wallet.hot.app.HotTransfer
 ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:114:9-57
 	android:name

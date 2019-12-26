@@ -52,12 +52,12 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
         Data.setiseth("yes");
         delete =(TextView)findViewById(R.id.delete);delete.setOnClickListener(this);delete.setVisibility(View.GONE);
         Data.getdb().execSQL("create table if not exists JiaoyiTb (_id integer primary key,blename text not null,name text not null,bizhong text not null,jine integer not null,riqi text not null,type integer not null)");
-        if(Data.getapptype().equals("hot")) {
-            Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,btcprv,btcpub,xrpaddress) values " +
-                    "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "'," +
-                    "'" + Data.getxrpaddress() + "')");
-            delete.setVisibility(View.VISIBLE);
-        }
+//        if(Data.getapptype().equals("hot")) {
+//            Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,ethpub,btcprv,btcpub,xrpaddress,xrppub,xrpprv) values " +
+//                    "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotethpub() + "'," +
+//                    "'" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "','" + Data.getxrpaddress() + "','" + Data.getxrppub() + "','" + Data.getxrpprv() + "')");
+//            delete.setVisibility(View.VISIBLE);
+//        }
         lv1=(MyListView)findViewById(R.id.list_yue);
         balance =(TextView)findViewById(R.id.balance);Data.setcountamount(balance);
         kz = (ImageView)findViewById(R.id.kz);

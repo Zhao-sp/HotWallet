@@ -39,7 +39,7 @@ public class Data extends Application {
     private static String limit,isapp,ethtype,returnbledata,btcsigndata,username,password,plaint,auth0type,resulterror,btcrmbbalance,ethrmbbalance,hieramount,amountrmb,
             result,btcaddress,ethaddress,deviceaddress,devicename,path,blename, receivedata,btcsignerror,txamount,auth0pubkey,auth0address,auth0sign,auth0uuid,hotzjc,
             btcbalance,ethbalance,type,btctype,pubkey,sign,end,hash,bizhong,scan,rlpdata,bletype,scriptPubKey1,resultdata,strhex1,strhex2,iseth,data,data2,saoma,yue,fee,to,
-            apptype,hotethprv,hotbtcprv,hotbtcpub,hotpassword,fingerprints,fingerprintsname,http1,hiersign,objectId,ptamount,isblecomment,paytype,xrppub,
+            apptype,hotethprv,hotethpub,hotbtcprv,hotbtcpub,hotpassword,fingerprints,fingerprintsname,http1,hiersign,objectId,ptamount,isblecomment,paytype,xrppub,xrpprv,
             xrpaddress,xrpamount,xrpserialnumber,xrprmbbalance,aedamount,aedaddress;
     public static List<UTXO> getutxos() {
         return utxos;
@@ -185,6 +185,12 @@ public class Data extends Application {
     }
     public static void sethotethprv(String hotethprv) {
         Data.hotethprv = hotethprv;
+    }
+    public static String gethotethpub() {
+        return hotethpub;
+    }
+    public static void sethotethpub(String hotethpub) {
+        Data.hotethpub = hotethpub;
     }
     public static String gethotpassword() {
         return hotpassword;
@@ -713,6 +719,12 @@ public class Data extends Application {
     }//xrp公钥
     public static void setxrppub(String xrppub) {
         Data.xrppub = xrppub;
+    }
+    public static String getxrpprv() {
+        return xrpprv;
+    }//xrp私钥
+    public static void setxrpprv(String xrpprv) {
+        Data.xrpprv = xrpprv;
     }
     public static String getxrpaddress() {
         return xrpaddress;

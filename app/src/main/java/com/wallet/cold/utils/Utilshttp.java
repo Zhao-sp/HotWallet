@@ -147,7 +147,7 @@ public class Utilshttp {
                     Looper.loop();
                     e.printStackTrace();
                 }
-                if(Data.gettype().equals("hotrecover")||Data.gettype().equals("verification")||Data.getapptype().equals("hot")){
+                if(Data.getapptype().equals("hot")){
                     Looper.prepare();
                     new Utils().send2();
                     Looper.loop();
@@ -811,7 +811,7 @@ public class Utilshttp {
                         String sequence = result.substring(0,index);
                         String balance = result.substring(index+1,result.length());
                         LogCook.d("瑞波代币余额", balance);Data.setaedamount(balance);
-                        LogCook.d("瑞波代币发行地址", sequence);Data.setaedaddress(sequence);
+                        LogCook.d("瑞波代币发行地址", sequence);
                         new Utils().send2();
                     } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp25) +
@@ -825,6 +825,7 @@ public class Utilshttp {
                     new Utils().send2();
                     e.printStackTrace();
                 }
+                Data.setaedaddress("rKHHaXA3k3DUvZsCbdLGnUjyopuXYbEAKF");
                 Looper.loop();
             }
         }).start();
