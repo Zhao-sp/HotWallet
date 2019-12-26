@@ -195,13 +195,9 @@
             android:noHistory="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name="com.wallet.hot.app.ByteActivity" />
-        <activity android:name="com.wallet.hot.app.HotCreateActivity" />
         <activity android:name="com.wallet.hot.app.HotTransfer" />
         <activity
             android:name="com.wallet.hot.app.Verification"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name="com.wallet.hot.app.HotRecoverActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="com.wallet.hot.app.BackUpActivity"

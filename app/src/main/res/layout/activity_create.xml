@@ -144,7 +144,6 @@
         android:background="#ff222a38"
         android:hint="@string/recover5"
         android:inputType="numberPassword"
-        android:maxLength="4"
         android:textColor="#fff"
         android:textSize="14dp" />
 
@@ -176,7 +175,6 @@
         android:background="#ff222a38"
         android:hint="@string/recover7"
         android:inputType="numberPassword"
-        android:maxLength="4"
         android:textColor="#fff"
         android:textSize="14dp" />
 

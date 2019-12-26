@@ -880,7 +880,6 @@ id btn_7
 id btn_8
 id btn_9
 id btn_del
-id btn_inprot_mnemonic
 id button
 id button15
 id button18
@@ -947,7 +946,6 @@ id edit
 id edit_query
 id end
 id english
-id et_data_inprot
 id et_path
 id et_pin
 id et_pwd
@@ -1103,7 +1101,6 @@ id progress_horizontal
 id pt
 id ptamount
 id ptmoney
-id pwd
 id qc
 id queren
 id quit
@@ -1231,7 +1228,6 @@ id tz
 id tztoken
 id tztoken1
 id tztype
-id uname
 id uniform
 id up
 id useLogo
@@ -1328,9 +1324,7 @@ layout activity_cz_1
 layout activity_dfu_update
 layout activity_fingerprints
 layout activity_gengxin
-layout activity_hotcreate
 layout activity_index
-layout activity_inprot_wallet
 layout activity_invest
 layout activity_jyxx
 layout activity_languages
