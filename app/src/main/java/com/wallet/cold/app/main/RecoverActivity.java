@@ -52,9 +52,6 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
             queren.setText("确认密码:");
             pin.setHint("请输入8位以上密码");
             pin1.setHint("请再次输入8位以上密码");
-            zhujici.setText("amount filter say bless mountain industry suffer goddess awkward earth upper spell cliff swarm ketchup");
-            pin.setText("12345678");
-            pin1.setText("12345678");
         }
         Data.settype("recover");
         Data.setcontext(RecoverActivity.this);
@@ -86,10 +83,28 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
                     } else if (!pin.getText().toString().equals(pin1.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "两次输入的密码不一致", Toast.LENGTH_SHORT).show();
                     }else {
+                        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.recover10));
+                        Data.setdialog(mWeiboDialog);
                         Data.sethotpassword(pin.getText().toString());
                         HotWalletUtils.RecoverBip44Wallet(zhujici.getText().toString());
                     }
                 }
+//                if (pin.getText().toString().length() != 4) {
+//                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.selete7), Toast.LENGTH_SHORT).show();
+//                } else if(Data.getisinitialize()) {
+//                    if (pin1.getText().toString().equals("")) {
+//                        Toast.makeText(getApplicationContext(), "请输入旧pin码", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Data.setbletype("getrandom");
+//                        new Utils().chushihua(mService, pin1.getText().toString());
+//                    }
+//                }else if(!Data.getisinitialize()){
+//                    Data.setbletype("recover");Data.setresulterror("no");
+//                    Data.setbizhong("1");
+//                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.recover10));
+//                    Data.setdialog(mWeiboDialog);
+//                    Utils.recover(pin.getText().toString(),zhujici.getText().toString(),mService);
+//                }
             }
         }
     }

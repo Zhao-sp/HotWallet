@@ -10,6 +10,7 @@ import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.Utils;
 import com.wallet.hot.app.BackUpActivity;
 
+import org.bitcoinj.params.TestNet3Params;
 import org.bitcoinj.wallet.DeterministicKeyChain;
 import org.bitcoinj.wallet.DeterministicSeed;
 import org.web3j.crypto.Sign;
@@ -30,9 +31,16 @@ public class HotWalletUtils {
     public static void generateBip44Wallet() {
         //1.通过bip39生成助记词
 //        byte[] initialEntropy = new byte[16];//12位
-        byte[] initialEntropy = new byte[20];//18位
-//        byte[] initialEntropy = new byte[24];//18位
-//        byte[] initialEntropy = new byte[32];//24位
+        byte[] initialEntropy=null;
+        if(Data.getbutton()==15){
+            initialEntropy = new byte[20];//15位
+        }else if(Data.getbutton()==18){
+            initialEntropy = new byte[24];//18位
+        }else if(Data.getbutton()==21){
+            initialEntropy = new byte[28];//21位
+        }else if(Data.getbutton()==24){
+            initialEntropy = new byte[32];//24位
+        }
         secureRandom.nextBytes(initialEntropy);
         String mnemonic = MnemonicUtils.generateMnemonic(initialEntropy);
         if (Boolean.parseBoolean("true")) {
@@ -66,6 +74,7 @@ public class HotWalletUtils {
     public static void TestBip44BTC(DeterministicKeyChain deterministicKeyChain){
         try {
             BigInteger privKeyBTC = deterministicKeyChain.getKeyByPath(parsePath("M/44H/1H/0H"), true).getPrivKey();
+            String privKeywifBTC = deterministicKeyChain.getKeyByPath(parsePath("M/44H/1H/0H"), true).getPrivateKeyAsWiF(TestNet3Params.get());
             String strprv = privKeyBTC.toString(16);
             BigInteger privKey = new BigInteger(strprv, 16);
             BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
@@ -73,7 +82,7 @@ public class HotWalletUtils {
             System.out.println("BTC Public key (512 bits): " + "04"+pubKey.toString(16));
             Data.setbizhong("BTC");Data.setdata("04"+pubKey.toString(16));
             String address=Utils.address();
-            Data.setbtcaddress(address);Data.sethotbtcprv(strprv);Data.sethotbtcpub("04"+pubKey.toString(16));
+            Data.setbtcaddress(address);Data.sethotbtcprv(privKeywifBTC);Data.sethotbtcpub("04"+pubKey.toString(16));
             Bitmap codeBitmap = Utils.createCode(address);
             Data.setimgCode(codeBitmap);
             TestBip44XRP(deterministicKeyChain);
@@ -104,15 +113,24 @@ public class HotWalletUtils {
 
     public static void TestBip44XRP(DeterministicKeyChain deterministicKeyChain){
         try {
-            BigInteger privKeyXRP = deterministicKeyChain.getKeyByPath(parsePath("M/144H/0H/0H"), true).getPrivKey();
+            BigInteger privKeyXRP = deterministicKeyChain.getKeyByPath(parsePath("M/44H/144H/0H"), true).getPrivKey();
             String strprv = privKeyXRP.toString(16);
             BigInteger privKey = new BigInteger(strprv, 16);
             BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
             System.out.println("XRP Private key (256 bits): " + privKey.toString(16));
             System.out.println("XRP Public key (512 bits): " + "04"+pubKey.toString(16));
-            Data.setbizhong("XRP");Data.setdata("04"+pubKey.toString(16));
+            String pub=pubKey.toString(16);
+            String x=pub.substring(0,64);
+            String y=pub.substring(pub.length()-1,pub.length());
+            int value = Integer.parseInt(y,16);
+            if (value % 2 != 0) {//奇数
+                pub="03"+x;
+            } else {//偶数
+                pub="02"+x;
+            }
+            Data.setbizhong("XRP");Data.setdata(pub);
             String address=Utils.address();
-            Data.setxrppub("04"+pubKey.toString(16));Data.setxrpprv(strprv);
+            Data.setxrppub(pub);Data.setxrpprv(strprv);
             Data.setxrpaddress(address);
             Bitmap codeBitmap = Utils.createCode(address);
             Data.setxrpimgCode(codeBitmap);

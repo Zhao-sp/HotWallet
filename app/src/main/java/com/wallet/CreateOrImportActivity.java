@@ -4,6 +4,7 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -30,6 +31,7 @@ import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.LogCook;
 import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.WeiboDialogUtils;
 import com.wallet.hot.app.ByteActivity;
 
 import java.io.File;
@@ -200,11 +202,11 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                     } catch (WriterException e) {
                         e.printStackTrace();
                     }
-//                    new Utils().zhuce();
-//                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
-//                    Data.setdialog(mWeiboDialog);
-                    Intent1.setClass(this, ByteActivity.class);
-                    startActivity(Intent1);
+                    new Utils().zhuce();
+                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
+                    Data.setdialog(mWeiboDialog);
+//                    Intent1.setClass(this, ByteActivity.class);
+//                    startActivity(Intent1);
                 }else {
                     Intent1.setClass(this, ByteActivity.class);
                     startActivity(Intent1);

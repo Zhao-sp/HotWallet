@@ -26,7 +26,7 @@ import static com.wallet.cold.utils.Utils.sendble;
 public class Fragment5 extends Activity implements View.OnClickListener {
     private TextView resetpin;
     private TextView chushihua,exit;
-    private TextView chushihuaka,fhf5,languages,fingerprints;
+    private TextView fhf5,languages,fingerprints;
     private ImageView fanhui;
     private Dialog mWeiboDialog;
     @Override
@@ -45,8 +45,9 @@ public class Fragment5 extends Activity implements View.OnClickListener {
         exit=(TextView) findViewById(R.id.exit);
         exit.setOnClickListener(this);
         chushihua=(TextView) findViewById(R.id.gengxin);
-        chushihua.setOnClickListener(this);chushihuaka=(TextView) findViewById(R.id.chushihuaka);
-        chushihuaka.setOnClickListener(this);
+        chushihua.setOnClickListener(this);
+//        chushihuaka=(TextView) findViewById(R.id.chushihuaka);
+//        chushihuaka.setOnClickListener(this);
         fanhui=(ImageView) findViewById(R.id.fanhui5);
         fanhui.setOnClickListener(this);
         Data.settype("fragment5");
@@ -66,31 +67,31 @@ public class Fragment5 extends Activity implements View.OnClickListener {
         if(v.getId() == R.id.fhf5) {
             Data.getcontext().startActivity(new Intent(this, IndexActivity.class));
         }
-        if(v.getId() == R.id.chushihuaka) {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(Fragment5.this);
-            builder1.setCancelable(false)//设置点击对话框外部区域不关闭对话框
-                    .setTitle(R.string.f511)
-                    .setMessage(R.string.f512)
-                    .setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            WeiboDialogUtils.closeDialog(mWeiboDialog);
-                        }
-                    })
-                    .setPositiveButton(R.string.f514, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Fragment5.this, Data.getcontext().getResources().getString(R.string.f515));
-                            Data.setdialog(mWeiboDialog);
-//                            Data.setbletype("chushihuazhiwen");
-//                            String a = "55aaf4000000f4aa55";
-//                            sendble(a,Data.getmService());
-                            Data.setbletype("chushihua");
-                            Utils.csh();
-                        }
-                    })
-                    .show();
-            //Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.gx2), Toast.LENGTH_SHORT).show();
-        }
+//        if(v.getId() == R.id.chushihuaka) {
+//            AlertDialog.Builder builder1 = new AlertDialog.Builder(Fragment5.this);
+//            builder1.setCancelable(false)//设置点击对话框外部区域不关闭对话框
+//                    .setTitle(R.string.f511)
+//                    .setMessage(R.string.f512)
+//                    .setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            WeiboDialogUtils.closeDialog(mWeiboDialog);
+//                        }
+//                    })
+//                    .setPositiveButton(R.string.f514, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Fragment5.this, Data.getcontext().getResources().getString(R.string.f515));
+//                            Data.setdialog(mWeiboDialog);
+////                            Data.setbletype("chushihuazhiwen");
+////                            String a = "55aaf4000000f4aa55";
+////                            sendble(a,Data.getmService());
+//                            Data.setbletype("chushihua");
+//                            Utils.csh();
+//                        }
+//                    })
+//                    .show();
+//            //Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.gx2), Toast.LENGTH_SHORT).show();
+//        }
         if(v.getId() == R.id.gengxin) {
             Intent intent2 = new Intent(Data.getcontext(), GengxinActivity.class);
             Data.getcontext().startActivity(intent2);

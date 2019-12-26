@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.R;
+import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
@@ -82,6 +83,25 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                     Intent intent = new Intent(Data.getcontext(), NumbersActivity.class);
                     Data.getcontext().startActivity(intent);
                 }
+//                if (pin.getText().toString().length() != 4) {
+//                    Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.selete7), Toast.LENGTH_SHORT).show();
+//                } else if(Data.getisinitialize()) {
+//                    if (pin1.getText().toString().equals("")) {
+//                        Toast.makeText(getApplicationContext(), "请输入旧pin码", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Data.setresult(pin1.getText().toString());
+//                        Data.setresultdata(pin.getText().toString());
+//                        Data.setbletype("getrandom");Data.setlimit(pin.getText().toString());
+//                        new Transfer().chushihua();
+//                    }
+//                }else if(!Data.getisinitialize()){
+//                    Data.setbletype("Initialize");
+//                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CreateActivity.this, CreateActivity.this.getResources().getString(R.string.selete9));
+//                    Data.setdialog(mWeiboDialog);
+//                    Utils.generate(pin.getText().toString(), Data.getbutton());
+//                    Intent intent = new Intent(Data.getcontext(), NumbersActivity.class);
+//                    Data.getcontext().startActivity(intent);
+//                }
             }else{
                 if (pin.getText().toString().length() < 8) {
                     Toast.makeText(getApplicationContext(), "请输入8位以上密码", Toast.LENGTH_SHORT).show();

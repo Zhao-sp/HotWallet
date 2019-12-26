@@ -44,6 +44,7 @@ import com.wallet.cold.app.auth0.auth0login;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.app.main.BleActivity;
 import com.wallet.cold.app.main.CreateActivity;
+import com.wallet.cold.app.main.NumbersActivity;
 import com.wallet.cold.app.main.RecoverActivity;
 import com.wallet.cold.app.util.Fingerprints;
 import com.wallet.cold.app.util.FingerprintsXQ;
@@ -1202,6 +1203,42 @@ public class Utils extends Activity {
     }
 
     /**
+     * 助记词存在情况下生成助记词
+     * @param newpin
+     * @param oldpin
+     * @param random
+     * @param count
+     * @param mServive
+     */
+    public static void cgenerate(String newpin, String oldpin, String random, int count) {
+        String newhash = Encrypt(newpin);
+        String oldhash = Encrypt(oldpin);
+        String strHex = Integer.toHexString(count);
+        if (strHex.length() == 1) {
+            strHex = "0" + strHex;
+        }
+        String data = oldhash + random;
+        byte[] bytes1 = new byte[data.length() / 2];
+        String ret;
+        for(int i = 0; i < data.length() / 2; ++i) {
+            ret = data.substring(i * 2, i * 2 + 2);
+            bytes1[i] = (byte)Integer.parseInt(ret, 16);
+        }
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(bytes1);
+            data = bytes2Hex(messageDigest.digest());
+        } catch (NoSuchAlgorithmException var14) {
+            var14.printStackTrace();
+        }
+        String strlength = strlength(data + newhash);
+        String data2 = "2401000100" + strHex + "00" + strlength + data + newhash;
+        ret = strhex(data2);
+        String a = "55aa2401000100" + strHex + "00" + strlength + data + newhash + ret + "aa55";
+        sendble(a, Data.getmService());
+    }
+
+    /**
      * 恢复助记词
      * @param pin
      * @param zhujici
@@ -1236,6 +1273,58 @@ public class Utils extends Activity {
         String ret=strhex(data1);
         String a = "55aa"+data1+ ret + "aa55";
         sendble(a, Data.getmService());
+    }
+
+    /**
+     * 助记词存在情况下恢复助记词
+     * @param newpin
+     * @param oldpin
+     * @param random
+     * @param zhujici
+     * @param mServive
+     */
+    public static void rrecover(String newpin, String oldpin, String random, String zhujici, UartService mServive) {
+        String newhash = Encrypt(newpin);
+        String oldhash = Encrypt(oldpin);
+        int count = 0;
+        int count1;
+        for(count1 = 0; count1 < zhujici.length(); ++count1) {
+            char tem = zhujici.charAt(count1);
+            if (tem == ' ') {
+                ++count;
+            }
+        }
+        count1 = count + 1;
+        String strHex = Integer.toHexString(count1);
+        if (strHex.length() == 1) {
+            strHex = "0" + strHex;
+        }
+        String data = oldhash + random;
+        byte[] bytes1 = new byte[data.length() / 2];
+
+        String ret;
+        for(int i = 0; i < data.length() / 2; ++i) {
+            ret = data.substring(i * 2, i * 2 + 2);
+            bytes1[i] = (byte)Integer.parseInt(ret, 16);
+        }
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(bytes1);
+            data = bytes2Hex(messageDigest.digest());
+        } catch (NoSuchAlgorithmException var17) {
+            var17.printStackTrace();
+        }
+        String zhujici16 = strTo16(zhujici);
+        if ((zhujici16.length() & 1) != 1) {
+            zhujici16 = zhujici16 + "00";
+        } else {
+            zhujici16 = zhujici16 + "0";
+        }
+        String strlength = strlength(data + newhash + zhujici16);
+        String data1 = "2401010100" + strHex + "00" + strlength + data + newhash + zhujici16;
+        ret = strhex(data1);
+        String a = "55aa" + data1 + ret + "aa55";
+        sendble(a, mServive);
     }
 
     /**
@@ -1608,6 +1697,16 @@ public class Utils extends Activity {
                                 Data.setbletype("");
                                 Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u29), Toast.LENGTH_SHORT).show();
                                 WeiboDialogUtils.closeDialog(Data.getdialog());
+                            }else if (Data.getbletype().equals("getrandom")) {
+                                if (!data2.equals("")) {
+                                    Data.setbletype("Initialize");
+                                    new Utils().cgenerate(Data.getresultdata(), Data.getresult(), data2, Data.getbutton());
+                                    Intent intent = new Intent(Data.getcontext(), NumbersActivity.class);
+                                    Data.getcontext().startActivity(intent);
+//                                    Data.setbletype("rrecover");
+//                                    mWeiboDialog = WeiboDialogUtils.createLoadingDialog(RecoverActivity.this, RecoverActivity.this.getResources().getString(R.string.selete9));
+//                                    new Utils().rrecover(pin.getText().toString(), pin1.getText().toString(), data2, zhujici.getText().toString(), mService);
+                                }
                             }else if (Data.getbletype().equals("recover")) {//导入助记词
                                 if (Data.getbizhong().equals("1")) {
                                     Data.setbizhong("BTC");
@@ -1682,15 +1781,17 @@ public class Utils extends Activity {
                                 }
                             }else if (Data.getbletype().equals("type")) {
                                 if (data2.substring(2, 4).equals("01") && data2.substring(0, 2).equals("01")) {//存在助记词存在pin码
-                                    Data.setbizhong("BTC");
-                                    Data.setbletype("address");
-                                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
-                                    Data.setdialog(mWeiboDialog);
-                                    Utils.btc();
+                                    Data.setisinitialize(true);
+//                                    Data.setbizhong("BTC");
+//                                    Data.setbletype("address");
+//                                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
+//                                    Data.setdialog(mWeiboDialog);
+//                                    Utils.btc();
                                 } else {
-                                    Intent intent1 = new Intent(Data.getcontext(), BleActivity.class);
-                                    Data.getcontext().startActivity(intent1);
+                                    Data.setisinitialize(false);
                                 }
+                                Intent intent1 = new Intent(Data.getcontext(), BleActivity.class);
+                                Data.getcontext().startActivity(intent1);
                             }else if(Data.getsaoma().equals("yes")) {//签名交易
                                 if(Data.getsign().equals("end0")){
                                     if(Data.gettype().equals("czactivity")){

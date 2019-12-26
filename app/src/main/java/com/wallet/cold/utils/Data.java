@@ -32,7 +32,7 @@ public class Data extends Application {
     private static Button startBtn;
     private static Handler handler;
     private static int n,count,button,restart,signcount1,percent,page,zdcount;
-    private static boolean uxto,btcsign,isdfu,islanguages,dfuupdate,isshangla;
+    private static boolean uxto,btcsign,isdfu,islanguages,dfuupdate,isshangla,isinitialize;
     private static TextView balance,cardmoney,countamount,pttext,hiertext,btctext,btcrmbtext,ethtext,ethrmbtext,xrptext,xrprmbtext,aedtext,aedaddresstext,hbbtext,hbbrmbtext;
     private static SQLiteDatabase db;
     private static BluetoothAdapter BluetoothAdapter;
@@ -185,6 +185,12 @@ public class Data extends Application {
     }
     public static void sethotethprv(String hotethprv) {
         Data.hotethprv = hotethprv;
+    }
+    public static boolean getisinitialize() {
+        return isinitialize;
+    }
+    public static void setisinitialize(boolean isinitialize) {
+        Data.isinitialize = isinitialize;
     }
     public static String gethotethpub() {
         return hotethpub;
