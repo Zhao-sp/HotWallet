@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
-import android.text.TextUtils;
 import android.text.method.NumberKeyListener;
 import android.util.Base64;
 import android.util.Log;
@@ -30,6 +29,7 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
+
 import org.bitcoinj.core.DumpedPrivateKey;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
@@ -42,7 +42,6 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.SignatureException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,6 +56,7 @@ import static com.wallet.cold.utils.Utils.ETHAddressValidate;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
 import static com.wallet.cold.utils.Utils.isBTCValidAddress;
+import static java.lang.String.valueOf;
 
 public class HotTransfer extends Activity implements View.OnClickListener {
     private PopWinShare1 popWinShare;
@@ -240,7 +240,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             } else if (popadd.getText().toString().equals("ETH")) {
                 trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), fee.getText().toString()
                         , balance.getText().toString(), Data.getethaddress());
-            } else if (popadd.getText().toString().equals("XRP")) {
+            } else if (popadd.getText().toString().equals("XRP")||popadd.getText().toString().equals("AED")) {
                 trade(popadd.getText().toString(), limit1.getText().toString(), to.getText().toString(), amountyue.getText().toString(), ""
                         , balance.getText().toString(), Data.getxrpaddress());
             }
@@ -324,7 +324,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     Data.setethtype("dealid");
                     eth();
                 }
-            } else if (type.equals("XRP")) {
+            } else if (type.equals("XRP")||type.equals("AED")) {
                 if (!to.substring(0,1).equals("r")) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff25), Toast.LENGTH_SHORT).show();
                 } else if (amountyue.equals("")) {
@@ -339,7 +339,11 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     Data.setyue(amountyue);
                     Data.setto(to);
                     Data.setlimit(pin);
-                    Data.setbizhong("XRP");
+                    if(type.equals("XRP")) {
+                        Data.setbizhong("XRP");
+                    }else{
+                        Data.setbizhong("AED");
+                    }
                     new Utilshttp().getxrpamount();
                 }
             }
@@ -575,29 +579,6 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             LogCook.d("签名结果:",Utils.bytesToHexString(res));
             return Utils.bytesToHexString(res);
             //Log.e("decrypttx",""+ Hex.decode(sig.encodeToDER()));
-        } catch (Exception e) {
-            Log.e("signing exception", e.getMessage().toString());
-        }
-        return hex;
-    }
-
-    public String XRPSigningtrasaction(String wif, byte[] msg,String data) {
-        String hex="";
-        try {
-            DumpedPrivateKey dpk = DumpedPrivateKey.fromBase58(TestNet3Params.get(), wif);
-            ECKey key = dpk.getKey();
-            MessageDigest instance = MessageDigest.getInstance("SHA-512");
-            instance.update(msg);
-            String check=Utils.bytesToHexString(instance.digest());
-            String sig = key.signMessage(check.substring(0,64));
-            MessageDigest digest = MessageDigest.getInstance("SHA-512");
-            byte[] hash = digest.digest(data.getBytes("UTF-8"));
-            System.out.println(Utils.bytesToHexString(hash));
-            String sig1 = key.signMessage(Utils.bytesToHexString(hash).substring(0,64));
-            //byte[] res = sig.encodeToDER();
-            //hex = Base64.encodeToString(res, 16);
-            LogCook.d("签名结果:",sig);
-            //return Utils.bytesToHexString(res);
         } catch (Exception e) {
             Log.e("signing exception", e.getMessage().toString());
         }

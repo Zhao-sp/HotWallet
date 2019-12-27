@@ -32,7 +32,8 @@ import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
-import com.wallet.hot.app.HotTransfer;
+import com.wallet.hot.ripple.K256KeyPair;
+import com.wallet.hot.ripple.HashUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -925,7 +926,8 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 String subStr = data.substring(i * 2, i * 2 + 2);
                 bytes[i] = (byte) Integer.parseInt(subStr, 16);
             }
-            String resultsign= new HotTransfer().XRPSigningtrasaction(Data.getxrpprv(),bytes,data);
+            byte[] hash = HashUtils.halfSha512(bytes);
+            String resultsign=Utils.bytesToHexString(K256KeyPair.signHash(hash, new BigInteger(Data.getxrpprv(),16)));
             xrpsendtransaction(resultsign);
         }
     }
@@ -978,7 +980,20 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data9="8314";
         String data10= UtilsBase58.xrpdecode(Data.getto());
         data10=data10.substring(0,data10.length()-8);
-        sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+data9+data10);//进行签名
+        if(Data.getapptype().equals("cold")) {
+            sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8+data9+data10);//进行签名
+        }else{
+            String data= String.format("%s%s%s%s%s%s%s%s%s%s%s%s", data1, data2, data3, data4, data5, data51, data52, data6, data7, data8, data9, data10);
+            LogCook.d("待签名信息",data);
+            byte[] bytes = new byte[data.length() / 2];
+            for (int i = 0; i < data.length() / 2; i++) {//16进制字符串转byte[]
+                String subStr = data.substring(i * 2, i * 2 + 2);
+                bytes[i] = (byte) Integer.parseInt(subStr, 16);
+            }
+            byte[] hash = HashUtils.halfSha512(bytes);
+            String resultsign=Utils.bytesToHexString(K256KeyPair.signHash(hash, new BigInteger(Data.getxrpprv(),16)));
+            aedsendtransaction(resultsign);
+        }
     }
 
     /**
@@ -1025,7 +1040,21 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         String data7="8114";
         String data8= UtilsBase58.xrpdecode(Data.getxrpaddress());
         data8=data8.substring(0,data8.length()-8);
-        sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8);//进行签名
+        if(Data.getapptype().equals("cold")) {
+            sign(data1+data2+data3+data4+data5+data51+data52+data6+data7+data8);//进行签名
+        }else{
+            String data= String.format("%s%s%s%s%s%s%s%s%s%s", data1, data2, data3, data4, data5, data51, data52, data6, data7, data8);
+            LogCook.d("待签名信息",data);
+            byte[] bytes = new byte[data.length() / 2];
+            for (int i = 0; i < data.length() / 2; i++) {//16进制字符串转byte[]
+                String subStr = data.substring(i * 2, i * 2 + 2);
+                bytes[i] = (byte) Integer.parseInt(subStr, 16);
+            }
+            byte[] hash = HashUtils.halfSha512(bytes);
+            String resultsign=Utils.bytesToHexString(K256KeyPair.signHash(hash, new BigInteger(Data.getxrpprv(),16)));
+            trustsetsendtransaction(resultsign);
+        }
+
     }
 
     /**

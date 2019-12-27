@@ -33,6 +33,7 @@ import com.wallet.cold.utils.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
 
 import java.util.ArrayList;
@@ -149,6 +150,10 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
             final View textEntryView = inflater.inflate(R.layout.trustset, null);
             final TextView yue=(TextView)textEntryView.findViewById(R.id.yue);
             final TextView pin=(TextView)textEntryView.findViewById(R.id.pin);
+            final TextView pt=(TextView)textEntryView.findViewById(R.id.pt);
+            if(Data.getapptype().equals("hot")){
+                pt.setText("密码:");
+            }
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setView(textEntryView).setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
@@ -162,15 +167,25 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
                     }else if(yue.getText().toString().equals("")){
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.fff21), Toast.LENGTH_SHORT).show();
                     }else {
-                        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(JYXXActivity.this, Data.getcontext().getResources().getString(R.string.fff23));
-                        Data.setdialog(mWeiboDialog);
+                        Data.setbizhong("trustset");//币种分类
                         Data.setlimit(pin.getText().toString());
                         Data.setyue(yue.getText().toString());
-                        Data.setbizhong("trustset");//币种分类
-                        Data.setsign("end0");//结束指令
-                        Data.setsaoma("yes");//是否进行签名
-                        String a1 = "55aa260110000002000035aa55";//结束签名
-                        sendble(a1, Data.getmService());
+                        if(Data.getapptype().equals("cold")) {
+                            mWeiboDialog = WeiboDialogUtils.createLoadingDialog(JYXXActivity.this, Data.getcontext().getResources().getString(R.string.fff23));
+                            Data.setdialog(mWeiboDialog);
+                            Data.setsign("end0");//结束指令
+                            Data.setsaoma("yes");//是否进行签名
+                            String a1 = "55aa260110000002000035aa55";//结束签名
+                            sendble(a1, Data.getmService());
+                        }else{
+                            if(pin.getText().toString().equals(Data.getpassword())) {
+                                mWeiboDialog = WeiboDialogUtils.createLoadingDialog(JYXXActivity.this, "trustset...");
+                                Data.setdialog(mWeiboDialog);
+                                new Utilshttp().getxrpamount();
+                            }else{
+                                Toast.makeText(Data.getcontext(), "密码错误", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
                 }
             });
