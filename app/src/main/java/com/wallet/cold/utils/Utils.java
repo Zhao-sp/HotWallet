@@ -1782,16 +1782,16 @@ public class Utils extends Activity {
                             }else if (Data.getbletype().equals("type")) {
                                 if (data2.substring(2, 4).equals("01") && data2.substring(0, 2).equals("01")) {//存在助记词存在pin码
                                     Data.setisinitialize(true);
-//                                    Data.setbizhong("BTC");
-//                                    Data.setbletype("address");
-//                                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
-//                                    Data.setdialog(mWeiboDialog);
-//                                    Utils.btc();
+                                    Data.setbizhong("BTC");
+                                    Data.setbletype("address");
+                                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
+                                    Data.setdialog(mWeiboDialog);
+                                    Utils.btc();
                                 } else {
                                     Data.setisinitialize(false);
+                                    Intent intent1 = new Intent(Data.getcontext(), BleActivity.class);
+                                    Data.getcontext().startActivity(intent1);
                                 }
-                                Intent intent1 = new Intent(Data.getcontext(), BleActivity.class);
-                                Data.getcontext().startActivity(intent1);
                             }else if(Data.getsaoma().equals("yes")) {//签名交易
                                 if(Data.getsign().equals("end0")){
                                     if(Data.gettype().equals("czactivity")){
