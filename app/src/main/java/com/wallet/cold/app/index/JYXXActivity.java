@@ -32,6 +32,7 @@ import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.cold.utils.LogCook;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
 import com.wallet.cold.utils.WeiboDialogUtils;
@@ -48,7 +49,6 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
     private TextView fhjy,name,jxye,zz,sk,noxx,balance;
     private ImageView sz,kz;
     private ListView lv1;
-    private Map<String,Object> map = new HashMap<>();
     private Map<String,Object> map1 = new HashMap<>();
     private List<Map<String,Object>> list = new ArrayList<>();
     private MyAdapter adapter;
@@ -67,7 +67,7 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
         lv1=(ListView) findViewById(R.id.list_jy); noxx=(TextView) findViewById(R.id.noxx);
         noxx.setVisibility(View.INVISIBLE); zz=(TextView) findViewById(R.id.zz);sk=(TextView) findViewById(R.id.sk);
         name=(TextView) findViewById(R.id.name);jxye=(TextView) findViewById(R.id.jxye);sz=(ImageView) findViewById(R.id.sz);kz=(ImageView) findViewById(R.id.kz);
-        trustset=(Button) findViewById(R.id.trustset);trustset.setVisibility(View.GONE);noxx.setVisibility(View.VISIBLE);
+        trustset=(Button) findViewById(R.id.trustset);trustset.setVisibility(View.GONE);
         fhjy.setOnClickListener(this);sz.setOnClickListener(this);kz.setOnClickListener(this);sk.setOnClickListener(this);
         zz.setOnClickListener(this);trustset.setOnClickListener(this);
         Intent intent=getIntent();
@@ -107,16 +107,17 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
                 String jine = cursor.getString(cursor.getColumnIndex("jine"));
                 String riqi = cursor.getString(cursor.getColumnIndex("riqi"));
                 String type = cursor.getString(cursor.getColumnIndex("type"));
+                Map<String,Object> map = new HashMap<>();
                 map.put("name",name);
                 map.put("jine",jine);
                 map.put("riqi",riqi);
                 map.put("type",type);
                 list.add(map);
-                adapter = new MyAdapter(JYXXActivity.this, list);
-                lv1.setAdapter(adapter);
             }
             //关闭cursor
             cursor.close();
+            adapter = new MyAdapter(JYXXActivity.this, list);
+            lv1.setAdapter(adapter);
         }else{
             noxx.setVisibility(View.VISIBLE);
         }
@@ -230,9 +231,9 @@ public class JYXXActivity extends AppCompatActivity implements OnClickListener {
                 viewHolder.image.setImageResource(R.drawable.shouru);
                 viewHolder.jine.setTextColor(0xff53c280);
             }
-            viewHolder.name.setText((String)map.get("name"));
-            viewHolder.jine.setText((String)map.get("jine")+name.getText().toString());
-            viewHolder.riqi.setText((String)map.get("riqi"));
+            viewHolder.name.setText((String)map1.get("name"));
+            viewHolder.jine.setText((String)map1.get("jine")+name.getText().toString());
+            viewHolder.riqi.setText((String)map1.get("riqi"));
             return view;
         }
         class ViewHolder {

@@ -3,6 +3,7 @@ package com.wallet.cold.utils;
 import android.content.Intent;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.ArrayMap;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -16,6 +17,7 @@ import com.wallet.cold.app.pawn.login;
 import com.wallet.hot.app.HotTransfer;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -374,9 +376,9 @@ public class Utilshttp {
         }).start(); // 开启线程
     }
 
-    public void send() {
+    private String result = "";
+    public void send(String urlStr) {
         HttpURLConnection conn = null;//声明连接对象
-        String urlStr = Data.gethttp1()+"/hierstarQrCode/pawn/objectlist";
         InputStream is = null;
         try {
             URL url = new URL(urlStr); //URL对象
@@ -388,11 +390,10 @@ public class Utilshttp {
                 InputStreamReader isr = new InputStreamReader(is);
                 BufferedReader bufferReader = new BufferedReader(isr);
                 String inputLine = "";
-                String result = "";
                 while ((inputLine = bufferReader.readLine()) != null) {
                     result += inputLine + "\n";
                 }
-                LogCook.d("投资数据",result);
+                LogCook.d("返回数据",result);
                 is.close();
             }
             conn.disconnect();
@@ -430,7 +431,7 @@ public class Utilshttp {
                         Looper.prepare();
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp15), Toast.LENGTH_SHORT).show();
                         new CdActivity().getptamount();
-                        send();
+                        send(Data.gethttp1()+"/hierstarQrCode/pawn/objectlist");
                         Looper.loop();
                     } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
                         Looper.prepare();
@@ -476,7 +477,7 @@ public class Utilshttp {
                     if (jsonObject.getString("status_Sucess").equals("true")) {
                         Looper.prepare();
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp17), Toast.LENGTH_SHORT).show();
-                        send();
+                        send(Data.gethttp1()+"/hierstarQrCode/pawn/objectlist");
                         WeiboDialogUtils.closeDialog(Data.getdialog());
                         Looper.loop();
                     } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
@@ -829,5 +830,25 @@ public class Utilshttp {
                 Looper.loop();
             }
         }).start();
+    }
+
+    public List<Map<String,String>> getxrprecord(){
+        new Thread(new Runnable() {
+            public void run() {
+                send("https://api.blockcypher.com/v1/btc/test3/addrs/n4XgTuEX26vK1Nr5YYMkaG1pByM6AfuFSG/full?unspentOnly=true&includeScript=true");
+                send("https://testnet.data.api.ripple.com/v2/accounts/rGM8kdSTW2V4ub6oArueDUhcnEKemok24B/transactions");
+                if (result != null) {
+                    try {
+                        List<Map<String,String>> list=new ArrayList<>();
+                        Map<String,String> map=new HashMap<String,String>();
+                        JSONObject jsonObject = new JSONObject(result);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+        return null;
     }
 }
