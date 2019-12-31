@@ -150,7 +150,7 @@ public class HotWalletUtils {
     public static void RecoverBip44Wallet(String mnemonic) {
         try {
             //2.生成种子
-            DeterministicSeed deterministicSeed = new DeterministicSeed("define cherry true gadget way intact lock chalk east bachelor tackle romance", null, "Hierstar ComboWallet Salt", 0);
+            DeterministicSeed deterministicSeed = new DeterministicSeed(mnemonic, null, "Hierstar ComboWallet Salt", 0);
             Log.i("BIP39 seed:{}", deterministicSeed.toHexString());
             DeterministicKeyChain deterministicKeyChain = DeterministicKeyChain.builder().seed(deterministicSeed).build();
             BigInteger privKeyETH = deterministicKeyChain.getKeyByPath(parsePath("M/44H/60H/0H"), true).getPrivKey();
