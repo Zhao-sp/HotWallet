@@ -88,8 +88,6 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         }
     }
 
-
-
     /**
      * 权限回调处理
      * @param requestCode

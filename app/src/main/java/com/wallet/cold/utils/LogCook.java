@@ -236,6 +236,10 @@ public class LogCook implements Thread.UncaughtExceptionHandler {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
+    /**
+     * 删除超过五天的日志文件
+     * @return
+     */
     public static boolean DeleteOverdueLogFile() {
         File mfolder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log"); //打开目录文件夹
         File errormfolder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/errorlog");
