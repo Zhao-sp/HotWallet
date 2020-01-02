@@ -72,10 +72,11 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                 ActivityCompat.requestPermissions(CreateOrImportActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
             } else {
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                    File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet");
+                    LogCook.DeleteOverdueLogFile();
+                    File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log");
                     LogCook.getInstance()
-                            .setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet")
-                            .setLogName("log.txt")
+                            .setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log")
+                            .setLogName(LogCook.getNowDay() +"log.txt")
                             .isOpen(true)
                             .isSave(true)
                             .initialize();

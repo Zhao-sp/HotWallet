@@ -7,10 +7,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /**
- * Created by whieenz on 2017/11/22.
  * 作用： Android日志工具类  （支持打印重要日志，报错信息，到指定文件）
  */
 
@@ -18,8 +19,9 @@ public class LogCook implements Thread.UncaughtExceptionHandler {
 
     private static boolean isOpen; //是否打印日志
     private static boolean isSave; //是否保存日志到文件
-    private static String logPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/com.hotwallet";//log日志存放路径
-    private static String logName = "log.txt";//日志文件名
+    private static String logPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/com.hotwallet/log";//log日志存放路径
+    private static String errorlogPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/com.hotwallet/errorlog";//log日志存放路径
+    private static String logName;//日志文件名
 
     private static LogCook instance;
 
@@ -189,7 +191,7 @@ public class LogCook implements Thread.UncaughtExceptionHandler {
      *
      * @return 当前日期
      */
-    private static String getNowDay() {
+    public static String getNowDay() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date curDate = new Date(System.currentTimeMillis());//获取当前时间
         return formatter.format(curDate);
@@ -204,7 +206,7 @@ public class LogCook implements Thread.UncaughtExceptionHandler {
             }
             try {
                 String logName = "AppError" + getNowDay() + ".log";
-                FileWriter fw = new FileWriter(logPath + File.separator
+                FileWriter fw = new FileWriter(errorlogPath + File.separator
                         + logName, true);
                 String model = android.os.Build.MODEL; //型号
                 String brand = android.os.Build.BRAND; //品牌
@@ -232,5 +234,50 @@ public class LogCook implements Thread.UncaughtExceptionHandler {
         }
         throwable.printStackTrace();
         android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    public static boolean DeleteOverdueLogFile() {
+        File mfolder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log"); //打开目录文件夹
+        File errormfolder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/errorlog");
+        if (mfolder.isDirectory()) {
+            File[] AllFiles = mfolder.listFiles(); //列出目录下的所有文件
+            ArrayList<String> mFilesList = new ArrayList<String>();
+            for (int i = 0; i < AllFiles.length; i++) {
+                File mFile = AllFiles[i]; //得到文件
+                String Name = mFile.getName(); //得到文件的名字
+                if (Name == null || Name.length() < 1)
+                    return false;
+                if (Name.endsWith(".txt")) {  //筛选出log
+                    mFilesList.add(Name); //把文件名添加到链表里
+                }
+            }
+            Collections.sort(mFilesList);   // 将文件按自然排序升序排列
+            //判断日志文件如果大于5，就要处理
+            for (int i = 0; i < mFilesList.size() - 4; i++) {
+                String Name = mFilesList.get(i); //得到链表最早的文件名
+                File mFile = new File(mfolder, Name);  //得到最早的文件
+                mFile.delete(); //删除
+            }
+        }
+        if (errormfolder.isDirectory()) {
+            File[] AllFiles = mfolder.listFiles(); //列出目录下的所有文件
+            ArrayList<String> errormFilesList = new ArrayList<String>();
+            for (int i = 0; i < AllFiles.length; i++) {
+                File mFile = AllFiles[i]; //得到文件
+                String Name = mFile.getName(); //得到文件的名字
+                if (Name == null || Name.length() < 1)
+                    return false;
+                if (Name.endsWith(".log")) {
+                    errormFilesList.add(Name);
+                }
+            }
+            Collections.sort(errormFilesList);
+            for (int i = 0; i < errormFilesList.size() - 4; i++) {
+                String Name = errormFilesList.get(i); //得到链表最早的文件名
+                File mFile = new File(mfolder, Name);  //得到最早的文件
+                mFile.delete(); //删除
+            }
+        }
+        return true;
     }
 }
