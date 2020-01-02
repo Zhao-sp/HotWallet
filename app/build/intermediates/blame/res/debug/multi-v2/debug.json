@@ -33,21 +33,6 @@
             ]
         },
         {
-            "outputFile": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\values-ldltr-v21_values-ldltr-v21.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "112",
-                        "endOffsets": "163"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\values-zu_values-zu.arsc.flat",
             "map": [
                 {
@@ -75,6 +60,21 @@
                         "startOffsets": "1959",
                         "endColumns": "100",
                         "endOffsets": "2055"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\values-ldltr-v21_values-ldltr-v21.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
                     }
                 }
             ]
