@@ -33,6 +33,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 
+import com.wallet.SharedPrefsStrListUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -307,6 +309,8 @@ public class UartService extends Service {
      *         callback.
      */
     public boolean connect(final String address) {
+        java.util.List<String> list1= SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"coldcurrency"+address);
+        Data.setbledata(list1);
         if(!Data.getisblecomment().equals("2")) {
             Data.settype("type");
         }

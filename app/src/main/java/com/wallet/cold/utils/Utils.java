@@ -2244,7 +2244,6 @@ public class Utils extends Activity {
                                 Data.gethandler().post(runnableUi);
                             }
                         }
-                        WeiboDialogUtils.closeDialog(Data.getdialog());
                     } catch(JSONException e) {
                         e.printStackTrace();
                     }
@@ -2277,6 +2276,8 @@ public class Utils extends Activity {
                 Data.getaedtext().setText(Data.getaedamount());
             }
             Data.getcountamount().setText(Data.getamountrmb());
+            Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
+            WeiboDialogUtils.closeDialog(Data.getdialog());
             Looper.loop();
         }
     };
@@ -2303,6 +2304,8 @@ public class Utils extends Activity {
                 Data.getaedaddresstext().setText(Data.getaedaddress());
             }
             Data.getcountamount().setText(Data.getamountrmb());
+            Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
+            WeiboDialogUtils.closeDialog(Data.getdialog());
             Looper.loop();
         }
     };

@@ -1,6 +1,8 @@
 package com.wallet.cold.app.index;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -212,12 +214,34 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                 @Override
                 public void onClick(View view) {
                     if(Data.getbledata().contains(finalViewHolder.name.getText().toString())){
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add5), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add5), Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(AddBiActivity.this);
+                        builder1.setCancelable(false)//设置点击对话框外部区域不关闭对话框
+                                .setTitle("币种已添加，是否删除？")
+                                .setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                })
+                                .setPositiveButton(R.string.f514, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if(Data.getapptype().equals("cold")) {
+                                            SharedPrefsStrListUtil.removeStrListItem(AddBiActivity.this, "coldcurrency" + Data.getDeviceaddress(), finalViewHolder.name.getText().toString());
+                                        }else{
+                                            SharedPrefsStrListUtil.removeStrListItem(AddBiActivity.this, "hotcurrency", finalViewHolder.name.getText().toString());
+                                        }
+                                        Data.getbledata().remove(finalViewHolder.name.getText().toString());
+                                        finalViewHolder.type.setImageResource(R.drawable.weixian);
+                                        Toast.makeText(Data.getcontext(), "删除成功", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .show();
                     }else {
                         finalViewHolder.type.setImageResource(R.drawable.yixuan);
                         Data.getbledata().add(finalViewHolder.name.getText().toString());
                         if(Data.getapptype().equals("cold")) {
-                            SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "coldcurrency", Data.getbledata());
+                            SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "coldcurrency"+Data.getDeviceaddress(), Data.getbledata());
                         }else{
                             SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "hotcurrency", Data.getbledata());
                         }

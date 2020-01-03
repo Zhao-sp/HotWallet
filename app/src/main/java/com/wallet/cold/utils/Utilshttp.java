@@ -660,7 +660,6 @@ public class Utilshttp {
                         LogCook.d("发送参数", urlName);
                         URL U = new URL(urlName);
                         URLConnection connection = U.openConnection();
-                        connection.setConnectTimeout(30000);
                         connection.connect();
                         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                         String line;
@@ -713,7 +712,6 @@ public class Utilshttp {
                         }
                         e.printStackTrace();
                     }
-                    Looper.loop();
                 }
             }).start();
         }else{
@@ -840,14 +838,14 @@ public class Utilshttp {
                         e.printStackTrace();
                     }
                     Data.setaedaddress("rKHHaXA3k3DUvZsCbdLGnUjyopuXYbEAKF");
-                    Looper.loop();
                 }
             }).start();
         }else{
             Data.setaedamount("0");
-            Looper.prepare();
+            if(!Data.getbledata().contains("XRP")) {
+                Looper.prepare();
+            }
             new Utils().send2();
-            Looper.loop();
         }
     }
 

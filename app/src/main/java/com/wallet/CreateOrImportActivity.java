@@ -60,6 +60,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         mScreenHeight = dm.heightPixels;
         initAnimation();
         startAnimation();
+        //SharedPrefsStrListUtil.clear(getApplicationContext());
         new JniUtils().getbbCourseKeyFromC(this);
         SQLiteDatabase db = openOrCreateDatabase("HotWallet.db", MODE_PRIVATE, null);//创建数据库
         Data.setdb(db);Data.setresult("");Data.setisblecomment("0");Data.setcontext(CreateOrImportActivity.this);Data.settype("createOrimport");Data.setbizhong("");
@@ -210,8 +211,6 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.create_wallet:
                 Data.setapptype("cold");
-                java.util.List<String> list1=SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"coldcurrency");
-                Data.setbledata(list1);
                 Intent Intent = new Intent();
                 Intent.setClass(this, MainActivity.class);
                 startActivity(Intent);
