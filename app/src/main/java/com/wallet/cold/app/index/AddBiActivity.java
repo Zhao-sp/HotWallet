@@ -242,14 +242,9 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                                 })
                                 .show();
                     }else {
-                        if(finalViewHolder.name.getText().toString().equals("AED")){
-                            if(Data.getbledata().contains("XRP")){
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
-                                return;
-                            }else {
-                                Toast.makeText(Data.getcontext(), "请先添加瑞波币", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
+                        if(finalViewHolder.name.getText().toString().equals("AED")&&!Data.getbledata().contains("XRP")){
+                            Toast.makeText(Data.getcontext(), "请先添加瑞波币", Toast.LENGTH_SHORT).show();
+                            return;
                         }
                         Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(AddBiActivity.this, Data.getcontext().getResources().getString(R.string.type4));
                         Data.setdialog(mWeiboDialog);
@@ -264,6 +259,9 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                                 Utils.eth();
                             }else if(finalViewHolder.name.getText().toString().equals("XRP")){
                                 Utils.xrp();
+                            }else if(finalViewHolder.name.getText().toString().equals("AED")){
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                                WeiboDialogUtils.closeDialog(Data.getdialog());
                             }
                         }else{
                             SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "hotcurrency", Data.getbledata());
