@@ -241,7 +241,7 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                                 })
                                 .show();
                     }else {
-                        if(finalViewHolder.name.getText().toString().equals("AED")){
+                        if(finalViewHolder.name.getText().toString().equals("AED")&&!Data.getbledata().contains("XRP")){
                             Toast.makeText(Data.getcontext(), "请先添加瑞波币", Toast.LENGTH_SHORT).show();
                             return;
                         }
