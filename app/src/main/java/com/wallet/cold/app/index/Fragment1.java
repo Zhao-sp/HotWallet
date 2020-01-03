@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fragment1 extends AppCompatActivity implements View.OnClickListener {
-    private TextView balance,delete;
+    private TextView balance;
     private Dialog mWeiboDialog;
     private PopWinShare popWinShare;
     private ImageView kz,sz;
@@ -50,13 +50,11 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.fragment1);
         Data.setsaoma("no");
         Data.setiseth("yes");
-        delete =(TextView)findViewById(R.id.delete);delete.setOnClickListener(this);delete.setVisibility(View.GONE);
         Data.getdb().execSQL("create table if not exists JiaoyiTb (_id integer primary key,blename text not null,name text not null,bizhong text not null,jine integer not null,riqi text not null,type integer not null)");
         if(Data.getapptype().equals("hot")) {
             Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,ethpub,btcprv,btcpub,xrpaddress,xrppub,xrpprv) values " +
                     "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotethpub() + "'," +
                     "'" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "','" + Data.getxrpaddress() + "','" + Data.getxrppub() + "','" + Data.getxrpprv() + "')");
-            delete.setVisibility(View.VISIBLE);
         }
         lv1=(MyListView)findViewById(R.id.list_yue);
         balance =(TextView)findViewById(R.id.balance);Data.setcountamount(balance);
@@ -308,12 +306,6 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
         if(v.getId() == R.id.shoukuan) {
             Intent intent1 = new Intent(Fragment1.this, Receivables.class);
             startActivity(intent1);
-        }
-        if(v.getId() == R.id.delete) {
-            Data.getdb().execSQL("DELETE FROM HotAddressTb");
-            Toast.makeText(Data.getcontext(), "删除成功", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, CreateOrImportActivity.class);
-            startActivity(intent);
         }
     }
     class OnClickLintener implements View.OnClickListener {

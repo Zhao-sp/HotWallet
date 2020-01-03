@@ -6,12 +6,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.wallet.CreateOrImportActivity;
 import com.wallet.R;
@@ -19,14 +19,9 @@ import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
-
-import static com.wallet.cold.utils.Utils.sendble;
 
 public class Fragment5 extends Activity implements View.OnClickListener {
-    private TextView resetpin;
-    private TextView chushihua,exit;
-    private TextView fhf5,languages,fingerprints;
+    private RelativeLayout resetpin,chushihua,exit,languages,fingerprints,delete;
     private ImageView fanhui;
     private Dialog mWeiboDialog;
     @Override
@@ -34,20 +29,21 @@ public class Fragment5 extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment5);
         Data.setsaoma("no");
-        resetpin=(TextView) findViewById(R.id.chongzhi);
+        resetpin=(RelativeLayout) findViewById(R.id.chongzhi);
         resetpin.setOnClickListener(this);
-        languages=(TextView) findViewById(R.id.languages);
+        languages=(RelativeLayout) findViewById(R.id.languages);
         languages.setOnClickListener(this);
-        fingerprints=(TextView) findViewById(R.id.fingerprints);
+        fingerprints=(RelativeLayout) findViewById(R.id.fingerprints);
         fingerprints.setOnClickListener(this);
-        fhf5=(TextView) findViewById(R.id.fhf5);
-        fhf5.setOnClickListener(this);
-        exit=(TextView) findViewById(R.id.exit);
+        exit=(RelativeLayout) findViewById(R.id.exit);
         exit.setOnClickListener(this);
-        chushihua=(TextView) findViewById(R.id.gengxin);
+        chushihua=(RelativeLayout) findViewById(R.id.gengxin);
         chushihua.setOnClickListener(this);
-//        chushihuaka=(TextView) findViewById(R.id.chushihuaka);
-//        chushihuaka.setOnClickListener(this);
+        delete=(RelativeLayout) findViewById(R.id.delete);
+        delete.setOnClickListener(this);
+        if(Data.getapptype().equals("cold")){
+            delete.setVisibility(View.GONE);
+        }
         fanhui=(ImageView) findViewById(R.id.fanhui5);
         fanhui.setOnClickListener(this);
         Data.settype("fragment5");
@@ -67,31 +63,26 @@ public class Fragment5 extends Activity implements View.OnClickListener {
         if(v.getId() == R.id.fhf5) {
             Data.getcontext().startActivity(new Intent(this, IndexActivity.class));
         }
-//        if(v.getId() == R.id.chushihuaka) {
-//            AlertDialog.Builder builder1 = new AlertDialog.Builder(Fragment5.this);
-//            builder1.setCancelable(false)//设置点击对话框外部区域不关闭对话框
-//                    .setTitle(R.string.f511)
-//                    .setMessage(R.string.f512)
-//                    .setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            WeiboDialogUtils.closeDialog(mWeiboDialog);
-//                        }
-//                    })
-//                    .setPositiveButton(R.string.f514, new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Fragment5.this, Data.getcontext().getResources().getString(R.string.f515));
-//                            Data.setdialog(mWeiboDialog);
-////                            Data.setbletype("chushihuazhiwen");
-////                            String a = "55aaf4000000f4aa55";
-////                            sendble(a,Data.getmService());
-//                            Data.setbletype("chushihua");
-//                            Utils.csh();
-//                        }
-//                    })
-//                    .show();
-//            //Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.gx2), Toast.LENGTH_SHORT).show();
-//        }
+        if(v.getId() == R.id.delete) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(Fragment5.this);
+            builder1.setCancelable(false)//设置点击对话框外部区域不关闭对话框
+                    .setTitle(R.string.f54)
+                    .setNegativeButton(R.string.f513, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    })
+                    .setPositiveButton(R.string.f514, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Data.getdb().execSQL("DELETE FROM HotAddressTb");
+                            Toast.makeText(Data.getcontext(), "删除成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Fragment5.this, CreateOrImportActivity.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .show();
+        }
         if(v.getId() == R.id.gengxin) {
             Intent intent2 = new Intent(Data.getcontext(), GengxinActivity.class);
             Data.getcontext().startActivity(intent2);
