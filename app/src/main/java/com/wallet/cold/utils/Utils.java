@@ -744,7 +744,7 @@ public class Utils extends Activity {
                 e.printStackTrace();
             }
             LogCook.d("xrp公钥", Data.getdata());
-            byte[] publicKey = new BigInteger(Data.getxrppub(), 16).toByteArray();
+            byte[] publicKey = new BigInteger(Data.getdata(), 16).toByteArray();
             byte[] sha256Bytes = Utils.sha256(publicKey);
             System.out.println("sha256加密=" + Utils.bytesToHexString(sha256Bytes));
             RIPEMD160Digest digest = new RIPEMD160Digest();

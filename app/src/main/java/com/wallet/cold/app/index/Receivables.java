@@ -77,6 +77,7 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
         xiala=(ImageView)findViewById(R.id.xiala2);
         xiala.setOnClickListener(this);
         imgCode = (ImageView) findViewById(R.id.img_code);
+        Data.setbizhong(Data.getbledata().get(0));
         if(Data.getbizhong().equals("BTC")) {
             popadd.setText("BTC");
             popadd1.setText("BTC");

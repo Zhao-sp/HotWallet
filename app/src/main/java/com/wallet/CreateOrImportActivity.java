@@ -189,7 +189,6 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                         Data.sethotpassword(password);Data.setbtcaddress(btcaddress);Data.setethaddress(ethaddress);
                         Data.sethotethprv(ethprv);Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);Data.sethotethpub(ethpub);
                         Data.setxrpaddress(xrpaddress);Data.setxrppub(xrppub);Data.setxrpprv(xrpprv);Data.sethotzjc(mnemonic);
-                        break;
                     }
                     cursor.close();
                     try {

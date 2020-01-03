@@ -271,6 +271,9 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                                 HotWalletUtils.TestBip44ETH(Data.gethotzjc());
                             }else if(finalViewHolder.name.getText().toString().equals("XRP")){
                                 HotWalletUtils.TestBip44XRP(Data.gethotzjc());
+                            }else if(finalViewHolder.name.getText().toString().equals("AED")){
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                                WeiboDialogUtils.closeDialog(Data.getdialog());
                             }
                         }
                     }

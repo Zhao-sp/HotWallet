@@ -72,6 +72,7 @@ public class HotWalletUtils {
                 Bitmap codeBitmap = Utils.createCode(address);
                 Data.setethimgCode(codeBitmap);
                 if(Data.gettype().equals("addbiactivity")) {
+                    Data.getdb().execSQL("update HotAddressTb set ethaddress='" + Data.getethaddress() + "',ethpub='" + Data.gethotethpub() + "',ethprv='" + Data.gethotethprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
                     Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
                     WeiboDialogUtils.closeDialog(Data.getdialog());
                 }
@@ -109,6 +110,7 @@ public class HotWalletUtils {
                 Data.setimgCode(codeBitmap);
                 new Utils().zhuce();
                 if (Data.gettype().equals("addbiactivity")) {
+                    Data.getdb().execSQL("update HotAddressTb set btcaddress='" + Data.getbtcaddress() + "',btcpub='" + Data.gethotbtcpub() + "',btcprv='" + Data.gethotbtcprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
                     Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
                     WeiboDialogUtils.closeDialog(Data.getdialog());
                 }
@@ -184,15 +186,20 @@ public class HotWalletUtils {
             e.printStackTrace();
         }
         if(Data.gettype().equals("addbiactivity")) {
+            Data.getdb().execSQL("update HotAddressTb set xrpaddress='" + Data.getxrpaddress() + "',xrppub='" + Data.getxrppub() + "',xrpprv='" + Data.getxrpprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
             Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
             WeiboDialogUtils.closeDialog(Data.getdialog());
         }else {
+            Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,ethpub,btcprv,btcpub,xrpaddress,xrppub,xrpprv,mnemonic) values " +
+                    "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotethpub() + "'," +
+                    "'" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "','" + Data.getxrpaddress() + "','" + Data.getxrppub() + "','" + Data.getxrpprv() + "','" + Data.gethotzjc() + "')");
+            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
             if (Data.gettype().equals("create")) {
                 Intent intent = new Intent(Data.getcontext(), BackUpActivity.class);
                 Data.getcontext().startActivity(intent);
             } else if (Data.gettype().equals("recover")) {
                 Toast.makeText(Data.getcontext(), "导入成功", Toast.LENGTH_SHORT).show();
-                new Utils().zhuce();
+                new Utils().balancebtc();
             }
         }
     }
