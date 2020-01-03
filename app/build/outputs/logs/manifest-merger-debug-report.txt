@@ -28,7 +28,7 @@ INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1
 		INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml
 		INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:7:5-28
+		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:7:5-32
 		INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml
 		INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml
 	xmlns:tools

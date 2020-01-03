@@ -842,6 +842,9 @@ public class Utilshttp {
             }).start();
         }else{
             Data.setaedamount("0");
+            if(!Data.getbledata().contains("XRP")) {
+                Looper.prepare();
+            }
             new Utils().send2();
         }
     }

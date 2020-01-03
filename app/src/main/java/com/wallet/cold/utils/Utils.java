@@ -389,6 +389,10 @@ public class Utils extends Activity {
                 if (Data.getbtctype().equals("balance")) {
                     String result1 = jsonObject.getString("message");
                     List<Object> list1 = JSON.parseArray(result1);
+                    if(list1.size()==0) {
+                        Data.setbtcbalance("0");
+                        return "0success";
+                    }
                     List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
                     for (Object object : list1) {
                         Map<String, Object> ret = (Map<String, Object>) object;//取出list里面的值转为map
@@ -740,7 +744,7 @@ public class Utils extends Activity {
                 e.printStackTrace();
             }
             LogCook.d("xrp公钥", Data.getdata());
-            byte[] publicKey = new BigInteger(Data.getdata(), 16).toByteArray();
+            byte[] publicKey = new BigInteger(Data.getxrppub(), 16).toByteArray();
             byte[] sha256Bytes = Utils.sha256(publicKey);
             System.out.println("sha256加密=" + Utils.bytesToHexString(sha256Bytes));
             RIPEMD160Digest digest = new RIPEMD160Digest();
@@ -809,25 +813,25 @@ public class Utils extends Activity {
     }
 
     public static void btc() {//获取btc公钥
-        Data.setbizhong("BTC");
+        Data.setbizhong("BTC");Data.setresulterror("no");
         String a = "55aa04020000000100000002000005aa55";
         sendble(a, Data.getmService());
     }
 
     public static void eth() {//获取eth公钥
-        Data.setbizhong("ETH");
+        Data.setbizhong("ETH");Data.setresulterror("no");
         String a = "55aa04020000000200000002000006aa55";
         sendble(a, Data.getmService());
     }
 
     public static void auth0() {//获取auth0公钥
-        Data.setbizhong("AUTH0");
+        Data.setbizhong("AUTH0");Data.setresulterror("no");
         String a = "55aa860100000000000087aa55";
         sendble(a, Data.getmService());
     }
 
     public static void xrp() {//获取xrp公钥
-        Data.setbizhong("XRP");
+        Data.setbizhong("XRP");Data.setresulterror("no");
         String a = "55aa04020000000400000001000003aa55";
         sendble(a, Data.getmService());
     }
@@ -1740,7 +1744,8 @@ public class Utils extends Activity {
                                 }
                             }else if (Data.getbletype().equals("address")) {//生成公钥 地址
                                 if(!data2.equals("")) {
-                                    if (Data.getbizhong().equals("BTC")) {
+                                    if (Data.getbizhong().equals("BTC")&&Data.getresulterror().equals("no")) {
+                                        Data.setresulterror("yes");
                                         String address = Utils.address();
                                         if (!TextUtils.isEmpty(address)) {
                                             Bitmap codeBitmap = null;
@@ -1765,7 +1770,8 @@ public class Utils extends Activity {
                                                 balancebtc();
                                             }
                                         }
-                                    } else if (Data.getbizhong().equals("ETH")) {
+                                    } else if (Data.getbizhong().equals("ETH")&&Data.getresulterror().equals("no")) {
+                                        Data.setresulterror("yes");
                                         String address = Utils.address();
                                         if (!TextUtils.isEmpty(address)) {
                                             Bitmap codeBitmap = null;
@@ -1788,7 +1794,8 @@ public class Utils extends Activity {
                                                 balancebtc();
                                             }
                                         }
-                                    } else if (Data.getbizhong().equals("AUTH0")) {
+                                    } else if (Data.getbizhong().equals("AUTH0")&&Data.getresulterror().equals("no")) {
+                                        Data.setresulterror("yes");
                                         try {
                                             Thread.sleep(2000);
                                         } catch (InterruptedException e) {
@@ -1801,7 +1808,8 @@ public class Utils extends Activity {
                                         LogCook.d("auth0地址", auth0address);
                                         Data.setauth0address(auth0address);
                                         xrp();
-                                    } else if (Data.getbizhong().equals("XRP")) {
+                                    } else if (Data.getbizhong().equals("XRP")&&Data.getresulterror().equals("no")) {
+                                        Data.setresulterror("yes");
                                         String xrppubkey = Data.getdata();
                                         Data.setxrppub(xrppubkey);
                                         String address = Utils.address();
@@ -2151,9 +2159,9 @@ public class Utils extends Activity {
                             });
                         }
                     }
+                    balanceeth();
                 }
             }).start();
-            balanceeth();
         }else {
             Data.setbtcbalance("0");
             balanceeth();

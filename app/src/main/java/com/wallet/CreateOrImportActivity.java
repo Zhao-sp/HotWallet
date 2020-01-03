@@ -60,7 +60,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         mScreenHeight = dm.heightPixels;
         initAnimation();
         startAnimation();
-        SharedPrefsStrListUtil.clear(getApplicationContext());
+        //SharedPrefsStrListUtil.clear(getApplicationContext());
         new JniUtils().getbbCourseKeyFromC(this);
         SQLiteDatabase db = openOrCreateDatabase("HotWallet.db", MODE_PRIVATE, null);//创建数据库
         Data.setdb(db);Data.setresult("");Data.setisblecomment("0");Data.setcontext(CreateOrImportActivity.this);Data.settype("createOrimport");Data.setbizhong("");
