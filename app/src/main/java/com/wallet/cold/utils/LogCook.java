@@ -199,15 +199,14 @@ public class LogCook implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-        if (logPath != null) {
-            File file = new File(logPath);
+        if (errorlogPath != null) {
+            File file = new File(errorlogPath);
             if (!file.exists()) {
                 file.mkdirs();
             }
             try {
                 String logName = "AppError" + getNowDay() + ".log";
-                FileWriter fw = new FileWriter(errorlogPath + File.separator
-                        + logName, true);
+                FileWriter fw = new FileWriter(errorlogPath + File.separator + logName, true);
                 String model = android.os.Build.MODEL; //型号
                 String brand = android.os.Build.BRAND; //品牌
                 String release = android.os.Build.VERSION.RELEASE; //版本
