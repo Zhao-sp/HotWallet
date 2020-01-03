@@ -83,6 +83,7 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
                     } else if (!pin.getText().toString().equals(pin1.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "两次输入的密码不一致", Toast.LENGTH_SHORT).show();
                     }else {
+                        Data.sethotzjc(zhujici.getText().toString());
                         mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.recover10));
                         Data.setdialog(mWeiboDialog);
                         Data.sethotpassword(pin.getText().toString());

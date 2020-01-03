@@ -171,7 +171,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                 Data.setbledata(list);
                 Intent Intent1 = new Intent();
                 Data.getdb().execSQL("create table if not exists HotAddressTb (_id integer primary key,password text not null,btcaddress text not null,ethaddress text not null,ethprv text not null,ethpub text not null," +
-                        "btcprv text not null,btcpub text not null,xrpaddress text not null,xrppub text not null,xrpprv text not null)");
+                        "btcprv text not null,btcpub text not null,xrpaddress text not null,xrppub text not null,xrpprv text not null,mnemonic text not null)");
                 Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
                 if (cursor != null && cursor.getCount() > 0) {
                     while (cursor.moveToNext()) {
@@ -185,9 +185,10 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                         String xrpaddress = cursor.getString(cursor.getColumnIndex("xrpaddress"));
                         String xrppub = cursor.getString(cursor.getColumnIndex("xrppub"));
                         String xrpprv = cursor.getString(cursor.getColumnIndex("xrpprv"));
+                        String mnemonic = cursor.getString(cursor.getColumnIndex("mnemonic"));
                         Data.sethotpassword(password);Data.setbtcaddress(btcaddress);Data.setethaddress(ethaddress);
                         Data.sethotethprv(ethprv);Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);Data.sethotethpub(ethpub);
-                        Data.setxrpaddress(xrpaddress);Data.setxrppub(xrppub);Data.setxrpprv(xrpprv);
+                        Data.setxrpaddress(xrpaddress);Data.setxrppub(xrppub);Data.setxrpprv(xrpprv);Data.sethotzjc(mnemonic);
                         break;
                     }
                     cursor.close();

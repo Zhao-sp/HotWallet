@@ -1712,14 +1712,32 @@ public class Utils extends Activity {
                                     Data.setbletype("address");
                                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
                                     Data.setdialog(mWeiboDialog);
-                                    btc();
+                                    if(Data.getbledata().contains("BTC")) {
+                                        btc();
+                                    }else if(Data.getbledata().contains("ETH")){
+                                        eth();
+                                    }else if(Data.getbledata().contains("XRP")){
+                                        xrp();
+                                    }else{
+                                        Data.setbletype("");
+                                        balancebtc();
+                                    }
                                 }
                             }else if (Data.getbletype().equals("Initialize")) {//生成助记词
                                 Data.setbizhong("BTC");
                                 Data.setbletype("address");
                                 Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
                                 Data.setdialog(mWeiboDialog);
-                                btc();
+                                if(Data.getbledata().contains("BTC")) {
+                                    btc();
+                                }else if(Data.getbledata().contains("ETH")){
+                                    eth();
+                                }else if(Data.getbledata().contains("XRP")){
+                                    xrp();
+                                }else{
+                                    Data.setbletype("");
+                                    balancebtc();
+                                }
                             }else if (Data.getbletype().equals("address")) {//生成公钥 地址
                                 if(!data2.equals("")) {
                                     if (Data.getbizhong().equals("BTC")) {
@@ -1733,7 +1751,20 @@ public class Utils extends Activity {
                                                 e.printStackTrace();
                                             }
                                         }
-                                        eth();
+                                        zhuce();
+                                        if(Data.gettype().equals("addbiactivity")) {
+                                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                                        }else {
+                                            if (Data.getbledata().contains("ETH")) {
+                                                eth();
+                                            } else if (Data.getbledata().contains("XRP")) {
+                                                xrp();
+                                            } else {
+                                                Data.setbletype("");
+                                                balancebtc();
+                                            }
+                                        }
                                     } else if (Data.getbizhong().equals("ETH")) {
                                         String address = Utils.address();
                                         if (!TextUtils.isEmpty(address)) {
@@ -1746,7 +1777,17 @@ public class Utils extends Activity {
                                             }
                                         }
                                         //auth0();
-                                        xrp();
+                                        if(Data.gettype().equals("addbiactivity")) {
+                                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                                        }else {
+                                            if (Data.getbledata().contains("XRP")) {
+                                                xrp();
+                                            } else {
+                                                Data.setbletype("");
+                                                balancebtc();
+                                            }
+                                        }
                                     } else if (Data.getbizhong().equals("AUTH0")) {
                                         try {
                                             Thread.sleep(2000);
@@ -1773,9 +1814,14 @@ public class Utils extends Activity {
                                                 e.printStackTrace();
                                             }
                                         }
-                                        Data.setbletype("");
-                                        //new Utilshttp().getauth0user();
-                                        zhuce();
+                                        if(Data.gettype().equals("addbiactivity")) {
+                                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                                        }else {
+                                            Data.setbletype("");
+                                            //new Utilshttp().getauth0user();
+                                            balancebtc();
+                                        }
                                     }
                                 }
                             }else if (Data.getbletype().equals("type")) {
@@ -1785,7 +1831,16 @@ public class Utils extends Activity {
                                     Data.setbletype("address");
                                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
                                     Data.setdialog(mWeiboDialog);
-                                    Utils.btc();
+                                    if(Data.getbledata().contains("BTC")) {
+                                        btc();
+                                    }else if(Data.getbledata().contains("ETH")){
+                                        eth();
+                                    }else if(Data.getbledata().contains("XRP")){
+                                        xrp();
+                                    }else{
+                                        Data.setbletype("");
+                                        balancebtc();
+                                    }
                                 } else {
                                     Data.setisinitialize(false);
                                     Intent intent1 = new Intent(Data.getcontext(), BleActivity.class);
@@ -2403,10 +2458,8 @@ public class Utils extends Activity {
                         });
                     }
                 }
-                balancebtc();
             } catch (Exception e) {
                 e.printStackTrace();
-                balancebtc();
             } finally {
                 if (btcreader != null) {
                     try {

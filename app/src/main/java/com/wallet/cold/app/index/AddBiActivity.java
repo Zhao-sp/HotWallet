@@ -1,6 +1,7 @@
 package com.wallet.cold.app.index;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +25,8 @@ import com.wallet.SharedPrefsStrListUtil;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.cold.utils.Utils;
+import com.wallet.cold.utils.WeiboDialogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -238,6 +241,12 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                                 })
                                 .show();
                     }else {
+                        if(finalViewHolder.name.getText().toString().equals("AED")){
+                            Toast.makeText(Data.getcontext(), "请先添加瑞波币", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(AddBiActivity.this, Data.getcontext().getResources().getString(R.string.type4));
+                        Data.setdialog(mWeiboDialog);
                         finalViewHolder.type.setImageResource(R.drawable.yixuan);
                         Data.getbledata().add(finalViewHolder.name.getText().toString());
                         if(Data.getapptype().equals("cold")) {
@@ -245,7 +254,14 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                         }else{
                             SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "hotcurrency", Data.getbledata());
                         }
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                        Data.setbletype("address");
+                        if(finalViewHolder.name.getText().toString().equals("BTC")){
+                            Utils.btc();
+                        }else if(finalViewHolder.name.getText().toString().equals("ETH")){
+                            Utils.eth();
+                        }else if(finalViewHolder.name.getText().toString().equals("XRP")){
+                            Utils.xrp();
+                        }
                     }
                 }
             });
