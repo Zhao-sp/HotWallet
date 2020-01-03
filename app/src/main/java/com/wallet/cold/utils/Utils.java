@@ -1208,7 +1208,6 @@ public class Utils extends Activity {
      * @param oldpin
      * @param random
      * @param count
-     * @param mServive
      */
     public static void cgenerate(String newpin, String oldpin, String random, int count) {
         String newhash = Encrypt(newpin);
@@ -2075,65 +2074,77 @@ public class Utils extends Activity {
      * 查询币种余额
      */
     public void balancebtc(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //比特币余额查询
-                Data.setbtctype("balance");
-                String btcJson = "{\"min\":0,\"max\":9999999,\"address\":\""+ Data.getbtcaddress()+"\"}";
-                //String btcJson = "{\"method\": \"listunspent\", \"params\": [0,9999999,[\"" + Data.getbtcaddress() + "\"]]}";
-                String btcerror = Utils.getbtchttp(btcJson);
-                if(!btcerror.equals("")) {
-                    if (btcerror.contains("success")) {
+        if(Data.getbledata().contains("BTC")) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    //比特币余额查询
+                    Data.setbtctype("balance");
+                    String btcJson = "{\"min\":0,\"max\":9999999,\"address\":\"" + Data.getbtcaddress() + "\"}";
+                    //String btcJson = "{\"method\": \"listunspent\", \"params\": [0,9999999,[\"" + Data.getbtcaddress() + "\"]]}";
+                    String btcerror = Utils.getbtchttp(btcJson);
+                    if (!btcerror.equals("")) {
+                        if (btcerror.contains("success")) {
 
-                    } else {
-                        String finalBtcerror = btcerror;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u32) + finalBtcerror, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        } else {
+                            String finalBtcerror = btcerror;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u32) + finalBtcerror, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
                     }
                 }
-                balanceeth();
-            }
-        }).start();
+            }).start();
+            balanceeth();
+        }else {
+            Data.setbtcbalance("0");
+            balanceeth();
+        }
     }
 
     private String current_price;
     private String current_price1;
     private String result="";
     public void balanceeth(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //以太坊余额查询
-                Data.setethtype("balance");
-                String address ="{\"address\":\"0x"+ Data.getethaddress()+"\"}";
-                String etherror = Utils.getethhttp(address);
-                if(!etherror.equals("")) {
-                    if (etherror.contains("success")) {
+        if(Data.getbledata().contains("ETH")) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    //以太坊余额查询
+                    Data.setethtype("balance");
+                    String address = "{\"address\":\"0x" + Data.getethaddress() + "\"}";
+                    String etherror = Utils.getethhttp(address);
+                    if (!etherror.equals("")) {
+                        if (etherror.contains("success")) {
 
-                    } else {
-                        String finalEtherror = etherror;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u33) + finalEtherror, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        } else {
+                            String finalEtherror = etherror;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u33) + finalEtherror, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
                     }
+                    Data.setbizhong("BTC");
+                    if (Data.getapptype().equals("cold")) {
+                        //new Utilshttp().gethieramount();
+                    }
+                    new Utilshttp().getxrpamount();
                 }
-                Data.setbizhong("BTC");
-                if(Data.getapptype().equals("cold")) {
-                    //new Utilshttp().gethieramount();
-                }
-                new Utilshttp().getxrpamount();
+            }).start();
+        }else{
+            Data.setethbalance("0");
+            if (Data.getapptype().equals("cold")) {
+                //new Utilshttp().gethieramount();
             }
-        }).start();
+            new Utilshttp().getxrpamount();
+        }
     }
-
 
     public void send2(){
         new Thread(new Runnable() {
@@ -2141,15 +2152,15 @@ public class Utils extends Activity {
                 send("http://111.225.200.132:8023/cgi-bin/getmarket");
                 if (result != null) {
                     try {
-                        Data.getbledata().clear();
                         LogCook.d("行情数据", result);
-                        int count = getSubCount_2(result, "{");Data.getbledata().add("ETH");
-                        Data.getbledata().add("BTC");
+                        int count = getSubCount_2(result, "{");
+                        //Data.getbledata().add("ETH");
+                        //Data.getbledata().add("BTC");
                         if(Data.getapptype().equals("cold")) {
                             //Data.getbledata().add("Hier");
                         }
-                        Data.getbledata().add("XRP");
-                        Data.getbledata().add("AED");
+                        //Data.getbledata().add("XRP");
+                        //Data.getbledata().add("AED");
                         if (count == 1) {
                             JSONObject jsonObject = new JSONObject(result);
                             current_price = jsonObject.getString("base");
@@ -2245,18 +2256,26 @@ public class Utils extends Activity {
     Runnable runnableUi=new Runnable(){
         @Override
         public void run() {
-            Data.getbtctext().setText(Data.getbtcbalance());
-            Data.getbtcrmbtext().setText("￥"+d3);
-            Data.getethtext().setText(Data.getethbalance());
-            Data.getethrmbtext().setText("￥"+d1);
+            if(Data.getbledata().contains("BTC")) {
+                Data.getbtctext().setText(Data.getbtcbalance());
+                Data.getbtcrmbtext().setText("￥" + d3);
+            }
+            if(Data.getbledata().contains("ETH")) {
+                Data.getethtext().setText(Data.getethbalance());
+                Data.getethrmbtext().setText("￥" + d1);
+            }
             if(Data.getapptype().equals("cold")) {
                 //Data.gethbbtext().setText(Data.gethieramount());
                 //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
             }
-            Data.getxrptext().setText(Data.getxrpamount());
-            Data.getaedtext().setText(Data.getaedamount());
-            Data.getaedaddresstext().setText(Data.getaedaddress());
-            Data.getxrprmbtext().setText("￥" + df1.format(xrp));
+            if(Data.getbledata().contains("XRP")) {
+                Data.getxrptext().setText(Data.getxrpamount());
+                Data.getxrprmbtext().setText("￥" + df1.format(xrp));
+            }
+            if(Data.getbledata().contains("AED")) {
+                Data.getaedaddresstext().setText(Data.getaedaddress());
+                Data.getaedtext().setText(Data.getaedamount());
+            }
             Data.getcountamount().setText(Data.getamountrmb());
             Looper.loop();
         }
@@ -2264,10 +2283,10 @@ public class Utils extends Activity {
     Runnable runnableUi1=new Runnable(){
         @Override
         public void run() {
-            if(current_price.equals("BTC")){
+            if(current_price.equals("BTC")&&Data.getbledata().contains("BTC")){
                 Data.getbtctext().setText(Data.getbtcbalance());
                 Data.getbtcrmbtext().setText("￥"+d1);
-            }else if(current_price.equals("ETH")){
+            }else if(current_price.equals("ETH")&&Data.getbledata().contains("ETH")){
                 Data.getethtext().setText(Data.getethbalance());
                 Data.getethrmbtext().setText("￥"+d1);
             }
@@ -2275,10 +2294,14 @@ public class Utils extends Activity {
                 //Data.gethbbtext().setText(Data.gethieramount());
                 //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
             }
-            Data.getxrptext().setText(Data.getxrpamount());
-            Data.getxrprmbtext().setText("￥" + df1.format(xrp));
-            Data.getaedtext().setText(Data.getaedamount());
-            Data.getaedaddresstext().setText(Data.getaedaddress());
+            if(Data.getbledata().contains("XRP")) {
+                Data.getxrptext().setText(Data.getxrpamount());
+                Data.getxrprmbtext().setText("￥" + df1.format(xrp));
+            }
+            if(Data.getbledata().contains("AED")) {
+                Data.getaedtext().setText(Data.getaedamount());
+                Data.getaedaddresstext().setText(Data.getaedaddress());
+            }
             Data.getcountamount().setText(Data.getamountrmb());
             Looper.loop();
         }

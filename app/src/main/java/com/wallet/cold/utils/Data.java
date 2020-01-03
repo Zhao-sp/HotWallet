@@ -555,7 +555,7 @@ public class Data extends Application {
     public static String getbtcsigndata() {
         return btcsigndata;
     }
-    public static void setbtcsigndata(String btcsigndata) {//支持币种
+    public static void setbtcsigndata(String btcsigndata) {
         Data.btcsigndata = btcsigndata;
     }
     public static List<String> getsigndata() {

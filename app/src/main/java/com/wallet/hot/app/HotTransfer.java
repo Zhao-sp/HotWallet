@@ -168,10 +168,6 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         }
         Data.settype("hottransfer");
         Data.setcontext(HotTransfer.this);
-        to.setText("moD2ybquk6bH4a9Keu5KEdmFy5XEV3NDLF");
-        amountyue.setText("0.00006");
-        fee.setText("0.0001");
-        limit1.setText("12345678");
     }
 
     @Override
@@ -879,48 +875,61 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         public void onClick(View v) {
             int i = v.getId();
             if (i == R.id.layout_btc) {
-                Data.setbizhong("BTC");
-                popadd.setText("BTC");
-                popadd1.setText("BTC");
-                popadd2.setText("BTC");
-                popadd3.setText("BTC");
-                popWinShare.dismiss();
-                balance.setText(Data.getbtcbalance());
+                if(Data.getbledata().contains("AED")) {
+                    Data.setbizhong("BTC");
+                    popadd.setText("BTC");
+                    popadd1.setText("BTC");
+                    popadd2.setText("BTC");
+                    popadd3.setText("BTC");
+                    popWinShare.dismiss();
+                    balance.setText(Data.getbtcbalance());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
             } else if (i == R.id.layout_eth) {
-                Data.setbizhong("ETH");
-                popadd.setText("ETH");
-                popadd1.setText("ETH");
-                popadd2.setText("ETH");
-                popadd3.setText("Wei");
-                popWinShare.dismiss();
-                if (Data.getethbalance() == null) {
-                    balance.setText("0.00000000");
-                } else {
-                    balance.setText(Data.getethbalance());
+                if(Data.getbledata().contains("ETH")) {
+                    Data.setbizhong("ETH");
+                    popadd.setText("ETH");
+                    popadd1.setText("ETH");
+                    popadd2.setText("ETH");
+                    popadd3.setText("Wei");
+                    popWinShare.dismiss();
+                    if (Data.getethbalance() == null) {
+                        balance.setText("0.00000000");
+                    } else {
+                        balance.setText(Data.getethbalance());
+                    }
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
                 }
             } else if (i == R.id.layout_xrp) {
-                Data.setbizhong("XRP");
-                popadd.setText("XRP");
-                popadd1.setText("XRP");
-                popadd2.setText("drops");
-                popadd3.setVisibility(View.GONE);
-                fee.setVisibility(View.GONE);
-                fee1.setVisibility(View.GONE);
-                popWinShare.dismiss();
-                balance.setText(Data.getxrpamount());
-                to.setText("rMYy8KCRyVruChJmKy3jgW26BRi936Vvwv");
-                amountyue.setText("10");
-                limit1.setText("12345678");
+                if(Data.getbledata().contains("XRP")) {
+                    Data.setbizhong("XRP");
+                    popadd.setText("XRP");
+                    popadd1.setText("XRP");
+                    popadd2.setText("drops");
+                    popadd3.setVisibility(View.GONE);
+                    fee.setVisibility(View.GONE);
+                    fee1.setVisibility(View.GONE);
+                    popWinShare.dismiss();
+                    balance.setText(Data.getxrpamount());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
             } else if (i == R.id.layout_aed) {
-                Data.setbizhong("AED");
-                popadd.setText("AED");
-                popadd1.setText("AED");
-                popadd2.setText("AED");
-                popadd3.setVisibility(View.GONE);
-                fee.setVisibility(View.GONE);
-                fee1.setVisibility(View.GONE);
-                popWinShare.dismiss();
-                balance.setText(Data.getaedamount());
+                if(Data.getbledata().contains("AED")) {
+                    Data.setbizhong("AED");
+                    popadd.setText("AED");
+                    popadd1.setText("AED");
+                    popadd2.setText("AED");
+                    popadd3.setVisibility(View.GONE);
+                    fee.setVisibility(View.GONE);
+                    fee1.setVisibility(View.GONE);
+                    popWinShare.dismiss();
+                    balance.setText(Data.getaedamount());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

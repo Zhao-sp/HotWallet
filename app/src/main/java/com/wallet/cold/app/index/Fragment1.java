@@ -21,10 +21,12 @@ import android.widget.Toast;
 
 import com.wallet.CreateOrImportActivity;
 import com.wallet.R;
+import com.wallet.SharedPrefsStrListUtil;
 import com.wallet.cold.app.util.Fragment5;
 import com.wallet.cold.utils.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.cold.utils.LogCook;
 import com.wallet.cold.utils.MyListView;
 import com.wallet.cold.utils.PopWinShare;
 import com.wallet.cold.utils.Utils;
@@ -37,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fragment1 extends AppCompatActivity implements View.OnClickListener {
-    private TextView balance;
+    private TextView balance,text;
     private Dialog mWeiboDialog;
     private PopWinShare popWinShare;
     private ImageView kz,sz;
@@ -60,6 +62,11 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
         balance =(TextView)findViewById(R.id.balance);Data.setcountamount(balance);
         kz = (ImageView)findViewById(R.id.kz);
         sz = (ImageView)findViewById(R.id.sz);
+        text = (TextView)findViewById(R.id.text);
+        LogCook.d("币种",Data.getbledata().toString());
+        if(Data.getbledata().size()!=0){
+            text.setVisibility(View.GONE);
+        }
         zhuanzhang = (ImageView)findViewById(R.id.zhuanzhang);
         shoukuan = (ImageView)findViewById(R.id.shoukuan);
         kz.setOnClickListener(this);

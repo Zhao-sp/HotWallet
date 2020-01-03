@@ -36,6 +36,7 @@ import com.wallet.hot.app.ByteActivity;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CreateOrImportActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
@@ -45,9 +46,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
     private ObjectAnimator mCreateBtnAnimator;
     private ObjectAnimator mImportBtnAnimator;
     private int mScreenHeight = 0;
-    private java.util.List<String> List = new ArrayList<>();
 
-//    @SuppressLint("JavascriptInterface")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +62,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         startAnimation();
         new JniUtils().getbbCourseKeyFromC(this);
         SQLiteDatabase db = openOrCreateDatabase("HotWallet.db", MODE_PRIVATE, null);//创建数据库
-        Data.setdb(db);Data.setresult("");Data.setisblecomment("0");Data.setbledata(List);Data.setcontext(CreateOrImportActivity.this);Data.settype("createOrimport");
+        Data.setdb(db);Data.setresult("");Data.setisblecomment("0");Data.setcontext(CreateOrImportActivity.this);Data.settype("createOrimport");Data.setbizhong("");
         Data.sethttp1("http://111.225.200.132:8181");//8181开发环境 8282演示环境
         //Data.getdb().execSQL("drop table HotAddressTb");
         //Data.getdb().execSQL("drop table Auth0AddressTb");
@@ -201,12 +200,14 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                     } catch (WriterException e) {
                         e.printStackTrace();
                     }
-                    new Utils().zhuce();
+                    java.util.List<String> list=SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"hotcurrency");
+                    Data.setbledata(list);
                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
                     Data.setdialog(mWeiboDialog);
-//                    Intent1.setClass(this, ByteActivity.class);
-//                    startActivity(Intent1);
+                    new Utils().zhuce();
                 }else {
+                    java.util.List<String> list=SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"coldcurrency");
+                    Data.setbledata(list);
                     Intent1.setClass(this, ByteActivity.class);
                     startActivity(Intent1);
                 }

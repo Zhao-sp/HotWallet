@@ -910,6 +910,7 @@ id checkbox
 id china
 id chongzhi
 id chronometer
+id chush
 id chushihua
 id chushihuaka
 id clip_horizontal
@@ -922,6 +923,7 @@ id copy
 id create
 id create_import_title
 id create_wallet
+id csh
 id custom
 id customPanel
 id decode
@@ -1526,7 +1528,6 @@ string f4
 string f5
 string f51
 string f511
-string f512
 string f513
 string f514
 string f515

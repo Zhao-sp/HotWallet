@@ -123,7 +123,7 @@
     <string name="f51">设置</string>
     <string name="f52">重置PIN码</string>
     <string name="f53">版本更新</string>
-    <string name="f54">初始化卡</string>
+    <string name="f54">删除账户</string>
     <string name="f55">检查APP新版本</string>
     <string name="f56">检查固件更新</string>
     <string name="f57">检查DFU更新</string>
@@ -134,8 +134,7 @@
     <string name="f62">请再次输入新的PIN码</string>
     <string name="f63">助记词:</string>
     <string name="f64">请输入助记词前四个单词，空格分隔</string>
-    <string name="f511">初始化卡</string>
-    <string name="f512">此操作为把卡片初始化，需要继续吗？</string>
+    <string name="f511">币种不存在</string>
     <string name="f513">取消</string>
     <string name="f514">确定</string>
     <string name="f515">初始化中...</string>

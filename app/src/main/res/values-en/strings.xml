@@ -124,7 +124,7 @@
     <string name="f51">Setting</string>
     <string name="f52">Reset PIN code</string>
     <string name="f53">Version update</string>
-    <string name="f54">Initialization card</string>
+    <string name="f54">Delete Account</string>
     <string name="f55">Check the new version of APP</string>
     <string name="f56">Check firmware updates</string>
     <string name="f57">Check DFU updates</string>
@@ -135,8 +135,7 @@
     <string name="f62">Please enter the new PIN code again.</string>
     <string name="f63">Mnemonic word:</string>
     <string name="f64">Please enter the first four words of the mnemonic, separated by spaces.</string>
-    <string name="f511">Initialization card</string>
-    <string name="f512">Do you need to continue this operation to initialize the card?</string>
+    <string name="f511">Currency does not exist</string>
     <string name="f513">Cancel</string>
     <string name="f514">Determine</string>
     <string name="f515">Initialization...</string>

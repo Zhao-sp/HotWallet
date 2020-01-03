@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.wallet.CreateOrImportActivity;
 import com.wallet.R;
+import com.wallet.SharedPrefsStrListUtil;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
@@ -75,6 +76,7 @@ public class Fragment5 extends Activity implements View.OnClickListener {
                     .setPositiveButton(R.string.f514, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            SharedPrefsStrListUtil.clear(Fragment5.this);
                             Data.getdb().execSQL("DELETE FROM HotAddressTb");
                             Toast.makeText(Data.getcontext(), "删除成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Fragment5.this, CreateOrImportActivity.class);

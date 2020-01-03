@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.R;
+import com.wallet.SharedPrefsStrListUtil;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
@@ -55,7 +56,7 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
         ssname.setVisibility(View.INVISIBLE);
         quxiao.setVisibility(View.INVISIBLE);
         noxx.setVisibility(View.INVISIBLE);
-        list.add("ETH-Ethereum");list.add("BTC-Bitcoin");list.add("EOS-EOS");list.add("DASH");list.add("LBTC");
+        list.add("ETH");list.add("BTC");list.add("XRP");list.add("AED");
         adapter = new MyAdapter(AddBiActivity.this,list);
         lv1.setAdapter(adapter);
         Data.settype("addbiactivity");
@@ -150,13 +151,37 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                 viewHolder = (ViewHolder) view.getTag();
             }
             viewHolder.name.setText(mList.get(i));
-            if (mList.get(i).equals("ETH-Ethereum")) {
+            if (mList.get(i).equals("ETH")) {
                 viewHolder.image.setImageResource(R.drawable.eth);
-                viewHolder.type.setImageResource(R.drawable.yixuan);
+                if(Data.getbledata().contains("ETH")) {
+                    viewHolder.type.setImageResource(R.drawable.yixuan);
+                }else{
+                    viewHolder.type.setImageResource(R.drawable.weixian);
+                }
             }
-            if (mList.get(i).equals("BTC-Bitcoin")) {
+            if (mList.get(i).equals("XRP")) {
+                viewHolder.image.setImageResource(R.drawable.xrp);
+                if(Data.getbledata().contains("XRP")) {
+                    viewHolder.type.setImageResource(R.drawable.yixuan);
+                }else{
+                    viewHolder.type.setImageResource(R.drawable.weixian);
+                }
+            }
+            if (mList.get(i).equals("AED")) {
+                viewHolder.image.setImageResource(R.drawable.aed);
+                if(Data.getbledata().contains("AED")) {
+                    viewHolder.type.setImageResource(R.drawable.yixuan);
+                }else{
+                    viewHolder.type.setImageResource(R.drawable.weixian);
+                }
+            }
+            if (mList.get(i).equals("BTC")) {
                 viewHolder.image.setImageResource(R.drawable.btc1);
-                viewHolder.type.setImageResource(R.drawable.yixuan);
+                if(Data.getbledata().contains("BTC")) {
+                    viewHolder.type.setImageResource(R.drawable.yixuan);
+                }else{
+                    viewHolder.type.setImageResource(R.drawable.weixian);
+                }
             }
             if (mList.get(i).equals("EOS-EOS")) {
                 viewHolder.image.setImageResource(R.drawable.eos);
@@ -186,21 +211,17 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
             viewHolder.type.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(Data.getbledata().contains(finalViewHolder.name.getText().toString())||finalViewHolder.name.getText().toString().equals("ETH-Ethereum")||finalViewHolder.name.getText().toString().equals("BTC-Bitcoin")){
+                    if(Data.getbledata().contains(finalViewHolder.name.getText().toString())){
                         Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add5), Toast.LENGTH_SHORT).show();
                     }else {
                         finalViewHolder.type.setImageResource(R.drawable.yixuan);
-                        if (finalViewHolder.name.getText().toString().equals("EOS-EOS")) {
-                            if(Data.getbledata().contains("EOS")){
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add5), Toast.LENGTH_SHORT).show();
-                            }else {
-                                Data.getbledata().add("EOS");
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
-                            }
+                        Data.getbledata().add(finalViewHolder.name.getText().toString());
+                        if(Data.getapptype().equals("cold")) {
+                            SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "coldcurrency", Data.getbledata());
                         }else{
-                            Data.getbledata().add(finalViewHolder.name.getText().toString());
-                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                            SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "hotcurrency", Data.getbledata());
                         }
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
