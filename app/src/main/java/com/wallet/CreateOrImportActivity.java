@@ -60,7 +60,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         mScreenHeight = dm.heightPixels;
         initAnimation();
         startAnimation();
-        //SharedPrefsStrListUtil.clear(getApplicationContext());
+        SharedPrefsStrListUtil.clear(getApplicationContext());
         new JniUtils().getbbCourseKeyFromC(this);
         SQLiteDatabase db = openOrCreateDatabase("HotWallet.db", MODE_PRIVATE, null);//创建数据库
         Data.setdb(db);Data.setresult("");Data.setisblecomment("0");Data.setcontext(CreateOrImportActivity.this);Data.settype("createOrimport");Data.setbizhong("");
@@ -193,18 +193,24 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                     }
                     cursor.close();
                     try {
-                        Bitmap codeBitmap = Utils.createCode(Data.getethaddress());
-                        Data.setethimgCode(codeBitmap);
-                        Bitmap codeBitmap1 = Utils.createCode(Data.getbtcaddress());
-                        Data.setimgCode(codeBitmap1);
-                        Bitmap codeBitmap2 = Utils.createCode(Data.getxrpaddress());
-                        Data.setxrpimgCode(codeBitmap2);
+                        if(!Data.getethaddress().equals("")) {
+                            Bitmap codeBitmap = Utils.createCode(Data.getethaddress());
+                            Data.setethimgCode(codeBitmap);
+                        }
+                        if(!Data.getbtcaddress().equals("")) {
+                            Bitmap codeBitmap1 = Utils.createCode(Data.getbtcaddress());
+                            Data.setimgCode(codeBitmap1);
+                        }
+                        if(!Data.getxrpaddress().equals("")) {
+                            Bitmap codeBitmap2 = Utils.createCode(Data.getxrpaddress());
+                            Data.setxrpimgCode(codeBitmap2);
+                        }
                     } catch (WriterException e) {
                         e.printStackTrace();
                     }
                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
                     Data.setdialog(mWeiboDialog);
-                    new Utils().zhuce();
+                    new Utils().balancebtc();
                 }else {
                     Intent1.setClass(this, ByteActivity.class);
                     startActivity(Intent1);

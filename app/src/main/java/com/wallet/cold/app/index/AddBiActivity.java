@@ -27,6 +27,7 @@ import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.hot.utils.HotWalletUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -241,9 +242,13 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                                 })
                                 .show();
                     }else {
-                        if(finalViewHolder.name.getText().toString().equals("AED")&&!Data.getbledata().contains("XRP")){
-                            Toast.makeText(Data.getcontext(), "请先添加瑞波币", Toast.LENGTH_SHORT).show();
-                            return;
+                        if(finalViewHolder.name.getText().toString().equals("AED")){
+                            if(Data.getbledata().contains("XRP")){
+                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(Data.getcontext(), "请先添加瑞波币", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                         }
                         Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(AddBiActivity.this, Data.getcontext().getResources().getString(R.string.type4));
                         Data.setdialog(mWeiboDialog);
@@ -251,16 +256,23 @@ public class AddBiActivity extends AppCompatActivity implements OnClickListener 
                         Data.getbledata().add(finalViewHolder.name.getText().toString());
                         if(Data.getapptype().equals("cold")) {
                             SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "coldcurrency"+Data.getDeviceaddress(), Data.getbledata());
+                            Data.setbletype("address");
+                            if(finalViewHolder.name.getText().toString().equals("BTC")){
+                                Utils.btc();
+                            }else if(finalViewHolder.name.getText().toString().equals("ETH")){
+                                Utils.eth();
+                            }else if(finalViewHolder.name.getText().toString().equals("XRP")){
+                                Utils.xrp();
+                            }
                         }else{
                             SharedPrefsStrListUtil.putStrListValue(getApplicationContext(), "hotcurrency", Data.getbledata());
-                        }
-                        Data.setbletype("address");
-                        if(finalViewHolder.name.getText().toString().equals("BTC")){
-                            Utils.btc();
-                        }else if(finalViewHolder.name.getText().toString().equals("ETH")){
-                            Utils.eth();
-                        }else if(finalViewHolder.name.getText().toString().equals("XRP")){
-                            Utils.xrp();
+                            if(finalViewHolder.name.getText().toString().equals("BTC")){
+                                HotWalletUtils.TestBip44BTC(Data.gethotzjc());
+                            }else if(finalViewHolder.name.getText().toString().equals("ETH")){
+                                HotWalletUtils.TestBip44ETH(Data.gethotzjc());
+                            }else if(finalViewHolder.name.getText().toString().equals("XRP")){
+                                HotWalletUtils.TestBip44XRP(Data.gethotzjc());
+                            }
                         }
                     }
                 }
