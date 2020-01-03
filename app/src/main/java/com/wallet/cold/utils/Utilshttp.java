@@ -845,7 +845,9 @@ public class Utilshttp {
             }).start();
         }else{
             Data.setaedamount("0");
+            Looper.prepare();
             new Utils().send2();
+            Looper.loop();
         }
     }
 

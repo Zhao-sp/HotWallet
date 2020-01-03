@@ -73,8 +73,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                     LogCook.DeleteOverdueLogFile();
                     File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log");
-                    LogCook.getInstance()
-                            .setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log")
+                    LogCook.getInstance().setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log")
                             .setLogName(LogCook.getNowDay() +"log.txt")
                             .isOpen(true)
                             .isSave(true)
@@ -133,10 +132,9 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     //创建文件夹
                     if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/com.hotwallet");
-                        LogCook.getInstance()
-                                .setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath()+"/com.hotwallet")
-                                .setLogName("log.txt")
+                        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log");
+                        LogCook.getInstance().setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log")
+                                .setLogName(LogCook.getNowDay() +"log.txt")
                                 .isOpen(true)
                                 .isSave(true)
                                 .initialize();
@@ -168,6 +166,8 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         switch (v.getId()) {
             case R.id.hot_wallet:
                 Data.setapptype("hot");
+                java.util.List<String> list=SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"hotcurrency");
+                Data.setbledata(list);
                 Intent Intent1 = new Intent();
                 Data.getdb().execSQL("create table if not exists HotAddressTb (_id integer primary key,password text not null,btcaddress text not null,ethaddress text not null,ethprv text not null,ethpub text not null," +
                         "btcprv text not null,btcpub text not null,xrpaddress text not null,xrppub text not null,xrpprv text not null)");
@@ -200,20 +200,18 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                     } catch (WriterException e) {
                         e.printStackTrace();
                     }
-                    java.util.List<String> list=SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"hotcurrency");
-                    Data.setbledata(list);
                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
                     Data.setdialog(mWeiboDialog);
                     new Utils().zhuce();
                 }else {
-                    java.util.List<String> list=SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"coldcurrency");
-                    Data.setbledata(list);
                     Intent1.setClass(this, ByteActivity.class);
                     startActivity(Intent1);
                 }
                 break;
             case R.id.create_wallet:
                 Data.setapptype("cold");
+                java.util.List<String> list1=SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"coldcurrency");
+                Data.setbledata(list1);
                 Intent Intent = new Intent();
                 Intent.setClass(this, MainActivity.class);
                 startActivity(Intent);
