@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 import com.wallet.hot.app.BackUpActivity;
 
 import org.bitcoinj.params.TestNet3Params;

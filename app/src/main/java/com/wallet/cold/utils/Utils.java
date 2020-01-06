@@ -51,6 +51,8 @@ import com.wallet.cold.app.util.FingerprintsXQ;
 import com.wallet.cold.app.util.GengxinActivity;
 import com.wallet.cold.app.util.LanguagesActivity;
 import com.wallet.cold.dfu.DfuUpdateActivity;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.WeiboDialogUtils;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.NetworkParameters;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wallet.cold.decode;
+package com.wallet.utils.Sweepcode.decode;
 
 import com.google.zxing.BarcodeFormat;
 

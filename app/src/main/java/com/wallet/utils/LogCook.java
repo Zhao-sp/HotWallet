@@ -1,4 +1,4 @@
-package com.wallet.cold.utils;
+package com.wallet.utils;
 
 import android.os.Environment;
 import android.util.Log;

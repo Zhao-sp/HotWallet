@@ -17,7 +17,7 @@ import com.wallet.cold.app.index.MeActivity;
 import com.wallet.cold.app.index.ZXActivity;
 import com.wallet.cold.app.pawn.PawnActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 
 public class IndexActivity extends TabActivity {
     private RadioButton guide_home, guide_pawn ,guide_store, guide_cart, guide_me;

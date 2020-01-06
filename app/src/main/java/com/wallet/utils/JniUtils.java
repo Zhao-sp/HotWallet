@@ -1,4 +1,4 @@
-package com.wallet;
+package com.wallet.utils;
 
 public class JniUtils {
         static {

@@ -2,34 +2,26 @@ package com.wallet.cold.utils;
 
 import android.content.Intent;
 import android.os.Looper;
-import android.text.TextUtils;
-import android.util.ArrayMap;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.google.gson.Gson;
-import com.google.zxing.common.StringUtils;
-import com.googlecode.jsonrpc4j.Base64;
 import com.wallet.R;
 import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.app.pawn.CdActivity;
 import com.wallet.cold.app.pawn.login;
-import com.wallet.hot.app.HotTransfer;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.WeiboDialogUtils;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

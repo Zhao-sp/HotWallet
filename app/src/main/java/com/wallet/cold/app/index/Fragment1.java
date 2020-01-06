@@ -3,7 +3,6 @@ package com.wallet.cold.app.index;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,18 +18,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wallet.CreateOrImportActivity;
 import com.wallet.R;
-import com.wallet.SharedPrefsStrListUtil;
 import com.wallet.cold.app.util.Fragment5;
-import com.wallet.cold.utils.CaptureActivity;
+import com.wallet.utils.Sweepcode.CaptureActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.MyListView;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.MyListView;
 import com.wallet.cold.utils.PopWinShare;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 import com.wallet.hot.app.HotTransfer;
 
 import java.math.BigDecimal;

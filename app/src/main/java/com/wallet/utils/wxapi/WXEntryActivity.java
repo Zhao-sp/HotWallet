@@ -1,4 +1,4 @@
-package com.wallet.cold.wxapi;
+package com.wallet.utils.wxapi;
 
 import android.content.Intent;
 import android.os.Bundle;

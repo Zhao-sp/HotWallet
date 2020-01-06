@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wallet.cold.utils;
+package com.wallet.utils.Sweepcode;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,8 +24,8 @@ import android.os.Message;
 
 import com.google.zxing.Result;
 import com.wallet.R;
-import com.wallet.cold.camera.CameraManager;
-import com.wallet.cold.decode.DecodeThread;
+import com.wallet.utils.Sweepcode.camera.CameraManager;
+import com.wallet.utils.Sweepcode.decode.DecodeThread;
 
 /**
  * This class handles all the messaging which comprises the state machine for

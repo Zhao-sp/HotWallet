@@ -16,7 +16,7 @@ import com.wallet.cold.app.main.CreateActivity;
 import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.app.main.RecoverActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 
 public class ByteActivity extends Activity implements OnClickListener {
     private TextView create;

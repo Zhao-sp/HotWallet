@@ -25,10 +25,10 @@ import android.widget.Toast;
 import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.MyListView;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.MyListView;
 import com.wallet.cold.utils.Utilshttp;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 import java.util.ArrayList;
 import java.util.List;

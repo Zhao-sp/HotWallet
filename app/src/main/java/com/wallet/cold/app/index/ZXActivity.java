@@ -2,7 +2,6 @@ package com.wallet.cold.app.index;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,12 +11,12 @@ import android.widget.Toast;
 
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.ImageAdapter;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.MyListView;
+import com.wallet.utils.ImageAdapter;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.MyListView;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

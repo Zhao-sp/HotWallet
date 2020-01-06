@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wallet.cold.camera;
+package com.wallet.utils.Sweepcode.camera;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -24,7 +24,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
-import com.wallet.cold.open.OpenCameraInterface;
+import com.wallet.utils.Sweepcode.open.OpenCameraInterface;
 
 import java.io.IOException;
 

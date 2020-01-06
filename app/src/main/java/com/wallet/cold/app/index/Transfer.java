@@ -24,14 +24,14 @@ import com.wallet.cold.app.auth0.auth0register;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.rlp.RLP;
 import com.wallet.cold.utils.UtilsBase58;
-import com.wallet.cold.utils.CaptureActivity;
+import com.wallet.utils.Sweepcode.CaptureActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.LogCook;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.LogCook;
 import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 import com.wallet.hot.ripple.K256KeyPair;
 import com.wallet.hot.ripple.HashUtils;
 

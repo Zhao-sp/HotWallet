@@ -2,16 +2,15 @@ package com.wallet.cold.app.main;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 public class NumbersActivity extends AppCompatActivity implements View.OnClickListener {
 //    private TextView fhnum;

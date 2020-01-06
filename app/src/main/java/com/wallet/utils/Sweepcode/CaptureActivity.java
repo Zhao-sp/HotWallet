@@ -1,4 +1,4 @@
-package com.wallet.cold.utils;
+package com.wallet.utils.Sweepcode;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -35,8 +35,10 @@ import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.app.auth0.auth0login;
 import com.wallet.cold.app.auth0.auth0register;
 import com.wallet.cold.app.main.IndexActivity;
-import com.wallet.cold.camera.CameraManager;
-import com.wallet.cold.decode.DecodeThread;
+import com.wallet.utils.Sweepcode.camera.CameraManager;
+import com.wallet.utils.Sweepcode.decode.DecodeThread;
+import com.wallet.cold.utils.Data;
+import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.hot.app.HotTransfer;
 
 import java.io.IOException;

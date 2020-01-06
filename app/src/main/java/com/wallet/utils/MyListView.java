@@ -1,4 +1,4 @@
-package com.wallet.cold.utils;
+package com.wallet.utils;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wallet.R;
+import com.wallet.cold.utils.Data;
 
 import java.util.Date;
 

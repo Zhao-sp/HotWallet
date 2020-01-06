@@ -1,7 +1,6 @@
 package com.wallet.hot.app;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,10 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.R;
-import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

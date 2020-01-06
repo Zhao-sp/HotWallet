@@ -15,10 +15,10 @@ import android.widget.Toast;
 
 import com.wallet.CreateOrImportActivity;
 import com.wallet.R;
-import com.wallet.SharedPrefsStrListUtil;
+import com.wallet.utils.SharedPrefsStrListUtil;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
 
 public class Fragment5 extends Activity implements View.OnClickListener {

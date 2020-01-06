@@ -3,7 +3,6 @@ package com.wallet.cold.app.index;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -17,9 +16,9 @@ import android.widget.TextView;
 
 import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
-import com.wallet.cold.utils.CaptureActivity;
+import com.wallet.utils.Sweepcode.CaptureActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 
 public class Linkman extends AppCompatActivity implements View.OnClickListener {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wallet.cold.camera;
+package com.wallet.utils.Sweepcode.camera;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

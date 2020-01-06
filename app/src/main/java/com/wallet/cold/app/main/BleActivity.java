@@ -15,9 +15,9 @@ import android.widget.TextView;
 
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 import static com.wallet.cold.utils.Utils.sendble;
 

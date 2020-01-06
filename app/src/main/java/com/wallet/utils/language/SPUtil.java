@@ -1,4 +1,4 @@
-package com.wallet.cold.utils;
+package com.wallet.utils.language;
 
 import android.content.Context;
 import android.content.SharedPreferences;

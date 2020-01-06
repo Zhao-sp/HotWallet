@@ -33,7 +33,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 
-import com.wallet.SharedPrefsStrListUtil;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.SharedPrefsStrListUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;

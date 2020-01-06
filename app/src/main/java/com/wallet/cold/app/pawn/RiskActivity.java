@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 
 public class RiskActivity extends AppCompatActivity implements View.OnClickListener{
     private RoundIndicatorView roundIndicatorView;

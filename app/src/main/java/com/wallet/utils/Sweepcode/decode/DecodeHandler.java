@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wallet.cold.decode;
+package com.wallet.utils.Sweepcode.decode;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -32,7 +32,7 @@ import com.google.zxing.ReaderException;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 import com.wallet.R;
-import com.wallet.cold.utils.CaptureActivity;
+import com.wallet.utils.Sweepcode.CaptureActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Map;

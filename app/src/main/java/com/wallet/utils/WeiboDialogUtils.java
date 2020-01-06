@@ -1,4 +1,4 @@
-package com.wallet.cold.utils;
+package com.wallet.utils;
 
 import android.app.Dialog;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.wallet.cold.utils;
+package com.wallet.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.wallet.R;
 import com.wallet.cold.app.index.ZXNRActivity;
+import com.wallet.cold.utils.Data;
 
 import java.net.HttpURLConnection;
 import java.net.URL;

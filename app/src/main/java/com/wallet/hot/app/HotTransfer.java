@@ -21,14 +21,14 @@ import android.widget.Toast;
 
 import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
-import com.wallet.cold.utils.CaptureActivity;
+import com.wallet.utils.Sweepcode.CaptureActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.LogCook;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.LogCook;
 import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 import org.bitcoinj.core.DumpedPrivateKey;
 import org.bitcoinj.core.ECKey;

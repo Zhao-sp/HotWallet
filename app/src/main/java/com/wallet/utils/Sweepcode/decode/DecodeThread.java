@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.wallet.cold.decode;
+package com.wallet.utils.Sweepcode.decode;
 
 import android.os.Handler;
 import android.os.Looper;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
-import com.wallet.cold.utils.CaptureActivity;
+import com.wallet.utils.Sweepcode.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.Collection;

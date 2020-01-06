@@ -1,4 +1,4 @@
-package com.wallet;
+package com.wallet.utils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
+import com.wallet.CreateOrImportActivity;
+import com.wallet.R;
 
 public class LicenceActivity extends AppCompatActivity implements
         View.OnClickListener, CompoundButton.OnCheckedChangeListener {

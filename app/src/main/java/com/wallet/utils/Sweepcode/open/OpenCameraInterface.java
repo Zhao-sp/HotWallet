@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wallet.cold.open;
+package com.wallet.utils.Sweepcode.open;
 
 import android.hardware.Camera;
 import android.util.Log;

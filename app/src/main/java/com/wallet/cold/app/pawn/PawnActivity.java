@@ -2,7 +2,6 @@ package com.wallet.cold.app.pawn;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 
 public class PawnActivity extends AppCompatActivity implements OnClickListener {
 

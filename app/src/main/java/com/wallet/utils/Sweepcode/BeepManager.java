@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wallet.cold.utils;
+package com.wallet.utils.Sweepcode;
 
 import android.app.Activity;
 import android.content.Context;
