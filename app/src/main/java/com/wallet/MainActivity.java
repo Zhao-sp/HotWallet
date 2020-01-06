@@ -26,9 +26,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.WriterException;
+import com.wallet.cold.app.main.ColdMainActivity;
 import com.wallet.utils.JniUtils;
 import com.wallet.utils.SharedPrefsStrListUtil;
-import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.utils.LogCook;
@@ -38,7 +38,7 @@ import com.wallet.hot.app.ByteActivity;
 
 import java.io.File;
 
-public class CreateOrImportActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
     private Button mCreateBtn,mImportBtn,mCenterBtn;
     private ObjectAnimator mTitleViewAnimator,mCreateBtnAnimator,mImportBtnAnimator,mCenterBtnAnimator;
@@ -62,13 +62,13 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         //SharedPrefsStrListUtil.clear(getApplicationContext());
         new JniUtils().getbbCourseKeyFromC(this);
         SQLiteDatabase db = openOrCreateDatabase("HotWallet.db", MODE_PRIVATE, null);//创建数据库
-        Data.setdb(db);Data.setresult("");Data.setisblecomment("0");Data.setcontext(CreateOrImportActivity.this);Data.settype("createOrimport");Data.setbizhong("");
+        Data.setdb(db);Data.setresult("");Data.setisblecomment("0");Data.setcontext(MainActivity.this);Data.settype("createOrimport");Data.setbizhong("");
         Data.sethttp1("http://111.225.200.132:8181");//8181开发环境 8282演示环境
         //Data.getdb().execSQL("drop table HotAddressTb");
         //Data.getdb().execSQL("drop table Auth0AddressTb");
         if (Build.VERSION.SDK_INT >= 23) {
-            if (ContextCompat.checkSelfPermission(CreateOrImportActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(CreateOrImportActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
             } else {
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                     LogCook.DeleteOverdueLogFile();
@@ -97,9 +97,9 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //Toast.makeText(MainActivity.this, "位置权限打开", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ColdMainActivity.this, "位置权限打开", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(CreateOrImportActivity.this, "位置权限被禁止", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "位置权限被禁止", Toast.LENGTH_LONG).show();
                 }
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},0);
@@ -108,9 +108,9 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
             break;
             case 0: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //Toast.makeText(MainActivity.this, "相机权限打开", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ColdMainActivity.this, "相机权限打开", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(CreateOrImportActivity.this, "相机权限被禁止", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "相机权限被禁止", Toast.LENGTH_LONG).show();
                 }
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
@@ -121,7 +121,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                 } else {
-                    Toast.makeText(CreateOrImportActivity.this, "读权限被禁止", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "读权限被禁止", Toast.LENGTH_LONG).show();
                 }
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
@@ -144,7 +144,7 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
                     }
                     break;
                 } else {
-                    Toast.makeText(CreateOrImportActivity.this, "写权限被禁止", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "写权限被禁止", Toast.LENGTH_LONG).show();
                 }
             }
             break;
@@ -217,13 +217,13 @@ public class CreateOrImportActivity extends AppCompatActivity implements View.On
             case R.id.create_wallet:
                 Data.setapptype("cold");
                 Intent Intent = new Intent();
-                Intent.setClass(this, MainActivity.class);
+                Intent.setClass(this, ColdMainActivity.class);
                 startActivity(Intent);
                 break;
             case R.id.center_wallet:
                 Data.setapptype("center");
                 Intent intent = new Intent();
-                intent.setClass(this, MainActivity.class);
+                intent.setClass(this, ColdMainActivity.class);
                 startActivity(intent);
                 break;
         }

@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wallet.CreateOrImportActivity;
+import com.wallet.MainActivity;
 import com.wallet.R;
 import com.wallet.cold.app.main.CreateActivity;
-import com.wallet.cold.app.main.MainActivity;
 import com.wallet.cold.app.main.RecoverActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.utils.language.LocalManageUtil;
@@ -21,7 +19,6 @@ import com.wallet.utils.language.LocalManageUtil;
 public class ByteActivity extends Activity implements OnClickListener {
     private TextView create;
     private TextView recover,fhselete;
-    private ImageView fanhui;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +26,8 @@ public class ByteActivity extends Activity implements OnClickListener {
         create=(TextView) findViewById(R.id.create);
         recover=(TextView) findViewById(R.id.recover);
         fhselete=(TextView) findViewById(R.id.fhselete);
-        fanhui=(ImageView) findViewById(R.id.fanhuiadd);
         create.setOnClickListener(this);
         recover.setOnClickListener(this);
-        fanhui.setOnClickListener(this);
         fhselete.setOnClickListener(this);
         Data.settype("main");
         Data.setcontext(ByteActivity.this);
@@ -56,12 +51,8 @@ public class ByteActivity extends Activity implements OnClickListener {
             Intent intent1 = new Intent(this, RecoverActivity.class);
             startActivity(intent1);
         }
-        if(v.getId() == R.id.fanhuiadd) {
-            Intent intent2 = new Intent(this, CreateOrImportActivity.class);
-            startActivity(intent2);
-        }
         if(v.getId() == R.id.fhselete) {
-            Intent intent3 = new Intent(this, CreateOrImportActivity.class);
+            Intent intent3 = new Intent(this, MainActivity.class);
             startActivity(intent3);
         }
     }

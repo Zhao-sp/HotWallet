@@ -8,7 +8,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.wallet.CreateOrImportActivity;
+import com.wallet.MainActivity;
 import com.wallet.R;
 
 public class LicenceActivity extends AppCompatActivity implements
@@ -30,7 +30,7 @@ public class LicenceActivity extends AppCompatActivity implements
     public void onClick(View v) {
         if (v == mContinue&&mCheckBox.isChecked()) {
             Intent i = new Intent();
-            i.setClass(this, CreateOrImportActivity.class);
+            i.setClass(this, MainActivity.class);
             startActivity(i);
         }
     }

@@ -28,7 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wallet.CreateOrImportActivity;
+import com.wallet.MainActivity;
 import com.wallet.R;
 import com.wallet.cold.dfu.DfuUpdateActivity;
 import com.wallet.cold.utils.Data;
@@ -42,7 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends Activity {
+public class ColdMainActivity extends Activity {
     private static final int REQUEST_SELECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
     public static final String TAG = "nRFUART";
@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
         Data.setbtcbalance("");Data.setethbalance("");Data.setblename("");Data.setsign("0");Data.setusername("");Data.setauth0sign("");
         Data.setsaoma("no");Data.setbletype("");Data.setisdfu(false);Data.setsigncount1(1);Data.setresult("");Data.setresulterror("");
         Data.setreturnbledata("yes");Data.setdfuupdate(false);Data.setpage(1);
-        Data.setcontext(MainActivity.this);
+        Data.setcontext(ColdMainActivity.this);
         new Utils().service_init(getApplicationContext());
         mBtAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBtAdapter == null) {
@@ -112,7 +112,7 @@ public class MainActivity extends Activity {
                 if(Data.getscan().equals("1")) {
                     deviceList.clear();
                     device = null;
-                    deviceAdapter = new DeviceAdapter(MainActivity.this, deviceList);
+                    deviceAdapter = new DeviceAdapter(ColdMainActivity.this, deviceList);
                     newDevicesListView.setAdapter(deviceAdapter);
                     newDevicesListView.setOnItemClickListener(mDeviceClickListener);
                     scanLeDevice(true);
@@ -141,7 +141,7 @@ public class MainActivity extends Activity {
 //                System.exit(0);
 //            }
 //            return true;
-            Intent intent = new Intent(this, CreateOrImportActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
         return super.onKeyDown(keyCode, event);
@@ -227,7 +227,7 @@ public class MainActivity extends Activity {
             if (Data.getscan().equals("1")) {
                 deviceList.clear();
                 device = null;
-                deviceAdapter = new DeviceAdapter(MainActivity.this, deviceList);
+                deviceAdapter = new DeviceAdapter(ColdMainActivity.this, deviceList);
                 newDevicesListView.setAdapter(deviceAdapter);
                 newDevicesListView.setOnItemClickListener(mDeviceClickListener);
                 scanLeDevice(true);
@@ -236,7 +236,7 @@ public class MainActivity extends Activity {
             }
         }else{
             if(Utils.isNetworkConnected(Data.getcontext())) {
-                mWeiboDialog = WeiboDialogUtils.createLoadingDialog(MainActivity.this, this.getResources().getString(R.string.type));
+                mWeiboDialog = WeiboDialogUtils.createLoadingDialog(ColdMainActivity.this, this.getResources().getString(R.string.type));
                 Data.setdialog(mWeiboDialog);
                 Utils.gainboot();
             }else{
@@ -368,7 +368,7 @@ public class MainActivity extends Activity {
                             break;
                         case BluetoothDevice.BOND_BONDED:   //12
                             Toast.makeText(getApplicationContext(), context.getResources().getString(R.string.type3)+device.getName(), Toast.LENGTH_SHORT).show();
-                            mWeiboDialog = WeiboDialogUtils.createLoadingDialog(MainActivity.this, context.getResources().getString(R.string.type));
+                            mWeiboDialog = WeiboDialogUtils.createLoadingDialog(ColdMainActivity.this, context.getResources().getString(R.string.type));
                             Data.setdialog(mWeiboDialog);
                             try {
                                 Data.setdevicename(device.getName());

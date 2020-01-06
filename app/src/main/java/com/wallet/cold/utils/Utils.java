@@ -38,7 +38,7 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.wallet.R;
-import com.wallet.cold.app.main.MainActivity;
+import com.wallet.cold.app.main.ColdMainActivity;
 import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.app.auth0.auth0login;
 import com.wallet.cold.app.main.IndexActivity;
@@ -96,9 +96,9 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.wallet.cold.app.main.MainActivity.DEVICE_NAME;
-import static com.wallet.cold.app.main.MainActivity.MAC_ADDRESS;
-import static com.wallet.cold.app.main.MainActivity.TAG;
+import static com.wallet.cold.app.main.ColdMainActivity.DEVICE_NAME;
+import static com.wallet.cold.app.main.ColdMainActivity.MAC_ADDRESS;
+import static com.wallet.cold.app.main.ColdMainActivity.TAG;
 import static com.wallet.cold.app.util.Fingerprints.hexString2binaryString;
 import static java.lang.String.valueOf;
 
@@ -2526,7 +2526,7 @@ public class Utils extends Activity {
     }
     public static void mainreStart(Context context) {
         Data.setislanguages(true);
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, ColdMainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

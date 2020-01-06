@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.wallet.CreateOrImportActivity;
+import com.wallet.MainActivity;
 import com.wallet.R;
 import com.wallet.utils.SharedPrefsStrListUtil;
 import com.wallet.cold.app.main.IndexActivity;
@@ -79,7 +79,7 @@ public class Fragment5 extends Activity implements View.OnClickListener {
                             SharedPrefsStrListUtil.clear(Fragment5.this);
                             Data.getdb().execSQL("DELETE FROM HotAddressTb");
                             Toast.makeText(Data.getcontext(), "删除成功", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Fragment5.this, CreateOrImportActivity.class);
+                            Intent intent = new Intent(Fragment5.this, MainActivity.class);
                             startActivity(intent);
                         }
                     })
@@ -100,7 +100,7 @@ public class Fragment5 extends Activity implements View.OnClickListener {
         if(v.getId() == R.id.exit) {
             Data.getmService().disconnect();
             Data.getmService().close();
-            Intent intent = new Intent(Data.getcontext(), CreateOrImportActivity.class);
+            Intent intent = new Intent(Data.getcontext(), MainActivity.class);
             Data.getcontext().startActivity(intent);
         }
     }
