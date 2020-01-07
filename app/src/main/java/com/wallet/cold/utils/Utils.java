@@ -2218,7 +2218,10 @@ public class Utils extends Activity {
                 if (result != null) {
                     try {
                         LogCook.d("行情数据", result);
-                        int count = getSubCount_2(result, "{");
+                        int count=0;
+                        if(!result.contains("404 Not Found")) {
+                            count = getSubCount_2(result, "{");
+                        }
                         //Data.getbledata().add("ETH");
                         //Data.getbledata().add("BTC");
                         if(Data.getapptype().equals("cold")) {
@@ -2226,10 +2229,10 @@ public class Utils extends Activity {
                         }
                         //Data.getbledata().add("XRP");
                         //Data.getbledata().add("AED");
+                        DecimalFormat df = new DecimalFormat("0.00000000");
                         if (count == 1) {
                             JSONObject jsonObject = new JSONObject(result);
                             current_price = jsonObject.getString("base");
-                            DecimalFormat df = new DecimalFormat("0.00000000");
                             BigDecimal b1 = null;
                             BigDecimal b2 = null;
                             Looper.prepare();
@@ -2271,23 +2274,27 @@ public class Utils extends Activity {
                                 Data.gethandler().post(runnableUi1);
                             }
                         } else {
-                            int index = getIndex(result, 1, "[}]");
-                            String btchq = result.substring(0, index + 1);
-                            LogCook.d("BTC行情数据", btchq);
-                            String ethhq = result.substring(index + 2, result.length() - 1);
-                            LogCook.d("ETH行情数据", ethhq);
-                            DecimalFormat df = new DecimalFormat("0.00000000");
-                            JSONObject jsonObject = new JSONObject(ethhq);
-                            current_price = jsonObject.getString("high");
-                            JSONObject jsonObject1 = new JSONObject(btchq);
-                            current_price1 = jsonObject1.getString("high");
-                            Data.setethrmbbalance(current_price);
-                            Data.setbtcrmbbalance(current_price1);
-                            BigDecimal b1 = new BigDecimal(Double.parseDouble(current_price));
+                            if (count != 0) {
+                                int index = getIndex(result, 1, "[}]");
+                                String btchq = result.substring(0, index + 1);
+                                LogCook.d("BTC行情数据", btchq);
+                                String ethhq = result.substring(index + 2, result.length() - 1);
+                                LogCook.d("ETH行情数据", ethhq);
+                                JSONObject jsonObject = new JSONObject(ethhq);
+                                current_price = jsonObject.getString("high");
+                                JSONObject jsonObject1 = new JSONObject(btchq);
+                                current_price1 = jsonObject1.getString("high");
+                                Data.setethrmbbalance(current_price);
+                                Data.setbtcrmbbalance(current_price1);
+                            }else{
+                                Data.setethrmbbalance("0");
+                                Data.setbtcrmbbalance("0");
+                            }
+                            BigDecimal b1 = new BigDecimal(Double.parseDouble(Data.getethrmbbalance()));
                             BigDecimal b2 = new BigDecimal(Double.parseDouble(Data.getethbalance()));
                             Double d = b1.multiply(b2).doubleValue();
                             d1 = df.format(d);//eth人民币价格
-                            BigDecimal b3 = new BigDecimal(Double.parseDouble(current_price1));
+                            BigDecimal b3 = new BigDecimal(Double.parseDouble(Data.getbtcrmbbalance()));
                             BigDecimal b4 = new BigDecimal(Double.parseDouble(Data.getbtcbalance()));
                             Double d2 = b3.multiply(b4).doubleValue();
                             d3 = df.format(d2);//btc人民币价格
@@ -2393,7 +2400,7 @@ public class Utils extends Activity {
                 }
                 is.close();
             }
-            if(result==null){
+            if(result==null||result.contains("404 Not Found")){
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
