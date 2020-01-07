@@ -110,7 +110,7 @@
             android:textColor="#ffffffff"
             android:textSize="18sp" />
 
-        <com.wallet.cold.utils.MyListView
+        <com.wallet.utils.MyListView
             android:id="@+id/list_yue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

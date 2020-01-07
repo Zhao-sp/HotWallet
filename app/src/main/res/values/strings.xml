@@ -355,6 +355,7 @@
     <string name="continue_str">继续</string>
     <string name="create_wallet">热钱包</string>
     <string name="import_wallet">冷钱包</string>
+    <string name="center_wallet">中心化钱包</string>
     <string name="create_import_title">您的第一个智能数字钱包</string>
 
     <string name="backup_wallet">备份钱包</string>

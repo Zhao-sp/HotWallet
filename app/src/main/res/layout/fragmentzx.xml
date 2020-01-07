@@ -22,7 +22,7 @@
             android:textColor="#fff"
             android:textSize="17sp" />
 
-        <com.wallet.cold.utils.MyListView
+        <com.wallet.utils.MyListView
             android:id="@+id/list_zx"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"

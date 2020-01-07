@@ -155,7 +155,7 @@
             android:textSize="16sp"
             />
 
-        <com.wallet.cold.utils.MyListView
+        <com.wallet.utils.MyListView
             android:id="@+id/list_jy"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
