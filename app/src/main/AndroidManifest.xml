@@ -44,7 +44,7 @@
         android:icon="@mipmap/ic_launcher"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".CreateOrImportActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <service android:enabled="true" android:name=".cold.utils.UartService" />
-        <activity android:name=".cold.app.main.MainActivity" />
+        <activity android:name=".cold.app.main.ColdMainActivity" />
         <activity android:name=".cold.app.main.BleActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.main.NumbersActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.main.CreateActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
@@ -85,36 +85,24 @@
         <activity android:name=".cold.app.pawn.PawnActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.pawn.RoundIndicatorView" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.pawn.RiskActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".cold.utils.CaptureActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".utils.Sweepcode.CaptureActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.dfu.dfu_service.NotificationActivity" />
         <activity android:name=".cold.dfu.DfuUpdateActivity" android:theme="@style/Theme.AppCompat"/>
         <service android:name=".cold.dfu.BluetoothService" />
         <service android:name=".cold.dfu.dfu_service.DfuService" />
-        <activity android:name=".cold.wxapi.WXEntryActivity"
-            android:exported="true"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.AppCompat"/>
+        <activity android:name=".utils.wxapi.WXEntryActivity" android:exported="true" android:launchMode="singleTop" android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".cold.app.auth0.auth0register" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.auth0.auth0login" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.index.Linkman" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.util.Fingerprints" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".cold.app.util.FingerprintsXQ" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-
-        <activity
-            android:name=".LicenceSimpleActivity"
-            android:excludeFromRecents="true"
-            android:noHistory="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
+        <activity android:name=".utils.LicenceSimpleActivity" android:excludeFromRecents="true" android:noHistory="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".hot.app.ByteActivity" />
         <activity android:name=".hot.app.HotTransfer" />
         <activity android:name=".hot.app.Verification" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity
-            android:name=".hot.app.BackUpActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".hot.app.BackUpMnemonicActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".hot.app.BackUpActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".hot.app.BackUpMnemonicActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".centralized.centerMainActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>

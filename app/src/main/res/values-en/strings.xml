@@ -244,6 +244,7 @@
     <string name="m4">Password cannot be empty</string>
     <string name="m5">My</string>
     <string name="m6">Register</string>
+    <string name="m61">Log On</string>
     <string name="m7">Auth0 Security Login</string>
     <string name="m8">Please enter one user name</string>
     <string name="m9">Please enter the user password</string>

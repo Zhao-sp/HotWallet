@@ -190,10 +190,6 @@ public class HotWalletUtils {
             Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
             WeiboDialogUtils.closeDialog(Data.getdialog());
         }else {
-            Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,ethpub,btcprv,btcpub,xrpaddress,xrppub,xrpprv,mnemonic) values " +
-                    "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotethpub() + "'," +
-                    "'" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "','" + Data.getxrpaddress() + "','" + Data.getxrppub() + "','" + Data.getxrpprv() + "','" + Data.gethotzjc() + "')");
-            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
             if (Data.gettype().equals("create")) {
                 Intent intent = new Intent(Data.getcontext(), BackUpActivity.class);
                 Data.getcontext().startActivity(intent);

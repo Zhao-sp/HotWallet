@@ -242,6 +242,7 @@
     <string name="m4">密码不能为空</string>
     <string name="m5">我的</string>
     <string name="m6">注册</string>
+    <string name="m61">登录</string>
     <string name="m7">auth0安全登录</string>
     <string name="m8">请输入用户名</string>
     <string name="m9">请输入用户密码</string>

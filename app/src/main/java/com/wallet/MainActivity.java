@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.WriterException;
+import com.wallet.centralized.centerMainActivity;
 import com.wallet.cold.app.main.ColdMainActivity;
 import com.wallet.utils.JniUtils;
 import com.wallet.utils.SharedPrefsStrListUtil;
@@ -165,6 +166,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.hot_wallet:
+                Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
+                Data.setdialog(mWeiboDialog);
                 Data.setapptype("hot");
                 java.util.List<String> list= SharedPrefsStrListUtil.getStrListValue(getApplicationContext(),"hotcurrency");
                 Data.setbledata(list);
@@ -206,8 +209,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     } catch (WriterException e) {
                         e.printStackTrace();
                     }
-                    Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.type4));
-                    Data.setdialog(mWeiboDialog);
                     new Utils().balancebtc();
                 }else {
                     Intent1.setClass(this, ByteActivity.class);
@@ -223,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.center_wallet:
                 Data.setapptype("center");
                 Intent intent = new Intent();
-                intent.setClass(this, ColdMainActivity.class);
+                intent.setClass(this, centerMainActivity.class);
                 startActivity(intent);
                 break;
         }

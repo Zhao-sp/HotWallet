@@ -673,13 +673,18 @@ drawable alipay
 drawable amount
 drawable anim
 drawable arrow
+drawable background
+drawable backgroundi
 drawable banner
 drawable bt_main
 drawable bt_main1
 drawable bt_main2
 drawable bt_main3
+drawable bt_seekbar
 drawable btc
 drawable btc1
+drawable button
+drawable buttoni
 drawable bx
 drawable cd
 drawable cd1
@@ -710,6 +715,9 @@ drawable fenxiang
 drawable fenxiang1
 drawable fx
 drawable fx1
+drawable group10
+drawable group3
+drawable gui
 drawable gywm
 drawable haibo
 drawable hangqing_xk
@@ -752,6 +760,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable paixu
+drawable pattern
 drawable pawn_xk
 drawable pawn_xz
 drawable pengyouquan
@@ -760,6 +769,7 @@ drawable qianbao_xk
 drawable qianbao_xz
 drawable qq
 drawable qr_code_bg
+drawable rbackground
 drawable safe
 drawable safe_btnok_active
 drawable saoyisao_da
@@ -778,6 +788,7 @@ drawable selector_button1
 drawable selector_checked_pay_mode
 drawable selector_item_pressed
 drawable shape
+drawable shape_bt_seekbar
 drawable shape_circle_button_bg
 drawable shape_dialog
 drawable shape_dialog_bg
@@ -791,6 +802,7 @@ drawable sousuo_da
 drawable sousuo_xiao
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable tuzi
 drawable tv
 drawable tx
 drawable tz
@@ -905,6 +917,7 @@ id cdname1
 id center
 id center_horizontal
 id center_vertical
+id center_wallet
 id chains
 id checkbox
 id china
@@ -985,6 +998,7 @@ id fxtoken1
 id generate
 id gengxin
 id gone
+id gui
 id guide_cart
 id guide_home
 id guide_store
@@ -1007,6 +1021,8 @@ id icon
 id icon_group
 id ifRoom
 id image
+id image1
+id image2
 id imageView
 id imageView2
 id imageView3
@@ -1059,6 +1075,7 @@ id list_search_devices
 id list_yue
 id list_zx
 id llll
+id login
 id main_tab_group
 id message
 id middle
@@ -1108,6 +1125,7 @@ id quxiao
 id r1
 id radio
 id recover
+id register
 id resetpin
 id restart_preview
 id return_scan_result
@@ -1135,6 +1153,7 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id seekbar
 id select_dialog_listview
 id share
 id share_cancel_btn
@@ -1185,6 +1204,7 @@ id tabMode
 id table_num
 id tag_transition_group
 id text
+id text1
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
@@ -1219,6 +1239,7 @@ id to
 id top
 id topPanel
 id trustset
+id tuzi
 id tv_content
 id tv_footer
 id tv_name
@@ -1330,6 +1351,7 @@ layout activity_auth0register
 layout activity_capture
 layout activity_cardamount
 layout activity_cd
+layout activity_centermain
 layout activity_create
 layout activity_cz
 layout activity_cz_1
@@ -1476,6 +1498,7 @@ string card8
 string card9
 string cd1
 string cd2
+string center_wallet
 string continue_str
 string create1
 string create2
@@ -1652,6 +1675,7 @@ string m3
 string m4
 string m5
 string m6
+string m61
 string m7
 string m8
 string m9

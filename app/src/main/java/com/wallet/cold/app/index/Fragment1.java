@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,6 +50,12 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.fragment1);
         Data.setsaoma("no");
         Data.setiseth("yes");
+        Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
+        if (cursor == null) {
+            Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,ethpub,btcprv,btcpub,xrpaddress,xrppub,xrpprv,mnemonic) values " +
+                    "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotethpub() + "'," +
+                    "'" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "','" + Data.getxrpaddress() + "','" + Data.getxrppub() + "','" + Data.getxrpprv() + "','" + Data.gethotzjc() + "')");
+        }
         Data.getdb().execSQL("create table if not exists JiaoyiTb (_id integer primary key,blename text not null,name text not null,bizhong text not null,jine integer not null,riqi text not null,type integer not null)");
         lv1=(MyListView)findViewById(R.id.list_yue);
         balance =(TextView)findViewById(R.id.balance);Data.setcountamount(balance);
@@ -294,19 +301,28 @@ public class Fragment1 extends AppCompatActivity implements View.OnClickListener
             startActivity(intent0);
         }
         if(v.getId() == R.id.zhuanzhang) {
-            if(Data.getapptype().equals("hot")){
-                Intent intent = new Intent(Fragment1.this, HotTransfer.class);
-                startActivity(intent);
+            if(Data.getbledata().size()==0){
+                Toast.makeText(Data.getcontext(), "请先添加币种", Toast.LENGTH_SHORT).show();
             }else {
-                Intent intent = new Intent(Fragment1.this, Transfer.class);
-                startActivity(intent);
+                if (Data.getapptype().equals("hot")) {
+                    Intent intent = new Intent(Fragment1.this, HotTransfer.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Fragment1.this, Transfer.class);
+                    startActivity(intent);
+                }
             }
         }
         if(v.getId() == R.id.shoukuan) {
-            Intent intent1 = new Intent(Fragment1.this, Receivables.class);
-            startActivity(intent1);
+            if(Data.getbledata().size()==0){
+                Toast.makeText(Data.getcontext(), "请先添加币种", Toast.LENGTH_SHORT).show();
+            }else {
+                Intent intent1 = new Intent(Fragment1.this, Receivables.class);
+                startActivity(intent1);
+            }
         }
     }
+
     class OnClickLintener implements View.OnClickListener {
         @Override
         public void onClick(View v) {

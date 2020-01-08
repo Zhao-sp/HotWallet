@@ -2400,15 +2400,6 @@ public class Utils extends Activity {
                 }
                 is.close();
             }
-            if(result==null||result.contains("404 Not Found")){
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(Data.getcontext(), "获取行情失败", Toast.LENGTH_SHORT).show();
-                        WeiboDialogUtils.closeDialog(Data.getdialog());
-                    }
-                });
-            }
             conn.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
