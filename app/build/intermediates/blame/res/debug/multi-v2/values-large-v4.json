@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+            "outputFile": "E:\\Androidwork\\HotWallet\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\99680\\.gradle\\caches\\transforms-2\\files-2.1\\ec4e006e4b69d6ff0b7bbd0cbb2f920e\\appcompat-v7-27.1.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
