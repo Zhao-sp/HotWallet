@@ -25,7 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wallet.cold.app.main.MainActivity;
+import com.wallet.cold.app.main.ColdMainActivity;
 import com.wallet.R;
 import com.wallet.cold.dfu.data.ScanResult;
 import com.wallet.cold.dfu.dfu_service.DfuService;
@@ -36,8 +36,8 @@ import no.nordicsemi.android.dfu.DfuServiceController;
 import no.nordicsemi.android.dfu.DfuServiceInitiator;
 import no.nordicsemi.android.dfu.DfuServiceListenerHelper;
 
-import static com.wallet.cold.app.main.MainActivity.DEVICE_NAME;
-import static com.wallet.cold.app.main.MainActivity.MAC_ADDRESS;
+import static com.wallet.cold.app.main.ColdMainActivity.DEVICE_NAME;
+import static com.wallet.cold.app.main.ColdMainActivity.MAC_ADDRESS;
 
 public class DfuUpdateActivity extends BaseActivity implements View.OnClickListener {
     private BluetoothService mBluetoothService;
@@ -310,7 +310,7 @@ public class DfuUpdateActivity extends BaseActivity implements View.OnClickListe
             Data.setdfuupdate(false);
             tv_show.setText(R.string.dfu3);
             Log.i("TEST", "onDeviceDisconnected: " + deviceAddress);
-            Intent intent2 = new Intent(DfuUpdateActivity.this, MainActivity.class);
+            Intent intent2 = new Intent(DfuUpdateActivity.this, ColdMainActivity.class);
             startActivity(intent2);
         }
 
@@ -433,7 +433,7 @@ public class DfuUpdateActivity extends BaseActivity implements View.OnClickListe
             if (Data.getdfuupdate()) {
                 Toast.makeText(getApplicationContext(), "请等待升级完成后再操作", Toast.LENGTH_LONG).show();
             } else {
-                Intent intent2 = new Intent(this, MainActivity.class);
+                Intent intent2 = new Intent(this, ColdMainActivity.class);
                 startActivity(intent2);
             }
 
@@ -441,7 +441,7 @@ public class DfuUpdateActivity extends BaseActivity implements View.OnClickListe
             if (Data.getdfuupdate()) {
                 Toast.makeText(getApplicationContext(), "请等待升级完成后再操作", Toast.LENGTH_LONG).show();
             } else {
-                Intent intent2 = new Intent(this, MainActivity.class);
+                Intent intent2 = new Intent(this, ColdMainActivity.class);
                 startActivity(intent2);
             }
 
@@ -455,7 +455,7 @@ public class DfuUpdateActivity extends BaseActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(), "请等待升级完成后再操作", Toast.LENGTH_LONG).show();
                 return true;
             }else{
-                Intent intent2 = new Intent(this, MainActivity.class);
+                Intent intent2 = new Intent(this, ColdMainActivity.class);
                 startActivity(intent2);
             }
         }

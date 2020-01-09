@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,9 +12,9 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.wallet.R;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.WeiboDialogUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

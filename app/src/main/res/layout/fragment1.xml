@@ -27,17 +27,6 @@
             android:background="@drawable/shezhi" />
 
         <TextView
-            android:id="@+id/delete"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="60dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:background="#FF0000"
-            android:textColor="#fff"
-            android:text="删除账户"/>
-
-        <TextView
             android:id="@+id/jxye"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -109,7 +98,19 @@
             android:textColor="#ffffffff"
             android:textSize="12sp" />
 
-        <com.wallet.cold.utils.MyListView
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView8"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:text="暂无币种，请先添加币种"
+            android:textColor="#ffffffff"
+            android:textSize="18sp" />
+
+        <com.wallet.utils.MyListView
             android:id="@+id/list_yue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

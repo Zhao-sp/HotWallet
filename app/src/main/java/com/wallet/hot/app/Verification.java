@@ -1,7 +1,6 @@
 package com.wallet.hot.app;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,10 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.R;
-import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,170 +62,289 @@ public class Verification extends AppCompatActivity {
         zjc1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc1.getText().toString())) {
                     list1.add(zjc1.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc1.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc2.getText().toString())) {
                     list1.add(zjc2.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc2.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc3.getText().toString())) {
                     list1.add(zjc3.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc3.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc4.getText().toString())) {
                     list1.add(zjc4.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc4.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc5.getText().toString())) {
                     list1.add(zjc5.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc5.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc6.getText().toString())) {
                     list1.add(zjc6.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc6.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc7.getText().toString())) {
                     list1.add(zjc7.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc7.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc8.getText().toString())) {
                     list1.add(zjc8.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc8.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc9.getText().toString())) {
                     list1.add(zjc9.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc9.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc10.getText().toString())) {
                     list1.add(zjc10.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc10.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!list1.contains(zjc11.getText().toString())) {
                     list1.add(zjc11.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc11.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc12.getText().toString())) {
                     list1.add(zjc12.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc12.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc13.getText().toString())) {
                     list1.add(zjc13.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc13.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc14.getText().toString())) {
                     list1.add(zjc14.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc14.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc15.getText().toString())) {
                     list1.add(zjc15.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc15.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc16.getText().toString())) {
                     list1.add(zjc16.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc16.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc17.getText().toString())) {
                     list1.add(zjc17.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc17.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc18.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc18.getText().toString())) {
                     list1.add(zjc18.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc18.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc19.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc19.getText().toString())) {
                     list1.add(zjc19.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc19.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc20.getText().toString())) {
                     list1.add(zjc20.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc20.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc21.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc21.getText().toString())) {
                     list1.add(zjc21.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc21.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc22.getText().toString())) {
                     list1.add(zjc22.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc22.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc23.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc23.getText().toString())) {
                     list1.add(zjc23.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc23.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         zjc24.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!list1.contains(zjc24.getText().toString())) {
                     list1.add(zjc24.getText().toString());
                     zhujici.setText(list(list1.toString()));
+                }else {
+                    list1.remove(zjc24.getText().toString());
+                    zhujici.setText(list(list1.toString()));
+                }
             }
         });
         xiayibu = findViewById(R.id.xiayibu);
@@ -235,7 +352,7 @@ public class Verification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(zhujici.getText().toString().equals(Data.gethotzjc())) {
-                    new Utils().zhuce();
+                    new Utils().balancebtc();
                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Verification.this, Verification.this.getResources().getString(R.string.type4));
                     Data.setdialog(mWeiboDialog);
                 }else{

@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,10 +24,10 @@ import com.google.zxing.WriterException;
 import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -76,12 +75,8 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
         fhf2.setOnClickListener(this);
         xiala=(ImageView)findViewById(R.id.xiala2);
         xiala.setOnClickListener(this);
-        if(Data.getapptype().equals("cold")){
-            key.setText(Data.getbtcaddress());
-        }else{
-            key.setText(Data.getbtcaddress());
-        }
         imgCode = (ImageView) findViewById(R.id.img_code);
+        Data.setbizhong(Data.getbledata().get(0));
         if(Data.getbizhong().equals("BTC")) {
             popadd.setText("BTC");
             popadd1.setText("BTC");
@@ -252,39 +247,55 @@ public class Receivables extends AppCompatActivity implements View.OnClickListen
             Data.settype("fragment2");
             mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Receivables.this, Data.getcontext().getResources().getString(R.string.ff9));
             if(v.getId() == R.id.layout_btc) {
-                popadd.setText("BTC");
-                popadd1.setText("BTC");
-                Data.setbizhong("BTC");
-                popWinShare.dismiss();
-                key.setText(Data.getbtcaddress());
-                imgCode.setImageBitmap(Data.getimgCode());
+                if(Data.getbledata().contains("BTC")) {
+                    popadd.setText("BTC");
+                    popadd1.setText("BTC");
+                    Data.setbizhong("BTC");
+                    popWinShare.dismiss();
+                    key.setText(Data.getbtcaddress());
+                    imgCode.setImageBitmap(Data.getimgCode());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
                 WeiboDialogUtils.closeDialog(mWeiboDialog);
             }
             if(v.getId() == R.id.layout_eth) {
-                popadd.setText("ETH");
-                popadd1.setText("ETH");
-                Data.setbizhong("ETH");
-                popWinShare.dismiss();
-                key.setText("0x"+Data.getethaddress());
-                imgCode.setImageBitmap(Data.getethimgCode());
+                if(Data.getbledata().contains("ETH")) {
+                    popadd.setText("ETH");
+                    popadd1.setText("ETH");
+                    Data.setbizhong("ETH");
+                    popWinShare.dismiss();
+                    key.setText("0x" + Data.getethaddress());
+                    imgCode.setImageBitmap(Data.getethimgCode());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
                 WeiboDialogUtils.closeDialog(mWeiboDialog);
             }
             if(v.getId() == R.id.layout_xrp) {
-                popadd.setText("XRP");
-                popadd1.setText("drops");
-                Data.setbizhong("XRP");
-                popWinShare.dismiss();
-                key.setText(Data.getxrpaddress());
-                imgCode.setImageBitmap(Data.getxrpimgCode());
+                if(Data.getbledata().contains("XRP")) {
+                    popadd.setText("XRP");
+                    popadd1.setText("drops");
+                    Data.setbizhong("XRP");
+                    popWinShare.dismiss();
+                    key.setText(Data.getxrpaddress());
+                    imgCode.setImageBitmap(Data.getxrpimgCode());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
                 WeiboDialogUtils.closeDialog(mWeiboDialog);
             }
             if(v.getId() == R.id.layout_aed) {
-                popadd.setText("AED");
-                popadd1.setText("drops");
-                Data.setbizhong("AED");
-                popWinShare.dismiss();
-                key.setText(Data.getxrpaddress());
-                imgCode.setImageBitmap(Data.getxrpimgCode());
+                if(Data.getbledata().contains("AED")) {
+                    popadd.setText("AED");
+                    popadd1.setText("drops");
+                    Data.setbizhong("AED");
+                    popWinShare.dismiss();
+                    key.setText(Data.getxrpaddress());
+                    imgCode.setImageBitmap(Data.getxrpimgCode());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
                 WeiboDialogUtils.closeDialog(mWeiboDialog);
             }
         }

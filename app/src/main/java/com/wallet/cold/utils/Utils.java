@@ -38,7 +38,7 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.wallet.R;
-import com.wallet.cold.app.main.MainActivity;
+import com.wallet.cold.app.main.ColdMainActivity;
 import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.app.auth0.auth0login;
 import com.wallet.cold.app.main.IndexActivity;
@@ -51,6 +51,8 @@ import com.wallet.cold.app.util.FingerprintsXQ;
 import com.wallet.cold.app.util.GengxinActivity;
 import com.wallet.cold.app.util.LanguagesActivity;
 import com.wallet.cold.dfu.DfuUpdateActivity;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.WeiboDialogUtils;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.NetworkParameters;
@@ -94,9 +96,9 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.wallet.cold.app.main.MainActivity.DEVICE_NAME;
-import static com.wallet.cold.app.main.MainActivity.MAC_ADDRESS;
-import static com.wallet.cold.app.main.MainActivity.TAG;
+import static com.wallet.cold.app.main.ColdMainActivity.DEVICE_NAME;
+import static com.wallet.cold.app.main.ColdMainActivity.MAC_ADDRESS;
+import static com.wallet.cold.app.main.ColdMainActivity.TAG;
 import static com.wallet.cold.app.util.Fingerprints.hexString2binaryString;
 import static java.lang.String.valueOf;
 
@@ -389,6 +391,10 @@ public class Utils extends Activity {
                 if (Data.getbtctype().equals("balance")) {
                     String result1 = jsonObject.getString("message");
                     List<Object> list1 = JSON.parseArray(result1);
+                    if(list1.size()==0) {
+                        Data.setbtcbalance("0");
+                        return "0success";
+                    }
                     List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
                     for (Object object : list1) {
                         Map<String, Object> ret = (Map<String, Object>) object;//取出list里面的值转为map
@@ -809,25 +815,25 @@ public class Utils extends Activity {
     }
 
     public static void btc() {//获取btc公钥
-        Data.setbizhong("BTC");
+        Data.setbizhong("BTC");Data.setresulterror("no");
         String a = "55aa04020000000100000002000005aa55";
         sendble(a, Data.getmService());
     }
 
     public static void eth() {//获取eth公钥
-        Data.setbizhong("ETH");
+        Data.setbizhong("ETH");Data.setresulterror("no");
         String a = "55aa04020000000200000002000006aa55";
         sendble(a, Data.getmService());
     }
 
     public static void auth0() {//获取auth0公钥
-        Data.setbizhong("AUTH0");
+        Data.setbizhong("AUTH0");Data.setresulterror("no");
         String a = "55aa860100000000000087aa55";
         sendble(a, Data.getmService());
     }
 
     public static void xrp() {//获取xrp公钥
-        Data.setbizhong("XRP");
+        Data.setbizhong("XRP");Data.setresulterror("no");
         String a = "55aa04020000000400000001000003aa55";
         sendble(a, Data.getmService());
     }
@@ -1208,7 +1214,6 @@ public class Utils extends Activity {
      * @param oldpin
      * @param random
      * @param count
-     * @param mServive
      */
     public static void cgenerate(String newpin, String oldpin, String random, int count) {
         String newhash = Encrypt(newpin);
@@ -1713,17 +1718,36 @@ public class Utils extends Activity {
                                     Data.setbletype("address");
                                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
                                     Data.setdialog(mWeiboDialog);
-                                    btc();
+                                    if(Data.getbledata().contains("BTC")) {
+                                        btc();
+                                    }else if(Data.getbledata().contains("ETH")){
+                                        eth();
+                                    }else if(Data.getbledata().contains("XRP")){
+                                        xrp();
+                                    }else{
+                                        Data.setbletype("");
+                                        balancebtc();
+                                    }
                                 }
                             }else if (Data.getbletype().equals("Initialize")) {//生成助记词
                                 Data.setbizhong("BTC");
                                 Data.setbletype("address");
                                 Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
                                 Data.setdialog(mWeiboDialog);
-                                btc();
+                                if(Data.getbledata().contains("BTC")) {
+                                    btc();
+                                }else if(Data.getbledata().contains("ETH")){
+                                    eth();
+                                }else if(Data.getbledata().contains("XRP")){
+                                    xrp();
+                                }else{
+                                    Data.setbletype("");
+                                    balancebtc();
+                                }
                             }else if (Data.getbletype().equals("address")) {//生成公钥 地址
                                 if(!data2.equals("")) {
-                                    if (Data.getbizhong().equals("BTC")) {
+                                    if (Data.getbizhong().equals("BTC")&&Data.getresulterror().equals("no")) {
+                                        Data.setresulterror("yes");
                                         String address = Utils.address();
                                         if (!TextUtils.isEmpty(address)) {
                                             Bitmap codeBitmap = null;
@@ -1734,8 +1758,22 @@ public class Utils extends Activity {
                                                 e.printStackTrace();
                                             }
                                         }
-                                        eth();
-                                    } else if (Data.getbizhong().equals("ETH")) {
+                                        zhuce();
+                                        if(Data.gettype().equals("addbiactivity")) {
+                                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                                        }else {
+                                            if (Data.getbledata().contains("ETH")) {
+                                                eth();
+                                            } else if (Data.getbledata().contains("XRP")) {
+                                                xrp();
+                                            } else {
+                                                Data.setbletype("");
+                                                balancebtc();
+                                            }
+                                        }
+                                    } else if (Data.getbizhong().equals("ETH")&&Data.getresulterror().equals("no")) {
+                                        Data.setresulterror("yes");
                                         String address = Utils.address();
                                         if (!TextUtils.isEmpty(address)) {
                                             Bitmap codeBitmap = null;
@@ -1747,8 +1785,19 @@ public class Utils extends Activity {
                                             }
                                         }
                                         //auth0();
-                                        xrp();
-                                    } else if (Data.getbizhong().equals("AUTH0")) {
+                                        if(Data.gettype().equals("addbiactivity")) {
+                                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                                        }else {
+                                            if (Data.getbledata().contains("XRP")) {
+                                                xrp();
+                                            } else {
+                                                Data.setbletype("");
+                                                balancebtc();
+                                            }
+                                        }
+                                    } else if (Data.getbizhong().equals("AUTH0")&&Data.getresulterror().equals("no")) {
+                                        Data.setresulterror("yes");
                                         try {
                                             Thread.sleep(2000);
                                         } catch (InterruptedException e) {
@@ -1761,7 +1810,8 @@ public class Utils extends Activity {
                                         LogCook.d("auth0地址", auth0address);
                                         Data.setauth0address(auth0address);
                                         xrp();
-                                    } else if (Data.getbizhong().equals("XRP")) {
+                                    } else if (Data.getbizhong().equals("XRP")&&Data.getresulterror().equals("no")) {
+                                        Data.setresulterror("yes");
                                         String xrppubkey = Data.getdata();
                                         Data.setxrppub(xrppubkey);
                                         String address = Utils.address();
@@ -1774,9 +1824,14 @@ public class Utils extends Activity {
                                                 e.printStackTrace();
                                             }
                                         }
-                                        Data.setbletype("");
-                                        //new Utilshttp().getauth0user();
-                                        zhuce();
+                                        if(Data.gettype().equals("addbiactivity")) {
+                                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
+                                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                                        }else {
+                                            Data.setbletype("");
+                                            //new Utilshttp().getauth0user();
+                                            balancebtc();
+                                        }
                                     }
                                 }
                             }else if (Data.getbletype().equals("type")) {
@@ -1786,7 +1841,16 @@ public class Utils extends Activity {
                                     Data.setbletype("address");
                                     Dialog mWeiboDialog = WeiboDialogUtils.createLoadingDialog(Data.getcontext(), Data.getcontext().getResources().getString(R.string.utils1));
                                     Data.setdialog(mWeiboDialog);
-                                    Utils.btc();
+                                    if(Data.getbledata().contains("BTC")) {
+                                        btc();
+                                    }else if(Data.getbledata().contains("ETH")){
+                                        eth();
+                                    }else if(Data.getbledata().contains("XRP")){
+                                        xrp();
+                                    }else{
+                                        Data.setbletype("");
+                                        balancebtc();
+                                    }
                                 } else {
                                     Data.setisinitialize(false);
                                     Intent intent1 = new Intent(Data.getcontext(), BleActivity.class);
@@ -2075,65 +2139,77 @@ public class Utils extends Activity {
      * 查询币种余额
      */
     public void balancebtc(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //比特币余额查询
-                Data.setbtctype("balance");
-                String btcJson = "{\"min\":0,\"max\":9999999,\"address\":\""+ Data.getbtcaddress()+"\"}";
-                //String btcJson = "{\"method\": \"listunspent\", \"params\": [0,9999999,[\"" + Data.getbtcaddress() + "\"]]}";
-                String btcerror = Utils.getbtchttp(btcJson);
-                if(!btcerror.equals("")) {
-                    if (btcerror.contains("success")) {
+        if(Data.getbledata().contains("BTC")) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    //比特币余额查询
+                    Data.setbtctype("balance");
+                    String btcJson = "{\"min\":0,\"max\":9999999,\"address\":\"" + Data.getbtcaddress() + "\"}";
+                    //String btcJson = "{\"method\": \"listunspent\", \"params\": [0,9999999,[\"" + Data.getbtcaddress() + "\"]]}";
+                    String btcerror = Utils.getbtchttp(btcJson);
+                    if (!btcerror.equals("")) {
+                        if (btcerror.contains("success")) {
 
-                    } else {
-                        String finalBtcerror = btcerror;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u32) + finalBtcerror, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        } else {
+                            String finalBtcerror = btcerror;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u32) + finalBtcerror, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
                     }
+                    balanceeth();
                 }
-                balanceeth();
-            }
-        }).start();
+            }).start();
+        }else {
+            Data.setbtcbalance("0");
+            balanceeth();
+        }
     }
 
     private String current_price;
     private String current_price1;
     private String result="";
     public void balanceeth(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //以太坊余额查询
-                Data.setethtype("balance");
-                String address ="{\"address\":\"0x"+ Data.getethaddress()+"\"}";
-                String etherror = Utils.getethhttp(address);
-                if(!etherror.equals("")) {
-                    if (etherror.contains("success")) {
+        if(Data.getbledata().contains("ETH")) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    //以太坊余额查询
+                    Data.setethtype("balance");
+                    String address = "{\"address\":\"0x" + Data.getethaddress() + "\"}";
+                    String etherror = Utils.getethhttp(address);
+                    if (!etherror.equals("")) {
+                        if (etherror.contains("success")) {
 
-                    } else {
-                        String finalEtherror = etherror;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u33) + finalEtherror, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        } else {
+                            String finalEtherror = etherror;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.u33) + finalEtherror, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
                     }
+                    Data.setbizhong("BTC");
+                    if (Data.getapptype().equals("cold")) {
+                        //new Utilshttp().gethieramount();
+                    }
+                    new Utilshttp().getxrpamount();
                 }
-                Data.setbizhong("BTC");
-                if(Data.getapptype().equals("cold")) {
-                    //new Utilshttp().gethieramount();
-                }
-                new Utilshttp().getxrpamount();
+            }).start();
+        }else{
+            Data.setethbalance("0");
+            if (Data.getapptype().equals("cold")) {
+                //new Utilshttp().gethieramount();
             }
-        }).start();
+            new Utilshttp().getxrpamount();
+        }
     }
-
 
     public void send2(){
         new Thread(new Runnable() {
@@ -2141,19 +2217,22 @@ public class Utils extends Activity {
                 send("http://111.225.200.132:8023/cgi-bin/getmarket");
                 if (result != null) {
                     try {
-                        Data.getbledata().clear();
                         LogCook.d("行情数据", result);
-                        int count = getSubCount_2(result, "{");Data.getbledata().add("ETH");
-                        Data.getbledata().add("BTC");
+                        int count=0;
+                        if(!result.contains("404 Not Found")) {
+                            count = getSubCount_2(result, "{");
+                        }
+                        //Data.getbledata().add("ETH");
+                        //Data.getbledata().add("BTC");
                         if(Data.getapptype().equals("cold")) {
                             //Data.getbledata().add("Hier");
                         }
-                        Data.getbledata().add("XRP");
-                        Data.getbledata().add("AED");
+                        //Data.getbledata().add("XRP");
+                        //Data.getbledata().add("AED");
+                        DecimalFormat df = new DecimalFormat("0.00000000");
                         if (count == 1) {
                             JSONObject jsonObject = new JSONObject(result);
                             current_price = jsonObject.getString("base");
-                            DecimalFormat df = new DecimalFormat("0.00000000");
                             BigDecimal b1 = null;
                             BigDecimal b2 = null;
                             Looper.prepare();
@@ -2195,23 +2274,27 @@ public class Utils extends Activity {
                                 Data.gethandler().post(runnableUi1);
                             }
                         } else {
-                            int index = getIndex(result, 1, "[}]");
-                            String btchq = result.substring(0, index + 1);
-                            LogCook.d("BTC行情数据", btchq);
-                            String ethhq = result.substring(index + 2, result.length() - 1);
-                            LogCook.d("ETH行情数据", ethhq);
-                            DecimalFormat df = new DecimalFormat("0.00000000");
-                            JSONObject jsonObject = new JSONObject(ethhq);
-                            current_price = jsonObject.getString("high");
-                            JSONObject jsonObject1 = new JSONObject(btchq);
-                            current_price1 = jsonObject1.getString("high");
-                            Data.setethrmbbalance(current_price);
-                            Data.setbtcrmbbalance(current_price1);
-                            BigDecimal b1 = new BigDecimal(Double.parseDouble(current_price));
+                            if (count != 0) {
+                                int index = getIndex(result, 1, "[}]");
+                                String btchq = result.substring(0, index + 1);
+                                LogCook.d("BTC行情数据", btchq);
+                                String ethhq = result.substring(index + 2, result.length() - 1);
+                                LogCook.d("ETH行情数据", ethhq);
+                                JSONObject jsonObject = new JSONObject(ethhq);
+                                current_price = jsonObject.getString("high");
+                                JSONObject jsonObject1 = new JSONObject(btchq);
+                                current_price1 = jsonObject1.getString("high");
+                                Data.setethrmbbalance(current_price);
+                                Data.setbtcrmbbalance(current_price1);
+                            }else{
+                                Data.setethrmbbalance("0");
+                                Data.setbtcrmbbalance("0");
+                            }
+                            BigDecimal b1 = new BigDecimal(Double.parseDouble(Data.getethrmbbalance()));
                             BigDecimal b2 = new BigDecimal(Double.parseDouble(Data.getethbalance()));
                             Double d = b1.multiply(b2).doubleValue();
                             d1 = df.format(d);//eth人民币价格
-                            BigDecimal b3 = new BigDecimal(Double.parseDouble(current_price1));
+                            BigDecimal b3 = new BigDecimal(Double.parseDouble(Data.getbtcrmbbalance()));
                             BigDecimal b4 = new BigDecimal(Double.parseDouble(Data.getbtcbalance()));
                             Double d2 = b3.multiply(b4).doubleValue();
                             d3 = df.format(d2);//btc人民币价格
@@ -2233,7 +2316,6 @@ public class Utils extends Activity {
                                 Data.gethandler().post(runnableUi);
                             }
                         }
-                        WeiboDialogUtils.closeDialog(Data.getdialog());
                     } catch(JSONException e) {
                         e.printStackTrace();
                     }
@@ -2245,29 +2327,39 @@ public class Utils extends Activity {
     Runnable runnableUi=new Runnable(){
         @Override
         public void run() {
-            Data.getbtctext().setText(Data.getbtcbalance());
-            Data.getbtcrmbtext().setText("￥"+d3);
-            Data.getethtext().setText(Data.getethbalance());
-            Data.getethrmbtext().setText("￥"+d1);
+            if(Data.getbledata().contains("BTC")) {
+                Data.getbtctext().setText(Data.getbtcbalance());
+                Data.getbtcrmbtext().setText("￥" + d3);
+            }
+            if(Data.getbledata().contains("ETH")) {
+                Data.getethtext().setText(Data.getethbalance());
+                Data.getethrmbtext().setText("￥" + d1);
+            }
             if(Data.getapptype().equals("cold")) {
                 //Data.gethbbtext().setText(Data.gethieramount());
                 //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
             }
-            Data.getxrptext().setText(Data.getxrpamount());
-            Data.getaedtext().setText(Data.getaedamount());
-            Data.getaedaddresstext().setText(Data.getaedaddress());
-            Data.getxrprmbtext().setText("￥" + df1.format(xrp));
+            if(Data.getbledata().contains("XRP")) {
+                Data.getxrptext().setText(Data.getxrpamount());
+                Data.getxrprmbtext().setText("￥" + df1.format(xrp));
+            }
+            if(Data.getbledata().contains("AED")) {
+                Data.getaedaddresstext().setText(Data.getaedaddress());
+                Data.getaedtext().setText(Data.getaedamount());
+            }
             Data.getcountamount().setText(Data.getamountrmb());
+            Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
+            WeiboDialogUtils.closeDialog(Data.getdialog());
             Looper.loop();
         }
     };
     Runnable runnableUi1=new Runnable(){
         @Override
         public void run() {
-            if(current_price.equals("BTC")){
+            if(current_price.equals("BTC")&&Data.getbledata().contains("BTC")){
                 Data.getbtctext().setText(Data.getbtcbalance());
                 Data.getbtcrmbtext().setText("￥"+d1);
-            }else if(current_price.equals("ETH")){
+            }else if(current_price.equals("ETH")&&Data.getbledata().contains("ETH")){
                 Data.getethtext().setText(Data.getethbalance());
                 Data.getethrmbtext().setText("￥"+d1);
             }
@@ -2275,11 +2367,17 @@ public class Utils extends Activity {
                 //Data.gethbbtext().setText(Data.gethieramount());
                 //Data.gethbbrmbtext().setText("￥"+Data.gethieramount());
             }
-            Data.getxrptext().setText(Data.getxrpamount());
-            Data.getxrprmbtext().setText("￥" + df1.format(xrp));
-            Data.getaedtext().setText(Data.getaedamount());
-            Data.getaedaddresstext().setText(Data.getaedaddress());
+            if(Data.getbledata().contains("XRP")) {
+                Data.getxrptext().setText(Data.getxrpamount());
+                Data.getxrprmbtext().setText("￥" + df1.format(xrp));
+            }
+            if(Data.getbledata().contains("AED")) {
+                Data.getaedtext().setText(Data.getaedamount());
+                Data.getaedaddresstext().setText(Data.getaedaddress());
+            }
             Data.getcountamount().setText(Data.getamountrmb());
+            Data.getcontext().startActivity(new Intent(Data.getcontext(), IndexActivity.class));
+            WeiboDialogUtils.closeDialog(Data.getdialog());
             Looper.loop();
         }
     };
@@ -2301,15 +2399,6 @@ public class Utils extends Activity {
                     result += inputLine + "\n";
                 }
                 is.close();
-            }
-            if(result==null){
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(Data.getcontext(), "获取行情失败", Toast.LENGTH_SHORT).show();
-                        WeiboDialogUtils.closeDialog(Data.getdialog());
-                    }
-                });
             }
             conn.disconnect();
         } catch (Exception e) {
@@ -2377,10 +2466,8 @@ public class Utils extends Activity {
                         });
                     }
                 }
-                balancebtc();
             } catch (Exception e) {
                 e.printStackTrace();
-                balancebtc();
             } finally {
                 if (btcreader != null) {
                     try {
@@ -2437,7 +2524,7 @@ public class Utils extends Activity {
     }
     public static void mainreStart(Context context) {
         Data.setislanguages(true);
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, ColdMainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

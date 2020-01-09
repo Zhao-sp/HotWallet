@@ -10,21 +10,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.wallet.MainActivity;
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 import static com.wallet.cold.utils.Utils.sendble;
 
 public class BleActivity extends AppCompatActivity implements OnClickListener {
     private TextView create;
     private TextView recover,fhselete;
-    private ImageView fanhui;
     private Dialog mWeiboDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +32,8 @@ public class BleActivity extends AppCompatActivity implements OnClickListener {
         create=(TextView) findViewById(R.id.create);Data.setresulterror("no");
         recover=(TextView) findViewById(R.id.recover);
         fhselete=(TextView) findViewById(R.id.fhselete);
-        fanhui=(ImageView) findViewById(R.id.fanhuiadd);
         create.setOnClickListener(this);
         recover.setOnClickListener(this);
-        fanhui.setOnClickListener(this);
         fhselete.setOnClickListener(this);
         Data.settype("main");
         Data.setcontext(BleActivity.this);
@@ -46,7 +43,7 @@ public class BleActivity extends AppCompatActivity implements OnClickListener {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {//如果返回键按下
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, ColdMainActivity.class);
             startActivity(intent);
         }
         return false;
@@ -69,13 +66,9 @@ public class BleActivity extends AppCompatActivity implements OnClickListener {
             Intent intent2 = new Intent(this, RecoverActivity.class);
             startActivity(intent2);
         }
-        if(v.getId() == R.id.fanhuiadd) {
-            Intent intent2 = new Intent(this, MainActivity.class);
-            startActivity(intent2);
-        }
         if(v.getId() == R.id.fhselete) {
-            Intent intent3 = new Intent(this, MainActivity.class);
-            startActivity(intent3);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
     }
     @Override

@@ -12,11 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.R;
-import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 import com.wallet.hot.app.ByteActivity;
 import com.wallet.hot.utils.HotWalletUtils;
 

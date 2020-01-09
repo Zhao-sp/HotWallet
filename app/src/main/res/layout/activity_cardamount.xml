@@ -46,7 +46,7 @@
             app:srcCompat="@drawable/fanhui" />
 
     </RelativeLayout>
-    <com.wallet.cold.utils.MyListView
+    <com.wallet.utils.MyListView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

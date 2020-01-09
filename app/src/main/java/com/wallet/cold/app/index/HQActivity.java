@@ -3,7 +3,6 @@ package com.wallet.cold.app.index;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,11 +20,11 @@ import android.widget.Toast;
 
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.LogCook;
-import com.wallet.cold.utils.MyListView;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.MyListView;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -86,7 +85,7 @@ public class HQActivity extends Activity implements View.OnClickListener {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                if (result != null) {
+                if (result != null&&!result.contains("404 Not Found")) {
                     LogCook.d("行情数据",String.valueOf(result));
                     int index = getIndex(result, 1, "[}]");
                     String btchq = result.substring(0,index+1);
@@ -185,12 +184,12 @@ public class HQActivity extends Activity implements View.OnClickListener {
                 while ((inputLine = bufferReader.readLine()) != null) {
                     result += inputLine + "\n";
                 }
-                if(result==null){
+                if(result==null||result.contains("404 Not Found")){
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(Data.getcontext(), "获取行情失败", Toast.LENGTH_SHORT).show();
-                            WeiboDialogUtils.closeDialog(Data.getdialog());
+                            WeiboDialogUtils.closeDialog(mWeiboDialog);
                         }
                     });
                 }

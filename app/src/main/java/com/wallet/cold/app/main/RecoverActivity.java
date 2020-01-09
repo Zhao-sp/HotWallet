@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
+import com.wallet.utils.language.LocalManageUtil;
 import com.wallet.cold.utils.Utils;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 import com.wallet.hot.app.ByteActivity;
 import com.wallet.hot.utils.HotWalletUtils;
 
@@ -83,6 +83,7 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
                     } else if (!pin.getText().toString().equals(pin1.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "两次输入的密码不一致", Toast.LENGTH_SHORT).show();
                     }else {
+                        Data.sethotzjc(zhujici.getText().toString());
                         mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.recover10));
                         Data.setdialog(mWeiboDialog);
                         Data.sethotpassword(pin.getText().toString());

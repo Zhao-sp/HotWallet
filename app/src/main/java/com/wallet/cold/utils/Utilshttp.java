@@ -2,34 +2,26 @@ package com.wallet.cold.utils;
 
 import android.content.Intent;
 import android.os.Looper;
-import android.text.TextUtils;
-import android.util.ArrayMap;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.google.gson.Gson;
-import com.google.zxing.common.StringUtils;
-import com.googlecode.jsonrpc4j.Base64;
 import com.wallet.R;
 import com.wallet.cold.app.index.Transfer;
 import com.wallet.cold.app.pawn.CdActivity;
 import com.wallet.cold.app.pawn.login;
-import com.wallet.hot.app.HotTransfer;
+import com.wallet.utils.LogCook;
+import com.wallet.utils.WeiboDialogUtils;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -648,70 +640,76 @@ public class Utilshttp {
      * 获取xrp余额
      */
     public void getxrpamount() {
-        new Thread(new Runnable() {
-            public void run() {
-                String result = "";Looper.prepare();
-                try {
-                    String data = "{\"account\":\""+Data.getxrpaddress()+"\"}";
-                    data = URLEncoder.encode(data, "UTF-8");
-                    String urlName = Data.gethttp1()+"/hsRPCNodeServer/xrp/getBalance?jsonParams="+data;
-                    LogCook.d("发送参数", urlName);
-                    URL U = new URL(urlName);
-                    URLConnection connection = U.openConnection();
-                    connection.setConnectTimeout(30000);
-                    connection.connect();
-                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    String line;
-                    while ((line = in.readLine()) != null) {
-                        result += line;
-                    }
-                    LogCook.d("获取xrp余额/交易序号返回数据", result);
-                    in.close();
-                    JSONObject jsonObject = new JSONObject(result);
-                    if (jsonObject.getString("status_Sucess").equals("true")) {
-                        result=jsonObject.getString("status_Result");
-                        int index = getIndex(result,1,"#");
-                        String balance = result.substring(0,index);
-                        balance = String.valueOf(Double.parseDouble(balance)/1000000);
-                        String sequence = result.substring(index+1,result.length());
-                        LogCook.d("瑞波币余额", balance);Data.setxrpamount(balance);
-                        LogCook.d("瑞波币交易序号", sequence);Data.setxrpserialnumber(sequence);
-                        if (Data.getbizhong().equals("trustset")) {
-                            new Transfer().trustsetcreatetransaction();
-                        }else {
-                            if (Data.gettype().equals("fragment3")||Data.gettype().equals("hottransfer")) {
-                                if (Data.getbizhong().equals("XRP")) {
-                                    new Transfer().xrpcreatetransaction();
-                                } else if (Data.getbizhong().equals("AED")) {
-                                    new Transfer().aedcreatetransaction();
-                                }
+        if(Data.getbledata().contains("XRP")) {
+            new Thread(new Runnable() {
+                public void run() {
+                    String result = "";
+                    Looper.prepare();
+                    try {
+                        String data = "{\"account\":\"" + Data.getxrpaddress() + "\"}";
+                        data = URLEncoder.encode(data, "UTF-8");
+                        String urlName = Data.gethttp1() + "/hsRPCNodeServer/xrp/getBalance?jsonParams=" + data;
+                        LogCook.d("发送参数", urlName);
+                        URL U = new URL(urlName);
+                        URLConnection connection = U.openConnection();
+                        connection.connect();
+                        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                        String line;
+                        while ((line = in.readLine()) != null) {
+                            result += line;
+                        }
+                        LogCook.d("获取xrp余额/交易序号返回数据", result);
+                        in.close();
+                        JSONObject jsonObject = new JSONObject(result);
+                        if (jsonObject.getString("status_Sucess").equals("true")) {
+                            result = jsonObject.getString("status_Result");
+                            int index = getIndex(result, 1, "#");
+                            String balance = result.substring(0, index);
+                            balance = String.valueOf(Double.parseDouble(balance) / 1000000);
+                            String sequence = result.substring(index + 1, result.length());
+                            LogCook.d("瑞波币余额", balance);
+                            Data.setxrpamount(balance);
+                            LogCook.d("瑞波币交易序号", sequence);
+                            Data.setxrpserialnumber(sequence);
+                            if (Data.getbizhong().equals("trustset")) {
+                                new Transfer().trustsetcreatetransaction();
                             } else {
+                                if (Data.gettype().equals("fragment3") || Data.gettype().equals("hottransfer")) {
+                                    if (Data.getbizhong().equals("XRP")) {
+                                        new Transfer().xrpcreatetransaction();
+                                    } else if (Data.getbizhong().equals("AED")) {
+                                        new Transfer().aedcreatetransaction();
+                                    }
+                                } else {
+                                    new Utilshttp().getaedamount();
+                                }
+                            }
+                        } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24) +
+                                    jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
+                            if (Data.gettype().equals("fragment3") || Data.gettype().equals("jyxxactivity")) {
+                                WeiboDialogUtils.closeDialog(Data.getdialog());
+                            } else {
+                                Data.setxrpamount("0");
                                 new Utilshttp().getaedamount();
                             }
                         }
-                    } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24) +
-                                jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
-                        if(Data.gettype().equals("fragment3")||Data.gettype().equals("jyxxactivity")) {
-                            WeiboDialogUtils.closeDialog(Data.getdialog());
-                        }else {
+                    } catch (Exception e) {
+                        if (Data.gettype().equals("fragment3") || Data.gettype().equals("jyxxactivity") || Data.gettype().equals("hottransfer")) {
+
+                        } else {
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
                             Data.setxrpamount("0");
                             new Utilshttp().getaedamount();
                         }
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    if(Data.gettype().equals("fragment3")||Data.gettype().equals("jyxxactivity")||Data.gettype().equals("hottransfer")) {
-
-                    }else {
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp24), Toast.LENGTH_SHORT).show();
-                        Data.setxrpamount("0");
-                        new Utilshttp().getaedamount();
-                    }
-                    e.printStackTrace();
                 }
-                Looper.loop();
-            }
-        }).start();
+            }).start();
+        }else{
+            Data.setxrpamount("0");
+            new Utilshttp().getaedamount();
+        }
     }
 
     /**
@@ -787,49 +785,62 @@ public class Utilshttp {
      * 获取aed余额
      */
     public void getaedamount() {
-        new Thread(new Runnable() {
-            public void run() {
-                String result = "";Looper.prepare();
-                try {
-                    String data = "{\"account\":\""+Data.getxrpaddress()+"\",\"currency\":\"AED\"}";
-                    data = URLEncoder.encode(data, "UTF-8");
-                    String urlName = Data.gethttp1()+"/hsRPCNodeServer/xrp/accountLines?jsonParams="+data;
-                    LogCook.d("发送参数", urlName);
-                    URL U = new URL(urlName);
-                    URLConnection connection = U.openConnection();
-                    connection.connect();
-                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    String line;
-                    while ((line = in.readLine()) != null) {
-                        result += line;
-                    }
-                    LogCook.d("获取aed余额/账号返回数据", result);
-                    in.close();
-                    JSONObject jsonObject = new JSONObject(result);
-                    if (jsonObject.getString("status_Sucess").equals("true")) {
-                        result=jsonObject.getString("status_Result");
-                        int index = getIndex(result,1,"#");
-                        String sequence = result.substring(0,index);
-                        String balance = result.substring(index+1,result.length());
-                        LogCook.d("瑞波代币余额", balance);Data.setaedamount(balance);
-                        LogCook.d("瑞波代币发行地址", sequence);
-                        new Utils().send2();
-                    } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
-                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp25) +
-                                jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
-                            Data.setaedamount("0");Data.setaedaddress("");
+        if(Data.getbledata().contains("AED")) {
+            new Thread(new Runnable() {
+                public void run() {
+                    String result = "";
+                    Looper.prepare();
+                    try {
+                        String data = "{\"account\":\"" + Data.getxrpaddress() + "\",\"currency\":\"AED\"}";
+                        data = URLEncoder.encode(data, "UTF-8");
+                        String urlName = Data.gethttp1() + "/hsRPCNodeServer/xrp/accountLines?jsonParams=" + data;
+                        LogCook.d("发送参数", urlName);
+                        URL U = new URL(urlName);
+                        URLConnection connection = U.openConnection();
+                        connection.connect();
+                        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                        String line;
+                        while ((line = in.readLine()) != null) {
+                            result += line;
+                        }
+                        LogCook.d("获取aed余额/账号返回数据", result);
+                        in.close();
+                        JSONObject jsonObject = new JSONObject(result);
+                        if (jsonObject.getString("status_Sucess").equals("true")) {
+                            result = jsonObject.getString("status_Result");
+                            int index = getIndex(result, 1, "#");
+                            String sequence = result.substring(0, index);
+                            String balance = result.substring(index + 1, result.length());
+                            LogCook.d("瑞波代币余额", balance);
+                            Data.setaedamount(balance);
+                            LogCook.d("瑞波代币发行地址", sequence);
                             new Utils().send2();
+                        } else if (jsonObject.getString("status_Sucess").equals("false")) {//返回错误信息
+                            Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp25) +
+                                    jsonObject.getString("status_Result") + ":" + jsonObject.getString("status_Message"), Toast.LENGTH_SHORT).show();
+                            Data.setaedamount("0");
+                            Data.setaedaddress("");
+                            new Utils().send2();
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp25), Toast.LENGTH_SHORT).show();
+                        Data.setaedamount("0");
+                        Data.setaedaddress("");
+                        new Utils().send2();
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.uhttp25), Toast.LENGTH_SHORT).show();
-                    Data.setaedamount("0");Data.setaedaddress("");
-                    new Utils().send2();
-                    e.printStackTrace();
+                    Data.setaedaddress("rKHHaXA3k3DUvZsCbdLGnUjyopuXYbEAKF");
                 }
-                Data.setaedaddress("rKHHaXA3k3DUvZsCbdLGnUjyopuXYbEAKF");
-                Looper.loop();
+            }).start();
+        }else{
+            Data.setaedamount("0");
+            if(!Data.gettype().equals("createOrimport")) {
+                if (!Data.getbledata().contains("XRP") || !Data.gettype().equals("recover") || !Data.gettype().equals("verification") || !Data.gettype().equals("type")) {
+                    Looper.prepare();
+                }
             }
-        }).start();
+            new Utils().send2();
+        }
     }
 
     public List<Map<String,String>> getxrprecord(){

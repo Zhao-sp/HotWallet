@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,14 +25,14 @@ import com.wallet.cold.app.auth0.auth0register;
 import com.wallet.cold.app.main.IndexActivity;
 import com.wallet.cold.rlp.RLP;
 import com.wallet.cold.utils.UtilsBase58;
-import com.wallet.cold.utils.CaptureActivity;
+import com.wallet.utils.Sweepcode.CaptureActivity;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.LogCook;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.LogCook;
 import com.wallet.cold.utils.PopWinShare1;
 import com.wallet.cold.utils.Utils;
 import com.wallet.cold.utils.Utilshttp;
-import com.wallet.cold.utils.WeiboDialogUtils;
+import com.wallet.utils.WeiboDialogUtils;
 import com.wallet.hot.ripple.K256KeyPair;
 import com.wallet.hot.ripple.HashUtils;
 
@@ -63,13 +64,14 @@ import static com.wallet.cold.utils.Utils.strlength;
 
 public class Transfer extends AppCompatActivity implements View.OnClickListener {
     private PopWinShare1 popWinShare;
-    private TextView popadd,popadd1,popadd2,popadd3,balance,fee1,xl,fhf3;
-    private EditText to,fee,limit1,amountyue;
-    private ImageView saoma,fanhui;
+    private TextView popadd,popadd1,popadd2,popadd3,balance,fee1,xl,fhf3,fee;
+    private EditText to,limit1,amountyue;
+    private ImageView saoma,fanhui,tuzi,gui;
     private Dialog mWeiboDialog;
     private Button commit;
     private String scriptPubKey,strhex1,strhex2;
     private boolean uxto=false;
+    private SeekBar mSeekBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +83,30 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         Data.setn(0);
         Data.setcount(0);
         Data.setsaoma("yes");
+        mSeekBar = (SeekBar) findViewById(R.id.seekbar);
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                //滑动中的监听
+                if(popadd.getText().toString().equals("BTC")) {
+                    float value = progress / 10000f;
+                    if (progress == 0) {
+                        fee.setText("0.0001");
+                    }else {
+                        fee.setText(String.valueOf(value));
+                    }
+                }else if(popadd.getText().toString().equals("ETH")) {
+                    fee.setText(String.valueOf(progress));
+                }
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //滑动后的事件
+            }
+        });
         popadd = (TextView) findViewById(R.id.popadd2);
         popadd.setOnClickListener(this);
         popadd1 = (TextView) findViewById(R.id.popadd);
@@ -92,6 +118,8 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         saoma = (ImageView) findViewById(R.id.saoma);
         saoma.setOnClickListener(this);
         fanhui = (ImageView) findViewById(R.id.fanhui3);
+        tuzi = (ImageView) findViewById(R.id.tuzi);
+        gui = (ImageView) findViewById(R.id.gui);
         fanhui.setOnClickListener(this);
         xl = (TextView) findViewById(R.id.xl);
         xl.setOnClickListener(this);
@@ -103,19 +131,8 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         commit.setOnClickListener(this);
         to = (EditText) findViewById(R.id.to);
         limit1 = (EditText) findViewById(R.id.limit1);
-        fee = (EditText) findViewById(R.id.fee);
+        fee = (TextView) findViewById(R.id.fee);
         fee1 = (TextView) findViewById(R.id.fee1);
-        fee.setKeyListener(new NumberKeyListener() {
-            @Override
-            protected char[] getAcceptedChars() {
-                char[] numberChars={'1','2','3','4','5','6','7','8','9','0','.'};
-                return numberChars;
-            }
-            @Override
-            public int getInputType() {
-                return android.text.InputType.TYPE_CLASS_PHONE;
-            }
-        });
         amountyue = (EditText) findViewById(R.id.btcyue);
         amountyue.setKeyListener(new NumberKeyListener() {
             @Override
@@ -160,18 +177,15 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
             popadd1.setText("ETH");
             popadd2.setText("ETH");
             popadd3.setText("Wei");
-            popadd3.setVisibility(View.VISIBLE);
-            fee.setVisibility(View.VISIBLE);
-            fee1.setVisibility(View.VISIBLE);
+            mSeekBar.setMax(9000);
+            fee.setText("1");
             balance.setText(Data.getethbalance());
         }else{
             popadd.setText("BTC");
             popadd1.setText("BTC");
             popadd2.setText("BTC");
             popadd3.setText("BTC");
-            popadd3.setVisibility(View.VISIBLE);
-            fee.setVisibility(View.VISIBLE);
-            fee1.setVisibility(View.VISIBLE);
+            fee.setText("0.0001");
             balance.setText(Data.getbtcbalance());
         }
         Data.settype("fragment3");
@@ -1309,51 +1323,82 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
         public void onClick(View v) {
             int i = v.getId();
             if (i == R.id.layout_btc) {
-                Data.setbizhong("BTC");
-                popadd.setText("BTC");
-                popadd1.setText("BTC");
-                popadd2.setText("BTC");
-                popadd3.setText("BTC");
-                popadd3.setVisibility(View.VISIBLE);
-                fee.setVisibility(View.VISIBLE);
-                fee1.setVisibility(View.VISIBLE);
-                popWinShare.dismiss();
-                balance.setText(Data.getbtcbalance());
+                if(Data.getbledata().contains("BTC")) {
+                    Data.setbizhong("BTC");
+                    popadd.setText("BTC");
+                    popadd1.setText("BTC");
+                    popadd2.setText("BTC");
+                    popadd3.setText("BTC");
+                    fee.setText("0.0001");
+                    popadd3.setVisibility(View.VISIBLE);
+                    fee.setVisibility(View.VISIBLE);
+                    fee1.setVisibility(View.VISIBLE);
+                    tuzi.setVisibility(View.VISIBLE);
+                    gui.setVisibility(View.VISIBLE);
+                    mSeekBar.setVisibility(View.VISIBLE);
+                    popWinShare.dismiss();
+                    balance.setText(Data.getbtcbalance());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
             } else if (i == R.id.layout_eth) {
-                Data.setbizhong("ETH");
-                popadd.setText("ETH");
-                popadd1.setText("ETH");
-                popadd2.setText("ETH");
-                popadd3.setText("Wei");
-                popadd3.setVisibility(View.VISIBLE);
-                fee.setVisibility(View.VISIBLE);
-                fee1.setVisibility(View.VISIBLE);
-                popWinShare.dismiss();
-                if (Data.getethbalance() == null) {
-                    balance.setText("0.00000000");
-                } else {
-                    balance.setText(Data.getethbalance());
+                if(Data.getbledata().contains("ETH")) {
+                    Data.setbizhong("ETH");
+                    popadd.setText("ETH");
+                    popadd1.setText("ETH");
+                    popadd2.setText("ETH");
+                    popadd3.setText("Wei");
+                    fee.setText("1");
+                    popadd3.setVisibility(View.VISIBLE);
+                    fee.setVisibility(View.VISIBLE);
+                    fee1.setVisibility(View.VISIBLE);
+                    tuzi.setVisibility(View.VISIBLE);
+                    gui.setVisibility(View.VISIBLE);
+                    mSeekBar.setVisibility(View.VISIBLE);
+                    mSeekBar.setMax(9000);
+                    popWinShare.dismiss();
+                    if (Data.getethbalance() == null) {
+                        balance.setText("0.00000000");
+                    } else {
+                        balance.setText(Data.getethbalance());
+                    }
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
                 }
             } else if (i == R.id.layout_xrp) {
-                Data.setbizhong("XRP");
-                popadd.setText("XRP");
-                popadd1.setText("XRP");
-                popadd2.setText("drops");
-                popadd3.setVisibility(View.GONE);
-                fee.setVisibility(View.GONE);
-                fee1.setVisibility(View.GONE);
-                popWinShare.dismiss();
-                balance.setText(Data.getxrpamount());
+                if(Data.getbledata().contains("XRP")) {
+                    Data.setbizhong("XRP");
+                    popadd.setText("XRP");
+                    popadd1.setText("XRP");
+                    popadd2.setText("drops");
+                    popadd3.setVisibility(View.GONE);
+                    fee.setVisibility(View.GONE);
+                    fee1.setVisibility(View.GONE);
+                    tuzi.setVisibility(View.GONE);
+                    gui.setVisibility(View.GONE);
+                    mSeekBar.setVisibility(View.GONE);
+                    popWinShare.dismiss();
+                    balance.setText(Data.getxrpamount());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
             } else if (i == R.id.layout_aed) {
-                Data.setbizhong("AED");
-                popadd.setText("AED");
-                popadd1.setText("AED");
-                popadd2.setText("AED");
-                popadd3.setVisibility(View.GONE);
-                fee.setVisibility(View.GONE);
-                fee1.setVisibility(View.GONE);
-                popWinShare.dismiss();
-                balance.setText(Data.getaedamount());
+                if(Data.getbledata().contains("AED")) {
+                    Data.setbizhong("AED");
+                    popadd.setText("AED");
+                    popadd1.setText("AED");
+                    popadd2.setText("AED");
+                    popadd3.setVisibility(View.GONE);
+                    fee.setVisibility(View.GONE);
+                    fee1.setVisibility(View.GONE);
+                    tuzi.setVisibility(View.GONE);
+                    gui.setVisibility(View.GONE);
+                    mSeekBar.setVisibility(View.GONE);
+                    popWinShare.dismiss();
+                    balance.setText(Data.getaedamount());
+                }else{
+                    Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.f511), Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

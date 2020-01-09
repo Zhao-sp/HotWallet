@@ -1,12 +1,10 @@
 package com.wallet.cold.app.pawn;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.DigitsKeyListener;
@@ -21,8 +19,8 @@ import android.widget.Toast;
 
 import com.wallet.R;
 import com.wallet.cold.utils.Data;
-import com.wallet.cold.utils.LocalManageUtil;
-import com.wallet.cold.utils.LogCook;
+import com.wallet.utils.language.LocalManageUtil;
+import com.wallet.utils.LogCook;
 
 import static com.wallet.cold.utils.Utils.sendble;
 

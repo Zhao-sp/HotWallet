@@ -1,7 +1,7 @@
 //
 // Created by Lenovo on 2019/11/18.
 //
-#include "com_wallet_JniUtils.h"
+#include "com_wallet_utils_JniUtils.h"
 #include <jni.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +13,7 @@
 
 const char *app_signature_sha1="6C2C375774EBE37E93B2F13D28BD84E9E0F83525";
 const char HexCode[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-JNIEXPORT void JNICALL Java_com_wallet_JniUtils_getbbCourseKeyFromC
+JNIEXPORT void JNICALL Java_com_wallet_utils_JniUtils_getbbCourseKeyFromC
         (JNIEnv *env, jclass clz, jobject context_object){
     jclass context_class = (*env)->GetObjectClass(env,context_object);
 

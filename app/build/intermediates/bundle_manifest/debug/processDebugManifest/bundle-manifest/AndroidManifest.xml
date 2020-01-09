@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hotwallet"
     android:versionCode="43"
-    android:versionName="1" >
+    android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -50,7 +50,7 @@
         android:theme="@android:style/Theme.NoTitleBar"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.wallet.CreateOrImportActivity"
+            android:name="com.wallet.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,7 +63,7 @@
             android:name="com.wallet.cold.utils.UartService"
             android:enabled="true" />
 
-        <activity android:name="com.wallet.cold.app.main.MainActivity" />
+        <activity android:name="com.wallet.cold.app.main.ColdMainActivity" />
         <activity
             android:name="com.wallet.cold.app.main.BleActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -159,7 +159,7 @@
             android:name="com.wallet.cold.app.pawn.RiskActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.wallet.cold.utils.CaptureActivity"
+            android:name="com.wallet.utils.Sweepcode.CaptureActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.wallet.cold.dfu.dfu_service.NotificationActivity" />
         <activity
@@ -170,7 +170,7 @@
         <service android:name="com.wallet.cold.dfu.dfu_service.DfuService" />
 
         <activity
-            android:name="com.wallet.cold.wxapi.WXEntryActivity"
+            android:name="com.wallet.utils.wxapi.WXEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat" />
@@ -190,7 +190,7 @@
             android:name="com.wallet.cold.app.util.FingerprintsXQ"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.wallet.LicenceSimpleActivity"
+            android:name="com.wallet.utils.LicenceSimpleActivity"
             android:excludeFromRecents="true"
             android:noHistory="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -205,6 +205,9 @@
         <activity
             android:name="com.wallet.hot.app.BackUpMnemonicActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.wallet.centralized.centerMainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>
