@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'hotwallet'
             keyPassword 'hotwallet123456'
-            storeFile file('E:\\Androidwork\\HotWallet\\app\\hotwallet.jks')
+            storeFile file('E:\\work\\work\\AndroidHotWallet\\app\\hotwallet.jks')
             storePassword 'hotwallet123456'
         }
     }
