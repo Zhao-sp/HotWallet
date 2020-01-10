@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-108:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-108:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-108:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-108:12
+ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-107:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-107:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-107:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-107:12
 MERGED from [com.android.support:multidex:1.0.2] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\0bf4cb55f1131d8264316b3faa9da637\multidex-1.0.2\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\a93a8681fb3508d08b4a29d2137bbccd\appcompat-v7-27.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\05aa32787a2cfaf4c8945cbb5d8a82e2\constraint-layout-1.1.0\AndroidManifest.xml:2:1-11:12
@@ -20,9 +20,9 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Lenovo\.gradle
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\233db691341181defa0747820edd5df8\viewmodel-1.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\ec24b2a8afb0e4516737deee34696e9f\runtime-1.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\294cc8068b0c38707c275d62777d92a9\runtime-1.1.0\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-108:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-108:12
-INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-108:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-107:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-107:12
+INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:3:1-107:12
 	package
 		ADDED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml:5:5-25
 		INJECTED from E:\work\work\AndroidHotWallet\app\src\main\AndroidManifest.xml

@@ -2854,6 +2854,10 @@ jnr.constants.platform.Sock
 net.vidageek.mirror.reflect.DefaultAnnotationHandler
 org.bouncycastle.jcajce.provider.symmetric.GOST28147$CryptoProWrap
 cn.leo.magic.screen.ScreenAdapter
+    void <init>()
+    static void adaptScreen(android.app.Activity)
+    public static void cancelAdaptScreen(android.app.Activity)
+    public static boolean isAdaptScreen(android.app.Activity)
 org.bouncycastle.math.ec.custom.sec.SecT131FieldElement
 okhttp3.internal.ws.RealWebSocket$1
 org.web3j.protocol.core.methods.response.EthTransaction
@@ -7037,6 +7041,7 @@ org.spongycastle.jcajce.provider.digest.RIPEMD256$KeyGenerator
 org.spongycastle.jcajce.provider.asymmetric.elgamal.BCElGamalPrivateKey
 org.spongycastle.pqc.math.ntru.polynomial.Resultant
 cn.leo.magic.screen.MagicScreenAdapter
+    private void <init>()
 com.fasterxml.jackson.databind.util.Converter
 com.fasterxml.jackson.databind.deser.DeserializerCache
 org.bouncycastle.jcajce.provider.asymmetric.rsa.BCRSAPublicKey
@@ -27220,6 +27225,7 @@ com.google.protobuf.Descriptors$MethodDescriptor
     private com.google.protobuf.Descriptors$Descriptor outputType
 android.support.v4.app.NotificationCompatJellybean
     private static final java.lang.Object sActionsLock
+cn.leo.magic.screen.ScreenAdapter
 android.support.v4.content.WakefulBroadcastReceiver
     private static final android.util.SparseArray sActiveWakeLocks
     private static int mNextId

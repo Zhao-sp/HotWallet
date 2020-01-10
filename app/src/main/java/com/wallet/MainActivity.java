@@ -26,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.WriterException;
-import com.wallet.centralized.centerMainActivity;
 import com.wallet.cold.app.main.ColdMainActivity;
 import com.wallet.utils.JniUtils;
 import com.wallet.utils.SharedPrefsStrListUtil;
@@ -41,7 +40,7 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
-    private Button mCreateBtn,mImportBtn,mCenterBtn;
+    private Button mCreateBtn,mImportBtn;
     private ObjectAnimator mTitleViewAnimator,mCreateBtnAnimator,mImportBtnAnimator,mCenterBtnAnimator;
     private int mScreenHeight = 0;
 
@@ -54,8 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCreateBtn.setOnClickListener(this);
         mImportBtn = findViewById(R.id.hot_wallet);
         mImportBtn.setOnClickListener(this);
-        mCenterBtn = findViewById(R.id.center_wallet);
-        mCenterBtn.setOnClickListener(this);
         DisplayMetrics dm = getResources().getDisplayMetrics();
         mScreenHeight = dm.heightPixels;
         initAnimation();
@@ -221,12 +218,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent.setClass(this, ColdMainActivity.class);
                 startActivity(Intent);
                 break;
-            case R.id.center_wallet:
-                Data.setapptype("center");
-                Intent intent = new Intent();
-                intent.setClass(this, centerMainActivity.class);
-                startActivity(intent);
-                break;
         }
     }
 
@@ -234,13 +225,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         titleAnimation();
         createAnimation();
         importAnimation();
-        centerAnimation();
     }
 
     private void startAnimation() {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(1000);
-        animatorSet.play(mCreateBtnAnimator).with(mImportBtnAnimator).with(mCenterBtnAnimator).after(mTitleViewAnimator);
+        animatorSet.play(mCreateBtnAnimator).with(mImportBtnAnimator).after(mTitleViewAnimator);
         animatorSet.start();
     }
 
@@ -336,40 +326,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onAnimationEnd(Animator animation) {
                 // TODO Auto-generated method stub
                 mImportBtn.setTranslationY(0);
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-    }
-
-    private void centerAnimation() {
-        mCenterBtnAnimator = ObjectAnimator.ofFloat(mCenterBtn, "translationY",
-                mScreenHeight, 0);
-        mCenterBtnAnimator.setDuration(800);
-        mCenterBtnAnimator.setInterpolator(new DecelerateInterpolator());
-        mCenterBtnAnimator.addListener(new Animator.AnimatorListener() {
-
-            @Override
-            public void onAnimationStart(Animator animation) {
-                // TODO Auto-generated method stub
-                mCenterBtn.setTranslationY(mScreenHeight);
-                mCenterBtn.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                // TODO Auto-generated method stub
-                mCenterBtn.setTranslationY(0);
             }
 
             @Override

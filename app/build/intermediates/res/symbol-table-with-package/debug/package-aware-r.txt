@@ -673,8 +673,6 @@ drawable alipay
 drawable amount
 drawable anim
 drawable arrow
-drawable background
-drawable backgroundi
 drawable banner
 drawable bt_main
 drawable bt_main1
@@ -683,8 +681,6 @@ drawable bt_main3
 drawable bt_seekbar
 drawable btc
 drawable btc1
-drawable button
-drawable buttoni
 drawable bx
 drawable cd
 drawable cd1
@@ -715,8 +711,6 @@ drawable fenxiang
 drawable fenxiang1
 drawable fx
 drawable fx1
-drawable group10
-drawable group3
 drawable gui
 drawable gywm
 drawable haibo
@@ -760,7 +754,6 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable paixu
-drawable pattern
 drawable pawn_xk
 drawable pawn_xz
 drawable pengyouquan
@@ -769,7 +762,6 @@ drawable qianbao_xk
 drawable qianbao_xz
 drawable qq
 drawable qr_code_bg
-drawable rbackground
 drawable safe
 drawable safe_btnok_active
 drawable saoyisao_da
@@ -917,7 +909,6 @@ id cdname1
 id center
 id center_horizontal
 id center_vertical
-id center_wallet
 id chains
 id checkbox
 id china
@@ -1021,8 +1012,6 @@ id icon
 id icon_group
 id ifRoom
 id image
-id image1
-id image2
 id imageView
 id imageView2
 id imageView3
@@ -1075,7 +1064,6 @@ id list_search_devices
 id list_yue
 id list_zx
 id llll
-id login
 id main_tab_group
 id message
 id middle
@@ -1125,7 +1113,6 @@ id quxiao
 id r1
 id radio
 id recover
-id register
 id resetpin
 id restart_preview
 id return_scan_result
@@ -1204,7 +1191,6 @@ id tabMode
 id table_num
 id tag_transition_group
 id text
-id text1
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
@@ -1351,7 +1337,6 @@ layout activity_auth0register
 layout activity_capture
 layout activity_cardamount
 layout activity_cd
-layout activity_centermain
 layout activity_create
 layout activity_cz
 layout activity_cz_1

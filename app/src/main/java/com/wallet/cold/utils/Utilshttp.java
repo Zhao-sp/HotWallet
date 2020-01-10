@@ -835,8 +835,14 @@ public class Utilshttp {
         }else{
             Data.setaedamount("0");
             if(!Data.gettype().equals("createOrimport")) {
-                if (!Data.getbledata().contains("XRP") || !Data.gettype().equals("recover") || !Data.gettype().equals("verification") || !Data.gettype().equals("type")) {
-                    Looper.prepare();
+                if (!Data.getbledata().contains("XRP")){
+                    if(!Data.gettype().equals("recover")) {
+                        if (!Data.gettype().equals("verification")) {
+                            if (!Data.gettype().equals("type")) {
+                                Looper.prepare();
+                            }
+                        }
+                    }
                 }
             }
             new Utils().send2();

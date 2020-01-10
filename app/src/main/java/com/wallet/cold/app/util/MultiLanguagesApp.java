@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 
 import com.wallet.utils.language.LocalManageUtil;
 
-
 public class MultiLanguagesApp extends Application {
 
     @Override

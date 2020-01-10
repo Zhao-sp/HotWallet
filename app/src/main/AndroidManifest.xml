@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.wallet"
     android:versionCode="43"
-    android:versionName="1.0.1" >
+    android:versionName="1.0.2" >
     <!--允许应用程序改变网络状态-->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <!--允许应用程序改变WIFI连接状态-->
@@ -104,5 +104,4 @@
         <activity android:name=".hot.app.BackUpMnemonicActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".centralized.centerMainActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
-
 </manifest>

@@ -116,12 +116,12 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\qianbao_xk.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_faxian_xz.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\faxian_xz.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-mdpi-v4\\abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_faxian_xz.png.flat",
+        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\faxian_xz.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
@@ -136,10 +136,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_background.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\background.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_foreground.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_foreground.png"
     },
@@ -148,12 +144,12 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-ldrtl-xhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
@@ -172,10 +168,6 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\tz.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_rbackground.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\rbackground.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
@@ -184,12 +176,12 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\lanyabg.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\56174b82c656db3581651f5760ac8685\\support-compat-27.1.1\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_action_tombstone.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\56174b82c656db3581651f5760ac8685\\support-compat-27.1.1\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\56174b82c656db3581651f5760ac8685\\support-compat-27.1.1\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_fenxiang1.png.flat",
@@ -198,10 +190,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_jyxx.xml.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\layout\\item_jyxx.xml"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_button.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxxhdpi\\button.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_sousuo_xiao.png.flat",
@@ -256,12 +244,12 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\cz1.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_action_bar_item_background_material.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_grow_fade_in_from_bottom.xml.flat",
@@ -274,10 +262,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_pattern.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\pattern.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -360,12 +344,12 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\xiala.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_yixuan.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\yixuan.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-mdpi-v4\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_yixuan.png.flat",
+        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\yixuan.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_banner.png.flat",
@@ -408,20 +392,16 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\scan_flashlight_normal.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_fanhui.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\fanhui.png"
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_qianbao_xz.png.flat",
+        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\qianbao_xz.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_qianbao_xz.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\qianbao_xz.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_backgroundi.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\backgroundi.png"
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_fanhui.png.flat",
+        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\fanhui.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -448,10 +428,6 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_group10.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\group10.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_backup_mnemonic_layout.xml.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\layout\\backup_mnemonic_layout.xml"
     },
@@ -470,10 +446,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-mdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_group3.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\group3.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
@@ -532,28 +504,28 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\cz.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_scan_photo_normal.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\mipmap-hdpi\\scan_photo_normal.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_item_pressed.xml.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\selector_item_pressed.xml"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_scan_photo_normal.png.flat",
+        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\mipmap-hdpi\\scan_photo_normal.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_shouru.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\shouru.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16_notification_template_custom_big.xml.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\56174b82c656db3581651f5760ac8685\\support-compat-27.1.1\\res\\layout-v16\\notification_template_custom_big.xml"
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_item_background_holo_dark.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_sousuo_xiao.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\sousuo_xiao.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_item_background_holo_dark.xml.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable\\abc_item_background_holo_dark.xml"
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16_notification_template_custom_big.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\56174b82c656db3581651f5760ac8685\\support-compat-27.1.1\\res\\layout-v16\\notification_template_custom_big.xml"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_bt_main1.xml.flat",
@@ -562,10 +534,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ratingbar_material.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable\\abc_ratingbar_material.xml"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_group10.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\group10.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -680,10 +648,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\56174b82c656db3581651f5760ac8685\\support-compat-27.1.1\\res\\layout\\notification_template_icon_group.xml"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_buttoni.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\buttoni.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
@@ -716,12 +680,12 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_haibo.jpg.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\haibo.jpg"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_go_search_api_material.xml.flat",
@@ -738,10 +702,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_pengyouquan.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\pengyouquan.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_pattern.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\pattern.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout-watch-v20_abc_alert_dialog_title_material.xml.flat",
@@ -766,10 +726,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cd.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\cd.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_group10.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\group10.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tv.png.flat",
@@ -800,12 +756,12 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-watch-v20_abc_dialog_material_background.xml.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-watch-v20\\abc_dialog_material_background.xml"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_material_dark.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-watch-v20_abc_dialog_material_background.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-watch-v20\\abc_dialog_material_background.xml"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_sousuo_da.png.flat",
@@ -832,12 +788,12 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\banner.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_bottom_address.xml.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\layout\\bottom_address.xml"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_bottom_address.xml.flat",
+        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\layout\\bottom_address.xml"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_icon.xml.flat",
@@ -850,10 +806,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_item_material.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\layout\\select_dialog_item_material.xml"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_background.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\background.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
@@ -992,10 +944,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxxhdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_pattern.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\pattern.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_popwin_share.xml.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\layout\\popwin_share.xml"
     },
@@ -1004,12 +952,12 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\56174b82c656db3581651f5760ac8685\\support-compat-27.1.1\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_jinru_xiao.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\jinru_xiao.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_jinru_xiao.png.flat",
+        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\jinru_xiao.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_daoru1.png.flat",
@@ -1136,10 +1084,6 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\arrow.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_buttoni.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\buttoni.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_btn_checkable.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\color-v23\\abc_tint_btn_checkable.xml"
     },
@@ -1176,12 +1120,12 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_borderless_material.xml.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable\\abc_btn_borderless_material.xml"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_hangqing_xz.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\hangqing_xz.png"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_borderless_material.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
@@ -1192,12 +1136,12 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23_abc_control_background_material.xml.flat",
-        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-v23\\abc_control_background_material.xml"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout-watch-v20_abc_alert_dialog_button_bar_material.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\layout-watch-v20\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23_abc_control_background_material.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-v23\\abc_control_background_material.xml"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -1220,12 +1164,12 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\mipmap-hdpi\\scan_flashlight_pressed.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_chuangjian.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\chuangjian.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_chuangjian.png.flat",
+        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\chuangjian.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_weixin.png.flat",
@@ -1238,10 +1182,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_edit_text_material.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-v21\\abc_edit_text_material.xml"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_button.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\button.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -1332,10 +1272,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-mdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_group3.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxxhdpi\\group3.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\raw_beep.ogg.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\raw\\beep.ogg"
     },
@@ -1350,10 +1286,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_foreground.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_foreground.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_button.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\button.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -1414,10 +1346,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_shouru.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\shouru.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_rbackground.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\rbackground.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_background_cache_hint_selector_material_dark.xml.flat",
@@ -1488,10 +1416,6 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\weixian.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_button.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\button.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
@@ -1514,10 +1438,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_notification_action_background.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\56174b82c656db3581651f5760ac8685\\support-compat-27.1.1\\res\\drawable-v21\\notification_action_background.xml"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_buttoni.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\buttoni.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_paixu.png.flat",
@@ -1592,10 +1512,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_group3.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\group3.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_dialog_material_background.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable\\abc_dialog_material_background.xml"
     },
@@ -1666,10 +1582,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_buttoni.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\buttoni.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_qq.png.flat",
@@ -1824,10 +1736,6 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\aed.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_background.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\background.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
     },
@@ -1890,10 +1798,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxxhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_background.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\background.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -2036,10 +1940,6 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\daoru1.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_pattern.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\pattern.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_mode_close_item_material.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
@@ -2054,10 +1954,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_edit_normal.xml.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable\\shape_edit_normal.xml"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_rbackground.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxxhdpi\\rbackground.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login.png.flat",
@@ -2106,10 +2002,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_group3.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\group3.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_list_selector_background_transition_holo_dark.xml.flat",
@@ -2216,10 +2108,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_backgroundi.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\backgroundi.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_paixu.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\paixu.png"
     },
@@ -2242,10 +2130,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_group3.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\group3.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_addbi.xml.flat",
@@ -2320,10 +2204,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_backgroundi.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\backgroundi.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_48dp.png"
     },
@@ -2378,10 +2258,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_button.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\button.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fx.png.flat",
@@ -2444,10 +2320,6 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\layout\\activity_selete.xml"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_group10.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxxhdpi\\group10.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xhdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
     },
@@ -2470,10 +2342,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragmenthq.xml.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\layout\\fragmenthq.xml"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_rbackground.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xhdpi\\rbackground.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
@@ -2612,10 +2480,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_pattern.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxxhdpi\\pattern.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_shoukuan.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\shoukuan.png"
     },
@@ -2688,10 +2552,6 @@
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\anim\\abc_tooltip_exit.xml"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_backgroundi.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxhdpi\\backgroundi.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
     },
@@ -2742,10 +2602,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-ldrtl-xxxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_centermain.xml.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\layout\\activity_centermain.xml"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_card.xml.flat",
@@ -2838,10 +2694,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_activity_chooser_view.xml.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\layout\\abc_activity_chooser_view.xml"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_background.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxxhdpi\\background.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_yixuan.png.flat",
@@ -2992,10 +2844,6 @@
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\mipmap-hdpi\\scan_photo_pressed.png"
     },
     {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_buttoni.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxxhdpi\\buttoni.png"
-    },
-    {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_faxian_xz.png.flat",
         "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-mdpi\\faxian_xz.png"
     },
@@ -3030,14 +2878,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_group10.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\group10.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_rbackground.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-hdpi\\rbackground.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
@@ -3218,10 +3058,6 @@
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-2\\files-2.1\\a93a8681fb3508d08b4a29d2137bbccd\\appcompat-v7-27.1.1\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
-        "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_backgroundi.png.flat",
-        "source": "E:\\work\\work\\AndroidHotWallet\\app\\src\\main\\res\\drawable-xxxhdpi\\backgroundi.png"
     },
     {
         "merged": "E:\\work\\work\\AndroidHotWallet\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_kuozhan.png.flat",
