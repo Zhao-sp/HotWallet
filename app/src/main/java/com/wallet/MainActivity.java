@@ -19,6 +19,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -338,5 +339,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocalManageUtil.setLocal(newBase));
+    }
+    private long mExitTime;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {//如果返回键按下
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Toast.makeText(this, R.string.main4, Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+            } else {
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
