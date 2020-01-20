@@ -40,6 +40,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -490,13 +491,16 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                             Double sum = 0d;
                             b = true;
                             for (int i = 0; i < Data.getamount().size(); i++) {//遍历余额小于转账金额
-                                Double a1 = Double.valueOf(Data.getamount().get(i)) - Double.valueOf(Data.getyue());
-                                BigDecimal bd = new BigDecimal(a1).setScale(8, BigDecimal.ROUND_DOWN);//余额减去转账
+                                DecimalFormat df = new DecimalFormat("0.00000000");
+                                String b1=df.format(new BigDecimal(Double.parseDouble(Data.getamount().get(i))));
+                                String b2=df.format(new BigDecimal(Double.parseDouble(Data.getyue())));
+                                BigDecimal bd = new BigDecimal(b1).subtract(new BigDecimal(b2));//余额减去转账
                                 Double a2 = Double.valueOf(Data.getfee());
                                 BigDecimal bd2 = new BigDecimal(a2).setScale(8, BigDecimal.ROUND_DOWN);//服务费
+                                BigDecimal bd1=bd.subtract(bd2);//余额-转账-服务费
                                 Double a3 = Double.valueOf(Data.getyue()) + Double.valueOf(Data.getfee());
                                 BigDecimal bd3 = new BigDecimal(a3).setScale(8, BigDecimal.ROUND_DOWN);//转账加服务费
-                                if ((String.valueOf(bd).compareTo(String.valueOf(bd2)) < 0 || bd.toString().equals("0E-8")) && !Data.getamount().get(i).equals("0.0")) {
+                                if (((bd1.compareTo(new BigDecimal(0)))<0 || bd.toString().equals("0E-8")) && !Data.getamount().get(i).equals("0.0")) {
                                     list1.add(String.valueOf(i));
                                     sum += Double.parseDouble(Data.getamount().get(i));
                                     if (new BigDecimal(sum).setScale(8, BigDecimal.ROUND_DOWN).compareTo(bd3) > 0) {//最终转账和大于(转账加服务费)
