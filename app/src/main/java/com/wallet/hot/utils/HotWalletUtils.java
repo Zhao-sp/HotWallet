@@ -1,6 +1,7 @@
 package com.wallet.hot.utils;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.Toast;
@@ -72,7 +73,14 @@ public class HotWalletUtils {
                 Bitmap codeBitmap = Utils.createCode(address);
                 Data.setethimgCode(codeBitmap);
                 if(Data.gettype().equals("addbiactivity")) {
-                    Data.getdb().execSQL("update HotAddressTb set ethaddress='" + Data.getethaddress() + "',ethpub='" + Data.gethotethpub() + "',ethprv='" + Data.gethotethprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
+                    Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
+                    if (cursor != null && cursor.getCount() > 0) {
+                        Data.getdb().execSQL("update HotAddressTb set ethaddress='" + Data.getethaddress() + "',ethpub='" + Data.gethotethpub() + "',ethprv='" + Data.gethotethprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
+                    }else {
+                        Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,ethpub,btcprv,btcpub,xrpaddress,xrppub,xrpprv,mnemonic) values " +
+                                "('" + Data.gethotpassword() + "','" + "" + "','" + Data.getethaddress() + "','" + Data.gethotethprv() + "','" + Data.gethotethpub() + "','" + "" + "','" + "" + "'," +
+                                "'" + "" + "','" + "" + "','" + "" + "','" + Data.gethotzjc() + "')");
+                    }
                     Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
                     WeiboDialogUtils.closeDialog(Data.getdialog());
                 }
@@ -110,7 +118,14 @@ public class HotWalletUtils {
                 Data.setimgCode(codeBitmap);
                 new Utils().zhuce();
                 if (Data.gettype().equals("addbiactivity")) {
-                    Data.getdb().execSQL("update HotAddressTb set btcaddress='" + Data.getbtcaddress() + "',btcpub='" + Data.gethotbtcpub() + "',btcprv='" + Data.gethotbtcprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
+                    Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
+                    if (cursor != null && cursor.getCount() > 0) {
+                        Data.getdb().execSQL("update HotAddressTb set btcaddress='" + Data.getbtcaddress() + "',btcpub='" + Data.gethotbtcpub() + "',btcprv='" + Data.gethotbtcprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
+                    }else {
+                        Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,ethpub,btcprv,btcpub,xrpaddress,xrppub,xrpprv,mnemonic) values " +
+                                "('" + Data.gethotpassword() + "','" + Data.getbtcaddress() + "','" + "" + "','" + "" + "','" + "" + "','" + Data.gethotbtcprv() + "','" + Data.gethotbtcpub() + "'," +
+                                "'" + "" + "','" + "" + "','" + "" + "','" + Data.gethotzjc() + "')");
+                    }
                     Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
                     WeiboDialogUtils.closeDialog(Data.getdialog());
                 }
@@ -186,7 +201,14 @@ public class HotWalletUtils {
             e.printStackTrace();
         }
         if(Data.gettype().equals("addbiactivity")) {
-            Data.getdb().execSQL("update HotAddressTb set xrpaddress='" + Data.getxrpaddress() + "',xrppub='" + Data.getxrppub() + "',xrpprv='" + Data.getxrpprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
+            Cursor cursor = Data.getdb().rawQuery("select * from HotAddressTb", null);
+            if (cursor != null && cursor.getCount() > 0) {
+                Data.getdb().execSQL("update HotAddressTb set xrpaddress='" + Data.getxrpaddress() + "',xrppub='" + Data.getxrppub() + "',xrpprv='" + Data.getxrpprv() + "' where mnemonic='" + Data.gethotzjc() + "'");
+            }else {
+                Data.getdb().execSQL("insert into HotAddressTb (password,btcaddress,ethaddress,ethprv,ethpub,btcprv,btcpub,xrpaddress,xrppub,xrpprv,mnemonic) values " +
+                        "('" + Data.gethotpassword() + "','" + "" + "','" + "" + "','" + "" + "','" + "" + "','" + "" + "','" +"" + "'," +
+                        "'" + Data.getxrpaddress() + "','" + Data.getxrppub() + "','" + Data.getxrpprv() + "','" + Data.gethotzjc() + "')");
+            }
             Toast.makeText(Data.getcontext(), Data.getcontext().getResources().getString(R.string.add6), Toast.LENGTH_SHORT).show();
             WeiboDialogUtils.closeDialog(Data.getdialog());
         }else {
