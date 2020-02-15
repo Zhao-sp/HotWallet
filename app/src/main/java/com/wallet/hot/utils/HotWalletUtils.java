@@ -15,10 +15,14 @@ import com.wallet.hot.app.BackUpActivity;
 import org.bitcoinj.params.TestNet3Params;
 import org.bitcoinj.wallet.DeterministicKeyChain;
 import org.bitcoinj.wallet.DeterministicSeed;
+import org.spongycastle.math.ec.ECPoint;
 import org.web3j.crypto.Sign;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Arrays;
 
+import static com.wallet.cold.utils.Utils.bytetostring;
+import static org.bitcoinj.core.ECKey.publicPointFromPrivate;
 import static org.bitcoinj.crypto.HDUtils.parsePath;
 
 /**
@@ -104,16 +108,23 @@ public class HotWalletUtils {
                 BigInteger privKeyBTC = deterministicKeyChain.getKeyByPath(parsePath("M/44H/1H/0H"), true).getPrivKey();
                 String privKeywifBTC = deterministicKeyChain.getKeyByPath(parsePath("M/44H/1H/0H"), true).getPrivateKeyAsWiF(TestNet3Params.get());//压缩私钥
                 String strprv = privKeyBTC.toString(16);//非压缩私钥
-                BigInteger privKey = new BigInteger(strprv, 16);
-                BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
-                System.out.println("BTC Private key (256 bits): " + privKey.toString(16));
-                System.out.println("BTC Public key (512 bits): " + "04" + pubKey.toString(16));
+//                BigInteger privKey = new BigInteger(strprv, 16);
+//                BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
+//                System.out.println("BTC Private key (256 bits): " + privKey.toString(16));
+//                System.out.println("BTC Public key (512 bits): " + "04" + pubKey.toString(16));
+//              以下四行代码是解决偶然出现私钥转公钥少一个字符的问题 不明原因
+                ECPoint point = publicPointFromPrivate(privKeyBTC);
+                byte[] encoded = point.getEncoded(false);
+                System.out.println(Arrays.toString(encoded));
+                String publickey=bytetostring(encoded);
+                System.out.println("BTC Private key (256 bits): " + strprv);
+                System.out.println("BTC Public key (512 bits): " + publickey);
                 Data.setbizhong("BTC");
-                Data.setdata("04" + pubKey.toString(16));
+                Data.setdata(publickey);
                 String address = Utils.address();
                 Data.setbtcaddress(address);
                 Data.sethotbtcprv(privKeywifBTC);
-                Data.sethotbtcpub("04" + pubKey.toString(16));
+                Data.sethotbtcpub(publickey);
                 Bitmap codeBitmap = Utils.createCode(address);
                 Data.setimgCode(codeBitmap);
                 new Utils().zhuce();
