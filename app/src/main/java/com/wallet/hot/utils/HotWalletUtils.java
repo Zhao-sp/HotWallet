@@ -64,16 +64,19 @@ public class HotWalletUtils {
                 DeterministicKeyChain deterministicKeyChain = DeterministicKeyChain.builder().seed(deterministicSeed).build();
                 BigInteger privKeyETH = deterministicKeyChain.getKeyByPath(parsePath("M/44H/60H/0H"), true).getPrivKey();
                 String strprv = privKeyETH.toString(16);//非压缩私钥
-                BigInteger privKey = new BigInteger(strprv, 16);
-                BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
-                System.out.println("ETH Private key (256 bits): " + privKey.toString(16));
-                System.out.println("ETH Public key (512 bits): " + "04" + pubKey.toString(16));//非压缩公钥
+                ECPoint point = publicPointFromPrivate(privKeyETH);
+                byte[] encoded = point.getEncoded(false);
+                String publickey=bytetostring(encoded);
+//                BigInteger pubKey = Sign.publicKeyFromPrivate(privKeyETH);
+//                String a=pubKey.toString(16);
+//                System.out.println("ETH Private key (256 bits): " + strprv);
+//                System.out.println("ETH Public key (512 bits): " + publickey);//非压缩公钥
                 Data.setbizhong("ETH");
-                Data.setdata("04" + pubKey.toString(16));
+                Data.setdata(publickey);
                 String address = Utils.address();
                 Data.setethaddress(address);
                 Data.sethotethprv(strprv);
-                Data.sethotethpub("04" + pubKey.toString(16));
+                Data.sethotethpub(publickey);
                 Bitmap codeBitmap = Utils.createCode(address);
                 Data.setethimgCode(codeBitmap);
                 if(Data.gettype().equals("addbiactivity")) {
@@ -112,13 +115,12 @@ public class HotWalletUtils {
 //                BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
 //                System.out.println("BTC Private key (256 bits): " + privKey.toString(16));
 //                System.out.println("BTC Public key (512 bits): " + "04" + pubKey.toString(16));
-//              以下四行代码是解决偶然出现私钥转公钥少一个字符的问题 不明原因
+//              以下四行代码是解决偶然出现私钥转公钥少一个字符的问题
                 ECPoint point = publicPointFromPrivate(privKeyBTC);
                 byte[] encoded = point.getEncoded(false);
-                System.out.println(Arrays.toString(encoded));
                 String publickey=bytetostring(encoded);
-                System.out.println("BTC Private key (256 bits): " + strprv);
-                System.out.println("BTC Public key (512 bits): " + publickey);
+//                System.out.println("BTC Private key (256 bits): " + strprv);
+//                System.out.println("BTC Public key (512 bits): " + publickey);
                 Data.setbizhong("BTC");
                 Data.setdata(publickey);
                 String address = Utils.address();
@@ -177,24 +179,11 @@ public class HotWalletUtils {
                 DeterministicSeed deterministicSeed = new DeterministicSeed(mnemonic, null, "Hierstar ComboWallet Salt", 0);
                 Log.i("BIP39 seed:{}", deterministicSeed.toHexString());
                 DeterministicKeyChain deterministicKeyChain = DeterministicKeyChain.builder().seed(deterministicSeed).build();
-//            BigInteger privKeyXRP = deterministicKeyChain.getKeyByPath(parsePath("M/44H/144H/0H"), true).getPrivKey();
                 String privKeywifXRP = deterministicKeyChain.getKeyByPath(parsePath("M/44H/144H/0H"), true).getPrivateKeyAsWiF(TestNet3Params.get());//压缩私钥
                 String privKeyHexXRP = deterministicKeyChain.getKeyByPath(parsePath("M/44H/144H/0H"), true).getPrivateKeyAsHex();//非压缩私钥
                 String pubKeyHexXRP = deterministicKeyChain.getKeyByPath(parsePath("M/44H/144H/0H"), true).getPublicKeyAsHex();//压缩公钥
-//            String strprv = privKeyXRP.toString(16);
-//            BigInteger privKey = new BigInteger(strprv, 16);
-//            BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
-                System.out.println("XRP Private key (256 bits): " + privKeyHexXRP);
-                System.out.println("XRP Public key (512 bits): " + pubKeyHexXRP);
-//            String pub=pubKey.toString(16);
-//            String x=pub.substring(0,64);
-//            String y=pub.substring(pub.length()-1,pub.length());
-//            int value = Integer.parseInt(y,16);
-//            if (value % 2 != 0) {//奇数
-//                pub="03"+x;
-//            } else {//偶数
-//                pub="02"+x;
-//            }
+//                System.out.println("XRP Private key (256 bits): " + privKeyHexXRP);
+//                System.out.println("XRP Public key (512 bits): " + pubKeyHexXRP);
                 Data.setbizhong("XRP");
                 Data.setdata(pubKeyHexXRP);
                 String address = Utils.address();

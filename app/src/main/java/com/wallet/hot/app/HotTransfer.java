@@ -43,7 +43,11 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.Signature;
 import java.security.SignatureException;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,6 +59,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.wallet.cold.utils.Utils.ETHAddressValidate;
+import static com.wallet.cold.utils.Utils.bytesToHexString;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
 import static com.wallet.cold.utils.Utils.isBTCValidAddress;
@@ -186,6 +191,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             popadd2.setText("BTC");
             popadd3.setText("BTC");
             fee.setText("0.0001");
+            to.setText("mp6a3Qz7Wpyx5oa5EGmKcSpFvE2MAN2rHG");
             balance.setText(Data.getbtcbalance());
         }
         Data.settype("hottransfer");
@@ -572,7 +578,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
     }
 
     /**
-     * btc私钥签名
+     * btc压缩私钥签名
      * @param wif
      * @param msg
      * @return

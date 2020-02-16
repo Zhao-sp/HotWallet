@@ -28,7 +28,9 @@ import android.widget.Toast;
 
 import com.google.zxing.WriterException;
 import com.wallet.cold.app.main.ColdMainActivity;
+import com.wallet.cold.utils.UtilsBase58;
 import com.wallet.hot.app.HotTransfer;
+import com.wallet.hot.utils.HotWalletUtils;
 import com.wallet.utils.JniUtils;
 import com.wallet.utils.SharedPrefsStrListUtil;
 import com.wallet.cold.utils.Data;
@@ -38,9 +40,19 @@ import com.wallet.cold.utils.Utils;
 import com.wallet.utils.WeiboDialogUtils;
 import com.wallet.hot.app.ByteActivity;
 
+import org.bitcoinj.core.Base58;
+import org.bouncycastle.crypto.digests.RIPEMD160Digest;
+import org.spongycastle.math.ec.ECPoint;
+import org.web3j.crypto.Sign;
+
 import java.io.File;
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static com.wallet.cold.utils.Utils.bytetostring;
+import static org.bitcoinj.core.ECKey.publicPointFromPrivate;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
@@ -73,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
             } else {
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                    LogCook.DeleteOverdueLogFile();
+                    //LogCook.DeleteOverdueLogFile();
                     File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log");
                     LogCook.getInstance().setLogPath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.hotwallet/log")
                             .setLogName(LogCook.getNowDay() +"log.txt")
@@ -179,15 +191,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (cursor != null && cursor.getCount() > 0) {
                     while (cursor.moveToNext()) {
                         String password = cursor.getString(cursor.getColumnIndex("password"));
-                        //String btcaddress = cursor.getString(cursor.getColumnIndex("btcaddress"));
+                        String btcaddress = cursor.getString(cursor.getColumnIndex("btcaddress"));
                         String ethaddress = cursor.getString(cursor.getColumnIndex("ethaddress"));
                         String ethprv = cursor.getString(cursor.getColumnIndex("ethprv"));
                         String ethpub = cursor.getString(cursor.getColumnIndex("ethpub"));
-                        //String btcprv = cursor.getString(cursor.getColumnIndex("btcprv"));
-                        //String btcpub = cursor.getString(cursor.getColumnIndex("btcpub"));
-                        String btcaddress = "myHAtmh4d3kCWa17NX4JgWuwGsQetR6knx";
-                        String btcprv = "cTwkawfJm2kd1zaiMPDhuvBJsDGg9goUdhfGiWpWA3xm7sdaWpgg";
-                        String btcpub = "04463240210f02e2c45cf3a22a7010b972aee41d7fa35e47a4e488c4fb1ebe455b038aa80552ee299ecc3749e7bb926f4d490b3189aad6fe3c0e03f44255fe462e";
+                        String btcprv = cursor.getString(cursor.getColumnIndex("btcprv"));
+                        String btcpub = cursor.getString(cursor.getColumnIndex("btcpub"));
                         String xrpaddress = cursor.getString(cursor.getColumnIndex("xrpaddress"));
                         String xrppub = cursor.getString(cursor.getColumnIndex("xrppub"));
                         String xrpprv = cursor.getString(cursor.getColumnIndex("xrpprv"));
@@ -213,6 +222,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     } catch (WriterException e) {
                         e.printStackTrace();
                     }
+                    //new Utils().zhuce();
                     new Utils().balancebtc();
                 }else {
                     Intent1.setClass(this, ByteActivity.class);
