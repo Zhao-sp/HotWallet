@@ -164,7 +164,7 @@ public class Transfer extends AppCompatActivity implements View.OnClickListener 
                 to.setText(result);
             }
         }
-        if(to.getText().toString().length()==34){
+        if(to.getText().toString().length()==34&&to.getText().toString().substring(0,1).equals("r")){
             Data.setbizhong("XRP");
             popadd.setText("XRP");
             popadd1.setText("XRP");
