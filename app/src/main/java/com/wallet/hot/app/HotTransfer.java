@@ -43,11 +43,7 @@ import org.web3j.utils.Numeric;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.Signature;
 import java.security.SignatureException;
-import java.security.spec.PKCS8EncodedKeySpec;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,7 +55,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.wallet.cold.utils.Utils.ETHAddressValidate;
-import static com.wallet.cold.utils.Utils.bytesToHexString;
 import static com.wallet.cold.utils.Utils.getIndex;
 import static com.wallet.cold.utils.Utils.getSubCount_2;
 import static com.wallet.cold.utils.Utils.isBTCValidAddress;
@@ -598,8 +593,11 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             Sha256Hash hash = Sha256Hash.twiceOf(msg);
             // creating signature
             ECKey.ECDSASignature sig = key.sign(hash);
+            com.wallet.hot.utils.DumpedPrivateKey dumpedPrivateKey= com.wallet.hot.utils.DumpedPrivateKey.fromBase58(TestNet3Params.get(),wif);
+            com.wallet.hot.utils.ECKey key1=dumpedPrivateKey.getKey();
+            com.wallet.hot.utils.ECKey.ECDSASignature ecdsaSignature=key1.sign(hash);
             // encoding
-            byte[] res = sig.encodeToDER();
+            byte[] res = ecdsaSignature.encodeToDER();
             // converting to hex
             hex = Base64.encodeToString(res, 16);
 //            Log.e("sigendTransiction", hex);

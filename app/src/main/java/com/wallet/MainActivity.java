@@ -98,6 +98,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
+        BigInteger privKey = new BigInteger("E8F32E723DECF4051AEFAC8E2C93C9C5B214313817CDB01A1494B917C8436B35", 16);
+        ECPoint point = publicPointFromPrivate(privKey);
+        byte[] encoded = point.getEncoded(false);
+        String publickey=bytetostring(encoded);
+        System.out.println(publickey);
+        String pub=publickey.substring(2,publickey.length());
+        String x=pub.substring(0,64);
+        String y=pub.substring(pub.length()-1,pub.length());
+        int value = Integer.parseInt(y,16);
+        if (value % 2 != 0) {//奇数
+            pub="03"+x;
+        } else {//偶数
+            pub="02"+x;
+        }
+        System.out.println(pub);
+        byte[] publicKey = new BigInteger("0446A05542FA44AAD2679EE53EE7034B00033A013EDE61EDDB6DCA51CA1436DBE27DD58686BDCB19619AECD57FC920E13EA575DF2BC19358B40F3A504607E9EA81", 16).toByteArray();
+        byte[] sha256Bytes = Utils.sha256(publicKey);
+        System.out.println("sha256加密=" + Utils.bytesToHexString(sha256Bytes));
+        RIPEMD160Digest digest = new RIPEMD160Digest();
+        digest.update(sha256Bytes, 0, sha256Bytes.length);
+        byte[] ripemd160Bytes = new byte[digest.getDigestSize()];
+        digest.doFinal(ripemd160Bytes, 0);
+        System.out.println("ripemd160加密=" + Utils.bytesToHexString(ripemd160Bytes));
+        byte[] networkID = new BigInteger("6F", 16).toByteArray();//主网为00
+        byte[] extendedRipemd160Bytes = Utils.add(networkID, ripemd160Bytes);
+        System.out.println("添加NetworkID=" + Utils.bytesToHexString(extendedRipemd160Bytes));
+        byte[] twiceSha256Bytes = Utils.sha256(Utils.sha256(extendedRipemd160Bytes));
+        System.out.println("两次sha256加密=" + Utils.bytesToHexString(twiceSha256Bytes));
+        byte[] checksum = new byte[4];
+        System.arraycopy(twiceSha256Bytes, 0, checksum, 0, 4);
+        System.out.println("checksum=" + Utils.bytesToHexString(checksum));
+        byte[] binaryBitcoinAddressBytes = Utils.add(extendedRipemd160Bytes, checksum);
+        System.out.println("添加checksum之后=" + Utils.bytesToHexString(binaryBitcoinAddressBytes));
+        String address = UtilsBase58.encode(binaryBitcoinAddressBytes);
+        System.out.println("bitcoinAddress=" + address);
     }
 
     /**
@@ -201,8 +236,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         String xrppub = cursor.getString(cursor.getColumnIndex("xrppub"));
                         String xrpprv = cursor.getString(cursor.getColumnIndex("xrpprv"));
                         String mnemonic = cursor.getString(cursor.getColumnIndex("mnemonic"));
-                        Data.sethotpassword(password);Data.setbtcaddress(btcaddress);Data.setethaddress(ethaddress);
-                        Data.sethotethprv(ethprv);Data.sethotbtcprv(btcprv);Data.sethotbtcpub(btcpub);Data.sethotethpub(ethpub);
+                        Data.sethotpassword(password);
+                        Data.sethotbtcprv(btcprv);
+                        Data.sethotbtcpub(btcpub);
+                        Data.setbtcaddress(btcaddress);
+                        Data.sethotbtcprv("cUWSE24wKea3Cq3kvYXnKm3QK3x7U8rHmWFAQwQaZPYuyg4XrTvG");
+                        Data.sethotbtcpub("0446A05542FA44AAD2679EE53EE7034B00033A013EDE61EDDB6DCA51CA1436DBE27DD58686BDCB19619AECD57FC920E13EA575DF2BC19358B40F3A504607E9EA81");
+                        Data.setbtcaddress("miznPzmGNB32Qm3oLqRFpgtz6nnJcDYzT8");
+                        Data.setethaddress(ethaddress);
+                        Data.sethotethprv(ethprv);
+                        Data.sethotethpub(ethpub);
                         Data.setxrpaddress(xrpaddress);Data.setxrppub(xrppub);Data.setxrpprv(xrpprv);Data.sethotzjc(mnemonic);
                     }
                     cursor.close();

@@ -223,10 +223,11 @@ org.spongycastle.pqc.crypto.ntru.NTRUSigningKeyPairGenerator$FGBasis
 org.bouncycastle.asn1.x509.ExtensionsGenerator
 rx.internal.operators.OperatorTake$1
 org.spongycastle.jcajce.provider.asymmetric.util.BaseKeyFactorySpi
+com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgram
 jnr.ffi.Struct$UTFStringRef
 com.google.common.io.Files$FilePredicate
-com.subgraph.orchid.circuits.CircuitStatus
 org.spongycastle.jce.provider.BrokenJCEBlockCipher$BrokePBEWithSHAAndDES2Key
+com.subgraph.orchid.circuits.CircuitStatus
 org.spongycastle.jcajce.provider.asymmetric.rsa.X931SignatureSpi$SHA224WithRSAEncryption
 org.bouncycastle.crypto.engines.NullEngine
 org.spongycastle.jcajce.util.ProviderJcaJceHelper
@@ -828,16 +829,16 @@ org.bouncycastle.crypto.tls.DatagramTransport
 org.bitcoinj.protocols.channels.ServerState$StoredServerPaymentChannelOrBuilder
 com.google.common.collect.MultimapBuilder$MultimapBuilderWithKeys$1
 jnr.ffi.provider.jffi.TransientNativeMemory
-com.squareup.okhttp.internal.framed.FramedConnection$5
 com.google.common.cache.CacheBuilderSpec$DurationParser
+com.squareup.okhttp.internal.framed.FramedConnection$5
 org.bouncycastle.jcajce.provider.asymmetric.ec.KeyAgreementSpi$DHwithSHA256KDFAndSharedInfo
 org.spongycastle.crypto.CipherKeyGenerator
 com.google.common.util.concurrent.Futures$FallbackFuture$1$1
 com.google.common.collect.TreeRangeSet$RangesByUpperBound$1
 com.google.common.primitives.Doubles$DoubleArrayAsList
 org.bouncycastle.pqc.crypto.xmss.BDS
-rx.internal.operators.OperatorReplay$4
 org.spongycastle.crypto.digests.SHA224Digest
+rx.internal.operators.OperatorReplay$4
 android.support.coreutils.R$color
 org.web3j.abi.datatypes.generated.Bytes29
 android.support.v4.provider.FontRequest
@@ -1673,6 +1674,8 @@ jnr.unixsocket.Credentials
 jnr.ffi.StructLayout$Enum8
 org.spongycastle.jcajce.provider.asymmetric.ies.CipherSpi$OldIES
 jnr.posix.WindowsFileStat$1
+com.wallet.MainActivity
+    private android.animation.ObjectAnimator mCenterBtnAnimator
 jnr.unixsocket.Native$LibC
 com.google.common.collect.EnumHashBiMap
 rx.Completable
@@ -2391,6 +2394,8 @@ com.wallet.R$drawable
 com.google.common.cache.LocalCache$AbstractCacheSet
 javax.annotation.CheckForNull
 com.fasterxml.jackson.databind.ser.std.RawSerializer
+com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgramWithToken$Req
+    private static final java.lang.String TAG
 org.spongycastle.crypto.modes.gcm.Tables1kGCMExponentiator
 com.fasterxml.jackson.databind.annotation.JsonSerialize$Typing
 jnr.ffi.util.BufferUtil
@@ -2854,10 +2859,6 @@ jnr.constants.platform.Sock
 net.vidageek.mirror.reflect.DefaultAnnotationHandler
 org.bouncycastle.jcajce.provider.symmetric.GOST28147$CryptoProWrap
 cn.leo.magic.screen.ScreenAdapter
-    void <init>()
-    static void adaptScreen(android.app.Activity)
-    public static void cancelAdaptScreen(android.app.Activity)
-    public static boolean isAdaptScreen(android.app.Activity)
 org.bouncycastle.math.ec.custom.sec.SecT131FieldElement
 okhttp3.internal.ws.RealWebSocket$1
 org.web3j.protocol.core.methods.response.EthTransaction
@@ -2971,8 +2972,8 @@ android.support.v4.widget.CompoundButtonCompat$CompoundButtonCompatBaseImpl
     public android.content.res.ColorStateList getButtonTintList(android.widget.CompoundButton)
     public android.graphics.PorterDuff$Mode getButtonTintMode(android.widget.CompoundButton)
     private static final java.lang.String TAG
-org.bouncycastle.jcajce.provider.digest.SHA1$PBEWithMacKeyFactory
 org.spongycastle.jcajce.provider.symmetric.RC6$KeyGen
+org.bouncycastle.jcajce.provider.digest.SHA1$PBEWithMacKeyFactory
 jnr.constants.platform.fake.AddressFamily
 android.support.v4.view.ViewGroupCompat$ViewGroupCompatApi21Impl
     public void setTransitionGroup(android.view.ViewGroup,boolean)
@@ -3115,8 +3116,8 @@ org.spongycastle.asn1.ASN1InputStream
     public void <init>(java.io.InputStream,boolean)
     protected void readFully(byte[])
 com.google.common.collect.AbstractBiMap$EntrySet$1
-com.tencent.mm.opensdk.modelbase.BaseResp$ErrCode
 org.bouncycastle.crypto.engines.ThreefishEngine$Threefish512Cipher
+com.tencent.mm.opensdk.modelbase.BaseResp$ErrCode
 com.subgraph.orchid.directory.downloader.DirectoryDownloadTask$DownloadConsensusTask
 org.web3j.ens.contracts.generated.PublicResolver$ContentChangedEventResponse
 com.fasterxml.jackson.annotation.JsonIdentityReference
@@ -3126,6 +3127,7 @@ jnr.ffi.provider.jffi.platform.s390x.linux.TypeAliases
 org.bouncycastle.jcajce.provider.asymmetric.rsa.CipherSpi$PKCS1v1_5Padding_PrivateOnly
 org.bouncycastle.jcajce.provider.symmetric.AES$PBEWithAESCBC
 org.web3j.crypto.ContractUtils
+com.google.common.net.InetAddresses
 android.support.v7.widget.AppCompatTextViewAutoSizeHelper
     private static final java.lang.String TAG
     private static final int DEFAULT_AUTO_SIZE_MIN_TEXT_SIZE_IN_SP
@@ -3133,7 +3135,6 @@ android.support.v7.widget.AppCompatTextViewAutoSizeHelper
     private static final int DEFAULT_AUTO_SIZE_GRANULARITY_IN_PX
     static final float UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE
     private static final int VERY_WIDE
-com.google.common.net.InetAddresses
 org.web3j.abi.datatypes.generated.Bytes15
 org.spongycastle.asn1.x500.style.BCStyle
 com.tencent.mm.opensdk.modelmsg.WXTextObject
@@ -3529,7 +3530,6 @@ com.google.gson.JsonPrimitive
     public byte getAsByte()
     public char getAsCharacter()
     public synthetic bridge com.google.gson.JsonElement deepCopy()
-com.tencent.mm.opensdk.modelbiz.JumpToBizWebview$Req
 android.support.v4.view.AsyncLayoutInflater
 com.google.common.io.CharSequenceReader
 com.fasterxml.jackson.databind.deser.BeanDeserializer
@@ -4149,8 +4149,8 @@ com.wallet.cold.app.index.MeActivity
     private static final int PHOTO_REQUEST_CUT
 rx.Observable$Transformer
 com.squareup.okhttp.internal.NamedRunnable
-com.google.common.util.concurrent.Striped
 org.spongycastle.jcajce.provider.symmetric.SEED$GMAC
+com.google.common.util.concurrent.Striped
 org.bouncycastle.jce.spec.RepeatedSecretKeySpec
 android.support.v4.content.ModernAsyncTask$1
 jnr.ffi.Struct$Boolean
@@ -5386,46 +5386,6 @@ com.tencent.mm.opensdk.modelbiz.SubscribeMiniProgramMsg$Resp
     public void toBundle(android.os.Bundle)
     public boolean checkArgs()
     private static final java.lang.String TAG
-com.tencent.wxop.stat.StatConfig
-    public void <init>()
-    public static void setDebugEnable(boolean)
-    public static void setSessionTimoutMillis(int)
-    public static void setMaxImportantDataSendRetryCount(int)
-    public static void setMaxBatchReportCount(int)
-    public static void setMaxSendRetryCount(int)
-    public static void setNumEventsCommitPerSec(int)
-    public static void setMaxStoreEventCount(int)
-    public static java.lang.String getCustomProperty(java.lang.String)
-    public static java.lang.String getCustomProperty(java.lang.String,java.lang.String)
-    public static void setAppKey(java.lang.String)
-    public static void setQQ(android.content.Context,java.lang.String)
-    public static int getNumOfMethodsCalledLimit()
-    public static void setNumOfMethodsCalledLimit(int,long)
-    public static long getMsPeriodForMethodsCalledLimitClear()
-    public static void setMaxParallelTimmingEvents(int)
-    public static boolean isEnableSmartReporting()
-    public static void setAutoExceptionCaught(boolean)
-    public static java.lang.String getStatReportHost()
-    public static int getMaxSessionStatReportCount()
-    public static void setMaxSessionStatReportCount(int)
-    public static int getCurSessionStatReportCount()
-    public static void setMaxDaySessionNumbers(int)
-    public static int getMaxReportEventLength()
-    public static void setMaxReportEventLength(int)
-    public static void setEnableConcurrentProcess(boolean)
-    public static void setCustomUserId(android.content.Context,java.lang.String)
-    public static java.lang.String getMid(android.content.Context)
-    public static void setXGProMode(boolean)
-    public static boolean isXGProMode()
-    public static void setCustomLogger(com.tencent.wxop.stat.g)
-    public static boolean isReportEventsByOrder()
-    public static void setReportEventsByOrder(boolean)
-    public static int getNumEventsCachedInMemory()
-    public static void setNumEventsCachedInMemory(int)
-    public static long getFlushDBSpaceMS()
-    public static void setFlushDBSpaceMS(long)
-    public static int getReportCompressedSize()
-    public static void setReportCompressedSize(int)
 org.bouncycastle.asn1.pkcs.SafeBag
 org.bouncycastle.jcajce.provider.symmetric.Threefish$Mappings
 org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi$ECGOST3410
@@ -6253,9 +6213,8 @@ android.support.v4.app.INotificationSideChannel$Stub
 com.google.common.hash.Hashing$Md5Holder
 org.bouncycastle.jcajce.provider.digest.SHA512$OldSHA512
 android.support.v4.view.MenuItemCompat$OnActionExpandListener
-org.bouncycastle.asn1.x509.AttCertIssuer
 jnr.ffi.Struct$clock_t
-com.tencent.wxop.stat.StatAccount
+org.bouncycastle.asn1.x509.AttCertIssuer
 org.web3j.ens.EnsResolutionException
 org.bouncycastle.crypto.digests.SHA384Digest
 rx.internal.operators.OnSubscribeJoin$ResultSink$LeftSubscriber$LeftDurationSubscriber
@@ -6266,8 +6225,8 @@ android.support.v4.content.ModernAsyncTask$WorkerRunnable
 org.spongycastle.jcajce.provider.asymmetric.util.GOST3410Util
 org.spongycastle.pqc.math.ntru.polynomial.ModularResultant
 jnr.ffi.StructLayout$u_int64_t
-org.spongycastle.jcajce.provider.asymmetric.GOST$Mappings
 io.github.novacrypto.bip39.wordlists.Japanese
+org.spongycastle.jcajce.provider.asymmetric.GOST$Mappings
 com.alibaba.fastjson.serializer.SerializeConfig
     public java.lang.String getTypeKey()
     public void setTypeKey(java.lang.String)
@@ -6278,8 +6237,8 @@ com.alibaba.fastjson.serializer.SerializeConfig
     public final com.alibaba.fastjson.serializer.ObjectSerializer get(java.lang.reflect.Type)
     public boolean put(java.lang.Object,java.lang.Object)
     public varargs void configEnumAsJavaBean(java.lang.Class[])
-org.bouncycastle.jcajce.provider.asymmetric.rsa.DigestSignatureSpi$SHA1
 com.google.common.collect.UnmodifiableSortedMultiset
+org.bouncycastle.jcajce.provider.asymmetric.rsa.DigestSignatureSpi$SHA1
 org.bouncycastle.asn1.ua.DSTU4145NamedCurves
 org.objectweb.asm.tree.analysis.SimpleVerifier
 com.google.common.cache.LocalCache$Strength
@@ -6300,8 +6259,8 @@ org.spongycastle.pqc.crypto.sphincs.Horst
 okio.package-info
 com.google.common.collect.Tables$TransposeTable
 com.googlecode.jsonrpc4j.spring.CompositeJsonStreamServiceExporter
-com.subgraph.orchid.directory.downloader.DirectoryDownloadTask$DownloadRouterDescriptorsTask
 jnr.x86asm.InstructionGroup
+com.subgraph.orchid.directory.downloader.DirectoryDownloadTask$DownloadRouterDescriptorsTask
 jnr.posix.JavaSecuredFile
 org.spongycastle.pqc.jcajce.provider.mceliece.BCMcEliecePrivateKey
 com.google.common.util.concurrent.CycleDetectingLockFactory$WithExplicitOrdering
@@ -6435,12 +6394,6 @@ com.squareup.okhttp.internal.framed.ErrorCode
 com.squareup.okhttp.HttpUrl$1
 com.kenai.jffi.HeapInvocationBuffer$BE32ArrayIO
 com.google.protobuf.GeneratedMessage$GeneratedExtension$1
-com.tencent.wxop.stat.NetworkMonitor
-    public long getMillisecondsConsume()
-    public int getStatusCode()
-    public java.lang.String getDomain()
-    public int getPort()
-    public java.lang.String getRemoteIp()
 android.support.v4.graphics.PathParser
     public void <init>()
     private static final java.lang.String LOGTAG
@@ -6570,7 +6523,6 @@ android.support.v4.content.Loader$ForceLoadContentObserver
 org.spongycastle.jcajce.provider.symmetric.Salsa20
 org.bouncycastle.crypto.tls.AbstractTlsCredentials
 com.tencent.mm.opensdk.modelpay.PayResp
-    public void <init>()
     public void toBundle(android.os.Bundle)
     public boolean checkArgs()
 rx.internal.operators.OnSubscribeToMultimap$ToMultimapSubscriber
@@ -7041,7 +6993,6 @@ org.spongycastle.jcajce.provider.digest.RIPEMD256$KeyGenerator
 org.spongycastle.jcajce.provider.asymmetric.elgamal.BCElGamalPrivateKey
 org.spongycastle.pqc.math.ntru.polynomial.Resultant
 cn.leo.magic.screen.MagicScreenAdapter
-    private void <init>()
 com.fasterxml.jackson.databind.util.Converter
 com.fasterxml.jackson.databind.deser.DeserializerCache
 org.bouncycastle.jcajce.provider.asymmetric.rsa.BCRSAPublicKey
@@ -7634,8 +7585,6 @@ org.spongycastle.asn1.x509.GeneralSubtree
 org.bitcoinj.wallet.DecryptingKeyBag
 com.fasterxml.jackson.core.JsonParser$Feature
 org.bouncycastle.pqc.crypto.rainbow.util.ComputeInField
-com.tencent.mm.opensdk.openapi.WXApiImplV10
-    public final void detach()
 org.bouncycastle.jcajce.provider.symmetric.VMPC$KeyGen
 org.spongycastle.jcajce.provider.symmetric.DESede$PBEWithSHAAndDES2KeyFactory
 org.spongycastle.pqc.crypto.newhope.Precomp
@@ -7712,6 +7661,7 @@ android.support.constraint.solver.widgets.Guideline
     public static final int RELATIVE_UNKNWON
 org.web3j.tuples.generated.Tuple12
 com.google.common.cache.LocalCache$ValueReference
+com.tencent.mm.opensdk.modelpay.WXJointPay$JointPayReq
 rx.internal.operators.BlockingOperatorMostRecent
 jnr.constants.platform.openbsd.NameInfo
 com.google.common.collect.ForwardingNavigableSet
@@ -8373,8 +8323,6 @@ android.support.v7.app.AppCompatDelegateImplV9$PanelFeatureState
     boolean wasLastOpen
     android.os.Bundle frozenMenuState
 jnr.ffi.provider.jffi.ReflectionVariableAccessorGenerator$DoublePointerOp
-com.tencent.wxop.stat.g
-    public abstract void b(java.lang.Object)
 org.bouncycastle.pqc.crypto.xmss.WOTSPlusSignature
 org.bouncycastle.math.ec.custom.sec.SecT233R1Point
 org.bouncycastle.crypto.engines.ElGamalEngine
@@ -8393,7 +8341,6 @@ org.spongycastle.util.io.pem.PemObjectParser
 com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatVisitable
 org.spongycastle.jcajce.PKIXExtendedParameters
 android.support.v4.print.PrintHelper$PrintHelperStub
-com.tencent.wxop.stat.StatAppMonitor
 org.spongycastle.crypto.DerivationParameters
 org.spongycastle.jcajce.provider.symmetric.DESede$DESede64with7816d4
 com.cedarsoftware.util.io.JsonReader$DateReader
@@ -9363,11 +9310,6 @@ android.support.v4.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1
 android.support.v4.content.res.FontResourcesParserCompat$FetchStrategy
 android.support.v4.hardware.display.DisplayManagerCompat$DisplayManagerCompatApi14Impl
 com.kenai.jffi.PageManager
-com.tencent.wxop.stat.StatSpecifyReportedInfo
-    public void setSendImmediately(boolean)
-    public void setVersion(java.lang.String)
-    public void setInstallChannel(java.lang.String)
-    public void setImportant(boolean)
 org.objectweb.asm.util.TraceFieldVisitor
 com.google.common.collect.Lists$1
 rx.internal.operators.OnSubscribeGroupJoin$ResultManager$RightObserver
@@ -9759,7 +9701,6 @@ org.spongycastle.crypto.modes.gcm.BasicGCMExponentiator
 jnr.ffi.provider.AbstractArrayMemoryIO$LE32ArrayIO
 com.google.common.collect.WellBehavedMap$EntrySet
 rx.internal.operators.BackpressureUtils
-com.tencent.mm.opensdk.modelbiz.JumpToBizWebview
 org.bitcoinj.protocols.channels.PaymentChannelV1ClientState
 org.spongycastle.pqc.crypto.rainbow.util.RainbowUtil
 org.spongycastle.asn1.x509.V1TBSCertificateGenerator
@@ -9919,20 +9860,6 @@ org.bouncycastle.crypto.modes.CBCBlockCipher
 org.spongycastle.crypto.modes.gcm.Tables8kGCMMultiplier
 com.subgraph.orchid.circuits.path.CircuitPathChooser$1
 org.spongycastle.crypto.paddings.PaddedBufferedBlockCipher
-com.tencent.wxop.stat.common.StatConstants
-    public void <init>()
-    public static final java.lang.String VERSION
-    public static final java.lang.String MTA_SERVER_HOST
-    public static final int MTA_SERVER_PORT
-    public static final java.lang.String MTA_SERVER
-    public static final java.lang.String MTA_STAT_URL
-    public static final java.lang.String MTA_REPORT_FULL_URL
-    public static final java.lang.String MTA_COOPERATION_TAG
-    public static final int STAT_DB_VERSION
-    public static final int SDK_ONLINE_CONFIG_TYPE
-    public static final int USER_ONLINE_CONFIG_TYPE
-    public static final java.lang.String LOG_TAG
-    public static final int XG_PRO_VERSION
 jnr.posix.OpenBSDTimeval
 org.bouncycastle.jcajce.provider.asymmetric.IES
 jnr.constants.platform.linux.PosixFadvise
@@ -9985,10 +9912,6 @@ org.bouncycastle.crypto.tls.PSKTlsClient
 org.bouncycastle.asn1.isismtt.x509.Admissions
 org.spongycastle.crypto.tls.DatagramTransport
 jnr.constants.platform.openbsd.RLIM
-com.tencent.mm.opensdk.openapi.WXApiImplV10$ActivityLifecycleCb
-    public final void detach()
-    private static final java.lang.String TAG
-    private static final int DELAYED
 org.spongycastle.asn1.DERVisibleString
     public static org.spongycastle.asn1.DERVisibleString getInstance(java.lang.Object)
     public static org.spongycastle.asn1.DERVisibleString getInstance(org.spongycastle.asn1.ASN1TaggedObject,boolean)
@@ -10429,7 +10352,6 @@ com.wallet.cold.rlp.RLP
     private static final int OFFSET_LONG_LIST
 org.spongycastle.jcajce.provider.symmetric.DES$DES9797Alg3
 rx.observers.TestSubscriber
-com.tencent.wxop.stat.ak
 android.support.graphics.drawable.R$id
 org.bouncycastle.jcajce.provider.digest.Skein$SkeinMacKeyGenerator_512_384
 com.fasterxml.jackson.databind.deser.impl.FailingDeserializer
@@ -10444,7 +10366,6 @@ com.google.common.annotations.Beta
 org.objectweb.asm.tree.analysis.Interpreter
 com.google.common.collect.BoundType$2
 org.bouncycastle.asn1.crmf.CertTemplateBuilder
-com.tencent.mm.opensdk.modelbiz.JumpToBizProfile
 org.aspectj.runtime.reflect.MemberSignatureImpl
 android.support.v7.appcompat.R$styleable
     private void <init>()
@@ -10461,8 +10382,6 @@ net.vidageek.mirror.thirdparty.org.objenesis.instantiator.ObjectInstantiator
 com.cedarsoftware.util.io.JsonWriter$BigDecimalWriter
 com.google.common.reflect.package-info
 com.google.common.collect.ForwardingMultiset
-com.tencent.wxop.stat.common.b
-    public static void a(android.content.Context,java.util.Map)
 com.squareup.okhttp.internal.framed.NameValueBlockReader$1
 com.fasterxml.jackson.databind.InjectableValues$Std
 org.spongycastle.jcajce.provider.asymmetric.ElGamal
@@ -10611,7 +10530,6 @@ com.google.protobuf.Descriptors$EnumValueDescriptor
 rx.internal.operators.SingleFromFuture
 org.spongycastle.jcajce.provider.digest.GOST3411$KeyGenerator
 com.subgraph.orchid.socks.SocksClientTask
-com.tencent.wxop.stat.al
 com.fasterxml.jackson.databind.util.ClassUtil$Ctor
 org.bitcoinj.protocols.channels.ServerState$StoredServerPaymentChannelsOrBuilder
 net.jcip.annotations.ThreadSafe
@@ -10958,6 +10876,7 @@ com.tencent.mm.opensdk.modelmsg.SendAuth$Resp
     public boolean checkArgs()
     private static final java.lang.String TAG
     private static final int LENGTH_LIMIT
+    public static final int ERR_SCOPE_SNSAPI_WXAAPP_INFO_CAN_ONLY_AUTHORIZED_SEPARATELY
 org.bouncycastle.jcajce.spec.PBKDF2KeySpec
 org.spongycastle.asn1.esf.OcspIdentifier
 rx.Completable$11
@@ -11171,8 +11090,6 @@ okhttp3.FormBody$Builder
 org.bouncycastle.jcajce.provider.symmetric.TLSKDF$TLS12withSHA384
 com.google.common.collect.Synchronized$SynchronizedNavigableSet
 com.google.common.io.ByteSource$EmptyByteSource
-com.tencent.wxop.stat.common.a
-    public void <init>()
 com.wallet.cold.dfu.scan.PeriodScanCallback$1
 org.bouncycastle.jcajce.provider.symmetric.GOST28147$AlgParams
 org.bouncycastle.jce.spec.ElGamalParameterSpec
@@ -11227,7 +11144,6 @@ com.wallet.hot.ripple.HashUtils
 jnr.posix.util.MethodName
 org.spongycastle.crypto.tls.DTLSEpoch
 rx.internal.operators.OperatorToObservableList$1
-com.tencent.wxop.stat.am
 org.spongycastle.jcajce.provider.symmetric.TEA$KeyGen
 com.google.common.hash.HashCode$LongHashCode
 org.spongycastle.x509.NoSuchStoreException
@@ -11319,6 +11235,7 @@ org.bouncycastle.jcajce.provider.asymmetric.rsa.X931SignatureSpi
 android.support.v7.view.WindowCallbackWrapper
     public void onContentChanged()
 org.spongycastle.jce.provider.OldPKCS12ParametersGenerator
+com.tencent.mm.opensdk.modelpay.WXJointPay
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$RepeatedFieldAccessor
     public java.lang.Object getRepeated(com.google.protobuf.GeneratedMessage$Builder,int)
     public void setRepeated(com.google.protobuf.GeneratedMessage$Builder,int,java.lang.Object)
@@ -12279,6 +12196,10 @@ okhttp3.internal.cache.DiskLruCache$Snapshot
 jnr.ffi.provider.jffi.PointerParameterStrategy
 com.subgraph.orchid.directory.certificate.KeyCertificateParser
 org.web3j.ens.contracts.generated.PublicResolver$ABIChangedEventResponse
+com.tencent.mm.opensdk.modelpay.WXJointPay$JointPayResp
+    public void <init>()
+    public void toBundle(android.os.Bundle)
+    public boolean checkArgs()
 org.bitcoinj.kits.WalletAppKit$1
 org.aspectj.internal.lang.reflect.DeclareSoftImpl
 android.support.constraint.solver.widgets.ResolutionAnchor
@@ -13225,9 +13146,9 @@ android.support.v4.view.GravityCompat
 com.subgraph.orchid.ConsensusDocument
 org.bouncycastle.jce.provider.X509StoreLDAPCertPairs
 com.fasterxml.jackson.databind.type.TypeFactory
-org.bitcoinj.wallet.Wallet
-org.spongycastle.asn1.x509.IssuingDistributionPoint
 rx.internal.operators.OperatorGroupBy$GroupByProducer
+org.spongycastle.asn1.x509.IssuingDistributionPoint
+org.bitcoinj.wallet.Wallet
 com.google.common.collect.Multisets
     private void <init>()
     public static com.google.common.collect.Multiset unmodifiableMultiset(com.google.common.collect.Multiset)
@@ -13481,6 +13402,10 @@ jnr.constants.platform.fake.IPProto
 org.spongycastle.asn1.icao.ICAOObjectIdentifiers
 rx.internal.util.UtilityFunctions
 org.bouncycastle.jcajce.provider.asymmetric.rsa.DigestSignatureSpi$SHA3_256
+com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgram$Resp
+    public void <init>()
+    public final void toBundle(android.os.Bundle)
+    public final boolean checkArgs()
 org.spongycastle.crypto.util.Pack
 org.bouncycastle.asn1.cmp.InfoTypeAndValue
 android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler
@@ -13722,8 +13647,6 @@ com.fasterxml.jackson.databind.SerializerProvider
 org.spongycastle.crypto.params.ParametersWithID
 org.spongycastle.asn1.pkcs.PKCS12PBEParams
 org.bouncycastle.jce.spec.GOST3410PrivateKeySpec
-com.tencent.wxop.stat.event.b
-    public void a(long)
 com.alibaba.fastjson.JSONPath$ValueSegment
 org.bouncycastle.crypto.params.ECKeyGenerationParameters
 rx.internal.operators.OperatorEagerConcatMap$EagerInnerSubscriber
@@ -13811,7 +13734,6 @@ rx.exceptions.OnErrorFailedException
 org.bouncycastle.crypto.engines.RC2WrapEngine
 jnr.posix.JavaTimes
 jnr.constants.platform.linux.Shutdown
-com.tencent.wxop.stat.r
 org.spongycastle.crypto.util.PublicKeyFactory
 org.spongycastle.jcajce.provider.util.SecretKeyUtil
 org.bouncycastle.asn1.ntt.NTTObjectIdentifiers
@@ -14936,7 +14858,6 @@ com.squareup.okhttp.internal.http.HeaderParser
 org.bitcoinj.script.ScriptBuilder
 okhttp3.Authenticator
 org.spongycastle.asn1.dvcs.CertEtcToken
-com.tencent.wxop.stat.event.a
 org.spongycastle.crypto.digests.GOST3411_2012_256Digest
 jnr.ffi.provider.jffi.platform.i386.darwin.TypeAliases
 jnr.posix.POSIXFunctionMapper
@@ -15365,7 +15286,6 @@ org.spongycastle.asn1.BERSequenceParser
     public org.spongycastle.asn1.ASN1Encodable readObject()
 org.spongycastle.jce.exception.ExtException
 rx.subscriptions.RefCountSubscription$State
-com.tencent.wxop.stat.ai
 org.bouncycastle.pqc.crypto.gmss.GMSSKeyPairGenerator
 org.bouncycastle.jcajce.spec.TLSKeyMaterialSpec
 org.greenrobot.eventbus.PendingPostQueue
@@ -15552,7 +15472,6 @@ com.google.common.collect.Multimaps$UnmodifiableMultimap$1
 com.cedarsoftware.util.io.JsonReader$BigDecimalReader
 com.squareup.okhttp.internal.framed.Http2$FrameLogger
 org.spongycastle.asn1.crmf.ProofOfPossession
-com.tencent.wxop.stat.p
 org.bouncycastle.crypto.util.PBKDF2Config
 org.bouncycastle.crypto.engines.AESLightEngine
 android.support.v4.provider.FontsContractCompat$FontRequestCallback$FontRequestFailReason
@@ -15738,8 +15657,6 @@ org.bouncycastle.asn1.StreamUtil
     static int findLimit(java.io.InputStream)
     static int calculateTagLength(int)
 rx.functions.Func7
-com.tencent.wxop.stat.common.l
-    public static boolean z(android.content.Context)
 com.google.common.collect.HashBiMap$BiEntry
 org.bouncycastle.jcajce.provider.asymmetric.util.IESUtil
 rx.internal.operators.SingleDoAfterTerminate
@@ -15871,7 +15788,6 @@ jnr.ffi.provider.BoundedMemoryIO
 jnr.ffi.Struct$Offset
 com.tencent.mm.opensdk.openapi.BaseWXApiImplV10
     public void unregisterApp()
-    public boolean openWXApp()
     public boolean sendResp(com.tencent.mm.opensdk.modelbase.BaseResp)
     public void detach()
     public void setLogImpl(com.tencent.mm.opensdk.utils.ILog)
@@ -16180,7 +16096,6 @@ com.fasterxml.jackson.annotation.JsonIdentityInfo
 org.apache.commons.logging.impl.WeakHashtable$Referenced
 rx.internal.schedulers.ScheduledAction$Remover
 org.bouncycastle.asn1.x509.UserNotice
-com.tencent.wxop.stat.n
 org.bitcoinj.store.SPVBlockStore
 jnr.ffi.provider.jffi.ReflectionVariableAccessorGenerator$PointerOp
 jnr.posix.util.ProcessMaker$Redirect
@@ -16316,7 +16231,6 @@ android.support.v7.app.ActionBar
     public static final int DISPLAY_SHOW_CUSTOM
 android.support.v4.view.MenuCompat
 org.web3j.tx.response.QueuingTransactionReceiptProcessor$RequestWrapper
-com.tencent.wxop.stat.o
 org.bouncycastle.x509.X509V1CertificateGenerator
 org.spongycastle.pqc.math.linearalgebra.GF2nElement
 org.spongycastle.crypto.tls.TlsRSAKeyExchange
@@ -16921,7 +16835,6 @@ com.alibaba.fastjson.parser.deserializer.ASMDeserializerFactory$Context
     static final int parser
     static final int type
     static final int fieldName
-com.tencent.wxop.stat.event.f
 rx.internal.schedulers.NewThreadWorker
 no.nordicsemi.android.dfu.R$integer
 com.kenai.jnr.x86asm.BaseReg
@@ -17458,7 +17371,6 @@ okio.SegmentedByteString
 rx.Completable$19$1$1
 org.spongycastle.jcajce.provider.asymmetric.elgamal.CipherSpi$NoPadding
 com.google.common.util.concurrent.CheckedFuture
-com.tencent.wxop.stat.ac
 org.bouncycastle.crypto.tls.TlsKeyExchange
 net.vidageek.mirror.proxy.cglib.CGLibProxyReflectionProvider
 jnr.posix.Group
@@ -17490,7 +17402,6 @@ android.support.graphics.drawable.animated.R$bool
 com.google.common.cache.LocalCache$WeightedStrongValueReference
 android.support.multidex.MultiDex$V4
     private void <init>()
-com.tencent.wxop.stat.v
 org.spongycastle.jcajce.provider.symmetric.Noekeon$AlgParams
 jnr.ffi.provider.jffi.BufferParameterStrategy
 org.bouncycastle.jcajce.provider.asymmetric.dsa.DSASigner$noneDSA
@@ -18422,7 +18333,6 @@ org.spongycastle.asn1.ocsp.ResponseBytes
 org.bouncycastle.crypto.params.SRP6GroupParameters
 com.kenai.constantine.platform.IPProto
 org.bouncycastle.crypto.tls.TlsAuthentication
-com.tencent.mm.opensdk.modelbiz.JumpToBizTempSession
 android.arch.core.internal.FastSafeIterableMap
     public java.lang.Object putIfAbsent(java.lang.Object,java.lang.Object)
     public java.util.Map$Entry ceil(java.lang.Object)
@@ -18800,8 +18710,6 @@ org.bouncycastle.pqc.jcajce.provider.rainbow.RainbowKeyPairGeneratorSpi
 org.bouncycastle.asn1.BERFactory
 org.bouncycastle.jcajce.provider.digest.Skein$SkeinMac_256_224
 net.vidageek.mirror.reflect.dsl.AnnotationHandler
-com.tencent.wxop.stat.event.d
-    public void <init>(android.content.Context,int,java.lang.String,int,int,java.lang.Thread,com.tencent.wxop.stat.StatSpecifyReportedInfo)
 org.bouncycastle.crypto.OutputLengthException
 org.bouncycastle.pqc.crypto.gmss.GMSSRootSig
 org.bitcoinj.protocols.payments.PaymentProtocolException$Expired
@@ -19083,6 +18991,7 @@ com.wallet.utils.LogCook
     public static void v(java.lang.String,java.lang.String)
     public static void log(java.lang.String)
     public static void f(java.lang.String,java.lang.String)
+    public static boolean DeleteOverdueLogFile()
 com.squareup.okhttp.Address
 org.spongycastle.crypto.params.KDFDoublePipelineIterationParameters
 org.spongycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi$ECDHC
@@ -19215,7 +19124,6 @@ jnr.ffi.provider.jffi.AbstractX86StubCompiler$PageHolder
 com.alibaba.fastjson.util.UTF8Decoder
 com.tencent.mm.opensdk.modelbiz.CreateChatroom$Req
 android.support.v7.graphics.drawable.DrawerArrowDrawable
-com.tencent.wxop.stat.af
 org.objectweb.asm.tree.ParameterNode
 rx.internal.operators.OnSubscribeToObservableFuture$ToObservableFuture
 jnr.ffi.byref.DoubleByReference
@@ -19399,13 +19307,6 @@ org.spongycastle.jcajce.provider.symmetric.AES$PBEWithSHA256And192BitAESBC
 org.spongycastle.math.raw.Nat384
     public void <init>()
 org.spongycastle.crypto.agreement.kdf.DHKDFParameters
-com.tencent.wxop.stat.common.StatLogger
-    public void <init>()
-    public final int getLogLevel()
-    public final void setLogLevel(int)
-    public final void setTag(java.lang.String)
-    public final void verbose(java.lang.Object)
-    public final void v(java.lang.Object)
 jnr.ffi.CallingConvention
 com.google.common.reflect.TypeResolver$TypeTable$1
 org.web3j.crypto.CipherException
@@ -19638,7 +19539,6 @@ org.bouncycastle.jcajce.spec.KTSParameterSpec
 jnr.ffi.StructLayout$gid_t
 com.google.common.collect.MapConstraints$ConstrainedMultimap$1
 com.fasterxml.jackson.databind.PropertyNamingStrategy$SnakeCaseStrategy
-com.tencent.wxop.stat.s
 jnr.constants.platform.solaris.PosixFadvise
 android.support.v7.widget.AbsActionBarView$1
 com.subgraph.orchid.directory.downloader.DirectoryDownloadTask$1
@@ -19711,6 +19611,7 @@ net.vidageek.mirror.dsl.ClassController
 rx.internal.operators.OperatorWindowWithObservable$SourceSubscriber
 com.wallet.cold.dfu.exception.TimeoutException
 org.spongycastle.jcajce.provider.symmetric.AES$CFB
+com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgramWithToken
 android.support.v4.util.AtomicFile
 org.spongycastle.jcajce.provider.symmetric.Salsa20$Mappings
 no.nordicsemi.android.dfu.R$dimen
@@ -19966,7 +19867,6 @@ org.bouncycastle.crypto.tls.Certificate
 com.subgraph.orchid.misc.NotThreadSafe
 com.google.common.hash.PrimitiveSink
 org.bouncycastle.pqc.crypto.gmss.GMSSParameters
-com.tencent.wxop.stat.z
 com.wallet.cold.dfu.conn.BleConnector
 org.spongycastle.jcajce.provider.symmetric.Twofish$PBEWithSHA
 org.bouncycastle.asn1.misc.CAST5CBCParameters
@@ -20806,7 +20706,6 @@ org.spongycastle.pqc.asn1.RainbowPublicKey
 org.spongycastle.jcajce.provider.digest.Skein$SkeinMac_1024_1024
 org.spongycastle.asn1.x500.X500Name
 com.fasterxml.jackson.annotation.JsonClassDescription
-com.tencent.wxop.stat.y
 org.spongycastle.crypto.KeyEncapsulation
 org.bouncycastle.asn1.pkcs.PrivateKeyInfo
 org.web3j.abi.datatypes.generated.Uint48
@@ -21524,9 +21423,13 @@ com.subgraph.orchid.directory.DescriptorCache$1
 org.bitcoinj.net.discovery.HttpDiscovery
 org.bouncycastle.jcajce.provider.asymmetric.ec.KeyAgreementSpi$DHwithSHA512CKDF
 com.subgraph.orchid.TorClient$1
-com.tencent.mm.opensdk.modelbiz.JumpToBizTempSession$Req
 com.google.zxing.aztec.AztecWriter
     public com.google.zxing.common.BitMatrix encode(java.lang.String,com.google.zxing.BarcodeFormat,int,int)
+com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgramWithToken$Resp
+    public void <init>()
+    public final void toBundle(android.os.Bundle)
+    public final boolean checkArgs()
+    public static final int ERR_INVALID_TOKEN
 rx.internal.operators.OperatorRetryWithPredicate
 org.bouncycastle.asn1.crmf.EncryptedKey
 android.support.v13.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBaseImpl
@@ -21662,7 +21565,6 @@ org.greenrobot.eventbus.BackgroundPoster
 com.google.common.hash.Crc32cHashFunction$Crc32cHasher
 org.bouncycastle.jcajce.provider.symmetric.DESede$DESede64
 org.spongycastle.pqc.jcajce.provider.mceliece.McElieceKeyFactorySpi
-com.tencent.wxop.stat.x
 com.wallet.hot.ripple.ECDSASignature
     public static com.wallet.hot.ripple.ECDSASignature decodeFromDER(byte[])
 org.bouncycastle.asn1.eac.CVCertificate
@@ -21687,6 +21589,8 @@ org.spongycastle.pqc.jcajce.spec.GMSSKeySpec
 org.bouncycastle.asn1.cms.EnvelopedData
 org.web3j.ens.contracts.generated.PublicResolver$NameChangedEventResponse
 jnr.ffi.StructLayout
+com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgram$Req
+    private static final java.lang.String TAG
 org.bouncycastle.jcajce.provider.symmetric.DSTU7624$Wrap512
 com.fasterxml.jackson.databind.jsonFormatVisitors.JsonNullFormatVisitor
 org.spongycastle.jcajce.provider.symmetric.SEED$KeyGen
@@ -21698,8 +21602,8 @@ com.squareup.okhttp.Call$AsyncCall
 org.bouncycastle.pqc.math.linearalgebra.BigIntUtils
 org.web3j.protocol.core.methods.response.ShhNewGroup
 org.bouncycastle.crypto.engines.RSABlindingEngine
-org.bouncycastle.crypto.tls.MACAlgorithm
 com.tencent.mm.opensdk.modelbiz.AddCardToWXCardPackage$Req
+org.bouncycastle.crypto.tls.MACAlgorithm
 com.kenai.jffi.HeapObjectParameterInvoker
 org.spongycastle.crypto.digests.MD4Digest
 com.google.common.collect.ForwardingMapEntry
@@ -22257,7 +22161,6 @@ com.tencent.mm.opensdk.modelmsg.LaunchFromWX
 org.bouncycastle.util.StoreException
 jnr.posix.LibC
 jnr.ffi.provider.converters.StructArrayParameterConverter$Out
-com.tencent.wxop.stat.aa
 com.fasterxml.jackson.databind.jsontype.TypeSerializer
 org.bouncycastle.jcajce.provider.asymmetric.elgamal.CipherSpi$PKCS1v1_5Padding
 android.arch.lifecycle.MethodCallsLogger
@@ -22617,7 +22520,6 @@ org.spongycastle.pqc.jcajce.provider.McEliece$Mappings
 rx.observables.AsyncOnSubscribe$AsyncOuterManager$2
 com.google.common.collect.Multimaps$UnmodifiableListMultimap
 org.spongycastle.jcajce.spec.PBKDF2KeySpec
-com.tencent.wxop.stat.event.g
 rx.internal.operators.SingleTakeUntilSingle
 jnr.ffi.StructLayout$int32_t
 org.bouncycastle.jcajce.provider.asymmetric.rsa.CipherSpi$PKCS1v1_5Padding_PublicOnly
@@ -23121,7 +23023,6 @@ org.bouncycastle.crypto.tls.TlsException
 jnr.ffi.util.ref.FinalizablePhantomReference
 org.spongycastle.pqc.crypto.mceliece.McElieceCCA2PrivateKeyParameters
 com.kenai.constantine.platform.Errno
-com.tencent.mm.opensdk.modelbiz.JumpToBizProfile$Req
 rx.internal.schedulers.NewThreadScheduler
 com.google.protobuf.CodedOutputStream
     public static com.google.protobuf.CodedOutputStream newInstance(java.io.OutputStream)
@@ -23200,7 +23101,6 @@ org.bouncycastle.crypto.params.ParametersWithRandom
     public void <init>(org.bouncycastle.crypto.CipherParameters)
 org.bouncycastle.jcajce.provider.asymmetric.ec.SignatureSpi$1
 com.fasterxml.jackson.annotation.JsonInclude$Include
-com.tencent.wxop.stat.ab
 org.spongycastle.crypto.tls.AbstractTlsServer
 org.spongycastle.asn1.x500.style.AbstractX500NameStyle
 com.google.protobuf.RpcController
@@ -23958,31 +23858,6 @@ android.support.v4.view.MenuItemCompat$MenuVersionImpl
     public abstract android.graphics.PorterDuff$Mode getIconTintMode(android.view.MenuItem)
 org.spongycastle.pqc.math.linearalgebra.LittleEndianConversions
 org.bouncycastle.asn1.esf.SigPolicyQualifiers
-com.tencent.wxop.stat.StatServiceImpl
-    public static void setContext(android.content.Context)
-    public static void startNewSession(android.content.Context,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void stopSession()
-    public static void setEnvAttributes(android.content.Context,java.util.Map)
-    public static void reportQQ(android.content.Context,java.lang.String,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void reportAccount(android.content.Context,com.tencent.wxop.stat.StatAccount,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void reportGameUser(android.content.Context,com.tencent.wxop.stat.StatGameUser,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void onStop(android.content.Context,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void onLowMemory(android.content.Context)
-    public static void reportError(android.content.Context,java.lang.String,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    private static void b(android.content.Context,com.tencent.wxop.stat.StatAccount,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void reportException(android.content.Context,java.lang.Throwable,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static varargs void trackCustomEvent(android.content.Context,java.lang.String,com.tencent.wxop.stat.StatSpecifyReportedInfo,java.lang.String[])
-    public static void setCommonKeyValueForKVEvent(java.lang.String,java.util.Properties)
-    public static varargs void trackCustomBeginEvent(android.content.Context,java.lang.String,com.tencent.wxop.stat.StatSpecifyReportedInfo,java.lang.String[])
-    public static varargs void trackCustomEndEvent(android.content.Context,java.lang.String,com.tencent.wxop.stat.StatSpecifyReportedInfo,java.lang.String[])
-    public static void trackCustomBeginKVEvent(android.content.Context,java.lang.String,java.util.Properties,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void trackCustomEndKVEvent(android.content.Context,java.lang.String,java.util.Properties,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void reportAppMonitorStat(android.content.Context,com.tencent.wxop.stat.StatAppMonitor,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static varargs void trackCustomTimeIntervalEvent(android.content.Context,int,java.lang.String,java.lang.String[])
-    public static void trackCustomKVTimeIntervalEvent(android.content.Context,java.lang.String,java.util.Properties,int,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    public static void testSpeed(android.content.Context,java.util.Map,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    static synthetic void a(android.content.Context,com.tencent.wxop.stat.StatAccount,com.tencent.wxop.stat.StatSpecifyReportedInfo)
-    static synthetic java.util.Map k()
 org.bouncycastle.crypto.generators.DHKeyGeneratorHelper
 com.squareup.okhttp.internal.framed.FramedStream$FramedDataSource
 rx.plugins.RxJavaErrorHandler
@@ -24105,8 +23980,8 @@ android.arch.core.internal.SafeIterableMap$Entry
     void <init>(java.lang.Object,java.lang.Object)
 org.web3j.abi.datatypes.Fixed
 com.google.common.primitives.Floats$FloatConverter
-org.web3j.tx.Contract$5
 org.spongycastle.jcajce.provider.asymmetric.dsa.AlgorithmParameterGeneratorSpi
+org.web3j.tx.Contract$5
 org.bouncycastle.asn1.x509.TBSCertificateStructure
 android.support.v7.widget.ActionBarOverlayLayout
     public boolean isHideOnContentScrollEnabled()
@@ -25269,8 +25144,6 @@ com.google.common.collect.ListMultimap
     public abstract java.util.Map asMap()
     public abstract boolean equals(java.lang.Object)
 com.cedarsoftware.util.Traverser$ClassInfo
-com.tencent.wxop.stat.common.q
-    public static void b(android.content.Context,java.lang.String,java.lang.String)
 org.spongycastle.asn1.DERSet
     public void <init>(org.spongycastle.asn1.ASN1Encodable)
     public void <init>(org.spongycastle.asn1.ASN1EncodableVector)
@@ -25574,7 +25447,6 @@ android.support.v4.widget.SwipeRefreshLayout
     private static final int ANIMATE_TO_START_DURATION
     private static final int CIRCLE_BG_LIGHT
     private static final int DEFAULT_CIRCLE_TARGET
-com.tencent.wxop.stat.StatGameUser
 org.bouncycastle.jcajce.provider.asymmetric.elgamal.KeyFactorySpi
 com.google.zxing.client.result.ProductResultParser
 org.bouncycastle.util.test.FixedSecureRandom
@@ -25779,34 +25651,6 @@ org.spongycastle.jcajce.provider.asymmetric.dsa.DSASigner$dsa256
 org.aspectj.runtime.internal.AroundClosure
 com.fasterxml.jackson.databind.type.MapLikeType
 jnr.ffi.StructLayout$SignedLong
-com.tencent.wxop.stat.StatService
-    public void <init>()
-    public static void trackBeginPage(android.content.Context,java.lang.String)
-    public static void trackEndPage(android.content.Context,java.lang.String)
-    public static void startNewSession(android.content.Context)
-    public static void stopSession()
-    public static void setEnvAttributes(android.content.Context,java.util.Map)
-    public static void reportQQ(android.content.Context,java.lang.String)
-    public static void reportAccount(android.content.Context,com.tencent.wxop.stat.StatAccount)
-    public static void reportGameUser(android.content.Context,com.tencent.wxop.stat.StatGameUser)
-    public static void reportError(android.content.Context,java.lang.String)
-    public static void reportException(android.content.Context,java.lang.Throwable)
-    public static varargs void trackCustomEvent(android.content.Context,java.lang.String,java.lang.String[])
-    public static void trackCustomKVTimeIntervalEvent(android.content.Context,int,java.lang.String,java.util.Properties)
-    public static varargs void trackCustomBeginEvent(android.content.Context,java.lang.String,java.lang.String[])
-    public static varargs void trackCustomEndEvent(android.content.Context,java.lang.String,java.lang.String[])
-    public static void trackCustomBeginKVEvent(android.content.Context,java.lang.String,java.util.Properties)
-    public static void trackCustomEndKVEvent(android.content.Context,java.lang.String,java.util.Properties)
-    public static void reportAppMonitorStat(android.content.Context,com.tencent.wxop.stat.StatAppMonitor)
-    public static void commitEvents(android.content.Context,int)
-    public static void testSpeed(android.content.Context)
-    public static void testSpeed(android.content.Context,java.util.Map)
-    public static void flushDataToDB(android.content.Context)
-    public static void setContext(android.content.Context)
-    public static void onStop(android.content.Context)
-    public static void onLowMemory(android.content.Context)
-    public static void setCommonKeyValueForKVEvent(java.lang.String,java.util.Properties)
-    public static java.util.Properties getCommonKeyValueForKVEvent(java.lang.String)
 android.arch.lifecycle.viewmodel.R
 android.support.v4.view.ViewCompat$ViewCompatApi23Impl
     public void setScrollIndicators(android.view.View,int)
@@ -26750,6 +26594,8 @@ org.spongycastle.jce.spec.ECParameterSpec
     private java.math.BigInteger h
 android.support.v4.provider.SelfDestructiveThread$3
     final synthetic android.support.v4.provider.SelfDestructiveThread this$0
+com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgram$Resp
+    public java.lang.String extMsg
 com.wallet.cold.app.pawn.ShoplistActivity
     android.os.Bundle bundle
 com.google.common.collect.AbstractMapBasedMultimap$RandomAccessWrappedList
@@ -26817,8 +26663,6 @@ com.google.protobuf.GeneratedMessage
     static void <clinit>()
 com.google.common.collect.MapMakerInternalMap$ValueIterator
     final synthetic com.google.common.collect.MapMakerInternalMap this$0
-com.tencent.wxop.stat.a
-    static void <clinit>()
 com.alibaba.fastjson.serializer.SerializeWriter
     protected boolean writeDirect
 android.support.v4.app.FragmentActivity$NonConfigurationInstances
@@ -26909,16 +26753,12 @@ com.wallet.cold.app.index.HQActivity$MyAdapter$ViewHolder
     final synthetic com.wallet.cold.app.index.HQActivity$MyAdapter this$1
 org.bitcoinj.core.Message
     protected boolean recached
-com.tencent.wxop.stat.event.i
-    static void <clinit>()
 org.bitcoinj.core.TransactionOutput
     private static final org.slf4j.Logger log
 com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1
     final synthetic com.google.gson.internal.bind.ReflectiveTypeAdapterFactory this$0
 org.bitcoinj.core.AbstractBlockChain
     private static final org.slf4j.Logger log
-com.tencent.mm.opensdk.openapi.WXApiImplV10
-    static void <clinit>()
 android.support.constraint.ConstraintLayout$LayoutParams
     float dimensionRatioValue
 com.google.common.collect.MapMakerInternalMap$ExpirationQueue$1
@@ -27003,14 +26843,14 @@ org.greenrobot.eventbus.EventBus
     public static java.lang.String TAG
     private static final org.greenrobot.eventbus.EventBusBuilder DEFAULT_BUILDER
     private static final java.util.Map eventTypesCache
-com.tencent.wxop.stat.aq
-    static void <clinit>()
 com.google.protobuf.Internal
     public static final java.nio.ByteBuffer EMPTY_BYTE_BUFFER
 com.wallet.cold.app.pawn.TztypeActivity$MyAdapter$1$1
     final synthetic com.wallet.cold.app.pawn.TztypeActivity$MyAdapter$1 this$2
 android.support.v4.os.ResultReceiver
     final boolean mLocal
+com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgramWithToken$Resp
+    public java.lang.String extMsg
 android.support.v7.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB
     final synthetic android.support.v7.view.menu.MenuItemWrapperJB this$0
 com.wallet.utils.MyListView
@@ -27022,8 +26862,6 @@ org.web3j.rlp.RlpDecoder
     public static int OFFSET_LONG_LIST
 org.bitcoinj.script.ScriptOpCodes
     private static final java.util.Map opCodeNameMap
-com.tencent.wxop.stat.bc
-    private android.content.Context b
 com.wallet.utils.Sweepcode.InactivityTimer
     static void <clinit>()
 com.tencent.mm.opensdk.modelbiz.JoinChatroom$Resp
@@ -27134,24 +26972,12 @@ android.support.v7.widget.SuggestionsAdapter
     private final android.app.SearchManager mSearchManager
 org.bouncycastle.asn1.StreamUtil
     private static final long MAX_MEMORY
-com.tencent.wxop.stat.common.l
-    static void <clinit>()
-    private static java.lang.String b
-    private static java.lang.String d
-    private static java.lang.String o
-    private static com.tencent.wxop.stat.common.o s
-    private static java.lang.String x
-com.tencent.wxop.stat.bd
-    int c
-    int d
 com.wallet.cold.app.pawn.ShopActivity$MyAdapter$ViewHolder
     final synthetic com.wallet.cold.app.pawn.ShopActivity$MyAdapter this$1
 android.support.v4.graphics.TypefaceCompatBaseImpl$2
     final synthetic android.support.v4.graphics.TypefaceCompatBaseImpl this$0
 android.support.v7.widget.ActionBarContextView$1
     final synthetic android.support.v7.widget.ActionBarContextView this$0
-com.tencent.wxop.stat.ar
-    final synthetic com.tencent.wxop.stat.aq a
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateBaseImpl$1
     final synthetic android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateBaseImpl this$0
 com.tencent.mm.opensdk.openapi.BaseWXApiImplV10
@@ -27215,9 +27041,6 @@ com.google.gson.Gson
     final com.google.gson.LongSerializationPolicy longSerializationPolicy
     final java.util.List builderFactories
     final java.util.List builderHierarchyFactories
-com.tencent.a.a.a.a.g
-    static void <clinit>()
-    private int b
 com.google.protobuf.Descriptors$MethodDescriptor
     private final int index
     private final com.google.protobuf.Descriptors$ServiceDescriptor service
@@ -27225,7 +27048,6 @@ com.google.protobuf.Descriptors$MethodDescriptor
     private com.google.protobuf.Descriptors$Descriptor outputType
 android.support.v4.app.NotificationCompatJellybean
     private static final java.lang.Object sActionsLock
-cn.leo.magic.screen.ScreenAdapter
 android.support.v4.content.WakefulBroadcastReceiver
     private static final android.util.SparseArray sActiveWakeLocks
     private static int mNextId
@@ -27264,8 +27086,6 @@ com.wallet.cold.dfu.bluetooth.BleBluetooth
     private android.content.Context context
     private android.os.Handler handler
     private com.wallet.cold.dfu.conn.BleGattCallback coreGattCallback
-com.tencent.wxop.stat.common.StatConstants
-    public static final java.lang.String MTA_STORAGE_PRE_TAG
 com.google.gson.internal.ConstructorConstructor$9
     final synthetic com.google.gson.internal.ConstructorConstructor this$0
 com.google.protobuf.GeneratedMessage$GeneratedExtension
@@ -27277,8 +27097,6 @@ org.bitcoinj.core.StoredBlock
     public static final byte[] EMPTY_BYTES
 com.wallet.utils.Sweepcode.CaptureActivity
     private android.os.Handler mHandler
-com.tencent.wxop.stat.as
-    final synthetic com.tencent.wxop.stat.aq a
 android.support.graphics.drawable.VectorDrawableCompat
     private android.graphics.drawable.Drawable$ConstantState mCachedConstantStateDelegate
 android.support.v7.widget.ActionMenuPresenter$OverflowMenuButton$1
@@ -27459,8 +27277,6 @@ org.bitcoinj.core.Transaction
     public static final org.bitcoinj.core.Coin MIN_NONDUST_OUTPUT
 com.google.gson.internal.ConstructorConstructor$8
     final synthetic com.google.gson.internal.ConstructorConstructor this$0
-com.tencent.wxop.stat.StatServiceImpl
-    private static volatile java.util.Map e
 org.spongycastle.asn1.gm.GMObjectIdentifiers
     public static final org.spongycastle.asn1.ASN1ObjectIdentifier sm6_ecb
     public static final org.spongycastle.asn1.ASN1ObjectIdentifier sm6_cbc
@@ -27561,6 +27377,7 @@ com.google.protobuf.GeneratedMessage$FieldAccessorTable$OneofAccessor
 com.tencent.mm.opensdk.modelmsg.SendAuth$Resp
     public java.lang.String code
     public java.lang.String state
+    public boolean authResult
     public java.lang.String url
     public java.lang.String lang
     public java.lang.String country
@@ -27602,9 +27419,6 @@ android.support.v4.app.FragmentTransitionCompat21$4
     final synthetic android.support.v4.app.FragmentTransitionCompat21 this$0
 com.wallet.cold.app.pawn.TxActivity$MyAdapter$1
     final synthetic com.wallet.cold.app.pawn.TxActivity$MyAdapter this$1
-com.tencent.wxop.stat.common.r
-    static void <clinit>()
-    private static java.lang.String a
 com.alibaba.fastjson.serializer.BeanContext
     private final java.lang.Class beanClass
 org.spongycastle.math.ec.endo.GLVTypeBEndomorphism
@@ -27632,8 +27446,6 @@ com.wallet.cold.app.pawn.CardAmount$MyAdapter$ViewHolder
 android.support.v4.app.SharedElementCallback
     static void <clinit>()
     private static int MAX_IMAGE_SIZE
-com.tencent.wxop.stat.event.e
-    static void <clinit>()
 com.wallet.cold.app.pawn.InvestActivity$MyAdapter$ViewHolder
     final synthetic com.wallet.cold.app.pawn.InvestActivity$MyAdapter this$1
 com.google.zxing.common.DecoderResult
@@ -27652,8 +27464,6 @@ android.support.v4.graphics.TypefaceCompatBaseImpl$1
     final synthetic android.support.v4.graphics.TypefaceCompatBaseImpl this$0
 com.google.common.base.Predicates
     private static final com.google.common.base.Joiner COMMA_JOINER
-com.tencent.wxop.stat.d
-    static void <clinit>()
 com.tencent.mm.opensdk.modelbiz.OpenWebview$Resp
     public java.lang.String result
 org.bitcoinj.core.TransactionInput
@@ -27710,8 +27520,6 @@ org.spongycastle.crypto.params.AsymmetricKeyParameter
     boolean privateKey
 no.nordicsemi.android.dfu.SecureDfuImpl$ObjectInfo
     final synthetic no.nordicsemi.android.dfu.SecureDfuImpl this$0
-com.tencent.wxop.stat.common.q
-    static void <clinit>()
 org.spongycastle.asn1.BERFactory
     static final org.spongycastle.asn1.BERSet EMPTY_SET
 com.wallet.cold.dfu.BluetoothService
@@ -27731,12 +27539,8 @@ org.spongycastle.util.BigIntegers
     private static final java.math.BigInteger ZERO
 android.support.v4.app.FragmentTransitionCompat21$2
     final synthetic android.support.v4.app.FragmentTransitionCompat21 this$0
-com.tencent.wxop.stat.common.p
-    static void <clinit>()
 com.alibaba.fastjson.parser.deserializer.JSONPDeserializer
     public static final com.alibaba.fastjson.parser.deserializer.JSONPDeserializer instance
-com.tencent.wxop.stat.event.d
-    private int n
 com.google.common.collect.Hashing
     static void <clinit>()
 android.support.constraint.solver.widgets.ResolutionAnchor
@@ -27755,16 +27559,6 @@ android.support.v4.view.NestedScrollingParentHelper
     private final android.view.ViewGroup mViewGroup
 org.bitcoinj.core.VarInt
     private final int originallyEncodedSize
-com.tencent.wxop.stat.StatConfig
-    private static java.lang.String A
-    private static java.lang.String D
-    private static long G
-    private static long H
-    private static int J
-    private static volatile int K
-    private static boolean N
-    private static int O
-    private static boolean R
 com.tencent.mm.opensdk.modelbiz.SubscribeMiniProgramMsg$Resp
     public java.lang.String unionId
     public java.lang.String nickname
@@ -27809,8 +27603,6 @@ com.wallet.cold.app.pawn.CzActivity$MyAdapter$1
     final synthetic com.wallet.cold.app.pawn.CzActivity$MyAdapter this$1
 com.google.common.collect.AbstractMapBasedMultimap$2
     final synthetic com.google.common.collect.AbstractMapBasedMultimap this$0
-com.tencent.wxop.stat.common.g
-    static void <clinit>()
 com.wallet.cold.app.pawn.ShoplistActivity$MyAdapter$ViewHolder
     android.widget.RelativeLayout tz
     final synthetic com.wallet.cold.app.pawn.ShoplistActivity$MyAdapter this$1
@@ -27878,8 +27670,6 @@ org.bitcoinj.params.AbstractBitcoinNetParams
     private static final org.slf4j.Logger log
 com.alibaba.fastjson.serializer.BeforeFilter
     private static final java.lang.Character COMMA
-com.tencent.wxop.stat.j
-    final synthetic com.tencent.wxop.stat.i a
 org.bitcoinj.wallet.BasicKeyChain$1
     final synthetic org.bitcoinj.wallet.BasicKeyChain this$0
 org.bouncycastle.crypto.params.AsymmetricKeyParameter
@@ -27911,7 +27701,6 @@ android.support.v4.view.ViewPager
     private boolean mNeedCalculatePageOffsets
 android.support.v4.view.PagerAdapter
     private android.database.DataSetObserver mViewPagerObserver
-com.tencent.wxop.stat.common.o
 com.wallet.cold.app.index.ZXNRActivity$1
     final synthetic com.wallet.cold.app.index.ZXNRActivity this$0
 android.support.v7.view.menu.BaseMenuPresenter
