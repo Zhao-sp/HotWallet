@@ -186,7 +186,6 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             popadd2.setText("BTC");
             popadd3.setText("BTC");
             fee.setText("0.0001");
-            to.setText("mp6a3Qz7Wpyx5oa5EGmKcSpFvE2MAN2rHG");
             balance.setText(Data.getbtcbalance());
         }
         Data.settype("hottransfer");
