@@ -230,7 +230,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 					}
 				}
 			} else {
-				startActivity(new Intent(CaptureActivity.this, Transfer.class).putExtras(bundle));
+				if(Data.getapptype().equals("cold")) {
+					startActivity(new Intent(CaptureActivity.this, Transfer.class).putExtras(bundle));
+				}else{
+					startActivity(new Intent(CaptureActivity.this, HotTransfer.class).putExtras(bundle));
+				}
 			}
 		}
 	}
@@ -358,7 +362,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 							String result =TextUtils.isEmpty(BitmapUtils.getResult(img)) ? Data.getcontext().getResources().getString(R.string.c5): BitmapUtils.getResult(img);
 							Bundle bundle = new Bundle();
 							bundle.putString("result",result);
-							startActivity(new Intent(CaptureActivity.this, Transfer.class).putExtras(bundle));
+							if(Data.getapptype().equals("cold")) {
+								startActivity(new Intent(CaptureActivity.this, Transfer.class).putExtras(bundle));
+							}else{
+								startActivity(new Intent(CaptureActivity.this, HotTransfer.class).putExtras(bundle));
+							}
 							progressDialog.dismiss();
 						}
 					}).start();
