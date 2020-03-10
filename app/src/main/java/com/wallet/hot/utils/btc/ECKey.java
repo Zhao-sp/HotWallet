@@ -16,9 +16,7 @@
  * limitations under the License.
  */
 
-package com.wallet.hot.utils;
-
-import android.util.Log;
+package com.wallet.hot.utils.btc;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.DumpedPrivateKey;
@@ -692,6 +690,7 @@ public class ECKey implements EncryptableItem {
         ECPrivateKeyParameters privKey = new ECPrivateKeyParameters(privateKeyForSigning, CURVE);
         signer.init(true, privKey);
         BigInteger[] components = signer.generateSignature(input.getBytes());
+
         return new ECDSASignature(components[0], components[1]).toCanonicalised();
     }
 

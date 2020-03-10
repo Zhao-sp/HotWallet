@@ -1,4 +1,4 @@
-package com.wallet.hot.utils;
+package com.wallet.hot.utils.btc;
 
 import android.util.Log;
 
@@ -113,12 +113,20 @@ public class ECDSASigner
             while (r.equals(ZERO));
             s = k.modInverse(n).multiply(e.add(d.multiply(r))).mod(n);
             Log.d("k",k.toString());
+            Log.d("k--16",new BigInteger(k.toString(),10).toString(16));
         }
         while (s.equals(ZERO));
         Log.d("n",n.toString());
         Log.d("e",e.toString());
+        Log.d("d",d.toString());
         Log.d("r",r.toString());
         Log.d("s",s.toString());
+        Log.d("n--16",new BigInteger(n.toString(),10).toString(16));
+        Log.d("e--16",new BigInteger(e.toString(),10).toString(16));
+        Log.d("d--16",new BigInteger(d.toString(),10).toString(16));
+        Log.d("r--16",new BigInteger(r.toString(),10).toString(16));
+
+        s = new BigInteger("3CBA0C8C1E3019368790A00B4284FA4B819F706ED49CC1914F23A3456B2B7AD0",16);
         return new BigInteger[]{ r, s };
     }
 

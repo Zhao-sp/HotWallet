@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.wallet.hot.utils;
+package com.wallet.hot.utils.btc;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;

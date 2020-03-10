@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
+import com.wallet.hot.utils.eth.ETHCredentials;
+import com.wallet.hot.utils.eth.ETHTransactionEncoder;
 import com.wallet.utils.Sweepcode.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.utils.language.LocalManageUtil;
@@ -269,6 +271,8 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         if (pin.length() < 8 || !pin.equals(Data.gethotpassword())) {
             Toast.makeText(getApplicationContext(), "请输入正确的钱包密码", Toast.LENGTH_SHORT).show();
         } else {
+            Double a=Double.parseDouble(balance);
+            Double b=Double.parseDouble(amountyue);
             if (type.equals("BTC")) {
                 if (to.equals("")) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff14), Toast.LENGTH_SHORT).show();
@@ -287,7 +291,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                 Double a1 = Double.valueOf(amountyue);;
                 Double a3 = a1 + a2;
                 BigDecimal bd3 = new BigDecimal(a3).setScale(8, BigDecimal.ROUND_DOWN);
-                if (balance.substring(0, 10).compareTo(String.valueOf(bd3)) < 0) {
+                if (a.compareTo(Double.parseDouble(String.valueOf(bd3))) < 0) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
                 } else {
                     boolean amount1 = false;
@@ -329,7 +333,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff17), Toast.LENGTH_SHORT).show();
                 } else if (fee.compareTo("9000") >= 0) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff28), Toast.LENGTH_SHORT).show();
-                } else if (balance.compareTo(amountyue) < 0) {
+                } else if (a.compareTo(b) < 0) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
                 } else {
                     mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.fff231));
@@ -349,7 +353,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff15), Toast.LENGTH_SHORT).show();
                 } else if (address.equals(to)) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff17), Toast.LENGTH_SHORT).show();
-                } else if (balance.compareTo(amountyue) < 0) {
+                } else if (a.compareTo(b) < 0) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
                 } else {
                     mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.fff231));
@@ -592,9 +596,9 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             Sha256Hash hash = Sha256Hash.twiceOf(msg);
             // creating signature
             ECKey.ECDSASignature sig = key.sign(hash);
-            com.wallet.hot.utils.DumpedPrivateKey dumpedPrivateKey= com.wallet.hot.utils.DumpedPrivateKey.fromBase58(TestNet3Params.get(),wif);
-            com.wallet.hot.utils.ECKey key1=dumpedPrivateKey.getKey();
-            com.wallet.hot.utils.ECKey.ECDSASignature ecdsaSignature=key1.sign(hash);
+            com.wallet.hot.utils.btc.DumpedPrivateKey dumpedPrivateKey= com.wallet.hot.utils.btc.DumpedPrivateKey.fromBase58(TestNet3Params.get(),wif);
+            com.wallet.hot.utils.btc.ECKey key1=dumpedPrivateKey.getKey();
+            com.wallet.hot.utils.btc.ECKey.ECDSASignature ecdsaSignature=key1.sign(hash);
             // encoding
             byte[] res = ecdsaSignature.encodeToDER();
             // converting to hex
@@ -858,6 +862,8 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         Credentials credentials = Credentials.create(privateKey);
         //使用TransactionEncoder对RawTransaction进行签名操作
         byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
+        ETHCredentials credentials1 = ETHCredentials.create(privateKey);
+        byte[] signedMessage1 = ETHTransactionEncoder.signMessage(rawTransaction, credentials1);
         //        //转换成0x开头的字符串
         return Numeric.toHexString(signedMessage);
     }
