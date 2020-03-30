@@ -52,6 +52,7 @@ public class Sign {
         int recId = -1;
         for (int i = 0; i < 4; i++) {
             BigInteger k = recoverFromSignature(i, sig, messageHash);
+            String kk=new BigInteger(k.toString(),10).toString(16);
             if (k != null && k.equals(publicKey)) {
                 recId = i;
                 break;

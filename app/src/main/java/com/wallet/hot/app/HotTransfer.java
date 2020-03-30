@@ -347,13 +347,14 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                     eth();
                 }
             } else if (type.equals("XRP")||type.equals("AED")) {
+                Double a1=b/1000000;
                 if (!to.substring(0,1).equals("r")) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff25), Toast.LENGTH_SHORT).show();
                 } else if (amountyue.equals("")) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff15), Toast.LENGTH_SHORT).show();
                 } else if (address.equals(to)) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff17), Toast.LENGTH_SHORT).show();
-                } else if (a.compareTo(b) < 0) {
+                } else if (a.compareTo(a1) < 0) {
                     Toast.makeText(getApplicationContext(), this.getResources().getString(R.string.fff18), Toast.LENGTH_SHORT).show();
                 } else {
                     mWeiboDialog = WeiboDialogUtils.createLoadingDialog(this, this.getResources().getString(R.string.fff231));
@@ -585,8 +586,8 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         String hex="";
         try {
             // creating a key object from WiF
-            DumpedPrivateKey dpk = DumpedPrivateKey.fromBase58(TestNet3Params.get(), wif);
-            ECKey key = dpk.getKey();
+//            DumpedPrivateKey dpk = DumpedPrivateKey.fromBase58(TestNet3Params.get(), wif);
+//            ECKey key = dpk.getKey();
             // checking our key object
             // NetworkParameters main = MainNetParams.get();
 //            String check = key.getPrivateKeyAsWiF(TestNet3Params.get());
@@ -594,8 +595,8 @@ public class HotTransfer extends Activity implements View.OnClickListener {
 //            Log.e("wif check", String.valueOf(wif.equals(check)));
             // creating Sha object from string
             Sha256Hash hash = Sha256Hash.twiceOf(msg);
-            // creating signature
-            ECKey.ECDSASignature sig = key.sign(hash);
+//            // creating signature
+//            ECKey.ECDSASignature sig = key.sign(hash);
             com.wallet.hot.utils.btc.DumpedPrivateKey dumpedPrivateKey= com.wallet.hot.utils.btc.DumpedPrivateKey.fromBase58(TestNet3Params.get(),wif);
             com.wallet.hot.utils.btc.ECKey key1=dumpedPrivateKey.getKey();
             com.wallet.hot.utils.btc.ECKey.ECDSASignature ecdsaSignature=key1.sign(hash);
@@ -865,7 +866,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         ETHCredentials credentials1 = ETHCredentials.create(privateKey);
         byte[] signedMessage1 = ETHTransactionEncoder.signMessage(rawTransaction, credentials1);
         //        //转换成0x开头的字符串
-        return Numeric.toHexString(signedMessage);
+        return Numeric.toHexString(signedMessage1);
     }
 
     /**

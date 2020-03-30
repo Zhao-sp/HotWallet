@@ -1,10 +1,20 @@
 package com.wallet.hot.utils.btc;
 
+import android.net.Uri;
 import android.util.Log;
 
+import com.wallet.R;
+import com.wallet.cold.utils.Data;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.bitcoinj.core.Base58;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DSA;
 import org.spongycastle.crypto.params.ECDomainParameters;
@@ -21,6 +31,11 @@ import org.spongycastle.math.ec.ECFieldElement;
 import org.spongycastle.math.ec.ECMultiplier;
 import org.spongycastle.math.ec.ECPoint;
 import org.spongycastle.math.ec.FixedPointCombMultiplier;
+
+import cn.tass.exceptions.TAException;
+import cn.tass.hsmApi.blockChainApi.blockChainApi;
+
+import static com.google.common.io.Resources.getResource;
 
 /**
  * EC-DSA as described in X9.62
@@ -97,12 +112,11 @@ public class ECDSASigner
         } else {
             kCalculator.init(n, random);
         }
-        BigInteger r, s;
+        BigInteger r, s ,k;
         ECMultiplier basePointMultiplier = createBasePointMultiplier();
         // 5.3.2
         do // generate s
         {
-            BigInteger k;
             do // generate r
             {
                 k = kCalculator.nextK();
@@ -125,10 +139,51 @@ public class ECDSASigner
         Log.d("e--16",new BigInteger(e.toString(),10).toString(16));
         Log.d("d--16",new BigInteger(d.toString(),10).toString(16));
         Log.d("r--16",new BigInteger(r.toString(),10).toString(16));
-
-        s = new BigInteger("3CBA0C8C1E3019368790A00B4284FA4B819F706ED49CC1914F23A3456B2B7AD0",16);
+        Log.d("s--16",new BigInteger(s.toString(),10).toString(16));
+        Uri uri= Uri.parse("android.resource://com.hotwallet/"+R.raw.cacipher);
+        String strConfig = uri.getPath();
+        try {
+            blockChainApi api = blockChainApi.getInstance(strConfig);
+            byte[] bytes1 = api.B5_signatureWithBlockchain("xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChjh27czWF7om2Wz9CeZEoYMfMPu7pkpmHWbmnEuSgC8EyHgtmcW",message,toByteArray(r),toByteArray(k),toByteArray(n));
+            s = new BigInteger(1, bytes1);
+        } catch (TAException ex) {
+            ex.printStackTrace();
+        }
+//        s = new BigInteger("c616f5e8464780a83e2459e0f6b20b54e1698b72ece52b61fa559685504af617",16);
         return new BigInteger[]{ r, s };
     }
+
+    public static byte[] toByteArray(BigInteger bi) {
+        byte[] array = bi.toByteArray();
+        if (array[0] == 0) {
+            byte[] tmp = new byte[array.length - 1];
+            System.arraycopy(array, 1, tmp, 0, tmp.length);
+            array = tmp;
+        }
+        return array;
+    }
+
+    public static String getString(InputStream inputStream) {
+        InputStreamReader inputStreamReader = null;
+        try {
+            inputStreamReader = new InputStreamReader(inputStream, "gbk");
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+        }
+        BufferedReader reader = new BufferedReader(inputStreamReader);
+        StringBuffer sb = new StringBuffer("");
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+                sb.append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+
 
     // 5.4 pg 29
     /**

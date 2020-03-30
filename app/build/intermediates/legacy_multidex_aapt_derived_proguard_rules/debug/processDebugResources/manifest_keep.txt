@@ -1,2 +1,0 @@
-# Referenced at E:\work\work\AndroidHotWallet\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:43
--keep class com.wallet.cold.app.util.MultiLanguagesApp { <init>(); }

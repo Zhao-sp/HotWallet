@@ -848,24 +848,4 @@ public class Utilshttp {
             new Utils().send2();
         }
     }
-
-    public List<Map<String,String>> getxrprecord(){
-        new Thread(new Runnable() {
-            public void run() {
-                send("https://api.blockcypher.com/v1/btc/test3/addrs/n4XgTuEX26vK1Nr5YYMkaG1pByM6AfuFSG/full?unspentOnly=true&includeScript=true");
-                send("https://testnet.data.api.ripple.com/v2/accounts/rGM8kdSTW2V4ub6oArueDUhcnEKemok24B/transactions");
-                if (result != null) {
-                    try {
-                        List<Map<String,String>> list=new ArrayList<>();
-                        Map<String,String> map=new HashMap<String,String>();
-                        JSONObject jsonObject = new JSONObject(result);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
-        return null;
-    }
 }
