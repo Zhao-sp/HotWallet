@@ -11,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,11 +28,6 @@ import android.widget.Toast;
 
 import com.google.zxing.WriterException;
 import com.wallet.cold.app.main.ColdMainActivity;
-import com.wallet.cold.utils.KECCAK256;
-import com.wallet.cold.utils.UtilsBase58;
-import com.wallet.hot.app.HotTransfer;
-import com.wallet.hot.utils.HotWalletUtils;
-import com.wallet.hot.utils.btc.ECDSASigner;
 import com.wallet.utils.JniUtils;
 import com.wallet.utils.SharedPrefsStrListUtil;
 import com.wallet.cold.utils.Data;
@@ -43,23 +37,7 @@ import com.wallet.cold.utils.Utils;
 import com.wallet.utils.WeiboDialogUtils;
 import com.wallet.hot.app.ByteActivity;
 
-import org.bitcoinj.core.Base58;
-import org.bouncycastle.crypto.digests.RIPEMD160Digest;
-import org.spongycastle.math.ec.ECPoint;
-import org.web3j.crypto.Sign;
-
 import java.io.File;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import cn.tass.exceptions.TAException;
-import cn.tass.hsmApi.blockChainApi.blockChainApi;
-
-import static com.wallet.cold.utils.Utils.bytetostring;
-import static org.bitcoinj.core.ECKey.publicPointFromPrivate;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTitleView;
@@ -105,29 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-//        InputStream in = getResources().openRawResource(R.raw.cacipher);
-//        String logpath = "./";
-//        String host = "124.127.49.180";
-//        String timeout = "3";
-//        // String strConfig = "~/ect/cfg.ini";    /* 方式1. 指定配置文件 */
-//        String strConfig =   /* 方式2. 拼装配置信息 */
-//                "{"
-//                        + "[LOGGER];"
-//                        + "logsw=error;logPath=" + logpath + ";"
-//                        + "[HOST 1];"
-//                        + "hsmModel=SJJ1310;"
-//                        + "host=" + host + ";"
-//                        + "port=8018;"
-//                        + "linkNum=-3;"
-//                        + "timeout=" + timeout + ";"
-//                        + "encodetype=0;"
-//                        + "msgheadlength=0;"
-//                        + "";
-//        try {
-//            blockChainApi api = blockChainApi.getInstance(strConfig);
-//        } catch (TAException ex) {
-//            ex.printStackTrace();
-//        }
     }
 
     /**
@@ -235,10 +190,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Data.sethotbtcprv(btcprv);
                         Data.sethotbtcpub(btcpub);
                         Data.setbtcaddress(btcaddress);
-                        Data.setethaddress("056db290f8ba3250ca64a45d16284d04bc6f5fbf");
-                        Data.sethotethprv("E8F32E723DECF4051AEFAC8E2C93C9C5B214313817CDB01A1494B917C8436B35");
-                        //Data.sethotethprv(ethprv);
-                        Data.sethotethpub("0439A36013301597DAEF41FBE593A02CC513D0B55527EC2DF1050E2E8FF49C85C23CBE7DED0E7CE6A594896B8F62888FDBC5C8821305E2EA42BF01E37300116281");
+                        Data.setethaddress(ethaddress);
+                        Data.sethotethprv(ethprv);
+                        Data.sethotethpub(ethpub);
                         Data.setxrpaddress(xrpaddress);
                         Data.setxrppub(xrppub);
                         Data.setxrpprv(xrpprv);Data.sethotzjc(mnemonic);

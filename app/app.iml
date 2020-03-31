@@ -88,10 +88,8 @@
     <orderEntry type="jdk" jdkName="Android API 29 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:multidex-instrumentation:1.0.2@aar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:E./work/work/AndroidHotWallet/app/libs/blockChainApi-1.0.0.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:E./work/work/AndroidHotWallet/app/libs/fastjson-1.2.28.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:E./work/work/AndroidHotWallet/app/libs/jsonrpc4j-0.27.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:E./work/work/AndroidHotWallet/app/libs/rt.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:E./work/work/AndroidHotWallet/app/libs/zxing.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.cedarsoftware:java-util:1.8.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: commons-logging:commons-logging:1.1.1@jar" level="project" />

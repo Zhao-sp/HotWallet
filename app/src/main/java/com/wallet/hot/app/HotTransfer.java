@@ -22,8 +22,6 @@ import android.widget.Toast;
 
 import com.wallet.R;
 import com.wallet.cold.app.main.IndexActivity;
-import com.wallet.hot.utils.eth.ETHCredentials;
-import com.wallet.hot.utils.eth.ETHTransactionEncoder;
 import com.wallet.utils.Sweepcode.CaptureActivity;
 import com.wallet.cold.utils.Data;
 import com.wallet.utils.language.LocalManageUtil;
@@ -162,7 +160,7 @@ public class HotTransfer extends Activity implements View.OnClickListener {
                 to.setText(result);
             }
         }
-        if(to.getText().toString().length()==34) {
+        if(to.getText().toString().length()==34&&to.getText().toString().substring(0,1).equals("r")) {
             Data.setbizhong("XRP");
             popadd.setText("XRP");
             popadd1.setText("XRP");
@@ -586,8 +584,8 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         String hex="";
         try {
             // creating a key object from WiF
-//            DumpedPrivateKey dpk = DumpedPrivateKey.fromBase58(TestNet3Params.get(), wif);
-//            ECKey key = dpk.getKey();
+            DumpedPrivateKey dpk = DumpedPrivateKey.fromBase58(TestNet3Params.get(), wif);
+            ECKey key = dpk.getKey();
             // checking our key object
             // NetworkParameters main = MainNetParams.get();
 //            String check = key.getPrivateKeyAsWiF(TestNet3Params.get());
@@ -596,12 +594,9 @@ public class HotTransfer extends Activity implements View.OnClickListener {
             // creating Sha object from string
             Sha256Hash hash = Sha256Hash.twiceOf(msg);
 //            // creating signature
-//            ECKey.ECDSASignature sig = key.sign(hash);
-            com.wallet.hot.utils.btc.DumpedPrivateKey dumpedPrivateKey= com.wallet.hot.utils.btc.DumpedPrivateKey.fromBase58(TestNet3Params.get(),wif);
-            com.wallet.hot.utils.btc.ECKey key1=dumpedPrivateKey.getKey();
-            com.wallet.hot.utils.btc.ECKey.ECDSASignature ecdsaSignature=key1.sign(hash);
+            ECKey.ECDSASignature sig = key.sign(hash);
             // encoding
-            byte[] res = ecdsaSignature.encodeToDER();
+            byte[] res = sig.encodeToDER();
             // converting to hex
             hex = Base64.encodeToString(res, 16);
 //            Log.e("sigendTransiction", hex);
@@ -863,10 +858,8 @@ public class HotTransfer extends Activity implements View.OnClickListener {
         Credentials credentials = Credentials.create(privateKey);
         //使用TransactionEncoder对RawTransaction进行签名操作
         byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
-        ETHCredentials credentials1 = ETHCredentials.create(privateKey);
-        byte[] signedMessage1 = ETHTransactionEncoder.signMessage(rawTransaction, credentials1);
         //        //转换成0x开头的字符串
-        return Numeric.toHexString(signedMessage1);
+        return Numeric.toHexString(signedMessage);
     }
 
     /**
